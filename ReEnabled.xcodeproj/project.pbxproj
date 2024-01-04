@@ -14,6 +14,16 @@
 		164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11242B4615DF008EF153 /* SplashScreenView.swift */; };
 		164E112A2B46172F008EF153 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11292B46172F008EF153 /* Views.swift */; };
 		164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E112C2B46183A008EF153 /* SplashScreenViewModel.swift */; };
+		164E11372B47180C008EF153 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11332B47180C008EF153 /* TabBarItem.swift */; };
+		164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11342B47180C008EF153 /* CustomTabBarView.swift */; };
+		164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11352B47180C008EF153 /* CustomTabBarContainerView.swift */; };
+		164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11362B47180C008EF153 /* TabBarItemsPreferenceKey.swift */; };
+		164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E113C2B471C94008EF153 /* MeasureViewSize.swift */; };
+		164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11412B471D1A008EF153 /* TabBarStateManager.swift */; };
+		164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11432B471ECB008EF153 /* ConditionalView.swift */; };
+		164E11492B472115008EF153 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11482B472115008EF153 /* HomeView.swift */; };
+		164E114B2B47211D008EF153 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114A2B47211D008EF153 /* SearchView.swift */; };
+		164E114D2B472122008EF153 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114C2B472122008EF153 /* HelpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +35,16 @@
 		164E11242B4615DF008EF153 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		164E11292B46172F008EF153 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		164E112C2B46183A008EF153 /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
+		164E11332B47180C008EF153 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		164E11342B47180C008EF153 /* CustomTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		164E11352B47180C008EF153 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
+		164E11362B47180C008EF153 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
+		164E113C2B471C94008EF153 /* MeasureViewSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewSize.swift; sourceTree = "<group>"; };
+		164E11412B471D1A008EF153 /* TabBarStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarStateManager.swift; sourceTree = "<group>"; };
+		164E11432B471ECB008EF153 /* ConditionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalView.swift; sourceTree = "<group>"; };
+		164E11482B472115008EF153 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		164E114A2B47211D008EF153 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		164E114C2B472122008EF153 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				164E112B2B46182B008EF153 /* SplashScreen */,
+				164E11452B4720F6008EF153 /* Home */,
+				164E11462B4720FB008EF153 /* Search */,
+				164E11472B47210A008EF153 /* Help */,
 				164E11162B45E167008EF153 /* ReEnabledApp.swift */,
 				164E11182B45E167008EF153 /* ContentView.swift */,
 				164E111A2B45E169008EF153 /* Assets.xcassets */,
@@ -86,6 +109,9 @@
 		164E11272B461717008EF153 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				164E11402B471D00008EF153 /* Structures */,
+				164E113B2B471C77008EF153 /* Modifiers */,
+				164E11312B471782008EF153 /* HelperViews */,
 				164E112E2B461B9A008EF153 /* Extensions */,
 				164E11282B46171F008EF153 /* Enums */,
 			);
@@ -114,6 +140,66 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		164E11312B471782008EF153 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				164E11322B4717A9008EF153 /* CustomTabBar */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		164E11322B4717A9008EF153 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				164E11352B47180C008EF153 /* CustomTabBarContainerView.swift */,
+				164E11342B47180C008EF153 /* CustomTabBarView.swift */,
+				164E11332B47180C008EF153 /* TabBarItem.swift */,
+				164E11362B47180C008EF153 /* TabBarItemsPreferenceKey.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		164E113B2B471C77008EF153 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				164E113C2B471C94008EF153 /* MeasureViewSize.swift */,
+				164E11432B471ECB008EF153 /* ConditionalView.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		164E11402B471D00008EF153 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				164E11412B471D1A008EF153 /* TabBarStateManager.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		164E11452B4720F6008EF153 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				164E11482B472115008EF153 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		164E11462B4720FB008EF153 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				164E114A2B47211D008EF153 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		164E11472B47210A008EF153 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				164E114C2B472122008EF153 /* HelpView.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,11 +272,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
+				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
+				164E11492B472115008EF153 /* HomeView.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
+				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
+				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
+				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
+				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
+				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
+				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
+				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +428,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +458,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
