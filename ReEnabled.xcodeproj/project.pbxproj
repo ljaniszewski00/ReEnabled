@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		16364AA22B506E22005BECC5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* CameraView.swift */; };
 		16364AA42B506E3A005BECC5 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA32B506E3A005BECC5 /* CameraViewModel.swift */; };
+		16364AA72B51B42F005BECC5 /* RecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA62B51B42F005BECC5 /* RecognizerViewModel.swift */; };
+		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
+		16364AAE2B51BF6E005BECC5 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */; };
 		164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11162B45E167008EF153 /* ReEnabledApp.swift */; };
 		164E11192B45E167008EF153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11182B45E167008EF153 /* ContentView.swift */; };
 		164E111B2B45E169008EF153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164E111A2B45E169008EF153 /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 /* Begin PBXFileReference section */
 		16364AA12B506E22005BECC5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		16364AA32B506E3A005BECC5 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		16364AA62B51B42F005BECC5 /* RecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerViewModel.swift; sourceTree = "<group>"; };
+		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
+		16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetector.mlmodel; sourceTree = "<group>"; };
 		164E11132B45E167008EF153 /* ReEnabled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReEnabled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164E11162B45E167008EF153 /* ReEnabledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReEnabledApp.swift; sourceTree = "<group>"; };
 		164E11182B45E167008EF153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +75,23 @@
 				16364AA32B506E3A005BECC5 /* CameraViewModel.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		16364AA52B51B410005BECC5 /* Recognizer */ = {
+			isa = PBXGroup;
+			children = (
+				16364AA62B51B42F005BECC5 /* RecognizerViewModel.swift */,
+			);
+			path = Recognizer;
+			sourceTree = "<group>";
+		};
+		16364AA82B51B686005BECC5 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */,
+				16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */,
+			);
+			path = MLModels;
 			sourceTree = "<group>";
 		};
 		164E110A2B45E167008EF153 = {
@@ -114,6 +137,7 @@
 		164E11262B461711008EF153 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16364AA82B51B686005BECC5 /* MLModels */,
 				164E11272B461717008EF153 /* Utils */,
 			);
 			path = Resources;
@@ -194,6 +218,7 @@
 		164E11452B4720F6008EF153 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				16364AA52B51B410005BECC5 /* Recognizer */,
 				16364AA02B506E0A005BECC5 /* Camera */,
 				164E11482B472115008EF153 /* HomeView.swift */,
 			);
@@ -290,6 +315,7 @@
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
 				164E11492B472115008EF153 /* HomeView.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
+				16364AA72B51B42F005BECC5 /* RecognizerViewModel.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
@@ -297,12 +323,14 @@
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
+				16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				16364AA42B506E3A005BECC5 /* CameraViewModel.swift in Sources */,
 				16364AA22B506E22005BECC5 /* CameraView.swift in Sources */,
+				16364AAE2B51BF6E005BECC5 /* ObjectDetector.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

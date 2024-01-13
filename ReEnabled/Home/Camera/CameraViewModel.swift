@@ -2,9 +2,13 @@ import AVFoundation
 import SwiftUI
 
 class CameraViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+    @Published var rootLayer: CALayer! = nil
+    @Published var rootLayerUpdated: Bool = false
     @Published var bufferSize: CGSize = .zero
     @Published var captureSession = AVCaptureSession()
     @Published var captureOutput = AVCaptureVideoDataOutput()
+    
+    @Published var isCaptureSessionCommited: Bool = false
     
     private let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput",
                                                      qos: .userInitiated,
@@ -91,13 +95,6 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampl
         }
         
         captureSession.commitConfiguration()
-        
-        startCaptureSession()
-    }
-    
-    func startCaptureSession() {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.captureSession.startRunning()
-        }
+        isCaptureSessionCommited = true
     }
 }
