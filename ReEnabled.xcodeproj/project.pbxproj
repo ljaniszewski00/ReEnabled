@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16364AA22B506E22005BECC5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* CameraView.swift */; };
-		16364AA42B506E3A005BECC5 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA32B506E3A005BECC5 /* CameraViewModel.swift */; };
+		16364AA42B506E3A005BECC5 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA32B506E3A005BECC5 /* CameraViewController.swift */; };
 		16364AA72B51B42F005BECC5 /* RecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA62B51B42F005BECC5 /* RecognizerViewModel.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
 		16364AAE2B51BF6E005BECC5 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		16364AA12B506E22005BECC5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		16364AA32B506E3A005BECC5 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		16364AA32B506E3A005BECC5 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		16364AA62B51B42F005BECC5 /* RecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerViewModel.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetector.mlmodel; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				16364AA12B506E22005BECC5 /* CameraView.swift */,
-				16364AA32B506E3A005BECC5 /* CameraViewModel.swift */,
+				16364AA32B506E3A005BECC5 /* CameraViewController.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
-				16364AA42B506E3A005BECC5 /* CameraViewModel.swift in Sources */,
+				16364AA42B506E3A005BECC5 /* CameraViewController.swift in Sources */,
 				16364AA22B506E22005BECC5 /* CameraView.swift in Sources */,
 				16364AAE2B51BF6E005BECC5 /* ObjectDetector.mlmodel in Sources */,
 			);
