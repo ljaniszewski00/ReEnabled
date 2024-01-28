@@ -1,5 +1,5 @@
 enum TabBarItem: Hashable {
-    case home
+    case camera
     case search
     case help
 }
@@ -7,8 +7,8 @@ enum TabBarItem: Hashable {
 extension TabBarItem {
     var iconName: String {
         switch self {
-        case .home:
-            return "house"
+        case .camera:
+            return "camera"
         case .search:
             return "mic"
         case .help:
@@ -18,8 +18,8 @@ extension TabBarItem {
     
     var title: String {
         switch self {
-        case .home:
-            return "Home"
+        case .camera:
+            return "Camera"
         case .search:
             return "Search"
         case .help:

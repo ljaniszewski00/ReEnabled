@@ -1,9 +1,8 @@
 import SwiftUI
-import AVFoundation
 
-struct CameraView: UIViewControllerRepresentable {
+struct ObjectsRecognizerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        return CameraViewController()
+        return ObjectsRecognizeViewController()
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

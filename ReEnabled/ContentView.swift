@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var tabBarStateManager = TabBarStateManager()
-    @State private var tabSelection: TabBarItem = .search
+    @State private var tabSelection: TabBarItem = .camera
     
     private var selection: String {
         tabSelection.title
@@ -12,7 +12,7 @@ struct ContentView: View {
         CustomTabBarContainerView(selection: $tabSelection) {
             HomeView()
                 .environmentObject(tabBarStateManager)
-                .tabBarItem(tab: .home,
+                .tabBarItem(tab: .camera,
                             selection: $tabSelection)
             
             SearchView()

@@ -45,7 +45,7 @@ struct CustomTabBarView: View {
 
 #Preview {
     let tabs: [TabBarItem] = [
-        .home, .search, .help
+        .camera, .search, .help
     ]
     let tabBarStateManager = TabBarStateManager()
     return VStack {
@@ -63,8 +63,15 @@ extension CustomTabBarView {
             Image(systemName: tab.iconName)
                 .resizable()
                 .symbolVariant(localSelection == tab ? .fill : .none)
-                .frame(width: Views.Constants.tabHomeHelpImageFrameWidth,
-                       height: Views.Constants.tabHomeHelpImageFrameHeight)
+                .if(tab == .camera) {
+                    $0.frame(width: Views.Constants.tabCameraImageFrameWidth,
+                             height: Views.Constants.tabCameraImageFrameHeight)
+                    
+                }
+                .if(tab == .help) {
+                    $0.frame(width: Views.Constants.tabHelpImageFrameWidth,
+                             height: Views.Constants.tabHelpImageFrameHeight)
+                }
             
             if localSelection == tab {
                 Text(tab.title)
@@ -120,8 +127,10 @@ private extension Views {
         static let tabBarShadowY: CGFloat = 5
         
         static let tabVStackSpacing: CGFloat = 8
-        static let tabHomeHelpImageFrameWidth: CGFloat = 30
-        static let tabHomeHelpImageFrameHeight: CGFloat = 26
+        static let tabCameraImageFrameWidth: CGFloat = 30
+        static let tabCameraImageFrameHeight: CGFloat = 26
+        static let tabHelpImageFrameWidth: CGFloat = 30
+        static let tabHelpImageFrameHeight: CGFloat = 30
         static let tabNameFontSize: CGFloat = 16
         static let tabNameLineLimit: Int = 1
         
