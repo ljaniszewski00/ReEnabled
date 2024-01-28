@@ -2,32 +2,23 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var tabBarStateManager: TabBarStateManager
-    @State private var cameraMode: CameraMode = .objectRecognizer
+    @StateObject private var homeViewModel: HomeViewModel = HomeViewModel()
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            if cameraMode == .objectRecognizer {
+        Group {
+            if homeViewModel.cameraMode == .objectRecognizer {
                 ObjectsRecognizerView()
                     .ignoresSafeArea()
                     .environmentObject(tabBarStateManager)
-            } else if cameraMode == .distanceMeasurer {
+            } else if homeViewModel.cameraMode == .distanceMeasurer {
                 DistanceMeasureView()
                     .ignoresSafeArea()
             }
         }
         .onLongPressGesture {
-            if cameraMode == .objectRecognizer {
-                cameraMode = .distanceMeasurer
-            } else if cameraMode == .distanceMeasurer {
-                cameraMode = .objectRecognizer
-            }
+            homeViewModel.handleCameraModeChange()
         }
     }
-}
-
-enum CameraMode {
-    case objectRecognizer
-    case distanceMeasurer
 }
 
 #Preview {
@@ -35,10 +26,4 @@ enum CameraMode {
     
     return HomeView()
         .environmentObject(tabBarStateManager)
-}
-
-private extension Views {
-    struct Constants {
-        
-    }
 }

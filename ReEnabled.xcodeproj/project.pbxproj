@@ -15,6 +15,8 @@
 		164668EE2B66CD280049AB03 /* DistanceMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668ED2B66CD280049AB03 /* DistanceMeasureViewController.swift */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
 		164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */; };
+		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
+		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
 		164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11162B45E167008EF153 /* ReEnabledApp.swift */; };
 		164E11192B45E167008EF153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11182B45E167008EF153 /* ContentView.swift */; };
 		164E111B2B45E169008EF153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164E111A2B45E169008EF153 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		164668ED2B66CD280049AB03 /* DistanceMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewController.swift; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
 		164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureView.swift; sourceTree = "<group>"; };
+		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
 		164E11132B45E167008EF153 /* ReEnabled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReEnabled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164E11162B45E167008EF153 /* ReEnabledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReEnabledApp.swift; sourceTree = "<group>"; };
 		164E11182B45E167008EF153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				164E11292B46172F008EF153 /* Views.swift */,
+				164668FD2B66DE010049AB03 /* CameraMode.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				164668F62B66D3A20049AB03 /* ObjectsRecognizer */,
 				164668EA2B66CCE50049AB03 /* DIstanceMeasurer */,
 				164E11482B472115008EF153 /* HomeView.swift */,
+				164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
 				164E11492B472115008EF153 /* HomeView.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
+				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
@@ -387,6 +394,7 @@
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
+				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				16364AA42B506E3A005BECC5 /* ObjectsRecognizeViewController.swift in Sources */,
 				16364AA22B506E22005BECC5 /* ObjectsRecognizeView.swift in Sources */,
