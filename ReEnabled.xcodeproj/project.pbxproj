@@ -17,6 +17,7 @@
 		164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */; };
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
 		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
+		164669002B6844E50049AB03 /* OnSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FF2B6844E50049AB03 /* OnSwipe.swift */; };
 		164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11162B45E167008EF153 /* ReEnabledApp.swift */; };
 		164E11192B45E167008EF153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11182B45E167008EF153 /* ContentView.swift */; };
 		164E111B2B45E169008EF153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164E111A2B45E169008EF153 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureView.swift; sourceTree = "<group>"; };
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
+		164668FF2B6844E50049AB03 /* OnSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSwipe.swift; sourceTree = "<group>"; };
 		164E11132B45E167008EF153 /* ReEnabled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReEnabled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164E11162B45E167008EF153 /* ReEnabledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReEnabledApp.swift; sourceTree = "<group>"; };
 		164E11182B45E167008EF153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -257,8 +259,9 @@
 		164E113B2B471C77008EF153 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				164E113C2B471C94008EF153 /* MeasureViewSize.swift */,
 				164E11432B471ECB008EF153 /* ConditionalView.swift */,
+				164E113C2B471C94008EF153 /* MeasureViewSize.swift */,
+				164668FF2B6844E50049AB03 /* OnSwipe.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
+				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,

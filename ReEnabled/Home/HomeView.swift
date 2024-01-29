@@ -6,18 +6,46 @@ struct HomeView: View {
     
     var body: some View {
         Group {
-            if homeViewModel.cameraMode == .objectRecognizer {
+            switch homeViewModel.cameraMode {
+            case .objectRecognizer:
                 ObjectsRecognizerView()
-                    .ignoresSafeArea()
                     .environmentObject(tabBarStateManager)
-            } else if homeViewModel.cameraMode == .distanceMeasurer {
+            case .distanceMeasurer:
                 DistanceMeasureView()
-                    .ignoresSafeArea()
+            case .textReader:
+                VStack {
+                    Spacer()
+                    Text("Text Reader")
+                    Spacer()
+                }
+            case .colorDetector:
+                VStack {
+                    Spacer()
+                    Text("Color Detector")
+                    Spacer()
+                }
+            case .lightDetector:
+                VStack {
+                    Spacer()
+                    Text("Light Detector")
+                    Spacer()
+                }
+            case .barcodeIdentifier:
+                VStack {
+                    Spacer()
+                    Text("Barcode Identifier")
+                    Spacer()
+                }
             }
         }
-        .onLongPressGesture {
-            homeViewModel.handleCameraModeChange()
-        }
+        .ignoresSafeArea()
+        .onSwipe(fromRightToLeft: {
+            homeViewModel.changeToPreviousCameraMode()
+        }, fromLeftToRight: {
+            homeViewModel.changeToNextCameraMode()
+        })
+        .onChange(of: homeViewModel.cameraMode) { newValue in
+        print(newValue)}
     }
 }
 
