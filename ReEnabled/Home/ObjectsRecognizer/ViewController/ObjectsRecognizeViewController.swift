@@ -118,7 +118,7 @@ class ObjectsRecognizeViewController: UIViewController, AVCaptureVideoDataOutput
             try videoDevice.lockForConfiguration()
             videoDevice.unlockForConfiguration()
         } catch {
-            print(error)
+            
         }
         
         captureSession.addOutput(videoOutput)
@@ -152,7 +152,7 @@ extension ObjectsRecognizeViewController {
             let recognitions = VNCoreMLRequest(model: visionModel, completionHandler: detectionDidComplete)
             self.requests = [recognitions]
         } catch let error {
-            print(error)
+            
         }
     }
     
@@ -248,7 +248,7 @@ extension ObjectsRecognizeViewController {
         do {
             try imageRequestHandler.perform(self.requests) // Schedules vision requests to be performed
         } catch {
-            print(error)
+            
         }
     }
 }

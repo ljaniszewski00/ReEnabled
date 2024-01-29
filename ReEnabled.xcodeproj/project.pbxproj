@@ -18,6 +18,8 @@
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
 		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
 		164669002B6844E50049AB03 /* OnSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FF2B6844E50049AB03 /* OnSwipe.swift */; };
+		164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164669062B6856710049AB03 /* DocumentScannerView.swift */; };
+		1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164669092B685CF50049AB03 /* RoundedRectLabel.swift */; };
 		164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11162B45E167008EF153 /* ReEnabledApp.swift */; };
 		164E11192B45E167008EF153 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11182B45E167008EF153 /* ContentView.swift */; };
 		164E111B2B45E169008EF153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 164E111A2B45E169008EF153 /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
 		164668FF2B6844E50049AB03 /* OnSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSwipe.swift; sourceTree = "<group>"; };
+		164669062B6856710049AB03 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
+		164669092B685CF50049AB03 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
 		164E11132B45E167008EF153 /* ReEnabled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReEnabled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164E11162B45E167008EF153 /* ReEnabledApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReEnabledApp.swift; sourceTree = "<group>"; };
 		164E11182B45E167008EF153 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -149,6 +153,45 @@
 				16364AA32B506E3A005BECC5 /* ObjectsRecognizeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		164669012B6855FA0049AB03 /* DocumentScanner */ = {
+			isa = PBXGroup;
+			children = (
+				164669052B68565D0049AB03 /* View */,
+			);
+			path = DocumentScanner;
+			sourceTree = "<group>";
+		};
+		164669022B6856040049AB03 /* ColorDetector */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ColorDetector;
+			sourceTree = "<group>";
+		};
+		164669032B6856320049AB03 /* LightDetector */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LightDetector;
+			sourceTree = "<group>";
+		};
+		164669052B68565D0049AB03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				164669082B685CE20049AB03 /* Subviews */,
+				164669062B6856710049AB03 /* DocumentScannerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		164669082B685CE20049AB03 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				164669092B685CF50049AB03 /* RoundedRectLabel.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		164E110A2B45E167008EF153 = {
@@ -279,6 +322,9 @@
 			children = (
 				164668F62B66D3A20049AB03 /* ObjectsRecognizer */,
 				164668EA2B66CCE50049AB03 /* DIstanceMeasurer */,
+				164669012B6855FA0049AB03 /* DocumentScanner */,
+				164669022B6856040049AB03 /* ColorDetector */,
+				164669032B6856320049AB03 /* LightDetector */,
 				164E11482B472115008EF153 /* HomeView.swift */,
 				164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */,
 			);
@@ -377,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */,
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
@@ -389,6 +436,7 @@
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
+				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,

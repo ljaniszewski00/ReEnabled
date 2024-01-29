@@ -1,7 +1,10 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var cameraMode: CameraMode = .objectRecognizer
+    @Published var cameraMode: CameraMode = .documentScanner
+    @Published var cameraModeNameVisible: Bool = true
+    
+    private var timeToHideCameraModeNameLabel: DispatchTime = .now() + 5
     
     func changeToPreviousCameraMode() {
         let currentIndex = CameraMode.allCases.firstIndex(of: cameraMode) ?? -1
@@ -18,6 +21,25 @@ class HomeViewModel: ObservableObject {
         nextIndex = CameraMode.allCases.indices.contains(nextIndex) ? nextIndex : 0
         cameraMode = CameraMode.allCases[nextIndex]
         generateHaptickFeedback()
+    }
+    
+    func onNewCameraModeAppear() {
+        showCameraModeName()
+        hideCameraModeNameAfterDelay()
+    }
+    
+    func showCameraModeName() {
+        withAnimation {
+            cameraModeNameVisible = true
+        }
+    }
+    
+    func hideCameraModeNameAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: timeToHideCameraModeNameLabel) {
+            withAnimation {
+                self.cameraModeNameVisible = false
+            }
+        }
     }
     
     private func generateHaptickFeedback() {

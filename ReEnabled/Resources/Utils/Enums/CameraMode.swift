@@ -1,10 +1,9 @@
-enum CameraMode {
-    case objectRecognizer
-    case distanceMeasurer
-    case textReader
-    case colorDetector
-    case lightDetector
-    case barcodeIdentifier
+enum CameraMode: String {
+    case objectRecognizer = "Object Recognizer"
+    case distanceMeasurer = "Distance Measurer"
+    case documentScanner = "Document Scanner"
+    case colorDetector = "Color Detector"
+    case lightDetector = "Light Detector"
 }
 
 extension CameraMode {
@@ -12,10 +11,9 @@ extension CameraMode {
         [
             .objectRecognizer,
             .distanceMeasurer,
-            .textReader,
+            .documentScanner,
             .colorDetector,
             .lightDetector,
-            .barcodeIdentifier
         ]
     }
 }
