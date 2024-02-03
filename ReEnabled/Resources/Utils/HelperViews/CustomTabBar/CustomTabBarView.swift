@@ -80,6 +80,7 @@ extension CustomTabBarView {
             }
         }
         .foregroundColor(localSelection == tab ? .accentColor : .gray)
+        .frame(height: Views.Constants.tabFrameHeight)
         .frame(maxWidth: .infinity)
     }
     
@@ -109,6 +110,7 @@ extension CustomTabBarView {
             }
         }
         .foregroundColor(localSelection == .search ? .accentColor : .gray)
+        .frame(height: Views.Constants.tabFrameHeight)
         .frame(maxWidth: .infinity)
     }
     
@@ -128,11 +130,12 @@ private extension Views {
         
         static let tabVStackSpacing: CGFloat = 8
         static let tabCameraImageFrameWidth: CGFloat = 30
-        static let tabCameraImageFrameHeight: CGFloat = 26
+        static let tabCameraImageFrameHeight: CGFloat = 24
         static let tabHelpImageFrameWidth: CGFloat = 30
         static let tabHelpImageFrameHeight: CGFloat = 30
         static let tabNameFontSize: CGFloat = 16
         static let tabNameLineLimit: Int = 1
+        static let tabFrameHeight: CGFloat = 50
         
         static let tabSearchImageFrameWidth: CGFloat = 25
         static let tabSearchImageFrameHeight: CGFloat = 35

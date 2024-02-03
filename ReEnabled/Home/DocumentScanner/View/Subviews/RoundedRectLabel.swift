@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class RoundedRectLabel: UIView {
@@ -10,7 +9,6 @@ class RoundedRectLabel: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Configure the label
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 10)
         label.textAlignment = .left
@@ -20,7 +18,6 @@ class RoundedRectLabel: UIView {
         
         addSubview(label)
         
-        // Add constraints for the label
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: topAnchor, constant: padding),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
@@ -28,7 +25,6 @@ class RoundedRectLabel: UIView {
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding)
         ])
         
-        // Configure the background
         backgroundColor = .magenta
         layer.cornerRadius = cornerRadius
         layer.opacity = 0.75

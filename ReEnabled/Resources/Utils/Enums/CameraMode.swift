@@ -4,6 +4,7 @@ enum CameraMode: String {
     case documentScanner = "Document Scanner"
     case colorDetector = "Color Detector"
     case lightDetector = "Light Detector"
+    case currencyDetector = "Currency Detector"
 }
 
 extension CameraMode {
@@ -14,6 +15,7 @@ extension CameraMode {
             .documentScanner,
             .colorDetector,
             .lightDetector,
+            .currencyDetector
         ]
     }
 }

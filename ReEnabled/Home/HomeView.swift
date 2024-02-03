@@ -6,7 +6,7 @@ struct HomeView: View {
     
     private var topInsetValue: CGFloat {
         guard let window = UIApplication.shared.connectedScenes.first?.inputView?.window else {
-            return 40
+            return Views.Constants.topInsetValue
         }
         
         return window.safeAreaInsets.top
@@ -18,36 +18,23 @@ struct HomeView: View {
             case .objectRecognizer:
                 ObjectsRecognizerView()
                     .environmentObject(tabBarStateManager)
-                    .onAppear {
-                        homeViewModel.onNewCameraModeAppear()
-                    }
             case .distanceMeasurer:
                 DistanceMeasureView()
-                    .onAppear {
-                        homeViewModel.onNewCameraModeAppear()
-                    }
             case .documentScanner:
                 DocumentScannerView()
-                    .onAppear {
-                        homeViewModel.onNewCameraModeAppear()
-                    }
             case .colorDetector:
-                VStack {
-                    Spacer()
-                    Text("Color Detector")
-                    Spacer()
-                }
-                .onAppear {
-                    homeViewModel.onNewCameraModeAppear()
-                }
+                ColorDetectorView()
             case .lightDetector:
                 VStack {
                     Spacer()
                     Text("Light Detector")
                     Spacer()
                 }
-                .onAppear {
-                    homeViewModel.onNewCameraModeAppear()
+            case .currencyDetector:
+                VStack {
+                    Spacer()
+                    Text("Currency Detector")
+                    Spacer()
                 }
             }
             
@@ -73,6 +60,9 @@ struct HomeView: View {
         }, fromLeftToRight: {
             homeViewModel.changeToNextCameraMode()
         })
+        .onAppear {
+            homeViewModel.onNewCameraModeAppear()
+        }
     }
 }
 
@@ -85,6 +75,7 @@ struct HomeView: View {
 
 private extension Views {
     struct Constants {
+        static let topInsetValue: CGFloat = 40
         static let cameraModeNameBackgroundCornerRadius: CGFloat = 10
     }
 }

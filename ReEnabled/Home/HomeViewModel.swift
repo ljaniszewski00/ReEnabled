@@ -1,10 +1,8 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var cameraMode: CameraMode = .documentScanner
+    @Published var cameraMode: CameraMode = .colorDetector
     @Published var cameraModeNameVisible: Bool = true
-    
-    private var timeToHideCameraModeNameLabel: DispatchTime = .now() + 5
     
     func changeToPreviousCameraMode() {
         let currentIndex = CameraMode.allCases.firstIndex(of: cameraMode) ?? -1
@@ -12,6 +10,7 @@ class HomeViewModel: ObservableObject {
         previousIndex = CameraMode.allCases.indices.contains(previousIndex) ?
         previousIndex : CameraMode.allCases.count - 1
         cameraMode = CameraMode.allCases[previousIndex]
+        onNewCameraModeAppear()
         generateHaptickFeedback()
     }
     
@@ -20,6 +19,7 @@ class HomeViewModel: ObservableObject {
         var nextIndex = currentIndex + 1
         nextIndex = CameraMode.allCases.indices.contains(nextIndex) ? nextIndex : 0
         cameraMode = CameraMode.allCases[nextIndex]
+        onNewCameraModeAppear()
         generateHaptickFeedback()
     }
     
@@ -28,13 +28,14 @@ class HomeViewModel: ObservableObject {
         hideCameraModeNameAfterDelay()
     }
     
-    func showCameraModeName() {
+    private func showCameraModeName() {
         withAnimation {
             cameraModeNameVisible = true
         }
     }
     
-    func hideCameraModeNameAfterDelay() {
+    private func hideCameraModeNameAfterDelay() {
+        let timeToHideCameraModeNameLabel: DispatchTime = .now() + 5
         DispatchQueue.main.asyncAfter(deadline: timeToHideCameraModeNameLabel) {
             withAnimation {
                 self.cameraModeNameVisible = false

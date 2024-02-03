@@ -12,7 +12,7 @@ extension TabBarItem {
         case .search:
             return "mic"
         case .help:
-            return "questionmark.circle"
+            return "gear"
         }
     }
     
@@ -23,7 +23,7 @@ extension TabBarItem {
         case .search:
             return "Search"
         case .help:
-            return "Help"
+            return "Settings"
         }
     }
 }

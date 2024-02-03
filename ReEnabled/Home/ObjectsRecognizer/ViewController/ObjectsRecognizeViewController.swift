@@ -143,7 +143,8 @@ class ObjectsRecognizeViewController: UIViewController, AVCaptureVideoDataOutput
 
 extension ObjectsRecognizeViewController {
     func setupDetector() {
-        guard let modelURL = Bundle.main.url(forResource: "YOLOv3Int8LUT", withExtension: "mlmodelc") else {
+        guard let modelURL = Bundle.main.url(forResource: "YOLOv3Int8LUT", 
+                                             withExtension: "mlmodelc") else {
             return
         }
     
