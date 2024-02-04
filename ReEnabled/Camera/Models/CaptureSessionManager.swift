@@ -10,7 +10,7 @@ class CaptureSessionManager: ObservableObject {
                                                      autoreleaseFrequency: .workItem)
     
     private var bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
-    private var videoSettings: [String: Any]?
+    private var cameraMode: CameraMode?
     
     var captureSession: AVCaptureSession!
     
@@ -26,23 +26,7 @@ class CaptureSessionManager: ObservableObject {
         stopCaptureSession()
         
         self.bufferDelegate = bufferDelegate
-        
-        switch cameraMode {
-        case .objectRecognizer:
-            self.videoSettings = [
-                kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)
-            ]
-        case .colorDetector:
-            self.videoSettings = [
-                kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)
-            ]
-        case .lightDetector:
-            break
-        case .currencyDetector:
-            break
-        default:
-            break
-        }
+        self.cameraMode = cameraMode
         
         authorizeCaptureSession {
             completion()
@@ -88,13 +72,10 @@ class CaptureSessionManager: ObservableObject {
             }
             
             let videoOutput = AVCaptureVideoDataOutput()
-            videoOutput.videoSettings = self.videoSettings
+            videoOutput.videoSettings = getVideoSettings()
             videoOutput.alwaysDiscardsLateVideoFrames = true
             videoOutput.setSampleBufferDelegate(self.bufferDelegate,
                                                 queue: videoDataOutputQueue)
-            
-            let captureConnection = videoOutput.connection(with: .video)
-            captureConnection?.isEnabled = true
             
             do {
                 try videoDevice.lockForConfiguration()
@@ -107,9 +88,16 @@ class CaptureSessionManager: ObservableObject {
                 return
             }
             
+            if cameraMode == .objectRecognizer {
+                let captureConnection = videoOutput.connection(with: .video)
+                captureConnection?.isEnabled = true
+            }
+            
             captureSession.addOutput(videoOutput)
             
-            videoOutput.connection(with: .video)?.videoOrientation = .portrait
+            if cameraMode == .objectRecognizer {
+                videoOutput.connection(with: .video)?.videoOrientation = .portrait
+            }
             
             captureSession.sessionPreset = .hd1280x720
             captureSession.commitConfiguration()
@@ -117,6 +105,21 @@ class CaptureSessionManager: ObservableObject {
             self.captureSession = captureSession
             self.startCaptureSession()
             completion()
+        }
+    }
+    
+    private func getVideoSettings() -> [String: Any]? {
+        switch cameraMode {
+        case .objectRecognizer:
+            return [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+        case .colorDetector:
+            return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
+        case .lightDetector:
+            return nil
+        case .currencyDetector:
+            return nil
+        default:
+            return nil
         }
     }
     
