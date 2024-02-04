@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct ObjectsRecognizerView: UIViewControllerRepresentable {
+struct ObjectsRecognizerViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        return ObjectsRecognizeViewController()
+        return ObjectsRecognizerViewController()
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

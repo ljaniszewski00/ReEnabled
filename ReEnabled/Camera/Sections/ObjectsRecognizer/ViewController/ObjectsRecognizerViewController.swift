@@ -3,43 +3,31 @@ import SwiftUI
 import UIKit
 import Vision
 
-class ObjectsRecognizeViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    private var permissionGranted = false
-    private let captureSession = AVCaptureSession()
+class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    private let colorDetectorViewModel: ColorDetectorViewModel = .shared
+    private let captureSessionManager: CaptureSessionManager = .shared
+    
     private var previewLayer = AVCaptureVideoPreviewLayer()
     var screenRect: CGRect! = nil
     
-    private var videoOutput = AVCaptureVideoDataOutput()
     var requests = [VNRequest]()
     var detectionLayer: CALayer! = nil
     
-    private let captureSessionQueue = DispatchQueue(label: "captureSessionQueue")
-    
-    private let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput",
-                                                     qos: .userInitiated,
-                                                     attributes: [],
-                                                     autoreleaseFrequency: .workItem)
-    
     override func viewDidLoad() {
-        checkPermission()
-        
-        captureSessionQueue.async { [unowned self] in
-            guard permissionGranted else {
-                return
-            }
-            
-            self.setupCaptureSession()
-            
+        super.viewDidLoad()
+        captureSessionManager.setUp(with: self, for: .objectRecognizer) {
+            self.setupSessionPreviewLayer()
             self.setupLayers()
             self.setupDetector()
-            
-            startCaptureSession()
+            DispatchQueue.main.async {
+                self.colorDetectorViewModel.canDisplayCamera = true
+            }
         }
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         screenRect = UIScreen.main.bounds
-        self.previewLayer.frame = CGRect(x: 0, 
+        self.previewLayer.frame = CGRect(x: 0,
                                          y: 0,
                                          width: screenRect.size.width,
                                          height: screenRect.size.height)
@@ -60,90 +48,29 @@ class ObjectsRecognizeViewController: UIViewController, AVCaptureVideoDataOutput
         updateLayers()
     }
     
-    private func checkPermission() {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized:
-            permissionGranted = true
-        case .notDetermined:
-            requestPermission()
-        default:
-            permissionGranted = false
-        }
-    }
-    
-    private func requestPermission() {
-        captureSessionQueue.suspend()
-        AVCaptureDevice.requestAccess(for: .video) { [unowned self] granted in
-            self.permissionGranted = granted
-            self.captureSessionQueue.resume()
-        }
-    }
-    
-    private func setupCaptureSession() {
-        guard let videoDevice = AVCaptureDevice.default(.builtInLiDARDepthCamera,
-                                                        for: .video,
-                                                        position: .back) else {
-            return
-        }
-        
-        captureSession.beginConfiguration()
-        captureSession.sessionPreset = .vga640x480
-        
-        guard let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice),
-              captureSession.canAddInput(videoDeviceInput) else {
-            captureSession.commitConfiguration()
-            return
-        }
-
-        captureSession.addInput(videoDeviceInput)
-                         
+    private func setupSessionPreviewLayer() {
         screenRect = UIScreen.main.bounds
-        
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = CGRect(x: 0, 
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSessionManager.captureSession)
+        previewLayer.frame = CGRect(x: 0,
                                     y: 0,
                                     width: screenRect.size.width,
                                     height: screenRect.size.height)
-        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill // Fill screen
+        previewLayer.videoGravity = .resizeAspectFill
         previewLayer.connection?.videoOrientation = .portrait
         
-        videoOutput.alwaysDiscardsLateVideoFrames = true
-        videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
-        videoOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
-        
-        let captureConnection = videoOutput.connection(with: .video)
-        captureConnection?.isEnabled = true
-        
-        do {
-            try videoDevice.lockForConfiguration()
-            videoDevice.unlockForConfiguration()
-        } catch {
-            
-        }
-        
-        captureSession.addOutput(videoOutput)
-        
-        videoOutput.connection(with: .video)?.videoOrientation = .portrait
-        
-        captureSession.commitConfiguration()
-        
         DispatchQueue.main.async { [weak self] in
-            self?.view.layer.addSublayer(self!.previewLayer)
+            guard let self = self else {
+                return
+            }
+            
+            self.view.layer.addSublayer(self.previewLayer)
         }
-    }
-    
-    private func startCaptureSession() {
-        captureSession.startRunning()
-    }
-    
-    private func stopCaptureSession() {
-        captureSession.stopRunning()
     }
 }
 
-extension ObjectsRecognizeViewController {
+extension ObjectsRecognizerViewController {
     func setupDetector() {
-        guard let modelURL = Bundle.main.url(forResource: "YOLOv3Int8LUT", 
+        guard let modelURL = Bundle.main.url(forResource: "YOLOv3Int8LUT",
                                              withExtension: "mlmodelc") else {
             return
         }
@@ -152,8 +79,8 @@ extension ObjectsRecognizeViewController {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
             let recognitions = VNCoreMLRequest(model: visionModel, completionHandler: detectionDidComplete)
             self.requests = [recognitions]
-        } catch let error {
-            
+        } catch {
+            return
         }
     }
     
@@ -171,7 +98,6 @@ extension ObjectsRecognizeViewController {
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
             
-            // Transformations
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox,
                                                             Int(screenRect.size.width),
                                                             Int(screenRect.size.height))
@@ -197,7 +123,14 @@ extension ObjectsRecognizeViewController {
                                       y: 0,
                                       width: screenRect.size.width,
                                       height: screenRect.size.height)
-        self.view.layer.addSublayer(detectionLayer)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            self.view.layer.addSublayer(self.detectionLayer)
+        }
     }
     
     func updateLayers() {
@@ -223,8 +156,8 @@ extension ObjectsRecognizeViewController {
         
         textLayer.bounds = CGRect(x: 0,
                                   y: 0,
-                                  width: bounds.size.height - 10,
-                                  height: bounds.size.width - 10)
+                                  width: bounds.midX - 10,
+                                  height: bounds.midY - 10)
         textLayer.position = CGPoint(x: bounds.midX - 5,
                                      y: bounds.midY - 5)
         textLayer.shadowOpacity = 0.7
@@ -244,13 +177,12 @@ extension ObjectsRecognizeViewController {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:]) // Create handler to perform request on the buffer
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
 
         do {
-            try imageRequestHandler.perform(self.requests) // Schedules vision requests to be performed
+            try imageRequestHandler.perform(self.requests)
         } catch {
-            
+            return
         }
     }
 }
-

@@ -17,7 +17,6 @@ struct HomeView: View {
             switch homeViewModel.cameraMode {
             case .objectRecognizer:
                 ObjectsRecognizerView()
-                    .environmentObject(tabBarStateManager)
             case .distanceMeasurer:
                 DistanceMeasureView()
             case .documentScanner:

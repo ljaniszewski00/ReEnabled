@@ -6,6 +6,7 @@ struct ColorDetectorView: View {
     var body: some View {
         ZStack {
             ColorDetectorViewControllerRepresentable()
+                .opacity(colorDetectorViewModel.canDisplayCamera ? 1 : 0)
             
             VStack {
                 Spacer()

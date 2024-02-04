@@ -3,22 +3,22 @@ import AVFoundation
 
 class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let colorDetectorViewModel: ColorDetectorViewModel = .shared
-    private let captureSessionQueue = DispatchQueue(label: "captureSessionQueue")
-    private let videoQueue = DispatchQueue(label: "videoQueue")
-    private let captureSession = AVCaptureSession()
-    private let previewLayer = CALayer()
+    private let captureSessionManager: CaptureSessionManager = .shared
     
-    private var center: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2 - 15,
+    private let screenWidth: CGFloat = UIScreen.main.bounds.width
+    private let screenHeight: CGFloat = UIScreen.main.bounds.height
+    private let center: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2 - 15,
                                           y: UIScreen.main.bounds.height / 2 - 15)
+    
+    private var previewLayer = AVCaptureVideoPreviewLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupUI()
-        
-        captureSessionQueue.async { [unowned self] in
-            setupCaptureSession()
-            startCaptureSession()
+        captureSessionManager.setUp(with: self, for: .colorDetector) {
+            self.setupUI()
+            DispatchQueue.main.async {
+                self.colorDetectorViewModel.canDisplayCamera = true
+            }
         }
     }
     
@@ -67,9 +67,9 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     private func setSessionPreviewLayer() {
         previewLayer.bounds = CGRect(x: 0,
                                      y: 0,
-                                     width: UIScreen.main.bounds.width - 30,
-                                     height: UIScreen.main.bounds.height - 30)
-        previewLayer.position = view.center
+                                     width: screenWidth - 30,
+                                     height: screenHeight - 30)
+        previewLayer.position = self.view.center
         previewLayer.contentsGravity = .resizeAspectFill
         previewLayer.masksToBounds = true
         previewLayer.setAffineTransform(
@@ -80,14 +80,14 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     
     private func createOuterDetectorFrame() {
         let linePath = UIBezierPath.init(
-            ovalIn: CGRect.init(x: 0, 
+            ovalIn: CGRect.init(x: 0,
                                 y: 0,
                                 width: 40,
                                 height: 40)
         )
         let lineShape = CAShapeLayer()
-        lineShape.frame = CGRect.init(x: UIScreen.main.bounds.width/2-20, 
-                                      y: UIScreen.main.bounds.height/2-20,
+        lineShape.frame = CGRect.init(x: screenWidth / 2 - 20,
+                                      y: screenHeight / 2 - 20,
                                       width: 40,
                                       height: 40)
         lineShape.lineWidth = 5
@@ -98,45 +98,17 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     }
     
     private func createInnerDetectorFrame() {
-        let linePath = UIBezierPath.init(ovalIn: CGRect.init(x: 0, 
+        let linePath = UIBezierPath.init(ovalIn: CGRect.init(x: 0,
                                                              y: 0,
                                                              width: 8,
                                                              height: 8))
         let lineShape = CAShapeLayer()
-        lineShape.frame = CGRect.init(x: UIScreen.main.bounds.width/2-4, 
-                                      y:UIScreen.main.bounds.height/2-4,
+        lineShape.frame = CGRect.init(x: screenWidth / 2 - 4,
+                                      y: screenHeight / 2 - 4,
                                       width: 8,
                                       height: 8)
         lineShape.path = linePath.cgPath
         lineShape.fillColor = UIColor.init(white: 0.7, alpha: 0.5).cgColor
         self.view.layer.insertSublayer(lineShape, at: 1)
-    }
-    
-    private func setupCaptureSession() {
-        self.captureSession.sessionPreset = .hd1280x720
-        
-        do {
-            guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
-                                                            for: .video,
-                                                            position: .back) else {
-                return
-            }
-            let captureDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
-            let videoOutput = AVCaptureVideoDataOutput()
-            videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCMPixelFormat_32BGRA)] as? [String : Any]
-            videoOutput.alwaysDiscardsLateVideoFrames = true
-            videoOutput.setSampleBufferDelegate(self, queue: videoQueue)
-            
-            if self.captureSession.canAddOutput(videoOutput) {
-                self.captureSession.addOutput(videoOutput)
-            }
-            self.captureSession.addInput(captureDeviceInput)
-        } catch {
-            return
-        }
-    }
-    
-    private func startCaptureSession() {
-        self.captureSession.startRunning()
     }
 }
