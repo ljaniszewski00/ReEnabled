@@ -1,7 +1,6 @@
 import SwiftUI
 
 class ColorDetectorViewModel: ObservableObject {
-    @Published var readyToDisplay: Bool = false
     @Published var detectedColor: UIColor?
     
     var detectedColorName: String? {

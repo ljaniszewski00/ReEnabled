@@ -42,6 +42,7 @@
 		1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6092B6ED76E005CF24B /* DetectorFrame.swift */; };
 		1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C60B2B6ED795005CF24B /* ColorDetectorView.swift */; };
 		1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C60E2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift */; };
+		1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6102B6EF853005CF24B /* CALayer+PickColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		1670C6092B6ED76E005CF24B /* DetectorFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorFrame.swift; sourceTree = "<group>"; };
 		1670C60B2B6ED795005CF24B /* ColorDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorView.swift; sourceTree = "<group>"; };
 		1670C60E2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		1670C6102B6EF853005CF24B /* CALayer+PickColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+PickColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 		164E112E2B461B9A008EF153 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1670C6102B6EF853005CF24B /* CALayer+PickColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
+				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,

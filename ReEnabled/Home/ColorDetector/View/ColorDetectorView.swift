@@ -18,9 +18,6 @@ struct ColorDetectorView: View {
                 }
             }
         }
-        .onDisappear {
-            colorDetectorViewModel.readyToDisplay = false
-        }
     }
 }
 
