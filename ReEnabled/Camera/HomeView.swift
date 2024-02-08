@@ -24,11 +24,7 @@ struct HomeView: View {
             case .colorDetector:
                 ColorDetectorView()
             case .lightDetector:
-                VStack {
-                    Spacer()
-                    Text("Light Detector")
-                    Spacer()
-                }
+                LightDetectorView()
             case .currencyDetector:
                 VStack {
                     Spacer()

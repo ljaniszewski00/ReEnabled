@@ -12,6 +12,8 @@ class CaptureSessionManager: ObservableObject {
     private var bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
     private var cameraMode: CameraMode?
     
+    private var videoDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video)
+    
     var captureSession: AVCaptureSession!
     
     private init() {}
@@ -19,6 +21,32 @@ class CaptureSessionManager: ObservableObject {
     static var shared: CaptureSessionManager = {
         return CaptureSessionManager()
     }()
+    
+    func manageFlashlight(luminosity: Double) {
+        if luminosity < 50 {
+            setTorchMode(.on)
+        } else {
+            setTorchMode(.off)
+        }
+    }
+    
+    private func setTorchMode(_ torchMode: AVCaptureDevice.TorchMode) {
+        guard videoDevice != nil else {
+            return
+        }
+        
+        do {
+            try videoDevice!.lockForConfiguration()
+            
+            if videoDevice!.hasTorch {
+                videoDevice!.torchMode = torchMode
+            }
+            
+            videoDevice!.unlockForConfiguration()
+        } catch {
+            return
+        }
+    }
     
     func setUp(with bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
                for cameraMode: CameraMode,
@@ -57,7 +85,7 @@ class CaptureSessionManager: ObservableObject {
             let captureSession: AVCaptureSession = AVCaptureSession()
             captureSession.beginConfiguration()
             
-            guard let videoDevice = AVCaptureDevice.default(for: .video) else {
+            guard let videoDevice = videoDevice else {
                 return
             }
             
@@ -79,6 +107,11 @@ class CaptureSessionManager: ObservableObject {
             
             do {
                 try videoDevice.lockForConfiguration()
+                
+                if videoDevice.hasTorch {
+                    setTorchMode(.auto)
+                }
+                
                 videoDevice.unlockForConfiguration()
             } catch {
                 return
@@ -88,14 +121,16 @@ class CaptureSessionManager: ObservableObject {
                 return
             }
             
-            if cameraMode == .objectRecognizer {
+            if let cameraMode = self.cameraMode,
+               CameraMode.modesWithPortraitVideoConnection.contains(cameraMode) {
                 let captureConnection = videoOutput.connection(with: .video)
                 captureConnection?.isEnabled = true
             }
             
             captureSession.addOutput(videoOutput)
             
-            if cameraMode == .objectRecognizer {
+            if let cameraMode = self.cameraMode,
+               CameraMode.modesWithPortraitVideoConnection.contains(cameraMode) {
                 videoOutput.connection(with: .video)?.videoOrientation = .portrait
             }
             

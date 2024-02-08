@@ -19,3 +19,12 @@ extension CameraMode {
         ]
     }
 }
+
+extension CameraMode {
+    static var modesWithPortraitVideoConnection: [CameraMode] {
+        [
+            .objectRecognizer,
+            .lightDetector
+        ]
+    }
+}

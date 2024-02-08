@@ -15,7 +15,7 @@ struct ColorDetectorView: View {
                     Text(colorName)
                         .foregroundColor(.white)
                         .font(.headline)
-                        .padding(.bottom, Views.Constants.distanceToDisplayBottomPadding)
+                        .padding(.bottom, Views.Constants.colorToDisplayBottomPadding)
                 }
             }
         }
@@ -28,6 +28,6 @@ struct ColorDetectorView: View {
 
 private extension Views {
     struct Constants {
-        static let distanceToDisplayBottomPadding: CGFloat = 100
+        static let colorToDisplayBottomPadding: CGFloat = 100
     }
 }

@@ -44,6 +44,9 @@
 		1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */; };
 		1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */; };
 		1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */; };
+		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
+		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
+		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
 		16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E170072B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift */; };
 		16E1700A2B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E170092B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift */; };
 		16E1700F2B6FED6100F984FB /* ObjectsRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1700E2B6FED6100F984FB /* ObjectsRecognizerViewController.swift */; };
@@ -87,6 +90,9 @@
 		1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewController.swift; sourceTree = "<group>"; };
 		1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewModel.swift; sourceTree = "<group>"; };
+		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
+		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
 		16E170072B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewModel.swift; sourceTree = "<group>"; };
 		16E170092B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16E1700E2B6FED6100F984FB /* ObjectsRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewController.swift; sourceTree = "<group>"; };
@@ -187,8 +193,8 @@
 		164669032B6856320049AB03 /* LightDetector */ = {
 			isa = PBXGroup;
 			children = (
-				1670C6122B6FAA76005CF24B /* ViewController */,
 				1670C6132B6FAA7C005CF24B /* ViewModel */,
+				1670C6122B6FAA76005CF24B /* ViewController */,
 				1670C6142B6FAA83005CF24B /* View */,
 			);
 			path = LightDetector;
@@ -392,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */,
+				16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -399,6 +406,7 @@
 		1670C6132B6FAA7C005CF24B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -406,6 +414,7 @@
 		1670C6142B6FAA83005CF24B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				16CF87782B74132E00AD5ABC /* LightDetectorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -538,11 +547,14 @@
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */,
+				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
+				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
+				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,

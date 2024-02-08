@@ -65,10 +65,11 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     }
     
     private func setSessionPreviewLayer() {
-        previewLayer.bounds = CGRect(x: 0,
-                                     y: 0,
-                                     width: screenWidth - 30,
-                                     height: screenHeight - 30)
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSessionManager.captureSession)
+        previewLayer.frame = CGRect(x: 0,
+                                    y: 0,
+                                    width: screenWidth - 30,
+                                    height: screenHeight - 30)
         previewLayer.position = self.view.center
         previewLayer.contentsGravity = .resizeAspectFill
         previewLayer.masksToBounds = true
