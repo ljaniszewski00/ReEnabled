@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
-		16364AAE2B51BF6E005BECC5 /* ObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */; };
 		164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668EB2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
 		164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */; };
@@ -44,6 +43,11 @@
 		1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */; };
 		1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */; };
 		1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */; };
+		1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */; };
+		1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */; };
+		1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */; };
+		1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */; };
+		1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31E2B8548F10028CE73 /* MLModel.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -55,7 +59,6 @@
 /* Begin PBXFileReference section */
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
-		16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ObjectDetector.mlmodel; sourceTree = "<group>"; };
 		164668EB2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewRepresentable.swift; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
 		164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureView.swift; sourceTree = "<group>"; };
@@ -90,6 +93,11 @@
 		1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewController.swift; sourceTree = "<group>"; };
 		1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewModel.swift; sourceTree = "<group>"; };
+		1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewModel.swift; sourceTree = "<group>"; };
+		1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewController.swift; sourceTree = "<group>"; };
+		1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorView.swift; sourceTree = "<group>"; };
+		1682D31E2B8548F10028CE73 /* MLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModel.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -113,7 +121,6 @@
 		16364AA82B51B686005BECC5 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				16364AAD2B51BF6E005BECC5 /* ObjectDetector.mlmodel */,
 				16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */,
 			);
 			path = MLModels;
@@ -291,6 +298,7 @@
 			children = (
 				164E11292B46172F008EF153 /* Views.swift */,
 				164668FD2B66DE010049AB03 /* CameraMode.swift */,
+				1682D31E2B8548F10028CE73 /* MLModel.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -427,6 +435,7 @@
 				164669012B6855FA0049AB03 /* DocumentScanner */,
 				164669022B6856040049AB03 /* ColorDetector */,
 				164669032B6856320049AB03 /* LightDetector */,
+				1682D3122B8543B70028CE73 /* CurrencyDetector */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -445,6 +454,41 @@
 				1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1682D3122B8543B70028CE73 /* CurrencyDetector */ = {
+			isa = PBXGroup;
+			children = (
+				1682D3132B8543C80028CE73 /* ViewModel */,
+				1682D3142B8543D20028CE73 /* ViewController */,
+				1682D3152B8543D90028CE73 /* View */,
+			);
+			path = CurrencyDetector;
+			sourceTree = "<group>";
+		};
+		1682D3132B8543C80028CE73 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1682D3142B8543D20028CE73 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */,
+				1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1682D3152B8543D90028CE73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		16E170062B6FDA4000F984FB /* ViewModel */ = {
@@ -533,6 +577,7 @@
 			files = (
 				16E1700A2B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift in Sources */,
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
+				1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
 				164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */,
@@ -550,17 +595,21 @@
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
+				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
+				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
 				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
+				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
+				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
 				16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
@@ -570,7 +619,6 @@
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */,
-				16364AAE2B51BF6E005BECC5 /* ObjectDetector.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

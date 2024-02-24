@@ -70,7 +70,7 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
 
 extension ObjectsRecognizerViewController {
     func setupDetector() {
-        guard let modelURL = Bundle.main.url(forResource: "YOLOv3Int8LUT",
+        guard let modelURL = Bundle.main.url(forResource: MLModelFile.YOLOv3Int8LUT.fileName,
                                              withExtension: "mlmodelc") else {
             return
         }
@@ -85,11 +85,11 @@ extension ObjectsRecognizerViewController {
     }
     
     func detectionDidComplete(request: VNRequest, error: Error?) {
-        DispatchQueue.main.async(execute: {
+        DispatchQueue.main.async {
             if let results = request.results {
                 self.extractDetections(results)
             }
-        })
+        }
     }
     
     func extractDetections(_ results: [VNObservation]) {

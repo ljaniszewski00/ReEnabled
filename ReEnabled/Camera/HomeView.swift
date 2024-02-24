@@ -25,12 +25,8 @@ struct HomeView: View {
                 ColorDetectorView()
             case .lightDetector:
                 LightDetectorView()
-            case .currencyDetector:
-                VStack {
-                    Spacer()
-                    Text("Currency Detector")
-                    Spacer()
-                }
+//            case .currencyDetector:
+//                CurrencyDetectorView()
             }
             
             if homeViewModel.cameraModeNameVisible {

@@ -4,7 +4,7 @@ import SwiftUI
 
 class CaptureSessionManager: ObservableObject {
     private let captureSessionQueue = DispatchQueue(label: "captureSessionQueue")
-    private let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput",
+    private let videoDataOutputQueue = DispatchQueue(label: "videoDataOutput",
                                                      qos: .userInitiated,
                                                      attributes: [],
                                                      autoreleaseFrequency: .workItem)
@@ -149,10 +149,6 @@ class CaptureSessionManager: ObservableObject {
             return [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
         case .colorDetector:
             return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
-        case .lightDetector:
-            return nil
-        case .currencyDetector:
-            return nil
         default:
             return nil
         }
