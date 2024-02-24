@@ -11,10 +11,6 @@ struct DistanceMeasureView: View {
             VStack {
                 Spacer()
                 
-                DetectorFrame()
-                
-                Spacer()
-                
                 Text(distanceMeasureViewModel.distanceToDisplay)
                     .foregroundColor(.white)
                     .font(.headline)

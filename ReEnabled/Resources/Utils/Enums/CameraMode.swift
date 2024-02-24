@@ -5,6 +5,7 @@ enum CameraMode: String {
     case colorDetector = "Color Detector"
     case lightDetector = "Light Detector"
 //    case currencyDetector = "Currency Detector"
+    case facialRecognizer = "Facial Recognizer"
 }
 
 extension CameraMode {
@@ -15,7 +16,8 @@ extension CameraMode {
             .documentScanner,
             .colorDetector,
             .lightDetector,
-//            .currencyDetector
+//            .currencyDetector,
+            .facialRecognizer
         ]
     }
 }
@@ -24,7 +26,8 @@ extension CameraMode {
     static var modesWithPortraitVideoConnection: [CameraMode] {
         [
             .objectRecognizer,
-            .lightDetector
+            .lightDetector,
+            .facialRecognizer
         ]
     }
 }
