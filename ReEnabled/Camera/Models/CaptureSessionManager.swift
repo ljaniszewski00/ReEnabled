@@ -22,8 +22,17 @@ class CaptureSessionManager: ObservableObject {
         return CaptureSessionManager()
     }()
     
-    func manageFlashlight(luminosity: Double) {
-        if luminosity < 50 {
+    func manageFlashlight(for sampleBuffer: CMSampleBuffer, force torchMode: AVCaptureDevice.TorchMode? = nil) {
+        if let torchMode = torchMode {
+            setTorchMode(torchMode)
+            return
+        }
+        
+        guard let luminosity = CaptureSessionManager.getLuminosityValueFromCamera(with: sampleBuffer) else {
+            return
+        }
+        
+        if luminosity < 1 {
             setTorchMode(.on)
         } else {
             setTorchMode(.off)
@@ -166,5 +175,28 @@ class CaptureSessionManager: ObservableObject {
 extension CaptureSessionManager: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
         return self
+    }
+}
+
+extension CaptureSessionManager {
+    static func getLuminosityValueFromCamera(with sampleBuffer: CMSampleBuffer) -> Double? {
+        let rawMetadata = CMCopyDictionaryOfAttachments(allocator: nil,
+                                                        target: sampleBuffer,
+                                                        attachmentMode: CMAttachmentMode(kCMAttachmentMode_ShouldPropagate))
+        let metadata = CFDictionaryCreateMutableCopy(nil, 0, rawMetadata) as NSMutableDictionary
+        
+        guard let exifData = metadata.value(forKey: "{Exif}") as? NSMutableDictionary,
+              let fNumber: Double = exifData["FNumber"] as? Double,
+              let exposureTime: Double = exifData["ExposureTime"] as? Double,
+              let ISOSpeedRatingsArray = exifData["ISOSpeedRatings"] as? NSArray,
+              let ISOSpeedRatings: Double = ISOSpeedRatingsArray[0] as? Double else {
+            return nil
+        }
+        
+        let calibrationConstant: Double = 50
+        
+        let luminosity: Double = (calibrationConstant * fNumber * fNumber) / (exposureTime * ISOSpeedRatings)
+        
+        return luminosity
     }
 }

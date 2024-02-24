@@ -6,4 +6,17 @@ class DistanceMeasureViewModel: ObservableObject {
     var distanceToDisplay: String {
         "Distance: \(String(format: "%.2f", distance)) meters"
     }
+    
+    private init() {}
+    
+    static var shared: DistanceMeasureViewModel = {
+        return DistanceMeasureViewModel()
+    }()
+}
+
+extension DistanceMeasureViewModel: NSCopying {
+
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
+    }
 }

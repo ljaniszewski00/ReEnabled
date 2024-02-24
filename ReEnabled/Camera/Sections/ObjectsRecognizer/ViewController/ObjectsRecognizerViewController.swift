@@ -177,6 +177,11 @@ extension ObjectsRecognizerViewController {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        DispatchQueue.main.async {
+            self.captureSessionManager.manageFlashlight(for: sampleBuffer)
+        }
+        
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
 
         do {

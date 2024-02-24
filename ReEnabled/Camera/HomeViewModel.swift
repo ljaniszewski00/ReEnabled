@@ -1,7 +1,7 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var cameraMode: CameraMode = .objectRecognizer
+    @Published var cameraMode: CameraMode = .colorDetector
     @Published var cameraModeNameVisible: Bool = true
     
     func changeToPreviousCameraMode() {

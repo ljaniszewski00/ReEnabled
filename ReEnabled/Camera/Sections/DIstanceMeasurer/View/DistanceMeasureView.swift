@@ -1,12 +1,11 @@
 import SwiftUI
 
 struct DistanceMeasureView: View {
-    @StateObject private var distanceMeasureViewModel: DistanceMeasureViewModel =
-    DistanceMeasureViewModel()
+    @StateObject private var distanceMeasureViewModel: DistanceMeasureViewModel = .shared
     
     var body: some View {
         ZStack {
-            DistanceMeasureViewRepresentable(distance: $distanceMeasureViewModel.distance)
+            DistanceMeasureViewRepresentable()
                 .ignoresSafeArea()
             
             VStack {

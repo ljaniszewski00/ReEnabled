@@ -3,8 +3,6 @@ import RealityKit
 import SwiftUI
 
 struct DistanceMeasureViewRepresentable: UIViewRepresentable {
-    @Binding var distance: Float
-    
     func makeUIView(context: Context) -> some UIView {
         let arView = ARView(frame: .zero)
         let config = ARWorldTrackingConfiguration()
@@ -19,16 +17,12 @@ struct DistanceMeasureViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {}
     
     func makeCoordinator() -> ARSessionDelegateCoordinator {
-        ARSessionDelegateCoordinator(distance: $distance)
+        ARSessionDelegateCoordinator()
     }
 }
 
 class ARSessionDelegateCoordinator: NSObject, ARSessionDelegate {
-    @Binding var distance: Float
-    
-    init(distance: Binding<Float>) {
-        self._distance = distance
-    }
+    private let distanceMeasureViewModel: DistanceMeasureViewModel = .shared
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard let currentPointCloud = frame.rawFeaturePoints else {
@@ -52,6 +46,6 @@ class ARSessionDelegateCoordinator: NSObject, ARSessionDelegate {
             }
         }
         
-        distance = closestDistance
+        distanceMeasureViewModel.distance = closestDistance
     }
 }

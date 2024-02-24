@@ -27,6 +27,10 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
             return
         }
         
+        DispatchQueue.main.async {
+            self.captureSessionManager.manageFlashlight(for: sampleBuffer)
+        }
+        
         CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
         guard let baseAddr = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0) else {
             return
@@ -76,6 +80,7 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
         previewLayer.setAffineTransform(
             CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0))
         )
+        
         self.view.layer.insertSublayer(previewLayer, at: 0)
     }
     

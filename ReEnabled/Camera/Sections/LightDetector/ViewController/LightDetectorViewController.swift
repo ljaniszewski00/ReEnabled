@@ -20,35 +20,14 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let rawMetadata = CMCopyDictionaryOfAttachments(allocator: nil, 
-                                                        target: sampleBuffer,
-                                                        attachmentMode: CMAttachmentMode(kCMAttachmentMode_ShouldPropagate))
-        let metadata = CFDictionaryCreateMutableCopy(nil, 0, rawMetadata) as NSMutableDictionary
-        
-        guard let luminosity = getLuminosityValueFromCamera(metadata: metadata) else {
+        guard let luminosity = CaptureSessionManager.getLuminosityValueFromCamera(with: sampleBuffer) else {
             return
         }
     
         DispatchQueue.main.async {
-            self.captureSessionManager.manageFlashlight(luminosity: luminosity)
+            self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: .off)
             self.lightDetectorViewModel.luminosity = luminosity
         }
-    }
-    
-    private func getLuminosityValueFromCamera(metadata: NSMutableDictionary) -> Double? {
-        guard let exifData = metadata.value(forKey: "{Exif}") as? NSMutableDictionary,
-              let fNumber: Double = exifData["FNumber"] as? Double,
-              let exposureTime: Double = exifData["ExposureTime"] as? Double,
-              let ISOSpeedRatingsArray = exifData["ISOSpeedRatings"] as? NSArray,
-              let ISOSpeedRatings: Double = ISOSpeedRatingsArray[0] as? Double else {
-            return nil
-        }
-        
-        let calibrationConstant: Double = 50
-        
-        let luminosity: Double = (calibrationConstant * fNumber * fNumber) / (exposureTime * ISOSpeedRatings)
-        
-        return luminosity
     }
     
     private func setupUI() {
