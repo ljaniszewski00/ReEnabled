@@ -5,13 +5,13 @@ struct DistanceMeasureView: View {
     
     var body: some View {
         ZStack {
-            DistanceMeasureViewRepresentable()
+            DistanceMeasureViewControllerRepresentable()
                 .ignoresSafeArea()
             
             VStack {
                 Spacer()
                 
-                Text(distanceMeasureViewModel.distanceToDisplay)
+                Text(distanceMeasureViewModel.distanceString)
                     .foregroundColor(.white)
                     .font(.headline)
                     .padding(.bottom, Views.Constants.distanceToDisplayBottomPadding)

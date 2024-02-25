@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162856C42B8ABCA300691759 /* CaptureDepthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */; };
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
-		164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668EB2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
 		164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */; };
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
@@ -48,6 +48,8 @@
 		1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */; };
 		1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */; };
 		1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31E2B8548F10028CE73 /* MLModel.swift */; };
+		1682D32D2B8AB3720028CE73 /* DistanceMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D32C2B8AB3720028CE73 /* DistanceMeasureViewController.swift */; };
+		1682D32F2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D32E2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -57,9 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureDepthSessionManager.swift; sourceTree = "<group>"; };
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
-		164668EB2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewRepresentable.swift; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
 		164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureView.swift; sourceTree = "<group>"; };
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -98,6 +100,8 @@
 		1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorView.swift; sourceTree = "<group>"; };
 		1682D31E2B8548F10028CE73 /* MLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModel.swift; sourceTree = "<group>"; };
+		1682D32C2B8AB3720028CE73 /* DistanceMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewController.swift; sourceTree = "<group>"; };
+		1682D32E2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				164668F02B66D35A0049AB03 /* ViewModel */,
+				1682D32B2B8AB3600028CE73 /* ViewController */,
 				164668EF2B66D3520049AB03 /* View */,
 			);
 			path = DIstanceMeasurer;
@@ -138,7 +143,6 @@
 		164668EF2B66D3520049AB03 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				164668EB2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift */,
 				164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */,
 			);
 			path = View;
@@ -444,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */,
+				162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -489,6 +494,15 @@
 				1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1682D32B2B8AB3600028CE73 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1682D32C2B8AB3720028CE73 /* DistanceMeasureViewController.swift */,
+				1682D32E2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		16E170062B6FDA4000F984FB /* ViewModel */ = {
@@ -579,6 +593,7 @@
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
+				162856C42B8ABCA300691759 /* CaptureDepthSessionManager.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
 				164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */,
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
@@ -591,7 +606,6 @@
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
-				164668EC2B66CD1D0049AB03 /* DistanceMeasureViewRepresentable.swift in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
@@ -600,7 +614,9 @@
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
+				1682D32F2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift in Sources */,
 				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
+				1682D32D2B8AB3720028CE73 /* DistanceMeasureViewController.swift in Sources */,
 				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
