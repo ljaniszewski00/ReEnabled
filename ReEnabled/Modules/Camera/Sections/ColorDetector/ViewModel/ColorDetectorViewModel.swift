@@ -1,6 +1,6 @@
 import SwiftUI
 
-class ColorDetectorViewModel: ObservableObject {
+final class ColorDetectorViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
     @Published var detectedColor: UIColor?
     

@@ -1,5 +1,5 @@
 import SwiftUI
 
-class ObjectsRecognizerViewModel: ObservableObject {
+final class ObjectsRecognizerViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
 }

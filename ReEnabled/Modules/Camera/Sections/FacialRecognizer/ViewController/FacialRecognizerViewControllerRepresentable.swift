@@ -1,8 +1,15 @@
-//
-//  FacialRecognizerViewControllerRepresentable.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 25/02/2024.
-//
+import SwiftUI
 
-import Foundation
+struct FacialRecognizerViewControllerRepresentable: UIViewControllerRepresentable {
+    private var facialRecognizerViewModel: FacialRecognizerViewModel
+    
+    init(facialRecognizerViewModel: FacialRecognizerViewModel) {
+        self.facialRecognizerViewModel = facialRecognizerViewModel
+    }
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        return FacialRecognizerViewController(facialRecognizerViewModel: facialRecognizerViewModel)
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}

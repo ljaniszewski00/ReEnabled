@@ -5,7 +5,6 @@ import Vision
 
 class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     @Inject private var captureSessionManager: CaptureSessionManaging
-    
     private var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
     
     private var previewLayer = AVCaptureVideoPreviewLayer()
@@ -80,7 +79,7 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
 }
 
 extension ObjectsRecognizerViewController {
-    func setupDetector() {
+    private func setupDetector() {
         guard let modelURL = Bundle.main.url(forResource: MLModelFile.YOLOv3Int8LUT.fileName,
                                              withExtension: "mlmodelc") else {
             return
@@ -95,7 +94,7 @@ extension ObjectsRecognizerViewController {
         }
     }
     
-    func detectionDidComplete(request: VNRequest, error: Error?) {
+    private func detectionDidComplete(request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             if let results = request.results {
                 self.extractDetections(results)
@@ -103,7 +102,7 @@ extension ObjectsRecognizerViewController {
         }
     }
     
-    func extractDetections(_ results: [VNObservation]) {
+    private func extractDetections(_ results: [VNObservation]) {
         detectionLayer.sublayers = nil
         
         for observation in results where observation is VNRecognizedObjectObservation {
@@ -128,7 +127,7 @@ extension ObjectsRecognizerViewController {
         }
     }
     
-    func setupLayers() {
+    private func setupLayers() {
         detectionLayer = CALayer()
         detectionLayer.frame = CGRect(x: 0,
                                       y: 0,
@@ -144,7 +143,7 @@ extension ObjectsRecognizerViewController {
         }
     }
     
-    func updateLayers() {
+    private func updateLayers() {
         detectionLayer?.frame = CGRect(x: 0,
                                        y: 0,
                                        width: screenRect.size.width,
@@ -187,7 +186,9 @@ extension ObjectsRecognizerViewController {
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            return
+        }
         
         DispatchQueue.main.async {
             self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)

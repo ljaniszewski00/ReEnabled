@@ -1,8 +1,8 @@
-//
-//  FacialRecognizerViewModel.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 25/02/2024.
-//
+import SwiftUI
 
-import Foundation
+final class FacialRecognizerViewModel: ObservableObject {
+    @Published var canDisplayCamera: Bool = false
+    @Published var recognizedGender: String = ""
+    @Published var recognizedAge: String = ""
+    @Published var recognizedEmotion: String = ""
+}

@@ -1,6 +1,6 @@
 import SwiftUI
 
-class LightDetectorViewModel: ObservableObject {
+final class LightDetectorViewModel: ObservableObject {
     @Published var luminosity: Double?
     @Published var canDisplayCamera: Bool = false
     

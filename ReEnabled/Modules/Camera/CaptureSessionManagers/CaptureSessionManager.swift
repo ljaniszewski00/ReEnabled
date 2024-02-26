@@ -1,6 +1,6 @@
 import AVFoundation
 
-class CaptureSessionManager: CaptureSessionManaging {
+final class CaptureSessionManager: CaptureSessionManaging {
     @Inject private var flashlightManager: FlashlightManaging
     
     private let captureSessionQueue = DispatchQueue(label: "captureSessionQueue")

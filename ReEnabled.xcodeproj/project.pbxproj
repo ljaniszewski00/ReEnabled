@@ -18,6 +18,9 @@
 		163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311802B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift */; };
 		163311872B8D2A9500896058 /* FlashlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311862B8D2A9500896058 /* FlashlightManager.swift */; };
 		1633118D2B8D31E600896058 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 1633118C2B8D31E600896058 /* Swinject */; };
+		163311912B8D3C5600896058 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */; };
+		163311922B8D3C5600896058 /* GenderNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1633118F2B8D3C5500896058 /* GenderNet.mlmodel */; };
+		163311932B8D3C5600896058 /* AgeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311902B8D3C5600896058 /* AgeNet.mlmodel */; };
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
@@ -92,6 +95,9 @@
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
 		163311802B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureSessionManager+GetLuminosityValueFromCamera.swift"; sourceTree = "<group>"; };
 		163311862B8D2A9500896058 /* FlashlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashlightManager.swift; sourceTree = "<group>"; };
+		1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
+		1633118F2B8D3C5500896058 /* GenderNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GenderNet.mlmodel; sourceTree = "<group>"; };
+		163311902B8D3C5600896058 /* AgeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AgeNet.mlmodel; sourceTree = "<group>"; };
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
@@ -237,6 +243,9 @@
 		16364AA82B51B686005BECC5 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				163311902B8D3C5600896058 /* AgeNet.mlmodel */,
+				1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */,
+				1633118F2B8D3C5500896058 /* GenderNet.mlmodel */,
 				16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */,
 			);
 			path = MLModels;
@@ -289,8 +298,8 @@
 		164668FA2B66D8CB0049AB03 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				16E170092B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift */,
 				16E1700E2B6FED6100F984FB /* ObjectsRecognizerViewController.swift */,
+				16E170092B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -715,6 +724,7 @@
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
 				164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */,
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
+				163311922B8D3C5600896058 /* GenderNet.mlmodel in Sources */,
 				1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */,
 				164E11492B472115008EF153 /* HomeView.swift in Sources */,
 				1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */,
@@ -731,6 +741,7 @@
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
+				163311932B8D3C5600896058 /* AgeNet.mlmodel in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
 				163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */,
@@ -746,6 +757,7 @@
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
+				163311912B8D3C5600896058 /* CNNEmotions.mlmodel in Sources */,
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,

@@ -1,18 +1,34 @@
-//
-//  FacialRecognizerView.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 25/02/2024.
-//
-
 import SwiftUI
 
 struct FacialRecognizerView: View {
+    @StateObject private var facialRecognizerViewModel: FacialRecognizerViewModel = FacialRecognizerViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            FacialRecognizerViewControllerRepresentable(facialRecognizerViewModel: facialRecognizerViewModel)
+            
+            VStack {
+                Spacer()
+                
+                Group {
+                    Text("Gender: \(facialRecognizerViewModel.recognizedGender)")
+                    Text("Age: \(facialRecognizerViewModel.recognizedAge)")
+                    Text("Emotion: \(facialRecognizerViewModel.recognizedEmotion)")
+                }
+                .foregroundColor(.white)
+                .font(.headline)
+            }
+            .padding(.bottom, Views.Constants.distanceToDisplayBottomPadding)
+        }
     }
 }
 
 #Preview {
     FacialRecognizerView()
+}
+
+private extension Views {
+    struct Constants {
+        static let distanceToDisplayBottomPadding: CGFloat = 100
+    }
 }

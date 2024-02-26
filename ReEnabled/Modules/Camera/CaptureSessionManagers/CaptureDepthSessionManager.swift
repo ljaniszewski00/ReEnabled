@@ -1,6 +1,6 @@
 import AVFoundation
 
-class CaptureDepthSessionManager: CaptureDepthSessionManaging {
+final class CaptureDepthSessionManager: CaptureDepthSessionManaging {
     private let captureDepthSessionQueue = DispatchQueue(label: "captureDepthSessionQueue")
     private let depthDataQueue = DispatchQueue(label: "depthDataQueue",
                                                qos: .userInitiated)

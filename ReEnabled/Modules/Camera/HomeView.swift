@@ -28,11 +28,7 @@ struct HomeView: View {
 //            case .currencyDetector:
 //                CurrencyDetectorView()
             case .facialRecognizer:
-                VStack {
-                    Spacer()
-                    Text("Facial Recognizer")
-                    Spacer()
-                }
+                FacialRecognizerView()
             }
             
             if homeViewModel.cameraModeNameVisible {

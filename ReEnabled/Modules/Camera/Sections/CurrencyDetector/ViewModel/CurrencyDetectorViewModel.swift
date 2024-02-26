@@ -1,6 +1,6 @@
 import SwiftUI
 
-class CurrencyDetectorViewModel: ObservableObject {
+final class CurrencyDetectorViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
     @Published var detectedCurrency: String?
 }

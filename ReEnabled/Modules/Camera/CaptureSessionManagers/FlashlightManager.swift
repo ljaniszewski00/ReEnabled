@@ -2,7 +2,7 @@ import AVFoundation
 import Foundation
 import SwiftUI
 
-class FlashlightManager: FlashlightManaging {
+final class FlashlightManager: FlashlightManaging {
     func manageFlashlight(for sampleBuffer: CMSampleBuffer?,
                           and captureDevice: AVCaptureDevice?,
                           force torchMode: AVCaptureDevice.TorchMode? = nil) {
