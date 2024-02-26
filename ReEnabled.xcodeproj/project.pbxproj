@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		162856C42B8ABCA300691759 /* CaptureDepthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */; };
+		162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856C92B8AD0A500691759 /* FacialRecognizerViewModel.swift */; };
+		162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CB2B8AD0B000691759 /* FacialRecognizerViewController.swift */; };
+		162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */; };
+		162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */; };
+		162856D72B8D242500691759 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856D62B8D242500691759 /* Inject.swift */; };
+		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
+		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
+		163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311802B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift */; };
+		163311872B8D2A9500896058 /* FlashlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311862B8D2A9500896058 /* FlashlightManager.swift */; };
+		1633118D2B8D31E600896058 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 1633118C2B8D31E600896058 /* Swinject */; };
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
@@ -58,8 +68,30 @@
 		16E1700F2B6FED6100F984FB /* ObjectsRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1700E2B6FED6100F984FB /* ObjectsRecognizerViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		163311852B8D280900896058 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureDepthSessionManager.swift; sourceTree = "<group>"; };
+		162856C92B8AD0A500691759 /* FacialRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewModel.swift; sourceTree = "<group>"; };
+		162856CB2B8AD0B000691759 /* FacialRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewController.swift; sourceTree = "<group>"; };
+		162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerView.swift; sourceTree = "<group>"; };
+		162856D62B8D242500691759 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
+		163311802B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureSessionManager+GetLuminosityValueFromCamera.swift"; sourceTree = "<group>"; };
+		163311862B8D2A9500896058 /* FlashlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashlightManager.swift; sourceTree = "<group>"; };
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
@@ -116,12 +148,92 @@
 			buildActionMask = 2147483647;
 			files = (
 				165795BD2B549DD6009142C1 /* OpenAI in Frameworks */,
+				1633118D2B8D31E600896058 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		162856C52B8AD05A00691759 /* FacialRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				162856C62B8AD08000691759 /* ViewModel */,
+				162856C72B8AD08600691759 /* ViewController */,
+				162856C82B8AD08D00691759 /* View */,
+			);
+			path = FacialRecognizer;
+			sourceTree = "<group>";
+		};
+		162856C62B8AD08000691759 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				162856C92B8AD0A500691759 /* FacialRecognizerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		162856C72B8AD08600691759 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				162856CB2B8AD0B000691759 /* FacialRecognizerViewController.swift */,
+				162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		162856C82B8AD08D00691759 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		162856D82B8D245E00691759 /* Assemblies */ = {
+			isa = PBXGroup;
+			children = (
+				1633117A2B8D24B500896058 /* Modules */,
+				1633117C2B8D24DD00896058 /* Assembler.swift */,
+			);
+			path = Assemblies;
+			sourceTree = "<group>";
+		};
+		162856D92B8D246300691759 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				164E112B2B46182B008EF153 /* SplashScreen */,
+				164E11452B4720F6008EF153 /* Camera */,
+				164E11462B4720FB008EF153 /* Search */,
+				164E11472B47210A008EF153 /* Settings */,
+				164E11182B45E167008EF153 /* ContentView.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1633117A2B8D24B500896058 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1633117B2B8D24BE00896058 /* Camera */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1633117B2B8D24BE00896058 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				1633117E2B8D255000896058 /* CameraAssembly.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		163311882B8D31DE00896058 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		16364AA82B51B686005BECC5 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +353,7 @@
 			children = (
 				164E11152B45E167008EF153 /* ReEnabled */,
 				164E11142B45E167008EF153 /* Products */,
+				163311882B8D31DE00896058 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,15 +368,12 @@
 		164E11152B45E167008EF153 /* ReEnabled */ = {
 			isa = PBXGroup;
 			children = (
-				164E112B2B46182B008EF153 /* SplashScreen */,
-				164E11452B4720F6008EF153 /* Camera */,
-				164E11462B4720FB008EF153 /* Search */,
-				164E11472B47210A008EF153 /* Settings */,
-				164E11162B45E167008EF153 /* ReEnabledApp.swift */,
-				164E11182B45E167008EF153 /* ContentView.swift */,
-				164E111A2B45E169008EF153 /* Assets.xcassets */,
+				162856D92B8D246300691759 /* Modules */,
+				162856D82B8D245E00691759 /* Assemblies */,
 				164E11262B461711008EF153 /* Resources */,
 				164E111C2B45E169008EF153 /* Preview Content */,
+				164E11162B45E167008EF153 /* ReEnabledApp.swift */,
+				164E111A2B45E169008EF153 /* Assets.xcassets */,
 			);
 			path = ReEnabled;
 			sourceTree = "<group>";
@@ -320,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				1670C6102B6EF853005CF24B /* CALayer+PickColor.swift */,
+				163311802B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -358,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				164E11412B471D1A008EF153 /* TabBarStateManager.swift */,
+				162856D62B8D242500691759 /* Inject.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -365,7 +477,7 @@
 		164E11452B4720F6008EF153 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				1670C6182B6FB8C0005CF24B /* Models */,
+				1670C6182B6FB8C0005CF24B /* CaptureSessionManagers */,
 				1670C6172B6FB8A7005CF24B /* Sections */,
 				164E11482B472115008EF153 /* HomeView.swift */,
 				164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */,
@@ -440,17 +552,19 @@
 				164669022B6856040049AB03 /* ColorDetector */,
 				164669032B6856320049AB03 /* LightDetector */,
 				1682D3122B8543B70028CE73 /* CurrencyDetector */,
+				162856C52B8AD05A00691759 /* FacialRecognizer */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		1670C6182B6FB8C0005CF24B /* Models */ = {
+		1670C6182B6FB8C0005CF24B /* CaptureSessionManagers */ = {
 			isa = PBXGroup;
 			children = (
 				1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */,
 				162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */,
+				163311862B8D2A9500896058 /* FlashlightManager.swift */,
 			);
-			path = Models;
+			path = CaptureSessionManagers;
 			sourceTree = "<group>";
 		};
 		1670C61F2B6FC5C7005CF24B /* ViewModel */ = {
@@ -482,8 +596,8 @@
 		1682D3142B8543D20028CE73 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */,
 				1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */,
+				1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -523,6 +637,7 @@
 				164E110F2B45E167008EF153 /* Sources */,
 				164E11102B45E167008EF153 /* Frameworks */,
 				164E11112B45E167008EF153 /* Resources */,
+				163311852B8D280900896058 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -531,6 +646,7 @@
 			name = ReEnabled;
 			packageProductDependencies = (
 				165795BC2B549DD6009142C1 /* OpenAI */,
+				1633118C2B8D31E600896058 /* Swinject */,
 			);
 			productName = ReEnabled;
 			productReference = 164E11132B45E167008EF153 /* ReEnabled.app */;
@@ -562,6 +678,7 @@
 			mainGroup = 164E110A2B45E167008EF153;
 			packageReferences = (
 				165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 164E11142B45E167008EF153 /* Products */;
 			projectDirPath = "";
@@ -589,6 +706,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */,
 				16E1700A2B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift in Sources */,
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */,
@@ -600,7 +718,10 @@
 				1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */,
 				164E11492B472115008EF153 /* HomeView.swift in Sources */,
 				1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */,
+				163311872B8D2A9500896058 /* FlashlightManager.swift in Sources */,
+				162856D72B8D242500691759 /* Inject.swift in Sources */,
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
+				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				16E1700F2B6FED6100F984FB /* ObjectsRecognizerViewController.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
@@ -609,7 +730,10 @@
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
+				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
+				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
+				163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */,
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
@@ -629,7 +753,9 @@
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
 				16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
+				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
+				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
@@ -852,6 +978,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 		165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
@@ -863,6 +997,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1633118C2B8D31E600896058 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		165795BC2B549DD6009142C1 /* OpenAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */;
