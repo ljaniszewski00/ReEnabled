@@ -25,7 +25,9 @@ class CurrencyDetectorViewController: UIViewController, AVCaptureVideoDataOutput
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSessionManager.setUp(with: self, for: .objectRecognizer) {
+        captureSessionManager.setUp(with: self, 
+                                    for: .objectRecognizer,
+                                    cameraPosition: .back) {
             self.setupSessionPreviewLayer()
             self.setupDetector()
             DispatchQueue.main.async {

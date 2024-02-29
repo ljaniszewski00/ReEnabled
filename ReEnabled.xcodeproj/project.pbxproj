@@ -21,6 +21,12 @@
 		163311912B8D3C5600896058 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */; };
 		163311922B8D3C5600896058 /* GenderNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1633118F2B8D3C5500896058 /* GenderNet.mlmodel */; };
 		163311932B8D3C5600896058 /* AgeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311902B8D3C5600896058 /* AgeNet.mlmodel */; };
+		163311992B909BF200896058 /* RoadTrafficRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311982B909BF200896058 /* RoadTrafficRecognizerView.swift */; };
+		1633119B2B90AC1000896058 /* RoadTrafficRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633119A2B90AC1000896058 /* RoadTrafficRecognizerViewModel.swift */; };
+		1633119D2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633119C2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift */; };
+		1633119F2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633119E2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift */; };
+		163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */; };
+		163311A32B90AD7200896058 /* MakeML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311A22B90AD7200896058 /* MakeML.mlmodel */; };
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
@@ -98,6 +104,12 @@
 		1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		1633118F2B8D3C5500896058 /* GenderNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GenderNet.mlmodel; sourceTree = "<group>"; };
 		163311902B8D3C5600896058 /* AgeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AgeNet.mlmodel; sourceTree = "<group>"; };
+		163311982B909BF200896058 /* RoadTrafficRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficRecognizerView.swift; sourceTree = "<group>"; };
+		1633119A2B90AC1000896058 /* RoadTrafficRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficRecognizerViewModel.swift; sourceTree = "<group>"; };
+		1633119C2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficRecognizerViewController.swift; sourceTree = "<group>"; };
+		1633119E2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AmpelPilot_2812rg.mlmodel; sourceTree = "<group>"; };
+		163311A22B90AD7200896058 /* MakeML.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MakeML.mlmodel; sourceTree = "<group>"; };
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
@@ -240,12 +252,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		163311942B909BC000896058 /* RoadTrafficRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				163311952B909BCC00896058 /* ViewModel */,
+				163311962B909BD500896058 /* ViewController */,
+				163311972B909BDD00896058 /* View */,
+			);
+			path = RoadTrafficRecognizer;
+			sourceTree = "<group>";
+		};
+		163311952B909BCC00896058 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1633119A2B90AC1000896058 /* RoadTrafficRecognizerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		163311962B909BD500896058 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1633119C2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift */,
+				1633119E2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		163311972B909BDD00896058 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				163311982B909BF200896058 /* RoadTrafficRecognizerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		16364AA82B51B686005BECC5 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
 				163311902B8D3C5600896058 /* AgeNet.mlmodel */,
+				163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */,
 				1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */,
 				1633118F2B8D3C5500896058 /* GenderNet.mlmodel */,
+				163311A22B90AD7200896058 /* MakeML.mlmodel */,
 				16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */,
 			);
 			path = MLModels;
@@ -562,6 +611,7 @@
 				164669032B6856320049AB03 /* LightDetector */,
 				1682D3122B8543B70028CE73 /* CurrencyDetector */,
 				162856C52B8AD05A00691759 /* FacialRecognizer */,
+				163311942B909BC000896058 /* RoadTrafficRecognizer */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -734,6 +784,7 @@
 				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				16E1700F2B6FED6100F984FB /* ObjectsRecognizerViewController.swift in Sources */,
+				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
@@ -748,6 +799,7 @@
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
+				1633119F2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
 				1682D32F2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift in Sources */,
 				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
@@ -759,7 +811,10 @@
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				163311912B8D3C5600896058 /* CNNEmotions.mlmodel in Sources */,
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
+				1633119B2B90AC1000896058 /* RoadTrafficRecognizerViewModel.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,
+				163311992B909BF200896058 /* RoadTrafficRecognizerView.swift in Sources */,
+				1633119D2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
@@ -771,6 +826,7 @@
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
+				163311A32B90AD7200896058 /* MakeML.mlmodel in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */,
 			);

@@ -20,7 +20,9 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSessionManager.setUp(with: self, for: .lightDetector) {
+        captureSessionManager.setUp(with: self, 
+                                    for: .lightDetector,
+                                    cameraPosition: .back) {
             self.setupUI()
             DispatchQueue.main.async {
                 self.lightDetectorViewModel?.canDisplayCamera = true

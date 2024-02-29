@@ -18,11 +18,23 @@ final class CaptureSessionManager: CaptureSessionManaging {
     
     func setUp(with bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
                for cameraMode: CameraMode,
+               cameraPosition: AVCaptureDevice.Position,
                completion: @escaping () -> ()) {
         stopCaptureSession()
         
         self.bufferDelegate = bufferDelegate
         self.cameraMode = cameraMode
+        
+        switch cameraPosition {
+        case .unspecified:
+            self.videoDevice = AVCaptureDevice.default(for: .video)
+        case .back:
+            self.videoDevice = AVCaptureDevice.default(for: .video)
+        case .front:
+            self.videoDevice = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
+        @unknown default:
+            self.videoDevice = AVCaptureDevice.default(for: .video)
+        }
         
         authorizeCaptureSession {
             completion()
@@ -54,7 +66,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
         }
     }
     
-    private func setupCaptureSession(completion: @escaping () -> ()) {
+    private func setupCaptureSession(completion: @escaping () -> (), for captureDevice: AVCaptureDevice? = nil) {
         captureSessionQueue.async { [unowned self] in
             let captureSession: AVCaptureSession = AVCaptureSession()
             captureSession.beginConfiguration()
@@ -144,6 +156,7 @@ protocol CaptureSessionManaging {
                           force torchMode: AVCaptureDevice.TorchMode?)
     func setUp(with bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
                for cameraMode: CameraMode,
+               cameraPosition: AVCaptureDevice.Position,
                completion: @escaping () -> ())
     func startCaptureSession()
     func stopCaptureSession()

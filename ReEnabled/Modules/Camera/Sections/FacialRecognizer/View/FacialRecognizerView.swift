@@ -18,7 +18,10 @@ struct FacialRecognizerView: View {
                 .foregroundColor(.white)
                 .font(.headline)
             }
-            .padding(.bottom, Views.Constants.distanceToDisplayBottomPadding)
+            .padding(.bottom, Views.Constants.recognitionsBottomPadding)
+        }
+        .onLongPressGesture {
+            facialRecognizerViewModel.enableRecognition()
         }
     }
 }
@@ -29,6 +32,6 @@ struct FacialRecognizerView: View {
 
 private extension Views {
     struct Constants {
-        static let distanceToDisplayBottomPadding: CGFloat = 100
+        static let recognitionsBottomPadding: CGFloat = 100
     }
 }

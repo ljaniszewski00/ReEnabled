@@ -25,7 +25,9 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSessionManager.setUp(with: self, for: .objectRecognizer) {
+        captureSessionManager.setUp(with: self, 
+                                    for: .objectRecognizer,
+                                    cameraPosition: .back) {
             self.setupSessionPreviewLayer()
             self.setupLayers()
             self.setupDetector()
@@ -186,15 +188,11 @@ extension ObjectsRecognizerViewController {
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return
-        }
-        
         DispatchQueue.main.async {
             self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+        let imageRequestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up)
 
         do {
             try imageRequestHandler.perform(self.requests)

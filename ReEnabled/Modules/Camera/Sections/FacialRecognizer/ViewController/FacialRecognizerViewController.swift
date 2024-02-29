@@ -27,7 +27,9 @@ class FacialRecognizerViewController: UIViewController, AVCaptureVideoDataOutput
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSessionManager.setUp(with: self, for: .objectRecognizer) {
+        captureSessionManager.setUp(with: self,
+                                    for: .objectRecognizer,
+                                    cameraPosition: .front) {
             self.setupSessionPreviewLayer()
             self.setupDetectors()
             DispatchQueue.main.async {
@@ -131,73 +133,126 @@ extension FacialRecognizerViewController {
     
     private func genderDetectionDidComplete(request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
+            guard let results = request.results else {
+                return
+            }
+            
+            print("Gender Recognition Results:")
+            for result in results {
+                print(result)
+            }
+            print()
+            
             guard let observations = request.results as? [VNClassificationObservation] else {
                 return
             }
             
-            guard let recognizedGenderString = observations
+            print("Gender Recognition Array:")
+            let recognizedGenderString = observations
                 .compactMap({ observation in
                     observation.identifier
                 })
-                .first else {
-                return
-            }
+            print(recognizedGenderString)
+            print()
             
-            self.facialRecognizerViewModel?.recognizedGender = recognizedGenderString
+            print("Recognized Gender:")
+            print(recognizedGenderString.first)
+            print()
+            self.facialRecognizerViewModel?.recognizedGender = recognizedGenderString.first ?? ""
+            print("Recognize Gender turned on? \(self.facialRecognizerViewModel?.recognizeGender)")
+            print()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.facialRecognizerViewModel?.recognizeGender = false
+            }
         }
     }
     
     private func ageDetectionDidComplete(request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
+            guard let results = request.results else {
+                return
+            }
+            
+            print("Age Recognition Results:")
+            for result in results {
+                print(result)
+            }
+            print()
+            
             guard let observations = request.results as? [VNClassificationObservation] else {
                 return
             }
             
-            guard let recognizedAgeString = observations
+            print("Age Recognition Array:")
+            let recognizedAgeString = observations
                 .compactMap({ observation in
                     observation.identifier
                 })
-                .first else {
-                return
-            }
+            print(recognizedAgeString)
+            print()
             
-            self.facialRecognizerViewModel?.recognizedAge = recognizedAgeString
+            print("Recognized Age:")
+            print(recognizedAgeString.first)
+            print()
+            self.facialRecognizerViewModel?.recognizedAge = recognizedAgeString.first ?? ""
+            print("Recognize Age turned on? \(self.facialRecognizerViewModel?.recognizeAge)")
+            print()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.facialRecognizerViewModel?.recognizeAge = false
+            }
         }
     }
     
     private func emotionDetectionDidComplete(request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
+            guard let results = request.results else {
+                return
+            }
+            
+            print("Emotion Recognition Results:")
+            for result in results {
+                print(result)
+            }
+            print()
+            
             guard let observations = request.results as? [VNClassificationObservation] else {
                 return
             }
             
-            guard let recognizedEmotionString = observations
+            print("Emotion Recognition Array:")
+            let recognizedEmotionString = observations
                 .compactMap({ observation in
                     observation.identifier
                 })
-                .first else {
-                return
-            }
+            print(recognizedEmotionString)
+            print()
             
-            self.facialRecognizerViewModel?.recognizedEmotion = recognizedEmotionString
+            print("Recognized Emotion:")
+            print(recognizedEmotionString.first)
+            print()
+            self.facialRecognizerViewModel?.recognizedEmotion = recognizedEmotionString.first ?? ""
+            print("Recognize Emotions turned on? \(self.facialRecognizerViewModel?.recognizeEmotions)")
+            print()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.facialRecognizerViewModel?.recognizeEmotions = false
+            }
         }
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return
-        }
-        
         DispatchQueue.main.async {
             self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+        let imageRequestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up)
 
         do {
-            try imageRequestHandler.perform(self.genderRequests)
-            try imageRequestHandler.perform(self.ageRequests)
-            try imageRequestHandler.perform(self.emotionsRequests)
+            if let recognitionEnabled = facialRecognizerViewModel?.recognitionEnabled,
+               recognitionEnabled {
+                try imageRequestHandler.perform(self.genderRequests)
+                try imageRequestHandler.perform(self.ageRequests)
+                try imageRequestHandler.perform(self.emotionsRequests)
+            }
         } catch {
             return
         }

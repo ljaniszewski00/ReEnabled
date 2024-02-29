@@ -27,8 +27,10 @@ struct HomeView: View {
                 LightDetectorView()
 //            case .currencyDetector:
 //                CurrencyDetectorView()
-            case .facialRecognizer:
-                FacialRecognizerView()
+//            case .facialRecognizer:
+//                FacialRecognizerView()
+            case .roadTrafficRecognizer:
+                RoadTrafficRecognizerView()
             }
             
             if homeViewModel.cameraModeNameVisible {

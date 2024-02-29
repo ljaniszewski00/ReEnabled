@@ -24,7 +24,9 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSessionManager.setUp(with: self, for: .colorDetector) {
+        captureSessionManager.setUp(with: self, 
+                                    for: .colorDetector,
+                                    cameraPosition: .back) {
             self.setupUI()
             DispatchQueue.main.async {
                 self.colorDetectorViewModel?.canDisplayCamera = true
