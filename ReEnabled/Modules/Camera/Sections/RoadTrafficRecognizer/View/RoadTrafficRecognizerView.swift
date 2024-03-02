@@ -1,18 +1,33 @@
-//
-//  RoadTrafficRecognizerView.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 29/02/2024.
-//
-
 import SwiftUI
 
 struct RoadTrafficRecognizerView: View {
+    @StateObject private var roadTrafficRecognizerViewModel: RoadTrafficRecognizerViewModel = RoadTrafficRecognizerViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            RoadTrafficRecognizerViewControllerRepresentable(roadTrafficRecognizerViewModel: roadTrafficRecognizerViewModel)
+            
+            VStack {
+                Spacer()
+                
+                Group {
+                    Text("Road Sign: \(roadTrafficRecognizerViewModel.recognizedRoadSign)")
+                    Text("Road Light: \(roadTrafficRecognizerViewModel.recognizedRoadLight)")
+                }
+                .foregroundColor(.white)
+                .font(.headline)
+            }
+            .padding(.bottom, Views.Constants.recognitionsBottomPadding)
+        }
     }
 }
 
 #Preview {
     RoadTrafficRecognizerView()
+}
+
+private extension Views {
+    struct Constants {
+        static let recognitionsBottomPadding: CGFloat = 100
+    }
 }

@@ -135,6 +135,8 @@ final class CaptureSessionManager: CaptureSessionManaging {
             return [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
         case .colorDetector:
             return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
+        case .roadTrafficRecognizer:
+            return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
         default:
             return nil
         }

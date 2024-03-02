@@ -1,8 +1,15 @@
-//
-//  RoadTrafficRecognizerViewControllerRepresentable.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 29/02/2024.
-//
+import SwiftUI
 
-import Foundation
+struct RoadTrafficRecognizerViewControllerRepresentable: UIViewControllerRepresentable {
+    private var roadTrafficRecognizerViewModel: RoadTrafficRecognizerViewModel
+    
+    init(roadTrafficRecognizerViewModel: RoadTrafficRecognizerViewModel) {
+        self.roadTrafficRecognizerViewModel = roadTrafficRecognizerViewModel
+    }
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        return RoadTrafficRecognizerViewController(roadTrafficRecognizerViewModel: roadTrafficRecognizerViewModel)
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}

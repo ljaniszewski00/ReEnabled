@@ -1,8 +1,7 @@
-//
-//  RoadTrafficRecognizerViewModel.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 29/02/2024.
-//
+import SwiftUI
 
-import Foundation
+final class RoadTrafficRecognizerViewModel: ObservableObject {
+    @Published var canDisplayCamera: Bool = false
+    @Published var recognizedRoadSign: String = ""
+    @Published var recognizedRoadLight: String = ""
+}
