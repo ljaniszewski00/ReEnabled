@@ -43,7 +43,6 @@
 		163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D52B93A86E00896058 /* NonMaxSuppression.swift */; };
 		163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311D92B93BC6B00896058 /* YOLOV3.mlmodel */; };
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
-		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
 		164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */; };
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
@@ -141,7 +140,6 @@
 		163311D52B93A86E00896058 /* NonMaxSuppression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		163311D92B93BC6B00896058 /* YOLOV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOV3.mlmodel; sourceTree = "<group>"; };
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
-		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
 		164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureView.swift; sourceTree = "<group>"; };
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 				163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */,
 				1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */,
 				1633118F2B8D3C5500896058 /* GenderNet.mlmodel */,
-				16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -924,7 +921,6 @@
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
-				16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
