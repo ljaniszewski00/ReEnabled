@@ -66,7 +66,7 @@ class RoadLightsPhaseManager {
         self.maxDetections = maxDetections
     }
     
-    func add(predictions: [RoadLightsModel.Prediction]) {
+    func add(predictions: [RoadLightsModel.RoadLightsPrediction]) {
         var toBeAdded = [Detection]()
         
         for i in 0..<detections.count {
@@ -123,10 +123,10 @@ class RoadLightsPhaseManager {
         return self.currentPhase
     }
     
-    private func predictionExistsInDetections(prediction: RoadLightsModel.Prediction) -> Detection? {
+    private func predictionExistsInDetections(prediction: RoadLightsModel.RoadLightsPrediction) -> Detection? {
         for i in 0..<detections.count {
             let det = detections[i]
-            let debugIOU = RoadLightsModel.IOU(a: det.rect, b: prediction.rect)
+            let debugIOU = IOU(a: det.rect, b: prediction.rect)
 
             if debugIOU >= self.minIOU {
                 detections[i].confirm()

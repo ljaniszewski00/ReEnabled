@@ -4,14 +4,26 @@ import UIKit
 import Vision
 
 class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    private let objectModel: ObjectModel = ObjectModel()
     @Inject private var captureSessionManager: CaptureSessionManaging
     private var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
     
-    private var previewLayer = AVCaptureVideoPreviewLayer()
-    var screenRect: CGRect! = nil
+    // How many predictions we can do concurrently.
+    static let maxInflightBuffers = 3
     
-    var requests = [VNRequest]()
-    var detectionLayer: CALayer! = nil
+    private var boundingBoxes = [ObjectBoundingBox]()
+    private var colors: [UIColor] = []
+    
+    private let ciContext = CIContext()
+    private var resizedPixelBuffers: [CVPixelBuffer?] = []
+    
+    var inflightBuffer = 0
+    let semaphore = DispatchSemaphore(value: maxInflightBuffers)
+    
+    private var previewLayer = AVCaptureVideoPreviewLayer()
+    private var screenRect: CGRect! = nil
+    
+    private var requests = [VNRequest]()
     
     init(objectsRecognizerViewModel: ObjectsRecognizerViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -25,12 +37,13 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureSessionManager.setUp(with: self, 
+        self.setupDetector()
+        self.setupCoreImage()
+        captureSessionManager.setUp(with: self,
                                     for: .objectRecognizer,
                                     cameraPosition: .back) {
             self.setupSessionPreviewLayer()
-            self.setupLayers()
-            self.setupDetector()
+            self.setupBoundingBoxes()
             DispatchQueue.main.async {
                 self.objectsRecognizerViewModel?.canDisplayCamera = true
             }
@@ -56,8 +69,6 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
         default:
             break
         }
-        
-        updateLayers()
     }
     
     private func setupSessionPreviewLayer() {
@@ -81,110 +92,161 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
 }
 
 extension ObjectsRecognizerViewController {
-    private func setupDetector() {
-        guard let modelURL = Bundle.main.url(forResource: MLModelFile.YOLOv3Int8LUT.fileName,
+    func setupBoundingBoxes() {
+        for _ in 0..<ObjectModel.maxBoundingBoxes {
+            boundingBoxes.append(ObjectBoundingBox())
+        }
+        
+        // Make colors for the bounding boxes. There is one color for each class,
+        // 80 classes in total.
+        for r: CGFloat in [0.2, 0.4, 0.6, 0.8, 1.0] {
+            for g: CGFloat in [0.1, 0.3, 0.7, 0.9] {
+                for b: CGFloat in [0.2, 0.4, 0.6, 0.8, 1.0] {
+                    let color = UIColor(red: r, green: g, blue: b, alpha: 1)
+                    colors.append(color)
+                }
+            }
+        }
+    }
+    
+    func setupCoreImage() {
+        // Since we might be running several requests in parallel, we also need
+        // to do the resizing in different pixel buffers or we might overwrite a
+        // pixel buffer that's already in use.
+        for _ in 0..<ObjectsRecognizerViewController.maxInflightBuffers {
+            var resizedPixelBuffer: CVPixelBuffer?
+            let status = CVPixelBufferCreate(nil,
+                                             ObjectModel.inputWidth,
+                                             ObjectModel.inputHeight,
+                                             kCVPixelFormatType_32BGRA, 
+                                             nil,
+                                             &resizedPixelBuffer)
+            
+            if status != kCVReturnSuccess {
+                print("Error: could not create resized pixel buffer", status)
+            }
+            
+            resizedPixelBuffers.append(resizedPixelBuffer)
+        }
+    }
+    
+    func setupDetector() {
+        guard let modelURL = Bundle.main.url(forResource: MLModelFile.YOLOV3.fileName,
                                              withExtension: "mlmodelc") else {
             return
         }
-    
+        
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
-            let recognitions = VNCoreMLRequest(model: visionModel, completionHandler: detectionDidComplete)
-            self.requests = [recognitions]
+            
+            for _ in 0..<ObjectsRecognizerViewController.maxInflightBuffers {
+                let request = VNCoreMLRequest(model: visionModel,
+                                              completionHandler: detectionDidComplete)
+                
+                // NOTE: If you choose another crop/scale option, then you must also
+                // change how the BoundingBox objects get scaled when they are drawn.
+                // Currently they assume the full input image is used.
+                request.imageCropAndScaleOption = .scaleFill
+                requests.append(request)
+            }
         } catch {
             return
         }
     }
     
+    func predict(pixelBuffer: CVPixelBuffer, inflightIndex: Int) {
+        // Vision will automatically resize the input image.
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+        let request = requests[inflightIndex]
+        
+        // Because perform() will block until after the request completes, we
+        // run it on a concurrent background queue, so that the next frame can
+        // be scheduled in parallel with this one.
+        DispatchQueue.global().async {
+            try? handler.perform([request])
+        }
+    }
+    
     private func detectionDidComplete(request: VNRequest, error: Error?) {
-        DispatchQueue.main.async {
-            if let results = request.results {
-                self.extractDetections(results)
+        if let observations = request.results as? [VNCoreMLFeatureValueObservation] {
+            var boundingBoxes: [ObjectModel.ObjectPrediction] = []
+            for feature in observations {
+                if feature.featureName == "Identity" {
+                    boundingBoxes += self.objectModel.computeBoundingBoxes(
+                        features: feature.featureValue.multiArrayValue!,
+                        scale: 22,
+                        scaleIndex: 3
+                    )
+                } else if feature.featureName == "Identity_1" {
+                    boundingBoxes += self.objectModel.computeBoundingBoxes(
+                        features: feature.featureValue.multiArrayValue!,
+                        scale: 44,
+                        scaleIndex: 2
+                    )
+                } else if feature.featureName == "Identity_2" {
+                    boundingBoxes += self.objectModel.computeBoundingBoxes(
+                        features: feature.featureValue.multiArrayValue!,
+                        scale: 88,
+                        scaleIndex: 1
+                    )
+                }
             }
+            
+            // We already filtered out any bounding boxes that have very low scores,
+            // but there still may be boxes that overlap too much with others. We'll
+            // use "non-maximum suppression" to prune those duplicate bounding boxes.
+            boundingBoxes = nonMaxSuppression(boxes: boundingBoxes,
+                                              limit: ObjectModel.maxBoundingBoxes,
+                                              threshold: 0.4)
+            self.show(predictions: boundingBoxes)
         }
+        
+        self.semaphore.signal()
     }
     
-    private func extractDetections(_ results: [VNObservation]) {
-        detectionLayer.sublayers = nil
-        
-        for observation in results where observation is VNRecognizedObjectObservation {
-            guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
-            
-            let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox,
-                                                            Int(screenRect.size.width),
-                                                            Int(screenRect.size.height))
-            
-            let transformedBounds = CGRect(x: objectBounds.minX,
-                                           y: screenRect.size.height - objectBounds.maxY,
-                                           width: objectBounds.maxX - objectBounds.minX,
-                                           height: objectBounds.maxY - objectBounds.minY)
-            
-            let boxLayer = self.createBoundingBoxIn(transformedBounds)
-            let textLayer = self.createTextSubLayerIn(objectBounds,
-                                                      identifier: objectObservation.labels[0].identifier)
-
-            boxLayer.addSublayer(textLayer)
-            detectionLayer.addSublayer(boxLayer)
-            self.view.layer.addSublayer(detectionLayer)
-        }
-    }
-    
-    private func setupLayers() {
-        detectionLayer = CALayer()
-        detectionLayer.frame = CGRect(x: 0,
-                                      y: 0,
-                                      width: screenRect.size.width,
-                                      height: screenRect.size.height)
-        
+    private func show(predictions: [Prediction]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
             
-            self.view.layer.addSublayer(self.detectionLayer)
+            for i in 0..<boundingBoxes.count {
+                if i < predictions.count {
+                    let prediction = predictions[i]
+                    
+                    // The predicted bounding box is in the coordinate space of the input
+                    // image, which is a square image of 416x416 pixels. We want to show it
+                    // on the video preview, which is as wide as the screen and has a 16:9
+                    // aspect ratio. The video preview also may be letterboxed at the top
+                    // and bottom.
+                    let width = view.bounds.width
+                    let height = width * 16 / 9
+                    let scaleX = width / CGFloat(ObjectModel.inputWidth)
+                    let scaleY = height / CGFloat(ObjectModel.inputHeight)
+                    let top = (view.bounds.height - height) / 2
+                    
+                    // Translate and scale the rectangle to our own coordinate system.
+                    var rect = prediction.rect
+                    rect.origin.x *= scaleX
+                    rect.origin.y *= scaleY
+                    rect.origin.y += top
+                    rect.size.width *= scaleX
+                    rect.size.height *= scaleY
+                    
+                    // Show the bounding box.
+                    let classLabel = objectModel.labels[prediction.classIndex]
+                    let label = String(format: "%@ %.1f", classLabel, prediction.score * 100)
+                    let color = colors[prediction.classIndex]
+                    boundingBoxes[i].show(frame: rect, label: label, color: color)
+                } else {
+                    boundingBoxes[i].hide()
+                }
+            }
+            
+            for box in self.boundingBoxes {
+                box.addToLayer(self.previewLayer)
+            }
         }
-    }
-    
-    private func updateLayers() {
-        detectionLayer?.frame = CGRect(x: 0,
-                                       y: 0,
-                                       width: screenRect.size.width,
-                                       height: screenRect.size.height)
-    }
-    
-    private func createTextSubLayerIn(_ bounds: CGRect, identifier: String) -> CATextLayer {
-        let textLayer = CATextLayer()
-        textLayer.name = "Object Label"
-        let formattedIdentifierString = NSMutableAttributedString(string: String(format: "\(identifier)", identifier))
-        let largeFont = UIFont(name: "Helvetica",
-                               size: 24.0)!
-        
-        formattedIdentifierString.addAttributes([NSAttributedString.Key.font: largeFont,
-                                                 NSAttributedString.Key.foregroundColor: UIColor.yellow],
-                                                range: NSRange(location: 0,
-                                                               length: identifier.count))
-        
-        textLayer.string = formattedIdentifierString
-        
-        textLayer.bounds = CGRect(x: 0,
-                                  y: 0,
-                                  width: bounds.midX - 10,
-                                  height: bounds.midY - 10)
-        textLayer.position = CGPoint(x: bounds.midX - 5,
-                                     y: bounds.midY - 5)
-        textLayer.shadowOpacity = 0.7
-        textLayer.shadowOffset = CGSize(width: 2,
-                                        height: 2)
-        return textLayer
-    }
-    
-    private func createBoundingBoxIn(_ bounds: CGRect) -> CALayer {
-        let boxLayer = CALayer()
-        boxLayer.frame = bounds
-        boxLayer.borderWidth = 3.0
-        boxLayer.borderColor = UIColor.yellow.cgColor
-        boxLayer.cornerRadius = 4
-        return boxLayer
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -192,12 +254,24 @@ extension ObjectsRecognizerViewController {
             self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .up)
-
-        do {
-            try imageRequestHandler.perform(self.requests)
-        } catch {
+        guard let cvPixelBuffer = sampleBuffer.convertToPixelBuffer() else {
             return
         }
+        
+        // The semaphore will block the capture queue and drop frames when
+        // Core ML can't keep up with the camera.
+        semaphore.wait()
+        
+        // For better throughput, we want to schedule multiple prediction requests
+        // in parallel. These need to be separate instances, and inflightBuffer is
+        // the index of the current request.
+        let inflightIndex = inflightBuffer
+        inflightBuffer += 1
+        if inflightBuffer >= ObjectsRecognizerViewController.maxInflightBuffers {
+            inflightBuffer = 0
+        }
+        
+        self.predict(pixelBuffer: cvPixelBuffer,
+                     inflightIndex: inflightIndex)
     }
 }

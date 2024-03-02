@@ -15,7 +15,7 @@ class RoadLightsModel {
     var confidenceThreshold: Float = 0.3//0.15
     var iouThreshold: Float = 0.5
     
-    struct Prediction {
+    struct RoadLightsPrediction: Prediction {
         let classIndex: Int
         let score: Float
         let rect: CGRect
@@ -30,14 +30,12 @@ class RoadLightsModel {
     
     public init() { }
     
-    public func predict(image: CVPixelBuffer) throws -> [Prediction] {
+    public func predict(image: CVPixelBuffer) throws -> [RoadLightsPrediction] {
         return []
     }
     
-    public func computeBoundingBoxes(features: MLMultiArray) -> [Prediction] {
-        //assert(features.count == 125*13*13)
-        
-        var predictions = [Prediction]()
+    public func computeBoundingBoxes(features: MLMultiArray) -> [RoadLightsPrediction] {
+        var predictions = [RoadLightsPrediction]()
         
         let blockSize: Float = 32
         let gridHeight = 13//13//34
@@ -136,7 +134,7 @@ class RoadLightsModel {
                         let rect = CGRect(x: CGFloat(x - w/2), y: CGFloat(y - h/2),
                                           width: CGFloat(w), height: CGFloat(h))
                         
-                        let prediction = Prediction(classIndex: detectedClass,
+                        let prediction = RoadLightsPrediction(classIndex: detectedClass,
                                                     score: confidenceInClass,
                                                     rect: rect)
                         predictions.append(prediction)
@@ -148,6 +146,8 @@ class RoadLightsModel {
         // We already filtered out any bounding boxes that have very low scores,
         // but there still may be boxes that overlap too much with others. We'll
         // use "non-maximum suppression" to prune those duplicate bounding boxes.
-        return nonMaxSuppression(boxes: predictions, limit: RoadLightsModel.maxBoundingBoxes, threshold: iouThreshold)
+        return nonMaxSuppression(boxes: predictions, 
+                                 limit: RoadLightsModel.maxBoundingBoxes,
+                                 threshold: iouThreshold)
     }
 }

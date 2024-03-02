@@ -132,7 +132,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
     private func getVideoSettings() -> [String: Any]? {
         switch cameraMode {
         case .objectRecognizer:
-            return [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+            return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
         case .colorDetector:
             return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
         case .roadTrafficRecognizer:

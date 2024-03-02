@@ -26,16 +26,22 @@
 		1633119D2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633119C2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift */; };
 		1633119F2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633119E2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift */; };
 		163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */; };
-		163311A32B90AD7200896058 /* MakeML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311A22B90AD7200896058 /* MakeML.mlmodel */; };
 		163311A82B935A9600896058 /* RoadLightsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311A72B935A9600896058 /* RoadLightsModel.swift */; };
-		163311AC2B935BD100896058 /* RoadLightsModel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311AB2B935BD100896058 /* RoadLightsModel+Helpers.swift */; };
-		163311AE2B935D6700896058 /* Array+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311AD2B935D6700896058 /* Array+Comparable.swift */; };
-		163311B02B935DF100896058 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311AF2B935DF100896058 /* BoundingBox.swift */; };
+		163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311AD2B935D6700896058 /* Array+ArgMax.swift */; };
+		163311B02B935DF100896058 /* RoadLightsBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311AF2B935DF100896058 /* RoadLightsBoundingBox.swift */; };
 		163311B22B935E4900896058 /* RoadLightsPhaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311B12B935E4900896058 /* RoadLightsPhaseManager.swift */; };
 		163311B52B935EAB00896058 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311B42B935EAB00896058 /* FeedbackManager.swift */; };
 		163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311B72B935F2400896058 /* UtilsAssembly.swift */; };
 		163311BD2B936FF500896058 /* FeedbackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311BC2B936FF500896058 /* FeedbackType.swift */; };
 		163311BF2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311BE2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift */; };
+		163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311C32B939C9100896058 /* ObjectBoundingBox.swift */; };
+		163311C62B939CC800896058 /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311C52B939CC800896058 /* ObjectModel.swift */; };
+		163311CB2B939E8C00896058 /* IOU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311CA2B939E8C00896058 /* IOU.swift */; };
+		163311CD2B939EB800896058 /* Sigmoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311CC2B939EB800896058 /* Sigmoid.swift */; };
+		163311CF2B939EF200896058 /* Softmax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311CE2B939EF200896058 /* Softmax.swift */; };
+		163311D42B939F9C00896058 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D32B939F9C00896058 /* Prediction.swift */; };
+		163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D52B93A86E00896058 /* NonMaxSuppression.swift */; };
+		163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311D92B93BC6B00896058 /* YOLOV3.mlmodel */; };
 		16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */; };
 		16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
@@ -118,16 +124,22 @@
 		1633119C2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficRecognizerViewController.swift; sourceTree = "<group>"; };
 		1633119E2B90AC4200896058 /* RoadTrafficRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AmpelPilot_2812rg.mlmodel; sourceTree = "<group>"; };
-		163311A22B90AD7200896058 /* MakeML.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MakeML.mlmodel; sourceTree = "<group>"; };
 		163311A72B935A9600896058 /* RoadLightsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsModel.swift; sourceTree = "<group>"; };
-		163311AB2B935BD100896058 /* RoadLightsModel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoadLightsModel+Helpers.swift"; sourceTree = "<group>"; };
-		163311AD2B935D6700896058 /* Array+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Comparable.swift"; sourceTree = "<group>"; };
-		163311AF2B935DF100896058 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
+		163311AD2B935D6700896058 /* Array+ArgMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ArgMax.swift"; sourceTree = "<group>"; };
+		163311AF2B935DF100896058 /* RoadLightsBoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsBoundingBox.swift; sourceTree = "<group>"; };
 		163311B12B935E4900896058 /* RoadLightsPhaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsPhaseManager.swift; sourceTree = "<group>"; };
 		163311B42B935EAB00896058 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		163311B72B935F2400896058 /* UtilsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsAssembly.swift; sourceTree = "<group>"; };
 		163311BC2B936FF500896058 /* FeedbackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackType.swift; sourceTree = "<group>"; };
 		163311BE2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+ConvertToPixelBuffer.swift"; sourceTree = "<group>"; };
+		163311C32B939C9100896058 /* ObjectBoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectBoundingBox.swift; sourceTree = "<group>"; };
+		163311C52B939CC800896058 /* ObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
+		163311CA2B939E8C00896058 /* IOU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOU.swift; sourceTree = "<group>"; };
+		163311CC2B939EB800896058 /* Sigmoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sigmoid.swift; sourceTree = "<group>"; };
+		163311CE2B939EF200896058 /* Softmax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Softmax.swift; sourceTree = "<group>"; };
+		163311D32B939F9C00896058 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
+		163311D52B93A86E00896058 /* NonMaxSuppression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
+		163311D92B93BC6B00896058 /* YOLOV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOV3.mlmodel; sourceTree = "<group>"; };
 		16364AA12B506E22005BECC5 /* ObjectsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerView.swift; sourceTree = "<group>"; };
 		16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Int8LUT.mlmodel; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
@@ -311,8 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				163311A72B935A9600896058 /* RoadLightsModel.swift */,
-				163311AB2B935BD100896058 /* RoadLightsModel+Helpers.swift */,
-				163311AF2B935DF100896058 /* BoundingBox.swift */,
+				163311AF2B935DF100896058 /* RoadLightsBoundingBox.swift */,
 				163311B12B935E4900896058 /* RoadLightsPhaseManager.swift */,
 			);
 			path = Model;
@@ -335,14 +346,42 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		163311C02B939B3600896058 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				163311C52B939CC800896058 /* ObjectModel.swift */,
+				163311C32B939C9100896058 /* ObjectBoundingBox.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		163311C92B939E6F00896058 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				163311CA2B939E8C00896058 /* IOU.swift */,
+				163311CC2B939EB800896058 /* Sigmoid.swift */,
+				163311CE2B939EF200896058 /* Softmax.swift */,
+				163311D52B93A86E00896058 /* NonMaxSuppression.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		163311D22B939F9000896058 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				163311D32B939F9C00896058 /* Prediction.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		16364AA82B51B686005BECC5 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				163311D92B93BC6B00896058 /* YOLOV3.mlmodel */,
 				163311902B8D3C5600896058 /* AgeNet.mlmodel */,
 				163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */,
 				1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */,
 				1633118F2B8D3C5500896058 /* GenderNet.mlmodel */,
-				163311A22B90AD7200896058 /* MakeML.mlmodel */,
 				16364AAB2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel */,
 			);
 			path = MLModels;
@@ -377,6 +416,7 @@
 		164668F62B66D3A20049AB03 /* ObjectsRecognizer */ = {
 			isa = PBXGroup;
 			children = (
+				163311C02B939B3600896058 /* Model */,
 				16E170062B6FDA4000F984FB /* ViewModel */,
 				164668FA2B66D8CB0049AB03 /* ViewController */,
 				164668F92B66D8C60049AB03 /* View */,
@@ -506,11 +546,13 @@
 		164E11272B461717008EF153 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				164E11402B471D00008EF153 /* Structures */,
-				164E113B2B471C77008EF153 /* Modifiers */,
-				164E11312B471782008EF153 /* HelperViews */,
-				164E112E2B461B9A008EF153 /* Extensions */,
+				163311D22B939F9000896058 /* Protocols */,
 				164E11282B46171F008EF153 /* Enums */,
+				164E112E2B461B9A008EF153 /* Extensions */,
+				163311C92B939E6F00896058 /* Functions */,
+				164E11312B471782008EF153 /* HelperViews */,
+				164E113B2B471C77008EF153 /* Modifiers */,
+				164E11402B471D00008EF153 /* Structures */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -539,7 +581,7 @@
 			children = (
 				1670C6102B6EF853005CF24B /* CALayer+PickColor.swift */,
 				163311802B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift */,
-				163311AD2B935D6700896058 /* Array+Comparable.swift */,
+				163311AD2B935D6700896058 /* Array+ArgMax.swift */,
 				163311BE2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift */,
 			);
 			path = Extensions;
@@ -817,6 +859,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */,
+				163311C62B939CC800896058 /* ObjectModel.swift in Sources */,
+				163311CF2B939EF200896058 /* Softmax.swift in Sources */,
 				16E1700A2B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift in Sources */,
 				163311B52B935EAB00896058 /* FeedbackManager.swift in Sources */,
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
@@ -841,10 +885,12 @@
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
+				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
+				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
-				163311AE2B935D6700896058 /* Array+Comparable.swift in Sources */,
+				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				163311932B8D3C5600896058 /* AgeNet.mlmodel in Sources */,
@@ -858,11 +904,12 @@
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
 				1682D32F2B8AB3A70028CE73 /* DistanceMeasureViewControllerRepresentable.swift in Sources */,
 				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
-				163311B02B935DF100896058 /* BoundingBox.swift in Sources */,
+				163311B02B935DF100896058 /* RoadLightsBoundingBox.swift in Sources */,
 				1682D32D2B8AB3720028CE73 /* DistanceMeasureViewController.swift in Sources */,
 				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
+				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				163311A82B935A9600896058 /* RoadLightsModel.swift in Sources */,
@@ -870,7 +917,9 @@
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				1633119B2B90AC1000896058 /* RoadTrafficRecognizerViewModel.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,
+				163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */,
 				163311992B909BF200896058 /* RoadTrafficRecognizerView.swift in Sources */,
+				163311CB2B939E8C00896058 /* IOU.swift in Sources */,
 				1633119D2B90AC3B00896058 /* RoadTrafficRecognizerViewController.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
@@ -878,15 +927,14 @@
 				16364AAC2B51B6BE005BECC5 /* YOLOv3Int8LUT.mlmodel in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
-				163311AC2B935BD100896058 /* RoadLightsModel+Helpers.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
+				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,
 				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
 				163311B22B935E4900896058 /* RoadLightsPhaseManager.swift in Sources */,
 				163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */,
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
-				163311A32B90AD7200896058 /* MakeML.mlmodel in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */,
 			);

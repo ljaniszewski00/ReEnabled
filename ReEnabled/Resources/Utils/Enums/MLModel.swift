@@ -5,7 +5,7 @@ enum MLModelFile {
     case emotionsRecognizer
     case genderRecognizer
     case roadLightsRecognizer
-    case YOLOv3Int8LUT
+    case YOLOV3
 }
 
 extension MLModelFile {
@@ -24,8 +24,8 @@ extension MLModelFile {
             "GenderNet"
         case .roadLightsRecognizer:
             "AmpelPilot_2812rg"
-        case .YOLOv3Int8LUT:
-            "YOLOv3Int8LUT"
+        case .YOLOV3:
+            "YOLOV3"
         }
     }
 }

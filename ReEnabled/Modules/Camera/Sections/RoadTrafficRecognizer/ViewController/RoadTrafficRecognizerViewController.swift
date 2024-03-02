@@ -5,12 +5,14 @@ import Vision
 import CoreML
 
 class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    private let roadLightsModel = RoadLightsModel()
-    private let roadLightsPhaseManager = RoadLightsPhaseManager(confidenceThreshold: 0,
-                                                        maxDetections: RoadLightsModel.maxBoundingBoxes,
-                                                        minIOU: 0.3)
+    private let roadLightsModel: RoadLightsModel = RoadLightsModel()
+    private let roadLightsPhaseManager: RoadLightsPhaseManager = RoadLightsPhaseManager(
+        confidenceThreshold: 0,
+        maxDetections: RoadLightsModel.maxBoundingBoxes,
+        minIOU: 0.3
+    )
     
-    var boundingBoxes = [BoundingBox]()
+    var boundingBoxes = [RoadLightsBoundingBox]()
     var colors: [UIColor] = []
     
     @Inject private var captureSessionManager: CaptureSessionManaging
@@ -38,7 +40,7 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
                                     for: .roadTrafficRecognizer,
                                     cameraPosition: .back) {
             self.setupSessionPreviewLayer()
-            self.setUpBoundingBoxes()
+            self.setupBoundingBoxes()
             self.setupDetectors()
             DispatchQueue.main.async {
                 self.roadTrafficRecognizerViewModel?.canDisplayCamera = true
@@ -86,11 +88,11 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
         }
     }
     
-    func setUpBoundingBoxes() {
-        boundingBoxes = [BoundingBox]()
+    func setupBoundingBoxes() {
+        boundingBoxes = [RoadLightsBoundingBox]()
         
         for _ in 0..<RoadLightsModel.maxBoundingBoxes {
-            boundingBoxes.append(BoundingBox())
+            boundingBoxes.append(RoadLightsBoundingBox())
         }
         
         // Make colors for the bounding boxes. There is one color for each class, 20 classes in total.
@@ -145,28 +147,28 @@ extension RoadTrafficRecognizerViewController {
                 return
             }
             
-            print("Road Signs Recognition Results:")
-            for result in results {
-                print(result)
-            }
-            print()
-            
-            guard let observations = request.results as? [VNClassificationObservation] else {
-                return
-            }
-            
-            print("Road Signs Recognition Array:")
-            let recognizedRoadSignString = observations
-                .compactMap({ observation in
-                    observation.identifier
-                })
-            print(recognizedRoadSignString)
-            print()
-            
-            print("Recognized Road Sign:")
-            print(recognizedRoadSignString.first)
-            print()
-            self.roadTrafficRecognizerViewModel?.recognizedRoadSign = recognizedRoadSignString.first ?? ""
+//            print("Road Signs Recognition Results:")
+//            for result in results {
+//                print(result)
+//            }
+//            print()
+//            
+//            guard let observations = request.results as? [VNClassificationObservation] else {
+//                return
+//            }
+//            
+//            print("Road Signs Recognition Array:")
+//            let recognizedRoadSignString = observations
+//                .compactMap({ observation in
+//                    observation.identifier
+//                })
+//            print(recognizedRoadSignString)
+//            print()
+//            
+//            print("Recognized Road Sign:")
+//            print(recognizedRoadSignString.first)
+//            print()
+//            self.roadTrafficRecognizerViewModel?.recognizedRoadSign = recognizedRoadSignString.first ?? ""
         }
     }
     
@@ -187,7 +189,6 @@ extension RoadTrafficRecognizerViewController {
             self.roadLightsPhaseManager.add(predictions: boundingBoxes)
             
             let lightPhase = roadLightsPhaseManager.determine()
-            print(lightPhase)
             self.show(predictions: boundingBoxes)
         }
     }
@@ -201,7 +202,8 @@ extension RoadTrafficRecognizerViewController {
             return
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, orientation: .up)
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, 
+                                                        orientation: .up)
 
         do {
             try imageRequestHandler.perform(self.roadSignsRequests)
@@ -211,7 +213,7 @@ extension RoadTrafficRecognizerViewController {
         }
     }
     
-    private func show(predictions: [RoadLightsModel.Prediction]) {
+    private func show(predictions: [RoadLightsModel.RoadLightsPrediction]) {
         for i in 0..<boundingBoxes.count {
             if i < predictions.count {
                 let prediction = predictions[i]
