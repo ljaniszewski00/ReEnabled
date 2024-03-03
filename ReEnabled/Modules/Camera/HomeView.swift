@@ -29,6 +29,8 @@ struct HomeView: View {
 //                CurrencyDetectorView()
 //            case .facialRecognizer:
 //                FacialRecognizerView()
+            case .pedestrianCrossingRecognizer:
+                PedestrianCrossingRecognizerView()
             case .roadTrafficRecognizer:
                 RoadTrafficRecognizerView()
             }

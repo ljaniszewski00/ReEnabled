@@ -10,9 +10,10 @@ final class CaptureSessionManager: CaptureSessionManaging {
                                                      autoreleaseFrequency: .workItem)
     
     private var bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
-    private var cameraMode: CameraMode?
+    var cameraMode: CameraMode?
     
     private var videoDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video)
+    var bufferSize: CGSize = .zero
     
     var captureSession: AVCaptureSession!
     
@@ -98,6 +99,10 @@ final class CaptureSessionManager: CaptureSessionManaging {
                     self.manageFlashlight(for: nil, force: .auto)
                 }
                 
+                let dimensions = CMVideoFormatDescriptionGetDimensions((videoDevice.activeFormat.formatDescription))
+                bufferSize.width = CGFloat(dimensions.width)
+                bufferSize.height = CGFloat(dimensions.height)
+                
                 videoDevice.unlockForConfiguration()
             } catch {
                 return
@@ -137,6 +142,8 @@ final class CaptureSessionManager: CaptureSessionManaging {
             return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
         case .roadTrafficRecognizer:
             return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
+        case .pedestrianCrossingRecognizer:
+            return [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
         default:
             return nil
         }
@@ -152,6 +159,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
 }
 
 protocol CaptureSessionManaging {
+    var bufferSize: CGSize { get }
     var captureSession: AVCaptureSession! { get }
     
     func manageFlashlight(for sampleBuffer: CMSampleBuffer?,

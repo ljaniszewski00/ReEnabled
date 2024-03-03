@@ -15,7 +15,6 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
     private var colors: [UIColor] = []
     
     private let ciContext = CIContext()
-    private var resizedPixelBuffers: [CVPixelBuffer?] = []
     
     var inflightBuffer = 0
     let semaphore = DispatchSemaphore(value: maxInflightBuffers)
@@ -38,7 +37,6 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDetector()
-        self.setupCoreImage()
         captureSessionManager.setUp(with: self,
                                     for: .objectRecognizer,
                                     cameraPosition: .back) {
@@ -109,29 +107,8 @@ extension ObjectsRecognizerViewController {
         }
     }
     
-    func setupCoreImage() {
-        // Since we might be running several requests in parallel, we also need
-        // to do the resizing in different pixel buffers or we might overwrite a
-        // pixel buffer that's already in use.
-        for _ in 0..<ObjectsRecognizerViewController.maxInflightBuffers {
-            var resizedPixelBuffer: CVPixelBuffer?
-            let status = CVPixelBufferCreate(nil,
-                                             ObjectModel.inputWidth,
-                                             ObjectModel.inputHeight,
-                                             kCVPixelFormatType_32BGRA, 
-                                             nil,
-                                             &resizedPixelBuffer)
-            
-            if status != kCVReturnSuccess {
-                print("Error: could not create resized pixel buffer", status)
-            }
-            
-            resizedPixelBuffers.append(resizedPixelBuffer)
-        }
-    }
-    
     func setupDetector() {
-        guard let modelURL = Bundle.main.url(forResource: MLModelFile.YOLOV3.fileName,
+        guard let modelURL = Bundle.main.url(forResource: MLModelFile.objectsRecognizer.fileName,
                                              withExtension: "mlmodelc") else {
             return
         }
@@ -195,6 +172,7 @@ extension ObjectsRecognizerViewController {
             // We already filtered out any bounding boxes that have very low scores,
             // but there still may be boxes that overlap too much with others. We'll
             // use "non-maximum suppression" to prune those duplicate bounding boxes.
+            // The bigger threshold the bigger number of allowed bounding boxes.
             boundingBoxes = nonMaxSuppression(boxes: boundingBoxes,
                                               limit: ObjectModel.maxBoundingBoxes,
                                               threshold: 0.4)

@@ -11,9 +11,3 @@ struct RoadTrafficRecognizerView: View {
 #Preview {
     RoadTrafficRecognizerView()
 }
-
-private extension Views {
-    struct Constants {
-        static let recognitionsBottomPadding: CGFloat = 100
-    }
-}

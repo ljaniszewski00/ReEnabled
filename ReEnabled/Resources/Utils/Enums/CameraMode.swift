@@ -7,6 +7,7 @@ enum CameraMode: String {
 //    case currencyDetector = "Currency Detector"
 //    case facialRecognizer = "Facial Recognizer"
     case roadTrafficRecognizer = "Road Traffic Recognizer"
+    case pedestrianCrossingRecognizer = "Pedestrian Crossing Recognizer"
 }
 
 extension CameraMode {
@@ -20,6 +21,7 @@ extension CameraMode {
 //            .currencyDetector,
 //            .facialRecognizer,
             .roadTrafficRecognizer,
+            .pedestrianCrossingRecognizer
         ]
     }
 }

@@ -107,24 +107,24 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
 
 extension RoadTrafficRecognizerViewController {
     private func setupDetectors() {
-        setupRoadSignsDetector()
+//        setupRoadSignsDetector()
         setupRoadLightsDetector()
     }
     
-    private func setupRoadSignsDetector() {
-        let roadSignsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.roadSignsRecognizer.fileName,
-                                                       withExtension: "mlmodelc")
-    
-        do {
-            if let roadSignsRecognizerModelURL = roadSignsRecognizerModelURL {
-                let visionRoadSignsModel = try VNCoreMLModel(for: MLModel(contentsOf: roadSignsRecognizerModelURL))
-                let request = VNCoreMLRequest(model: visionRoadSignsModel, completionHandler: roadSignsDetectionDidComplete)
-                self.roadSignsRequests = [request]
-            }
-        } catch {
-            return
-        }
-    }
+//    private func setupRoadSignsDetector() {
+//        let roadSignsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.roadSignsRecognizer.fileName,
+//                                                       withExtension: "mlmodelc")
+//    
+//        do {
+//            if let roadSignsRecognizerModelURL = roadSignsRecognizerModelURL {
+//                let visionRoadSignsModel = try VNCoreMLModel(for: MLModel(contentsOf: roadSignsRecognizerModelURL))
+//                let request = VNCoreMLRequest(model: visionRoadSignsModel, completionHandler: roadSignsDetectionDidComplete)
+//                self.roadSignsRequests = [request]
+//            }
+//        } catch {
+//            return
+//        }
+//    }
     
     private func setupRoadLightsDetector() {
         let roadLightsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.roadLightsRecognizer.fileName,

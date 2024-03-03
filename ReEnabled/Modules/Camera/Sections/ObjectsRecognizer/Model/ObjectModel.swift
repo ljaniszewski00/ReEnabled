@@ -102,7 +102,7 @@ class ObjectModel {
         var rect: CGRect
     }
     
-    let model = Bundle.main.url(forResource: MLModelFile.YOLOV3.fileName,
+    let model = Bundle.main.url(forResource: MLModelFile.objectsRecognizer.fileName,
                                 withExtension: "mlmodelc")
     
     public init() { }

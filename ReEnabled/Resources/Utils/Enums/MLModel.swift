@@ -1,11 +1,11 @@
 enum MLModelFile {
     case ageRecognizer
-    case roadSignsRecognizer
     case currencyDetector
     case emotionsRecognizer
     case genderRecognizer
+    case pedestrianCrossingRecognizer
     case roadLightsRecognizer
-    case YOLOV3
+    case objectsRecognizer
 }
 
 extension MLModelFile {
@@ -14,17 +14,17 @@ extension MLModelFile {
         switch self {
         case .ageRecognizer:
             "AgeNet"
-        case .roadSignsRecognizer:
-            "MakeML"
         case .currencyDetector:
             "CurrencyDetector"
         case .emotionsRecognizer:
             "CNNEmotions"
         case .genderRecognizer:
             "GenderNet"
+        case .pedestrianCrossingRecognizer:
+            "LytNetV1"
         case .roadLightsRecognizer:
             "AmpelPilot_2812rg"
-        case .YOLOV3:
+        case .objectsRecognizer:
             "YOLOV3"
         }
     }
