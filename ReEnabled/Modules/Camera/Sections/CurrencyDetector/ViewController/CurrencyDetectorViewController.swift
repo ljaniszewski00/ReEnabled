@@ -27,7 +27,8 @@ class CurrencyDetectorViewController: UIViewController, AVCaptureVideoDataOutput
         super.viewDidLoad()
         captureSessionManager.setUp(with: self, 
                                     for: .objectRecognizer,
-                                    cameraPosition: .back) {
+                                    cameraPosition: .back,
+                                    desiredFrameRate: 30) {
             self.setupSessionPreviewLayer()
             self.setupDetector()
             DispatchQueue.main.async {
@@ -131,10 +132,11 @@ extension CurrencyDetectorViewController {
             self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+        let exifOrientation = exifOrientationFromDeviceOrientation()
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation)
 
         do {
-            try imageRequestHandler.perform(self.requests)
+            try handler.perform(self.requests)
         } catch {
             return
         }

@@ -14,9 +14,9 @@
             filePath = "ReEnabled/Modules/Camera/Sections/PedestrianCrossingRecognizer/ViewController/PedestrianCrossingRecognizerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "setupLayers()"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "drawVisionRequestResults(label:points:color:color2:label2:points2:angle:start:transposed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -30,9 +30,9 @@
             filePath = "ReEnabled/Modules/Camera/Sections/PedestrianCrossingRecognizer/ViewController/PedestrianCrossingRecognizerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "setupLayers()"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "drawVisionRequestResults(label:points:color:color2:label2:points2:angle:start:transposed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "ReEnabled/Modules/Camera/Sections/PedestrianCrossingRecognizer/ViewController/PedestrianCrossingRecognizerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
-            landmarkName = "setupLayers()"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "drawVisionRequestResults(label:points:color:color2:label2:points2:angle:start:transposed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,9 +62,9 @@
             filePath = "ReEnabled/Modules/Camera/Sections/PedestrianCrossingRecognizer/ViewController/PedestrianCrossingRecognizerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
-            landmarkName = "setupLayers()"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "drawVisionRequestResults(label:points:color:color2:label2:points2:angle:start:transposed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

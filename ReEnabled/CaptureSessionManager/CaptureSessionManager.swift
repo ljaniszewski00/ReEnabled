@@ -11,6 +11,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
     
     private var bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
     var cameraMode: CameraMode?
+    private var desiredFrameRate: Double = 30
     
     private var videoDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video)
     var bufferSize: CGSize = .zero
@@ -20,11 +21,13 @@ final class CaptureSessionManager: CaptureSessionManaging {
     func setUp(with bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
                for cameraMode: CameraMode,
                cameraPosition: AVCaptureDevice.Position,
+               desiredFrameRate: Double,
                completion: @escaping () -> ()) {
         stopCaptureSession()
         
         self.bufferDelegate = bufferDelegate
         self.cameraMode = cameraMode
+        self.desiredFrameRate = desiredFrameRate
         
         switch cameraPosition {
         case .unspecified:
@@ -92,6 +95,22 @@ final class CaptureSessionManager: CaptureSessionManaging {
             videoOutput.setSampleBufferDelegate(self.bufferDelegate,
                                                 queue: videoDataOutputQueue)
             
+            let sessionPreset: SessionPreset = .hd1280x720
+            
+            var formatToSet: AVCaptureDevice.Format = videoDevice.formats[0]
+            
+            for format in videoDevice.formats.reversed() {
+                let ranges = format.videoSupportedFrameRateRanges
+                let frameRates = ranges[0]
+
+                if desiredFrameRate <= frameRates.maxFrameRate,
+                   format.formatDescription.dimensions.width == sessionPreset.formatWidth,
+                   format.formatDescription.dimensions.height == sessionPreset.formatHeight {
+                    formatToSet = format
+                    break
+                }
+            }
+            
             do {
                 try videoDevice.lockForConfiguration()
                 
@@ -102,6 +121,14 @@ final class CaptureSessionManager: CaptureSessionManaging {
                 let dimensions = CMVideoFormatDescriptionGetDimensions((videoDevice.activeFormat.formatDescription))
                 bufferSize.width = CGFloat(dimensions.width)
                 bufferSize.height = CGFloat(dimensions.height)
+                
+                videoDevice.activeFormat = formatToSet
+
+                let timescale = CMTimeScale(desiredFrameRate)
+                if videoDevice.activeFormat.videoSupportedFrameRateRanges[0].maxFrameRate >= desiredFrameRate {
+                    videoDevice.activeVideoMinFrameDuration = CMTime(value: 1, timescale: timescale)
+                    videoDevice.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: timescale)
+                }
                 
                 videoDevice.unlockForConfiguration()
             } catch {
@@ -125,7 +152,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
                 videoOutput.connection(with: .video)?.videoOrientation = .portrait
             }
             
-            captureSession.sessionPreset = .hd1280x720
+            captureSession.sessionPreset = sessionPreset.preset
             captureSession.commitConfiguration()
             
             self.captureSession = captureSession
@@ -167,6 +194,7 @@ protocol CaptureSessionManaging {
     func setUp(with bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
                for cameraMode: CameraMode,
                cameraPosition: AVCaptureDevice.Position,
+               desiredFrameRate: Double,
                completion: @escaping () -> ())
     func startCaptureSession()
     func stopCaptureSession()

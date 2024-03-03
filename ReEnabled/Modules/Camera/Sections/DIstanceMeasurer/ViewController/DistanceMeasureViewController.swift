@@ -29,7 +29,8 @@ class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureDepthSessionManager.setUp(with: depthDataOutput, and: self) {
+        captureDepthSessionManager.setUp(with: depthDataOutput,
+                                         and: self) {
             self.setupUI()
             DispatchQueue.main.async {
                 self.distanceMeasureViewModel?.canDisplayCamera = true
@@ -64,8 +65,8 @@ class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputD
             
             depthMeasurementsLeftInLoop -= 1
             
-            let printStr = String(format: "Measurement %d: %.2f cm",
-                depthMeasurementRepeats - depthMeasurementsLeftInLoop, measurement)
+//            let printStr = String(format: "Measurement %d: %.2f cm",
+//                depthMeasurementRepeats - depthMeasurementsLeftInLoop, measurement)
             
             DispatchQueue.main.async { [weak self] in
                 self?.distanceMeasureViewModel?.distanceString = String(format: "%.2f", measurement)

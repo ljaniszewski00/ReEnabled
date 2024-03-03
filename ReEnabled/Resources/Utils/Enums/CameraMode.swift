@@ -30,9 +30,9 @@ extension CameraMode {
     static var modesWithPortraitVideoConnection: [CameraMode] {
         [
             .objectRecognizer,
-            .lightDetector,
 //            .facialRecognizer,
-            .roadTrafficRecognizer
+            .roadTrafficRecognizer,
+            .pedestrianCrossingRecognizer
         ]
     }
 }

@@ -74,6 +74,7 @@
 		1651172F2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172E2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift */; };
 		165117312B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117302B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift */; };
 		165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117322B94A4E700779E89 /* ExifOrientation.swift */; };
+		165117352B94F41D00779E89 /* SessionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117342B94F41D00779E89 /* SessionPreset.swift */; };
 		165795BD2B549DD6009142C1 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 165795BC2B549DD6009142C1 /* OpenAI */; };
 		1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6092B6ED76E005CF24B /* DetectorFrame.swift */; };
 		1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C60B2B6ED795005CF24B /* ColorDetectorView.swift */; };
@@ -178,6 +179,7 @@
 		1651172E2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerView.swift; sourceTree = "<group>"; };
 		165117302B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		165117322B94A4E700779E89 /* ExifOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifOrientation.swift; sourceTree = "<group>"; };
+		165117342B94F41D00779E89 /* SessionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPreset.swift; sourceTree = "<group>"; };
 		1670C6092B6ED76E005CF24B /* DetectorFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorFrame.swift; sourceTree = "<group>"; };
 		1670C60B2B6ED795005CF24B /* ColorDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorView.swift; sourceTree = "<group>"; };
 		1670C60E2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */,
 				162856C32B8ABCA300691759 /* CaptureDepthSessionManager.swift */,
 				163311862B8D2A9500896058 /* FlashlightManager.swift */,
+				165117342B94F41D00779E89 /* SessionPreset.swift */,
 			);
 			path = CaptureSessionManager;
 			sourceTree = "<group>";
@@ -984,6 +987,7 @@
 				163311B22B935E4900896058 /* RoadLightsPhaseManager.swift in Sources */,
 				163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */,
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
+				165117352B94F41D00779E89 /* SessionPreset.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				165117312B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,

@@ -21,7 +21,6 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
     private var previewLayer = AVCaptureVideoPreviewLayer()
     var screenRect: CGRect! = nil
     
-    private var roadSignsRequests = [VNRequest]()
     private var roadLightsRequests = [VNRequest]()
     
     init(roadTrafficRecognizerViewModel: RoadTrafficRecognizerViewModel) {
@@ -38,7 +37,8 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
         super.viewDidLoad()
         captureSessionManager.setUp(with: self,
                                     for: .roadTrafficRecognizer,
-                                    cameraPosition: .back) {
+                                    cameraPosition: .back,
+                                    desiredFrameRate: 15) {
             self.setupSessionPreviewLayer()
             self.setupBoundingBoxes()
             self.setupDetectors()
@@ -141,37 +141,6 @@ extension RoadTrafficRecognizerViewController {
         }
     }
     
-    private func roadSignsDetectionDidComplete(request: VNRequest, error: Error?) {
-        DispatchQueue.main.async {
-            guard let results = request.results else {
-                return
-            }
-            
-//            print("Road Signs Recognition Results:")
-//            for result in results {
-//                print(result)
-//            }
-//            print()
-//            
-//            guard let observations = request.results as? [VNClassificationObservation] else {
-//                return
-//            }
-//            
-//            print("Road Signs Recognition Array:")
-//            let recognizedRoadSignString = observations
-//                .compactMap({ observation in
-//                    observation.identifier
-//                })
-//            print(recognizedRoadSignString)
-//            print()
-//            
-//            print("Recognized Road Sign:")
-//            print(recognizedRoadSignString.first)
-//            print()
-//            self.roadTrafficRecognizerViewModel?.recognizedRoadSign = recognizedRoadSignString.first ?? ""
-        }
-    }
-    
     private func roadLightsDetectionDidComplete(request: VNRequest, error: Error?) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self,
@@ -179,7 +148,7 @@ extension RoadTrafficRecognizerViewController {
                 return
             }
             
-            guard let observations = request.results as? [VNCoreMLFeatureValueObservation],
+            guard let observations = results as? [VNCoreMLFeatureValueObservation],
                   let features = observations.first?.featureValue.multiArrayValue else {
                 return
             }
@@ -202,11 +171,11 @@ extension RoadTrafficRecognizerViewController {
             return
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, 
-                                                        orientation: .up)
+        let exifOrientation = exifOrientationFromDeviceOrientation()
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer,
+                                                        orientation: exifOrientation)
 
         do {
-            try imageRequestHandler.perform(self.roadSignsRequests)
             try imageRequestHandler.perform(self.roadLightsRequests)
         } catch {
             return

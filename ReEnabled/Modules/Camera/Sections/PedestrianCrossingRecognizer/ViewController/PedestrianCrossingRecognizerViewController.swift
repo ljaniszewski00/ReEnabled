@@ -106,14 +106,16 @@ class PedestrianCrossingRecognizerViewController: UIViewController, AVCaptureVid
         super.viewDidLoad()
         captureSessionManager.setUp(with: self,
                                     for: .pedestrianCrossingRecognizer,
-                                    cameraPosition: .back) {
+                                    cameraPosition: .back,
+                                    desiredFrameRate: 21) {
             self.setupSessionPreviewLayer()
             self.setupLayers()
             self.updateLayerGeometry()
             self.setupDetector()
-            self.setupLabel()
             
             DispatchQueue.main.async {
+                self.addSubviews()
+                self.setupLabel()
                 self.pedestrianCrossingRecognizerViewModel?.canDisplayCamera = true
             }
         }
@@ -138,6 +140,13 @@ class PedestrianCrossingRecognizerViewController: UIViewController, AVCaptureVid
         default:
             break
         }
+    }
+    
+    private func addSubviews() {
+        view.addSubview(label)
+        view.addSubview(five_frame_average)
+        view.addSubview(angle_decision)
+        view.addSubview(start_decision)
     }
     
     private func setupSessionPreviewLayer() {
@@ -370,24 +379,18 @@ extension PedestrianCrossingRecognizerViewController {
     }
 
     private func setupLabel() {
-//        label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -150).isActive = true
-//        label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
-//        label.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
-//        time_label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -80).isActive = true
-//        time_label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
-//        time_label.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
-//        fps_label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -115).isActive = true
-//        fps_label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
-//        fps_label.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
-//        five_frame_average.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant:-45).isActive = true
-//        five_frame_average.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
-//        five_frame_average.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
-//        angle_decision.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -15).isActive = true
-//        angle_decision.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
-//        angle_decision.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
-//        start_decision.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 20).isActive = true
-//        start_decision.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
-//        start_decision.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -150).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
+        label.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
+        five_frame_average.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant:-45).isActive = true
+        five_frame_average.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
+        five_frame_average.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
+        angle_decision.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -15).isActive = true
+        angle_decision.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
+        angle_decision.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
+        start_decision.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 20).isActive = true
+        start_decision.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -210).isActive = true
+        start_decision.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -400,12 +403,11 @@ extension PedestrianCrossingRecognizerViewController {
         }
         
         let exifOrientation = exifOrientationFromDeviceOrientation()
-        
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer,
-                                                        orientation: exifOrientation)
+        let handler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer,
+                                            orientation: exifOrientation)
 
         do {
-            try imageRequestHandler.perform(self.requests)
+            try handler.perform(self.requests)
         } catch {
             return
         }

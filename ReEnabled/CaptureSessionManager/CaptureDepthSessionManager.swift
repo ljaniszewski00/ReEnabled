@@ -60,7 +60,9 @@ final class CaptureDepthSessionManager: CaptureDepthSessionManaging {
 
             captureSession.beginConfiguration()
             
-            captureSession.sessionPreset = AVCaptureSession.Preset.vga640x480
+            let sessionPreset: SessionPreset = .hd1280x720
+            
+            captureSession.sessionPreset = sessionPreset.preset
             
             if captureSession.canAddInput(videoDeviceInput) {
                 captureSession.addInput(videoDeviceInput)
@@ -92,12 +94,11 @@ final class CaptureDepthSessionManager: CaptureDepthSessionManaging {
                     
             do {
                 try videoDevice.lockForConfiguration()
+                videoDevice.activeDepthDataFormat = selectedFormat
+                videoDevice.unlockForConfiguration()
             } catch {
                 return
             }
-            
-            videoDevice.activeDepthDataFormat = selectedFormat
-            videoDevice.unlockForConfiguration()
             
             captureSession.commitConfiguration()
             

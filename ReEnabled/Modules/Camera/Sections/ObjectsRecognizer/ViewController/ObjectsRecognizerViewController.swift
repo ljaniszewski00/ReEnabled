@@ -39,7 +39,8 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
         self.setupDetector()
         captureSessionManager.setUp(with: self,
                                     for: .objectRecognizer,
-                                    cameraPosition: .back) {
+                                    cameraPosition: .back,
+                                    desiredFrameRate: 20) {
             self.setupSessionPreviewLayer()
             self.setupBoundingBoxes()
             DispatchQueue.main.async {
@@ -133,7 +134,8 @@ extension ObjectsRecognizerViewController {
     
     func predict(pixelBuffer: CVPixelBuffer, inflightIndex: Int) {
         // Vision will automatically resize the input image.
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+        let exifOrientation = exifOrientationFromDeviceOrientation()
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation)
         let request = requests[inflightIndex]
         
         // Because perform() will block until after the request completes, we

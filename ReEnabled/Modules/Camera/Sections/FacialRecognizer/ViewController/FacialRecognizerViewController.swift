@@ -29,7 +29,8 @@ class FacialRecognizerViewController: UIViewController, AVCaptureVideoDataOutput
         super.viewDidLoad()
         captureSessionManager.setUp(with: self,
                                     for: .objectRecognizer,
-                                    cameraPosition: .front) {
+                                    cameraPosition: .front,
+                                    desiredFrameRate: 30) {
             self.setupSessionPreviewLayer()
             self.setupDetectors()
             DispatchQueue.main.async {

@@ -22,7 +22,8 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
         super.viewDidLoad()
         captureSessionManager.setUp(with: self, 
                                     for: .lightDetector,
-                                    cameraPosition: .back) {
+                                    cameraPosition: .back,
+                                    desiredFrameRate: 30) {
             self.setupUI()
             DispatchQueue.main.async {
                 self.lightDetectorViewModel?.canDisplayCamera = true
@@ -52,7 +53,6 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
                                     width: screenRect.size.width,
                                     height: screenRect.size.height)
         previewLayer.videoGravity = .resizeAspectFill
-        previewLayer.connection?.videoOrientation = .portrait
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
