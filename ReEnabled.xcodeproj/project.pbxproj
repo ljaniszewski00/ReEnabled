@@ -96,6 +96,11 @@
 		16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E170072B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift */; };
 		16E1700A2B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E170092B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift */; };
 		16E1700F2B6FED6100F984FB /* ObjectsRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1700E2B6FED6100F984FB /* ObjectsRecognizerViewController.swift */; };
+		16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */; };
+		16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */; };
+		16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564822B96623500A831F2 /* PedestrianCrossingLightType.swift */; };
+		16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564842B9662F300A831F2 /* PersonPositionActionType.swift */; };
+		16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564862B96634000A831F2 /* DeviceOrientationActionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,6 +205,11 @@
 		16E170072B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewModel.swift; sourceTree = "<group>"; };
 		16E170092B6FDA9C00F984FB /* ObjectsRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16E1700E2B6FED6100F984FB /* ObjectsRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewController.swift; sourceTree = "<group>"; };
+		16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingModel.swift; sourceTree = "<group>"; };
+		16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingPrediction.swift; sourceTree = "<group>"; };
+		16F564822B96623500A831F2 /* PedestrianCrossingLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingLightType.swift; sourceTree = "<group>"; };
+		16F564842B9662F300A831F2 /* PersonPositionActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPositionActionType.swift; sourceTree = "<group>"; };
+		16F564862B96634000A831F2 /* DeviceOrientationActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOrientationActionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -668,6 +678,7 @@
 		165117262B94A0FB00779E89 /* PedestrianCrossingRecognizer */ = {
 			isa = PBXGroup;
 			children = (
+				16F5647D2B9655E200A831F2 /* Model */,
 				165117292B94A13500779E89 /* ViewModel */,
 				165117282B94A13000779E89 /* ViewController */,
 				165117272B94A12900779E89 /* View */,
@@ -829,6 +840,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		16F5647D2B9655E200A831F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */,
+				16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */,
+				16F564822B96623500A831F2 /* PedestrianCrossingLightType.swift */,
+				16F564842B9662F300A831F2 /* PersonPositionActionType.swift */,
+				16F564862B96634000A831F2 /* DeviceOrientationActionType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -950,6 +973,7 @@
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
 				163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */,
+				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
@@ -980,8 +1004,10 @@
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
+				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
+				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,
 				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,
 				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
 				163311B22B935E4900896058 /* RoadLightsPhaseManager.swift in Sources */,
@@ -991,8 +1017,10 @@
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				165117312B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
+				16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				16364AA22B506E22005BECC5 /* ObjectsRecognizerView.swift in Sources */,
+				16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

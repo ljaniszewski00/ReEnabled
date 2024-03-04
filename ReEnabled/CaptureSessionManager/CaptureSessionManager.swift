@@ -11,7 +11,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
     
     private var bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
     var cameraMode: CameraMode?
-    private var desiredFrameRate: Double = 30
+    private var desiredFrameRate: Double?
     
     private var videoDevice: AVCaptureDevice?
     private let videoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession(deviceTypes:
@@ -107,6 +107,10 @@ final class CaptureSessionManager: CaptureSessionManaging {
             let sessionPreset: SessionPreset = .hd1280x720
             
             var formatToSet: AVCaptureDevice.Format = videoDevice.formats[0]
+            
+            guard let desiredFrameRate = desiredFrameRate else {
+                return
+            }
             
             for format in videoDevice.formats.reversed() {
                 let ranges = format.videoSupportedFrameRateRanges
