@@ -16,7 +16,7 @@ final class FlashlightManager: FlashlightManaging {
             return
         }
         
-        if luminosity < 1 {
+        if luminosity < 1.6 {
             setTorchMode(.on, for: captureDevice)
         } else {
             setTorchMode(.off, for: captureDevice)

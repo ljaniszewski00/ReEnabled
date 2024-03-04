@@ -13,7 +13,11 @@ final class CaptureSessionManager: CaptureSessionManaging {
     var cameraMode: CameraMode?
     private var desiredFrameRate: Double = 30
     
-    private var videoDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video)
+    private var videoDevice: AVCaptureDevice?
+    private let videoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession(deviceTypes:
+                                                                                    [.builtInWideAngleCamera, .builtInDualWideCamera, .builtInUltraWideCamera, .builtInTelephotoCamera],
+                                                                                   mediaType: .video,
+                                                                                   position: .back).devices
     var bufferSize: CGSize = .zero
     
     var captureSession: AVCaptureSession!
@@ -29,16 +33,7 @@ final class CaptureSessionManager: CaptureSessionManaging {
         self.cameraMode = cameraMode
         self.desiredFrameRate = desiredFrameRate
         
-        switch cameraPosition {
-        case .unspecified:
-            self.videoDevice = AVCaptureDevice.default(for: .video)
-        case .back:
-            self.videoDevice = AVCaptureDevice.default(for: .video)
-        case .front:
-            self.videoDevice = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
-        @unknown default:
-            self.videoDevice = AVCaptureDevice.default(for: .video)
-        }
+        chooseVideoDevice(cameraPosition: cameraPosition)
         
         authorizeCaptureSession {
             completion()
@@ -49,6 +44,20 @@ final class CaptureSessionManager: CaptureSessionManaging {
         flashlightManager.manageFlashlight(for: sampleBuffer,
                                            and: self.videoDevice,
                                            force: torchMode)
+    }
+    
+    private func chooseVideoDevice(cameraPosition: AVCaptureDevice.Position) {
+        guard !videoDevices.isEmpty else {
+            self.videoDevice = AVCaptureDevice.default(for: .video)
+            return
+        }
+        
+        switch cameraPosition {
+        case .front:
+            self.videoDevice = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
+        default:
+            self.videoDevice = videoDevices.first(where: { device in device.position == cameraPosition })!
+        }
     }
     
     private func authorizeCaptureSession(completion: @escaping () -> ())  {
