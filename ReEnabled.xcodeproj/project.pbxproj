@@ -86,6 +86,13 @@
 		1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1852B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift */; };
 		1694F1882B98EF9400928103 /* MainRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1872B98EF9400928103 /* MainRecognizerView.swift */; };
 		1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F18A2B98F37A00928103 /* ObjectsRecognizing.swift */; };
+		1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F18D2B98FBE300928103 /* RoadLightsRecognizing.swift */; };
+		1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1902B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift */; };
+		1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1922B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift */; };
+		1694F1962B98FD2F00928103 /* DistanceMeasuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1952B98FD2F00928103 /* DistanceMeasuring.swift */; };
+		1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1972B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift */; };
+		1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */; };
+		1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -196,6 +203,13 @@
 		1694F1852B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		1694F1872B98EF9400928103 /* MainRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerView.swift; sourceTree = "<group>"; };
 		1694F18A2B98F37A00928103 /* ObjectsRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizing.swift; sourceTree = "<group>"; };
+		1694F18D2B98FBE300928103 /* RoadLightsRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizing.swift; sourceTree = "<group>"; };
+		1694F1902B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+ObjectsRecognizing.swift"; sourceTree = "<group>"; };
+		1694F1922B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+DistanceMeasuring.swift"; sourceTree = "<group>"; };
+		1694F1952B98FD2F00928103 /* DistanceMeasuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasuring.swift; sourceTree = "<group>"; };
+		1694F1972B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+RoadLightsRecognizing.swift"; sourceTree = "<group>"; };
+		1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+PedestrianCrossingRecognizing.swift"; sourceTree = "<group>"; };
+		1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizing.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -369,6 +383,8 @@
 		164668EA2B66CCE50049AB03 /* DistanceMeasurer */ = {
 			isa = PBXGroup;
 			children = (
+				1694F1922B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift */,
+				1694F1942B98FD0C00928103 /* Protocol */,
 				164668F02B66D35A0049AB03 /* ViewModel */,
 				1682D32B2B8AB3600028CE73 /* ViewController */,
 				164668EF2B66D3520049AB03 /* View */,
@@ -395,6 +411,7 @@
 		164668F62B66D3A20049AB03 /* ObjectsRecognizer */ = {
 			isa = PBXGroup;
 			children = (
+				1694F1902B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift */,
 				1694F1892B98F36B00928103 /* Protocol */,
 				163311C02B939B3600896058 /* Model */,
 				16E170062B6FDA4000F984FB /* ViewModel */,
@@ -616,6 +633,8 @@
 		165117262B94A0FB00779E89 /* PedestrianCrossingRecognizer */ = {
 			isa = PBXGroup;
 			children = (
+				1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */,
+				1694F1992B98FD5300928103 /* Protocol */,
 				16F5647D2B9655E200A831F2 /* Model */,
 				165117292B94A13500779E89 /* ViewModel */,
 				165117282B94A13000779E89 /* ViewController */,
@@ -803,6 +822,30 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		1694F18C2B98FBD600928103 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1694F18D2B98FBE300928103 /* RoadLightsRecognizing.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1694F1942B98FD0C00928103 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1694F1952B98FD2F00928103 /* DistanceMeasuring.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1694F1992B98FD5300928103 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		16E170062B6FDA4000F984FB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,6 +869,8 @@
 		16F564AE2B98EC8500A831F2 /* RoadLightsRecognizer */ = {
 			isa = PBXGroup;
 			children = (
+				1694F1972B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift */,
+				1694F18C2B98FBD600928103 /* Protocol */,
 				16F564B32B98ECE800A831F2 /* Model */,
 				16F564B22B98ECE300A831F2 /* ViewModel */,
 				16F564B12B98ECDB00A831F2 /* ViewController */,
@@ -968,6 +1013,8 @@
 				163311BD2B936FF500896058 /* FeedbackType.swift in Sources */,
 				1651172D2B94A1DA00779E89 /* PedestrianCrossingRecognizerViewController.swift in Sources */,
 				1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */,
+				1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */,
+				1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */,
 				1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */,
 				1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */,
 				16F564BD2B98ED1F00A831F2 /* RoadLightsRecognizerViewController.swift in Sources */,
@@ -985,6 +1032,7 @@
 				162856D72B8D242500691759 /* Inject.swift in Sources */,
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
 				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
+				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
@@ -993,6 +1041,7 @@
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
+				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
@@ -1019,10 +1068,13 @@
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				16F564BF2B98ED2500A831F2 /* RoadLightsRecognizerViewControllerRepresentable.swift in Sources */,
 				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
+				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
+				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
 				1694F1882B98EF9400928103 /* MainRecognizerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				163311912B8D3C5600896058 /* CNNEmotions.mlmodel in Sources */,
+				1694F1962B98FD2F00928103 /* DistanceMeasuring.swift in Sources */,
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */,
 				163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */,
