@@ -3,48 +3,80 @@ import SwiftUI
 import UIKit
 import Vision
 
-class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    private let objectModel: ObjectModel = ObjectModel()
+class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     @Inject private var captureSessionManager: CaptureSessionManaging
+    
     private var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
-    
-    // How many predictions we can do concurrently.
-    static let maxInflightBuffers = 3
-    
-    private var boundingBoxes = [ObjectBoundingBox]()
-    private var colors: [UIColor] = []
-    
-    private let ciContext = CIContext()
-    
-    var inflightBuffer = 0
-    let semaphore = DispatchSemaphore(value: maxInflightBuffers)
+    private var distanceMeasurerViewModel: DistanceMeasureViewModel?
+    private var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel?
+    private var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel?
     
     private var previewLayer = AVCaptureVideoPreviewLayer()
     private var screenRect: CGRect! = nil
     
-    private var requests = [VNRequest]()
+    // MARK: - ObjectsRecognizer Properties
     
-    init(objectsRecognizerViewModel: ObjectsRecognizerViewModel) {
+    // How many predictions we can do concurrently.
+    private let objectModel: ObjectModel = ObjectModel()
+    
+    private var objectsBoundingBoxes = [ObjectBoundingBox]()
+    private var objectsBoundingBoxesColors: [UIColor] = []
+    
+    private let ciContext = CIContext()
+    
+    static let maxInflightBuffers = 3
+    private var inflightBuffer = 0
+    private let objectsRecognizerSemaphore = DispatchSemaphore(value: maxInflightBuffers)
+    
+    // MARK: - DistanceMeasurer Properties
+    
+    
+    
+    // MARK: - RoadLightsRecognizer Properties
+    
+    
+    
+    // MARK: - PedestrianCrossingRecognizer Properties
+    
+    
+    private var objectsRecognizerRequests = [VNRequest]()
+    private var roadLightsRecognizerRequests = [VNRequest]()
+    private var pedestrianCrossingRecognizerRequests = [VNRequest]()
+    
+    init(objectsRecognizerViewModel: ObjectsRecognizerViewModel,
+         distanceMeasurerViewModel: DistanceMeasureViewModel,
+         roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel,
+         pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.objectsRecognizerViewModel = objectsRecognizerViewModel
+        self.distanceMeasurerViewModel = distanceMeasurerViewModel
+        self.roadLightsRecognizerViewModel = roadLightsRecognizerViewModel
+        self.pedestrianCrossingRecognizerViewModel = pedestrianCrossingRecognizerViewModel
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.objectsRecognizerViewModel = nil
+        self.distanceMeasurerViewModel = nil
+        self.roadLightsRecognizerViewModel = nil
+        self.pedestrianCrossingRecognizerViewModel = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupDetector()
+        
+        setupObjectsRecognizer()
+        
         captureSessionManager.setUp(with: self,
-                                    for: .objectRecognizer,
+                                    for: .mainRecognizer,
                                     cameraPosition: .back,
                                     desiredFrameRate: 20) {
             self.setupSessionPreviewLayer()
+            
             self.setupBoundingBoxes()
+            
             DispatchQueue.main.async {
-                self.objectsRecognizerViewModel?.canDisplayCamera = true
+                
             }
         }
     }
@@ -88,12 +120,24 @@ class ObjectsRecognizerViewController: UIViewController, AVCaptureVideoDataOutpu
             self.view.layer.addSublayer(self.previewLayer)
         }
     }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        DispatchQueue.main.async {
+            self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
+        }
+        
+        guard let cvPixelBuffer = sampleBuffer.convertToPixelBuffer() else {
+            return
+        }
+        
+        manageCaptureOutputForObjectsRecognizer(pixelBuffer: cvPixelBuffer)
+    }
 }
 
-extension ObjectsRecognizerViewController {
+extension MainRecognizerViewController: ObjectsRecognizing {
     func setupBoundingBoxes() {
         for _ in 0..<ObjectModel.maxBoundingBoxes {
-            boundingBoxes.append(ObjectBoundingBox())
+            objectsBoundingBoxes.append(ObjectBoundingBox())
         }
         
         // Make colors for the bounding boxes. There is one color for each class,
@@ -102,13 +146,13 @@ extension ObjectsRecognizerViewController {
             for g: CGFloat in [0.1, 0.3, 0.7, 0.9] {
                 for b: CGFloat in [0.2, 0.4, 0.6, 0.8, 1.0] {
                     let color = UIColor(red: r, green: g, blue: b, alpha: 1)
-                    colors.append(color)
+                    objectsBoundingBoxesColors.append(color)
                 }
             }
         }
     }
     
-    func setupDetector() {
+    func setupObjectsRecognizer() {
         guard let modelURL = Bundle.main.url(forResource: MLModelFile.objectsRecognizer.fileName,
                                              withExtension: "mlmodelc") else {
             return
@@ -117,26 +161,48 @@ extension ObjectsRecognizerViewController {
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
             
-            for _ in 0..<ObjectsRecognizerViewController.maxInflightBuffers {
-                let request = VNCoreMLRequest(model: visionModel,
-                                              completionHandler: detectionDidComplete)
+            for _ in 0..<MainRecognizerViewController.maxInflightBuffers {
+                let request = VNCoreMLRequest(
+                    model: visionModel,
+                    completionHandler: objectsRecognitionDidComplete
+                )
                 
                 // NOTE: If you choose another crop/scale option, then you must also
                 // change how the BoundingBox objects get scaled when they are drawn.
                 // Currently they assume the full input image is used.
                 request.imageCropAndScaleOption = .scaleFill
-                requests.append(request)
+                objectsRecognizerRequests.append(request)
             }
         } catch {
             return
         }
     }
     
+    func manageCaptureOutputForObjectsRecognizer(pixelBuffer: CVPixelBuffer) {
+        // The semaphore will block the capture queue and drop frames when
+        // Core ML can't keep up with the camera.
+        objectsRecognizerSemaphore.wait()
+        
+        // For better throughput, we want to schedule multiple prediction requests
+        // in parallel. These need to be separate instances, and inflightBuffer is
+        // the index of the current request.
+        let inflightIndex = inflightBuffer
+        inflightBuffer += 1
+        if inflightBuffer >= MainRecognizerViewController.maxInflightBuffers {
+            inflightBuffer = 0
+        }
+        
+        self.predict(pixelBuffer: pixelBuffer,
+                     inflightIndex: inflightIndex)
+    }
+    
     func predict(pixelBuffer: CVPixelBuffer, inflightIndex: Int) {
+        
+        
         // Vision will automatically resize the input image.
         let exifOrientation = exifOrientationFromDeviceOrientation()
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation)
-        let request = requests[inflightIndex]
+        let request = objectsRecognizerRequests[inflightIndex]
         
         // Because perform() will block until after the request completes, we
         // run it on a concurrent background queue, so that the next frame can
@@ -146,7 +212,7 @@ extension ObjectsRecognizerViewController {
         }
     }
     
-    private func detectionDidComplete(request: VNRequest, error: Error?) {
+    func objectsRecognitionDidComplete(request: VNRequest, error: Error?) {
         if let observations = request.results as? [VNCoreMLFeatureValueObservation] {
             var boundingBoxes: [ObjectModel.ObjectPrediction] = []
             for feature in observations {
@@ -178,19 +244,19 @@ extension ObjectsRecognizerViewController {
             boundingBoxes = nonMaxSuppression(boxes: boundingBoxes,
                                               limit: ObjectModel.maxBoundingBoxes,
                                               threshold: 0.4)
-            self.show(predictions: boundingBoxes)
+            self.showObjectsRecognitionResultsWith(predictions: boundingBoxes)
         }
         
-        self.semaphore.signal()
+        self.objectsRecognizerSemaphore.signal()
     }
     
-    private func show(predictions: [Prediction]) {
+    func showObjectsRecognitionResultsWith(predictions: [Prediction]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return
             }
             
-            for i in 0..<boundingBoxes.count {
+            for i in 0..<objectsBoundingBoxes.count {
                 if i < predictions.count {
                     let prediction = predictions[i]
                     
@@ -216,42 +282,16 @@ extension ObjectsRecognizerViewController {
                     // Show the bounding box.
                     let classLabel = objectModel.labels[prediction.classIndex]
                     let label = String(format: "%@ %.1f", classLabel, prediction.score * 100)
-                    let color = colors[prediction.classIndex]
-                    boundingBoxes[i].show(frame: rect, label: label, color: color)
+                    let color = objectsBoundingBoxesColors[prediction.classIndex]
+                    objectsBoundingBoxes[i].show(frame: rect, label: label, color: color)
                 } else {
-                    boundingBoxes[i].hide()
+                    objectsBoundingBoxes[i].hide()
                 }
             }
             
-            for box in self.boundingBoxes {
+            for box in self.objectsBoundingBoxes {
                 box.addToLayer(self.previewLayer)
             }
         }
-    }
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        DispatchQueue.main.async {
-            self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
-        }
-        
-        guard let cvPixelBuffer = sampleBuffer.convertToPixelBuffer() else {
-            return
-        }
-        
-        // The semaphore will block the capture queue and drop frames when
-        // Core ML can't keep up with the camera.
-        semaphore.wait()
-        
-        // For better throughput, we want to schedule multiple prediction requests
-        // in parallel. These need to be separate instances, and inflightBuffer is
-        // the index of the current request.
-        let inflightIndex = inflightBuffer
-        inflightBuffer += 1
-        if inflightBuffer >= ObjectsRecognizerViewController.maxInflightBuffers {
-            inflightBuffer = 0
-        }
-        
-        self.predict(pixelBuffer: cvPixelBuffer,
-                     inflightIndex: inflightIndex)
     }
 }

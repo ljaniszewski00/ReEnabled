@@ -146,7 +146,7 @@ class RoadLightsModel {
         // We already filtered out any bounding boxes that have very low scores,
         // but there still may be boxes that overlap too much with others. We'll
         // use "non-maximum suppression" to prune those duplicate bounding boxes.
-        return nonMaxSuppression(boxes: predictions, 
+        return nonMaxSuppression(boxes: predictions,
                                  limit: RoadLightsModel.maxBoundingBoxes,
                                  threshold: iouThreshold)
     }

@@ -99,7 +99,9 @@ final class CaptureSessionManager: CaptureSessionManaging {
             }
             
             let videoOutput = AVCaptureVideoDataOutput()
-            videoOutput.videoSettings = getVideoSettings()
+            videoOutput.videoSettings = [
+                kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)
+            ]
             videoOutput.alwaysDiscardsLateVideoFrames = true
             videoOutput.setSampleBufferDelegate(self.bufferDelegate,
                                                 queue: videoDataOutputQueue)
@@ -171,21 +173,6 @@ final class CaptureSessionManager: CaptureSessionManaging {
             self.captureSession = captureSession
             self.startCaptureSession()
             completion()
-        }
-    }
-    
-    private func getVideoSettings() -> [String: Any]? {
-        switch cameraMode {
-        case .objectRecognizer:
-            return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
-        case .colorDetector:
-            return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
-        case .roadTrafficRecognizer:
-            return [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCMPixelFormat_32BGRA)]
-        case .pedestrianCrossingRecognizer:
-            return [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
-        default:
-            return nil
         }
     }
     

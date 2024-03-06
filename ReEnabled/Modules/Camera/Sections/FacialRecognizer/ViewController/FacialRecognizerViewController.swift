@@ -28,7 +28,7 @@ class FacialRecognizerViewController: UIViewController, AVCaptureVideoDataOutput
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSessionManager.setUp(with: self,
-                                    for: .objectRecognizer,
+                                    for: .mainRecognizer,
                                     cameraPosition: .front,
                                     desiredFrameRate: 30) {
             self.setupSessionPreviewLayer()

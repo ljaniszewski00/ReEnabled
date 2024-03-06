@@ -1,7 +1,7 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var cameraMode: CameraMode = .pedestrianCrossingRecognizer
+    @Published var cameraMode: CameraMode = .mainRecognizer
     @Published var cameraModeNameVisible: Bool = true
     
     func changeToPreviousCameraMode() {

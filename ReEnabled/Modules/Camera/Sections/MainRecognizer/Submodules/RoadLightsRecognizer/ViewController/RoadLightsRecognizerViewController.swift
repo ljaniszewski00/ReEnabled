@@ -4,7 +4,7 @@ import UIKit
 import Vision
 import CoreML
 
-class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class RoadLightsRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let roadLightsModel: RoadLightsModel = RoadLightsModel()
     private let roadLightsPhaseManager: RoadLightsPhaseManager = RoadLightsPhaseManager(
         confidenceThreshold: 0,
@@ -16,34 +16,34 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
     var colors: [UIColor] = []
     
     @Inject private var captureSessionManager: CaptureSessionManaging
-    private var roadTrafficRecognizerViewModel: RoadTrafficRecognizerViewModel?
+    private var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel?
     
     private var previewLayer = AVCaptureVideoPreviewLayer()
     var screenRect: CGRect! = nil
     
     private var roadLightsRequests = [VNRequest]()
     
-    init(roadTrafficRecognizerViewModel: RoadTrafficRecognizerViewModel) {
+    init(roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel) {
         super.init(nibName: nil, bundle: nil)
-        self.roadTrafficRecognizerViewModel = roadTrafficRecognizerViewModel
+        self.roadLightsRecognizerViewModel = roadLightsRecognizerViewModel
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.roadTrafficRecognizerViewModel = nil
+        self.roadLightsRecognizerViewModel = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSessionManager.setUp(with: self,
-                                    for: .roadTrafficRecognizer,
+                                    for: .mainRecognizer,
                                     cameraPosition: .back,
                                     desiredFrameRate: 15) {
             self.setupSessionPreviewLayer()
             self.setupBoundingBoxes()
             self.setupDetectors()
             DispatchQueue.main.async {
-                self.roadTrafficRecognizerViewModel?.canDisplayCamera = true
+                self.roadLightsRecognizerViewModel?.canDisplayCamera = true
             }
         }
     }
@@ -105,26 +105,10 @@ class RoadTrafficRecognizerViewController: UIViewController, AVCaptureVideoDataO
     }
 }
 
-extension RoadTrafficRecognizerViewController {
+extension RoadLightsRecognizerViewController {
     private func setupDetectors() {
-//        setupRoadSignsDetector()
         setupRoadLightsDetector()
     }
-    
-//    private func setupRoadSignsDetector() {
-//        let roadSignsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.roadSignsRecognizer.fileName,
-//                                                       withExtension: "mlmodelc")
-//    
-//        do {
-//            if let roadSignsRecognizerModelURL = roadSignsRecognizerModelURL {
-//                let visionRoadSignsModel = try VNCoreMLModel(for: MLModel(contentsOf: roadSignsRecognizerModelURL))
-//                let request = VNCoreMLRequest(model: visionRoadSignsModel, completionHandler: roadSignsDetectionDidComplete)
-//                self.roadSignsRequests = [request]
-//            }
-//        } catch {
-//            return
-//        }
-//    }
     
     private func setupRoadLightsDetector() {
         let roadLightsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.roadLightsRecognizer.fileName,

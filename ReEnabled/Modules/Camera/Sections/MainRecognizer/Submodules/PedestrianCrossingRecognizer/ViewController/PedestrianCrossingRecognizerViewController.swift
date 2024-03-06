@@ -28,7 +28,7 @@ class PedestrianCrossingRecognizerViewController: UIViewController, AVCaptureVid
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSessionManager.setUp(with: self,
-                                    for: .pedestrianCrossingRecognizer,
+                                    for: .mainRecognizer,
                                     cameraPosition: .back,
                                     desiredFrameRate: 16.34) {
             self.setupSessionPreviewLayer()

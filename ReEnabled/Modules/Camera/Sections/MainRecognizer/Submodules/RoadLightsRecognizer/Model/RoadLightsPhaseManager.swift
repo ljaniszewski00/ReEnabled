@@ -78,7 +78,7 @@ class RoadLightsPhaseManager {
             let existingDetection = self.predictionExistsInDetections(prediction: prediction)
             
             if existingDetection == nil {
-                let newDetection = Detection(rect: prediction.rect, 
+                let newDetection = Detection(rect: prediction.rect,
                                              confirmed: 0,
                                              detectedInCurrentFrame: true,
                                              phase: self.classIndexToPhase(prediction.classIndex))

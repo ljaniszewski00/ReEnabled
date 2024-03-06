@@ -1,27 +1,21 @@
 enum CameraMode: String {
-    case objectRecognizer = "Object Recognizer"
-    case distanceMeasurer = "Distance Measurer"
+    case mainRecognizer = "Main Recognizer"
     case documentScanner = "Document Scanner"
     case colorDetector = "Color Detector"
     case lightDetector = "Light Detector"
 //    case currencyDetector = "Currency Detector"
 //    case facialRecognizer = "Facial Recognizer"
-    case roadTrafficRecognizer = "Road Traffic Recognizer"
-    case pedestrianCrossingRecognizer = "Pedestrian Crossing Recognizer"
 }
 
 extension CameraMode {
     static var allCases: [CameraMode] {
         [
-            .objectRecognizer,
-            .distanceMeasurer,
+            .mainRecognizer,
             .documentScanner,
             .colorDetector,
             .lightDetector,
 //            .currencyDetector,
 //            .facialRecognizer,
-            .roadTrafficRecognizer,
-            .pedestrianCrossingRecognizer
         ]
     }
 }
@@ -29,10 +23,8 @@ extension CameraMode {
 extension CameraMode {
     static var modesWithPortraitVideoConnection: [CameraMode] {
         [
-            .objectRecognizer,
+            .mainRecognizer,
 //            .facialRecognizer,
-            .roadTrafficRecognizer,
-            .pedestrianCrossingRecognizer
         ]
     }
 }

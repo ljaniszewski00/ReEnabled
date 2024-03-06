@@ -15,10 +15,8 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .top) {
             switch homeViewModel.cameraMode {
-            case .objectRecognizer:
-                ObjectsRecognizerView()
-            case .distanceMeasurer:
-                DistanceMeasureView()
+            case .mainRecognizer:
+                MainRecognizerView()
             case .documentScanner:
                 DocumentScannerView()
             case .colorDetector:
@@ -29,10 +27,6 @@ struct HomeView: View {
 //                CurrencyDetectorView()
 //            case .facialRecognizer:
 //                FacialRecognizerView()
-            case .pedestrianCrossingRecognizer:
-                PedestrianCrossingRecognizerView()
-            case .roadTrafficRecognizer:
-                RoadTrafficRecognizerView()
             }
             
             if homeViewModel.cameraModeNameVisible {
