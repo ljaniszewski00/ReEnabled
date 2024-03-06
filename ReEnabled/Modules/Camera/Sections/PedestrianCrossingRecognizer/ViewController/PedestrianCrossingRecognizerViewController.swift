@@ -113,9 +113,29 @@ extension PedestrianCrossingRecognizerViewController {
             
             self.pedestrianCrossingModel.performCalculationsOn(output: output)
             self.pedestrianCrossingRecognizerViewModel?.pedestrianCrossingPrediction = self.pedestrianCrossingModel.pedestrianCrossingPrediction
+            self.manageDetectionLayerVisibility()
             
             DispatchQueue.main.async {
                 self.drawVisionRequestResults()
+            }
+        }
+    }
+    
+    private func manageDetectionLayerVisibility() {
+        let detectionOverlayCanBeHidden: Bool = pedestrianCrossingModel.pedestrianCrossingPrediction == nil ||
+        (pedestrianCrossingModel.pedestrianCrossingPrediction?.lightColor == PedestrianCrossingLightType.none &&
+         pedestrianCrossingModel.pedestrianCrossingPrediction?.personMovementInstruction == .goodPosition &&
+         pedestrianCrossingModel.pedestrianCrossingPrediction?.deviceMovementInstruction == .goodOrientation)
+        
+        if detectionOverlayCanBeHidden {
+            self.detectionOverlay.isHidden = true
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                if detectionOverlayCanBeHidden {
+                    self.detectionOverlay.isHidden = true
+                } else {
+                    self.detectionOverlay.isHidden = false
+                }
             }
         }
     }
@@ -144,6 +164,7 @@ extension PedestrianCrossingRecognizerViewController {
                                         height: captureSessionManager.bufferSize.height)
         detectionOverlay.position = CGPoint(x: self.view.layer.bounds.midX,
                                             y: self.view.layer.bounds.midY)
+        detectionOverlay.isHidden = true
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
@@ -168,7 +189,7 @@ extension PedestrianCrossingRecognizerViewController {
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
 
-        detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
+        detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 1.0)).scaledBy(x: scale, y: -scale))
         detectionOverlay.position = CGPoint(x: bounds.midX, y: bounds.midY)
         
         CATransaction.commit()
@@ -179,8 +200,10 @@ extension PedestrianCrossingRecognizerViewController {
         let line = CAShapeLayer()
         let linePath = UIBezierPath()
         shapeLayer.name = "Direction Vector"
-        linePath.move(to: CGPoint(x:points[2]*960+160, y:720.0-points[3]*720))
-        linePath.addLine(to: CGPoint(x:points[0]*960+160,y:720.0-points[1]*720))
+        linePath.move(to: CGPoint(x:points[2]*960+160, 
+                                  y:720.0-points[3]*720))
+        linePath.addLine(to: CGPoint(x:points[0]*960+160,
+                                     y:720.0-points[1]*720))
         line.path = linePath.cgPath
         line.fillColor = nil
         line.opacity = 1.0

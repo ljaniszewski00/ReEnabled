@@ -410,14 +410,14 @@
 			path = MLModels;
 			sourceTree = "<group>";
 		};
-		164668EA2B66CCE50049AB03 /* DIstanceMeasurer */ = {
+		164668EA2B66CCE50049AB03 /* DistanceMeasurer */ = {
 			isa = PBXGroup;
 			children = (
 				164668F02B66D35A0049AB03 /* ViewModel */,
 				1682D32B2B8AB3600028CE73 /* ViewController */,
 				164668EF2B66D3520049AB03 /* View */,
 			);
-			path = DIstanceMeasurer;
+			path = DistanceMeasurer;
 			sourceTree = "<group>";
 		};
 		164668EF2B66D3520049AB03 /* View */ = {
@@ -757,7 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				164668F62B66D3A20049AB03 /* ObjectsRecognizer */,
-				164668EA2B66CCE50049AB03 /* DIstanceMeasurer */,
+				164668EA2B66CCE50049AB03 /* DistanceMeasurer */,
 				164669012B6855FA0049AB03 /* DocumentScanner */,
 				164669022B6856040049AB03 /* ColorDetector */,
 				164669032B6856320049AB03 /* LightDetector */,
