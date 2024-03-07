@@ -2,12 +2,12 @@ import SwiftUI
 
 struct MainRecognizerViewControllerRepresentable: UIViewControllerRepresentable {
     private var objectsRecognizerViewModel: ObjectsRecognizerViewModel
-    private var distanceMeasurerViewModel: DistanceMeasureViewModel
+    private var distanceMeasurerViewModel: DistanceMeasurerViewModel
     private var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel
     private var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel
     
     init(objectsRecognizerViewModel: ObjectsRecognizerViewModel,
-         distanceMeasurerViewModel: DistanceMeasureViewModel,
+         distanceMeasurerViewModel: DistanceMeasurerViewModel,
          roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel,
          pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel) {
         self.objectsRecognizerViewModel = objectsRecognizerViewModel

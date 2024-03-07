@@ -99,7 +99,7 @@ extension MainRecognizerViewController: PedestrianCrossingRecognizing {
             
             self.pedestrianCrossingModel.performCalculationsOn(output: output)
             self.pedestrianCrossingRecognizerViewModel?.pedestrianCrossingPrediction = self.pedestrianCrossingModel.pedestrianCrossingPrediction
-            self.manageRecognitionLayerVisibility()
+            self.managePedestrianCrossingRecognitionLayerVisibility()
             
             DispatchQueue.main.async {
                 self.showPedestrianCrossingRecognitionResults()
@@ -107,7 +107,7 @@ extension MainRecognizerViewController: PedestrianCrossingRecognizing {
         }
     }
     
-    func manageRecognitionLayerVisibility() {
+    func managePedestrianCrossingRecognitionLayerVisibility() {
         let detectionOverlayCanBeHidden: Bool = pedestrianCrossingModel.pedestrianCrossingPrediction == nil ||
         (pedestrianCrossingModel.pedestrianCrossingPrediction?.lightColor == PedestrianCrossingLightType.none &&
          pedestrianCrossingModel.pedestrianCrossingPrediction?.personMovementInstruction == .goodPosition &&

@@ -3,16 +3,17 @@ import SwiftUI
 import UIKit
 import Vision
 
-class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class MainRecognizerViewController: UIViewController {
     @Inject var captureSessionManager: CaptureSessionManaging
     
     var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
-    var distanceMeasurerViewModel: DistanceMeasureViewModel?
+    var distanceMeasurerViewModel: DistanceMeasurerViewModel?
     var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel?
     var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel?
     
     var previewLayer = AVCaptureVideoPreviewLayer()
-    private var screenRect: CGRect! = nil
+    var depthPreviewLayer = AVCaptureVideoPreviewLayer()
+    var screenRect: CGRect = UIScreen.main.bounds
     
     // MARK: - ObjectsRecognizer Properties
     
@@ -30,7 +31,11 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
     
     // MARK: - DistanceMeasurer Properties
     
-    
+    let depthMeasurementRepeats = 10
+    var depthMeasurementsLeftInLoop = 0
+    var depthMeasurementsCumul: Float32 = 0.0
+    var depthMeasurementMin: Float32 = 0.0
+    var depthMeasurementMax: Float32 = 0.0
     
     // MARK: - RoadLightsRecognizer Properties
     
@@ -55,7 +60,7 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
     var pedestrianCrossingRecognizerRequests = [VNRequest]()
     
     init(objectsRecognizerViewModel: ObjectsRecognizerViewModel,
-         distanceMeasurerViewModel: DistanceMeasureViewModel,
+         distanceMeasurerViewModel: DistanceMeasurerViewModel,
          roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel,
          pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -81,6 +86,7 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
         setupPedestrianCrossingRecognizer()
         
         captureSessionManager.setUp(with: self,
+                                    and: self,
                                     for: .mainRecognizer,
                                     cameraPosition: .back,
                                     desiredFrameRate: 20) {
@@ -138,8 +144,12 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
             self.view.layer.addSublayer(self.previewLayer)
         }
     }
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+}
+
+extension MainRecognizerViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_ output: AVCaptureOutput, 
+                       didOutput sampleBuffer: CMSampleBuffer,
+                       from connection: AVCaptureConnection) {
         DispatchQueue.main.async {
             self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: nil)
         }
@@ -164,4 +174,49 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
     }
 }
 
-
+extension MainRecognizerViewController: AVCaptureDepthDataOutputDelegate {
+    func depthDataOutput(_ output: AVCaptureDepthDataOutput, 
+                         didOutput depthData: AVDepthData,
+                         timestamp: CMTime,
+                         connection: AVCaptureConnection) {
+        if depthMeasurementsLeftInLoop == 0 {
+            depthMeasurementsCumul = 0.0
+            depthMeasurementMin = 9999.9
+            depthMeasurementMax = 0.0
+            depthMeasurementsLeftInLoop = depthMeasurementRepeats
+        }
+        
+        if depthMeasurementsLeftInLoop > 0 {
+            var convertedDepthData: AVDepthData = depthData.converting(
+                toDepthDataType: kCVPixelFormatType_DepthFloat16
+            )
+            let depthFrame = convertedDepthData.depthDataMap
+            let depthPoint = CGPoint(x: CGFloat(CVPixelBufferGetWidth(depthFrame)) / 2,
+                                     y: CGFloat(CVPixelBufferGetHeight(depthFrame) / 2))
+            let depthVal = getDepthValueFromFrame(fromFrame: depthFrame, 
+                                                  atPoint: depthPoint)
+            print(depthVal)
+            
+            let measurement = depthVal * 100
+            
+            depthMeasurementsCumul += measurement
+            
+            if measurement > depthMeasurementMax {
+                depthMeasurementMax = measurement
+            }
+            
+            if measurement < depthMeasurementMin {
+                depthMeasurementMin = measurement
+            }
+            
+            depthMeasurementsLeftInLoop -= 1
+            
+            //            let printStr = String(format: "Measurement %d: %.2f cm",
+            //                depthMeasurementRepeats - depthMeasurementsLeftInLoop, measurement)
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.distanceMeasurerViewModel?.distanceString = String(format: "%.2f", measurement)
+            }
+        }
+    }
+}

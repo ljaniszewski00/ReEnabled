@@ -1,6 +1,6 @@
 import SwiftUI
 
-final class DistanceMeasureViewModel: ObservableObject {
+final class DistanceMeasurerViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
     @Published var distanceString: String = ""
 }

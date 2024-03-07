@@ -5,6 +5,6 @@ protocol PedestrianCrossingRecognizing {
     func updatePedestrianCrossingRecognitionLayerGeometry()
     func setupPedestrianCrossingRecognizer()
     func pedestrianCrossingRecognitionDidComplete(request: VNRequest, error: Error?)
-    func manageRecognitionLayerVisibility()
+    func managePedestrianCrossingRecognitionLayerVisibility()
     func showPedestrianCrossingRecognitionResults()
 }

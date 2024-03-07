@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MainRecognizerView: View {
     @StateObject private var objectsRecognizerViewModel: ObjectsRecognizerViewModel = ObjectsRecognizerViewModel()
-    @StateObject private var distanceMeasurerViewModel: DistanceMeasureViewModel = DistanceMeasureViewModel()
+    @StateObject private var distanceMeasurerViewModel: DistanceMeasurerViewModel = DistanceMeasurerViewModel()
     @StateObject private var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel = RoadLightsRecognizerViewModel()
     @StateObject private var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel = PedestrianCrossingRecognizerViewModel()
     
@@ -13,23 +13,26 @@ struct MainRecognizerView: View {
                                                       roadLightsRecognizerViewModel: roadLightsRecognizerViewModel,
                                                       pedestrianCrossingRecognizerViewModel: pedestrianCrossingRecognizerViewModel)
             
-            if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType,
-               let personMovementInstruction = pedestrianCrossingRecognizerViewModel.personMovementInstruction,
-               let deviceMovementInstruction = pedestrianCrossingRecognizerViewModel.deviceMovementInstruction {
-                VStack {
-                    Spacer()
-                    
-                    Group {
+            VStack {
+                Spacer()
+                
+                Group {
+                    if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType,
+                       let personMovementInstruction = pedestrianCrossingRecognizerViewModel.personMovementInstruction,
+                       let deviceMovementInstruction = pedestrianCrossingRecognizerViewModel.deviceMovementInstruction {
                         Text(recognizedLightColor)
                             .padding(.bottom)
                         Text(personMovementInstruction)
                         Text(deviceMovementInstruction)
+                            .padding(.bottom)
                     }
-                    .foregroundColor(.white)
-                    .font(.headline)
+                    
+                    Text(distanceMeasurerViewModel.distanceString)
                 }
-                .padding(.bottom, Views.Constants.recognitionsBottomPadding)
+                .foregroundColor(.white)
+                .font(.headline)
             }
+            .padding(.bottom, Views.Constants.recognitionsBottomPadding)
         }
     }
 }

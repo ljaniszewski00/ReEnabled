@@ -1,8 +1,6 @@
-//
-//  DistanceMeasuring.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 06/03/2024.
-//
+import AVFoundation
 
-import Foundation
+protocol DistanceMeasuring {
+    func getDepthValueFromFrame(fromFrame: CVPixelBuffer, 
+                                atPoint: CGPoint) -> Float
+}

@@ -4,7 +4,7 @@ import UIKit
 
 class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputDelegate {
     @Inject private var captureDepthSessionManager: CaptureDepthSessionManaging
-    private var distanceMeasureViewModel: DistanceMeasureViewModel?
+    private var distanceMeasureViewModel: DistanceMeasurerViewModel?
     
     private var screenRect: CGRect = UIScreen.main.bounds
     private var previewLayer = AVCaptureVideoPreviewLayer()
@@ -17,7 +17,7 @@ class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputD
     private var depthMeasurementMin: Float32 = 0.0
     private var depthMeasurementMax: Float32 = 0.0
     
-    init(distanceMeasureViewModel: DistanceMeasureViewModel) {
+    init(distanceMeasureViewModel: DistanceMeasurerViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.distanceMeasureViewModel = distanceMeasureViewModel
     }
@@ -30,7 +30,8 @@ class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputD
     override func viewDidLoad() {
         super.viewDidLoad()
         captureDepthSessionManager.setUp(with: depthDataOutput,
-                                         and: self) {
+                                         and: self,
+                                         cameraPosition: .back) {
             self.setupUI()
             DispatchQueue.main.async {
                 self.distanceMeasureViewModel?.canDisplayCamera = true
@@ -69,6 +70,7 @@ class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputD
 //                depthMeasurementRepeats - depthMeasurementsLeftInLoop, measurement)
             
             DispatchQueue.main.async { [weak self] in
+                print(String(format: "%.2f", measurement))
                 self?.distanceMeasureViewModel?.distanceString = String(format: "%.2f", measurement)
             }
         }
@@ -80,14 +82,23 @@ class DistanceMeasureViewController: UIViewController, AVCaptureDepthDataOutputD
         let rowData = CVPixelBufferGetBaseAddress(fromFrame)! + Int(atPoint.y) * CVPixelBufferGetBytesPerRow(fromFrame)
         var f16Pixel = rowData.assumingMemoryBound(to: UInt16.self)[Int(atPoint.x)]
         var f32Pixel = Float(0.0)
+        
         CVPixelBufferUnlockBaseAddress(fromFrame, .readOnly)
         withUnsafeMutablePointer(to: &f16Pixel) { f16RawPointer in
             withUnsafeMutablePointer(to: &f32Pixel) { f32RawPointer in
-                var src = vImage_Buffer(data: f16RawPointer, height: 1, width: 1, rowBytes: 2)
-                var dst = vImage_Buffer(data: f32RawPointer, height: 1, width: 1, rowBytes: 4)
-                vImageConvert_Planar16FtoPlanarF(&src, &dst, 0)
+                var src = vImage_Buffer(data: f16RawPointer, 
+                                        height: 1,
+                                        width: 1,
+                                        rowBytes: 2)
+                var dst = vImage_Buffer(data: f32RawPointer, 
+                                        height: 1,
+                                        width: 1,
+                                        rowBytes: 4)
+                vImageConvert_Planar16FtoPlanarF(&src, 
+                                                 &dst, 0)
             }
         }
+        
         return f32Pixel
     }
     

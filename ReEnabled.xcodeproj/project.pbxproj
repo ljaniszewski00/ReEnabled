@@ -35,7 +35,7 @@
 		163311D42B939F9C00896058 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D32B939F9C00896058 /* Prediction.swift */; };
 		163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D52B93A86E00896058 /* NonMaxSuppression.swift */; };
 		163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311D92B93BC6B00896058 /* YOLOV3.mlmodel */; };
-		164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */; };
+		164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */; };
 		164668F82B66D49A0049AB03 /* DistanceMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */; };
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
 		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
@@ -147,7 +147,7 @@
 		163311D32B939F9C00896058 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		163311D52B93A86E00896058 /* NonMaxSuppression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		163311D92B93BC6B00896058 /* YOLOV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOV3.mlmodel; sourceTree = "<group>"; };
-		164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureViewModel.swift; sourceTree = "<group>"; };
+		164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurerViewModel.swift; sourceTree = "<group>"; };
 		164668F72B66D49A0049AB03 /* DistanceMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureView.swift; sourceTree = "<group>"; };
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
@@ -393,7 +393,7 @@
 		164668F02B66D35A0049AB03 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				164668F42B66D37E0049AB03 /* DistanceMeasureViewModel.swift */,
+				164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -972,7 +972,7 @@
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				162856C42B8ABCA300691759 /* CaptureDepthSessionManager.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
-				164668F52B66D37E0049AB03 /* DistanceMeasureViewModel.swift in Sources */,
+				164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */,
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
 				163311BF2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift in Sources */,
 				163311922B8D3C5600896058 /* GenderNet.mlmodel in Sources */,

@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct DistanceMeasureViewControllerRepresentable: UIViewControllerRepresentable {
-    private var distanceMeasureViewModel: DistanceMeasureViewModel
+    private var distanceMeasureViewModel: DistanceMeasurerViewModel
     
-    init(distanceMeasureViewModel: DistanceMeasureViewModel) {
+    init(distanceMeasureViewModel: DistanceMeasurerViewModel) {
         self.distanceMeasureViewModel = distanceMeasureViewModel
     }
     

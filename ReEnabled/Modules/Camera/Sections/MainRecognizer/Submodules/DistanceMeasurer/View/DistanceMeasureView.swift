@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DistanceMeasureView: View {
-    @StateObject private var distanceMeasureViewModel: DistanceMeasureViewModel = DistanceMeasureViewModel()
+    @StateObject private var distanceMeasureViewModel: DistanceMeasurerViewModel = DistanceMeasurerViewModel()
     
     var body: some View {
         ZStack {
