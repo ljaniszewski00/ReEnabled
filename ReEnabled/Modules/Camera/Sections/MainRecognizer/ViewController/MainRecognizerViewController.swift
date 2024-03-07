@@ -4,29 +4,29 @@ import UIKit
 import Vision
 
 class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    @Inject private var captureSessionManager: CaptureSessionManaging
+    @Inject var captureSessionManager: CaptureSessionManaging
     
-    internal var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
-    internal var distanceMeasurerViewModel: DistanceMeasureViewModel?
-    internal var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel?
-    internal var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel?
+    var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
+    var distanceMeasurerViewModel: DistanceMeasureViewModel?
+    var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel?
+    var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel?
     
-    internal var previewLayer = AVCaptureVideoPreviewLayer()
+    var previewLayer = AVCaptureVideoPreviewLayer()
     private var screenRect: CGRect! = nil
     
     // MARK: - ObjectsRecognizer Properties
     
-    // How many predictions we can do concurrently.
-    internal let objectModel: ObjectModel = ObjectModel()
+    let objectModel: ObjectModel = ObjectModel()
+    var objectsBoundingBoxes = [ObjectBoundingBox]()
+    var objectsBoundingBoxesColors: [UIColor] = []
     
-    internal var objectsBoundingBoxes = [ObjectBoundingBox]()
-    internal var objectsBoundingBoxesColors: [UIColor] = []
-    
-    internal let ciContext = CIContext()
+    let ciContext = CIContext()
     
     static let maxInflightBuffers = 3
-    internal var inflightBuffer = 0
-    internal let objectsRecognizerSemaphore = DispatchSemaphore(value: maxInflightBuffers)
+    var inflightBuffer = 0
+    let objectsRecognizerSemaphore = DispatchSemaphore(value: maxInflightBuffers)
+    
+    var objectsRecognizerRequests = [VNRequest]()
     
     // MARK: - DistanceMeasurer Properties
     
@@ -34,14 +34,25 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
     
     // MARK: - RoadLightsRecognizer Properties
     
+    let roadLightsTypeManager: RoadLightsTypeManager = RoadLightsTypeManager(
+        confidenceThreshold: 0,
+        maxDetections: RoadLightsModel.maxBoundingBoxes,
+        minIOU: 0.3
+    )
     
+    let roadLightsModel: RoadLightsModel = RoadLightsModel()
+    var roadLightsBoundingBoxes = [RoadLightsBoundingBox]()
+    var roadLightsBoundingBoxesColors: [UIColor] = []
+    
+    var roadLightsRecognizerRequests = [VNRequest]()
     
     // MARK: - PedestrianCrossingRecognizer Properties
     
+    let pedestrianCrossingModel: PedestrianCrossingModel = PedestrianCrossingModel()
     
-    internal var objectsRecognizerRequests = [VNRequest]()
-    internal var roadLightsRecognizerRequests = [VNRequest]()
-    internal var pedestrianCrossingRecognizerRequests = [VNRequest]()
+    var pedestrianCrossingRecognitionLayer: CALayer! = nil
+    
+    var pedestrianCrossingRecognizerRequests = [VNRequest]()
     
     init(objectsRecognizerViewModel: ObjectsRecognizerViewModel,
          distanceMeasurerViewModel: DistanceMeasureViewModel,
@@ -66,6 +77,8 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
         super.viewDidLoad()
         
         setupObjectsRecognizer()
+        setupRoadLightsRecognizer()
+        setupPedestrianCrossingRecognizer()
         
         captureSessionManager.setUp(with: self,
                                     for: .mainRecognizer,
@@ -73,10 +86,15 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
                                     desiredFrameRate: 20) {
             self.setupSessionPreviewLayer()
             
-            self.setupBoundingBoxes()
+            self.setupObjectsBoundingBoxes()
+            self.setupRoadLightsBoundingBoxes()
+            self.setupPedestrianCrossingRecognitionLayer()
+            self.updatePedestrianCrossingRecognitionLayerGeometry()
             
             DispatchQueue.main.async {
-                
+                self.objectsRecognizerViewModel?.canDisplayCamera = true
+                self.roadLightsRecognizerViewModel?.canDisplayCamera = true
+                self.pedestrianCrossingRecognizerViewModel?.canDisplayCamera = true
             }
         }
     }
@@ -130,7 +148,19 @@ class MainRecognizerViewController: UIViewController, AVCaptureVideoDataOutputSa
             return
         }
         
-        manageCaptureOutputForObjectsRecognizer(pixelBuffer: cvPixelBuffer)
+        let exifOrientation = exifOrientationFromDeviceOrientation()
+        let handler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer,
+                                            orientation: exifOrientation)
+        
+        let objectsRecognitionRequest = prepareVisionRequestForObjectsRecognition(
+            pixelBuffer: cvPixelBuffer
+        )
+        
+        DispatchQueue.global().async {
+            try? handler.perform([objectsRecognitionRequest])
+            try? handler.perform(self.roadLightsRecognizerRequests)
+            try? handler.perform(self.pedestrianCrossingRecognizerRequests)
+        }
     }
 }
 

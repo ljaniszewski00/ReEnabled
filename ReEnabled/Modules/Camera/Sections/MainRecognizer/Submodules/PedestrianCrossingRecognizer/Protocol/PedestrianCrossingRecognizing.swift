@@ -1,8 +1,10 @@
-//
-//  PedestrianCrossingRecognizing.swift
-//  ReEnabled
-//
-//  Created by Łukasz Janiszewski on 06/03/2024.
-//
+import Vision
 
-import Foundation
+protocol PedestrianCrossingRecognizing {
+    func setupPedestrianCrossingRecognitionLayer()
+    func updatePedestrianCrossingRecognitionLayerGeometry()
+    func setupPedestrianCrossingRecognizer()
+    func pedestrianCrossingRecognitionDidComplete(request: VNRequest, error: Error?)
+    func manageRecognitionLayerVisibility()
+    func showPedestrianCrossingRecognitionResults()
+}

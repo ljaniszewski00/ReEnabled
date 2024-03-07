@@ -62,9 +62,6 @@
 		164E114D2B472122008EF153 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114C2B472122008EF153 /* HelpView.swift */; };
 		165117252B94A0DD00779E89 /* LytNetV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 165117242B94A0DD00779E89 /* LytNetV1.mlmodel */; };
 		1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */; };
-		1651172D2B94A1DA00779E89 /* PedestrianCrossingRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172C2B94A1DA00779E89 /* PedestrianCrossingRecognizerViewController.swift */; };
-		1651172F2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172E2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift */; };
-		165117312B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117302B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift */; };
 		165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117322B94A4E700779E89 /* ExifOrientation.swift */; };
 		165117352B94F41D00779E89 /* SessionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117342B94F41D00779E89 /* SessionPreset.swift */; };
 		165795BD2B549DD6009142C1 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 165795BC2B549DD6009142C1 /* OpenAI */; };
@@ -93,6 +90,7 @@
 		1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1972B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift */; };
 		1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */; };
 		1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */; };
+		1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19E2B9A1E8700928103 /* RoadLightType.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -104,11 +102,8 @@
 		16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564862B96634000A831F2 /* DeviceOrientationActionType.swift */; };
 		16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564B42B98ECF900A831F2 /* RoadLightsBoundingBox.swift */; };
 		16F564B72B98ED0000A831F2 /* RoadLightsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564B62B98ED0000A831F2 /* RoadLightsModel.swift */; };
-		16F564B92B98ED0900A831F2 /* RoadLightsPhaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564B82B98ED0900A831F2 /* RoadLightsPhaseManager.swift */; };
+		16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564B82B98ED0900A831F2 /* RoadLightsTypeManager.swift */; };
 		16F564BB2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */; };
-		16F564BD2B98ED1F00A831F2 /* RoadLightsRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564BC2B98ED1F00A831F2 /* RoadLightsRecognizerViewController.swift */; };
-		16F564BF2B98ED2500A831F2 /* RoadLightsRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564BE2B98ED2500A831F2 /* RoadLightsRecognizerViewControllerRepresentable.swift */; };
-		16F564C12B98ED2F00A831F2 /* RoadLightsRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564C02B98ED2F00A831F2 /* RoadLightsRecognizerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -180,9 +175,6 @@
 		164E114C2B472122008EF153 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		165117242B94A0DD00779E89 /* LytNetV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LytNetV1.mlmodel; sourceTree = "<group>"; };
 		1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerViewModel.swift; sourceTree = "<group>"; };
-		1651172C2B94A1DA00779E89 /* PedestrianCrossingRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerViewController.swift; sourceTree = "<group>"; };
-		1651172E2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerView.swift; sourceTree = "<group>"; };
-		165117302B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		165117322B94A4E700779E89 /* ExifOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifOrientation.swift; sourceTree = "<group>"; };
 		165117342B94F41D00779E89 /* SessionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPreset.swift; sourceTree = "<group>"; };
 		1670C6092B6ED76E005CF24B /* DetectorFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorFrame.swift; sourceTree = "<group>"; };
@@ -210,6 +202,7 @@
 		1694F1972B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+RoadLightsRecognizing.swift"; sourceTree = "<group>"; };
 		1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+PedestrianCrossingRecognizing.swift"; sourceTree = "<group>"; };
 		1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizing.swift; sourceTree = "<group>"; };
+		1694F19E2B9A1E8700928103 /* RoadLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightType.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -221,11 +214,8 @@
 		16F564862B96634000A831F2 /* DeviceOrientationActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOrientationActionType.swift; sourceTree = "<group>"; };
 		16F564B42B98ECF900A831F2 /* RoadLightsBoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsBoundingBox.swift; sourceTree = "<group>"; };
 		16F564B62B98ED0000A831F2 /* RoadLightsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsModel.swift; sourceTree = "<group>"; };
-		16F564B82B98ED0900A831F2 /* RoadLightsPhaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsPhaseManager.swift; sourceTree = "<group>"; };
+		16F564B82B98ED0900A831F2 /* RoadLightsTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsTypeManager.swift; sourceTree = "<group>"; };
 		16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizerViewModel.swift; sourceTree = "<group>"; };
-		16F564BC2B98ED1F00A831F2 /* RoadLightsRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizerViewController.swift; sourceTree = "<group>"; };
-		16F564BE2B98ED2500A831F2 /* RoadLightsRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
-		16F564C02B98ED2F00A831F2 /* RoadLightsRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -637,27 +627,8 @@
 				1694F1992B98FD5300928103 /* Protocol */,
 				16F5647D2B9655E200A831F2 /* Model */,
 				165117292B94A13500779E89 /* ViewModel */,
-				165117282B94A13000779E89 /* ViewController */,
-				165117272B94A12900779E89 /* View */,
 			);
 			path = PedestrianCrossingRecognizer;
-			sourceTree = "<group>";
-		};
-		165117272B94A12900779E89 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1651172E2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		165117282B94A13000779E89 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1651172C2B94A1DA00779E89 /* PedestrianCrossingRecognizerViewController.swift */,
-				165117302B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		165117292B94A13500779E89 /* ViewModel */ = {
@@ -873,8 +844,6 @@
 				1694F18C2B98FBD600928103 /* Protocol */,
 				16F564B32B98ECE800A831F2 /* Model */,
 				16F564B22B98ECE300A831F2 /* ViewModel */,
-				16F564B12B98ECDB00A831F2 /* ViewController */,
-				16F564B02B98ECD500A831F2 /* View */,
 			);
 			path = RoadLightsRecognizer;
 			sourceTree = "<group>";
@@ -887,23 +856,6 @@
 				1694F1802B98EF4C00928103 /* Submodules */,
 			);
 			path = MainRecognizer;
-			sourceTree = "<group>";
-		};
-		16F564B02B98ECD500A831F2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				16F564C02B98ED2F00A831F2 /* RoadLightsRecognizerView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		16F564B12B98ECDB00A831F2 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				16F564BE2B98ED2500A831F2 /* RoadLightsRecognizerViewControllerRepresentable.swift */,
-				16F564BC2B98ED1F00A831F2 /* RoadLightsRecognizerViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		16F564B22B98ECE300A831F2 /* ViewModel */ = {
@@ -919,7 +871,8 @@
 			children = (
 				16F564B42B98ECF900A831F2 /* RoadLightsBoundingBox.swift */,
 				16F564B62B98ED0000A831F2 /* RoadLightsModel.swift */,
-				16F564B82B98ED0900A831F2 /* RoadLightsPhaseManager.swift */,
+				16F564B82B98ED0900A831F2 /* RoadLightsTypeManager.swift */,
+				1694F19E2B9A1E8700928103 /* RoadLightType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1011,13 +964,11 @@
 				165117252B94A0DD00779E89 /* LytNetV1.mlmodel in Sources */,
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				163311BD2B936FF500896058 /* FeedbackType.swift in Sources */,
-				1651172D2B94A1DA00779E89 /* PedestrianCrossingRecognizerViewController.swift in Sources */,
 				1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */,
 				1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */,
 				1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */,
 				1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */,
 				1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */,
-				16F564BD2B98ED1F00A831F2 /* RoadLightsRecognizerViewController.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				162856C42B8ABCA300691759 /* CaptureDepthSessionManager.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
@@ -1030,6 +981,7 @@
 				1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */,
 				163311872B8D2A9500896058 /* FlashlightManager.swift in Sources */,
 				162856D72B8D242500691759 /* Inject.swift in Sources */,
+				1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */,
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
 				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
 				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
@@ -1047,9 +999,7 @@
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
-				1651172F2B94A1DF00779E89 /* PedestrianCrossingRecognizerView.swift in Sources */,
-				16F564B92B98ED0900A831F2 /* RoadLightsPhaseManager.swift in Sources */,
-				16F564C12B98ED2F00A831F2 /* RoadLightsRecognizerView.swift in Sources */,
+				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
 				163311932B8D3C5600896058 /* AgeNet.mlmodel in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
@@ -1066,7 +1016,6 @@
 				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
-				16F564BF2B98ED2500A831F2 /* RoadLightsRecognizerViewControllerRepresentable.swift in Sources */,
 				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
 				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
@@ -1095,7 +1044,6 @@
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				165117352B94F41D00779E89 /* SessionPreset.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
-				165117312B94A21B00779E89 /* PedestrianCrossingRecognizerViewControllerRepresentable.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
 				16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,

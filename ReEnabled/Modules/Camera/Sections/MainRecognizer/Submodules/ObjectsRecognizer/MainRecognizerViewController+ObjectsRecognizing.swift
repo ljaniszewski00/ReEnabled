@@ -4,7 +4,7 @@ import UIKit
 import Vision
 
 extension MainRecognizerViewController: ObjectsRecognizing {
-    func setupBoundingBoxes() {
+    func setupObjectsBoundingBoxes() {
         for _ in 0..<ObjectModel.maxBoundingBoxes {
             objectsBoundingBoxes.append(ObjectBoundingBox())
         }
@@ -47,7 +47,7 @@ extension MainRecognizerViewController: ObjectsRecognizing {
         }
     }
     
-    func manageCaptureOutputForObjectsRecognizer(pixelBuffer: CVPixelBuffer) {
+    func prepareVisionRequestForObjectsRecognition(pixelBuffer: CVPixelBuffer) -> VNRequest {
         // The semaphore will block the capture queue and drop frames when
         // Core ML can't keep up with the camera.
         objectsRecognizerSemaphore.wait()
@@ -61,24 +61,7 @@ extension MainRecognizerViewController: ObjectsRecognizing {
             inflightBuffer = 0
         }
         
-        self.predict(pixelBuffer: pixelBuffer,
-                     inflightIndex: inflightIndex)
-    }
-    
-    func predict(pixelBuffer: CVPixelBuffer, inflightIndex: Int) {
-        
-        
-        // Vision will automatically resize the input image.
-        let exifOrientation = exifOrientationFromDeviceOrientation()
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation)
-        let request = objectsRecognizerRequests[inflightIndex]
-        
-        // Because perform() will block until after the request completes, we
-        // run it on a concurrent background queue, so that the next frame can
-        // be scheduled in parallel with this one.
-        DispatchQueue.global().async {
-            try? handler.perform([request])
-        }
+        return objectsRecognizerRequests[inflightIndex]
     }
     
     func objectsRecognitionDidComplete(request: VNRequest, error: Error?) {

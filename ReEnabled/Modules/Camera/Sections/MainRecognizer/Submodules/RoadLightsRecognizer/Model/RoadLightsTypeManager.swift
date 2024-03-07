@@ -6,13 +6,13 @@
 import Foundation
 import UIKit
 
-class RoadLightsPhaseManager {
+class RoadLightsTypeManager {
     
     struct Detection: Comparable {
         var rect: CGRect
         var confirmed: Int
         var detectedInCurrentFrame: Bool
-        var phase: LightPhase
+        var type: RoadLightType
         
         mutating func confirm() {
             self.confirmed += 1
@@ -28,22 +28,8 @@ class RoadLightsPhaseManager {
         }
     }
     
-    public enum LightPhase {
-        case red
-        case green
-        case none
-        
-        func description() -> String {
-            switch self {
-            case .red: return "Red"
-            case .green: return "Green"
-            case .none: return "None"
-            }
-        }
-    }
-    
     // Determines how often a detection needs to be validated
-    // until considered for light phase determination
+    // until considered for light type determination
     var confidenceThreshold: Int
     
     // Determines the minimum Intersect over union of a detection
@@ -58,7 +44,7 @@ class RoadLightsPhaseManager {
     var maxFramesWithNoDetection: Int = 5
     private var framesWithNoDetection: Int = 0
     
-    var currentPhase: LightPhase = RoadLightsPhaseManager.LightPhase.none
+    var currentType: RoadLightType = RoadLightType.none
     
     init(confidenceThreshold: Int, maxDetections: Int, minIOU: Float) {
         self.confidenceThreshold = confidenceThreshold
@@ -81,7 +67,7 @@ class RoadLightsPhaseManager {
                 let newDetection = Detection(rect: prediction.rect,
                                              confirmed: 0,
                                              detectedInCurrentFrame: true,
-                                             phase: self.classIndexToPhase(prediction.classIndex))
+                                             type: self.classIndexToType(prediction.classIndex))
                 // -> No. detections.length < maxDetections?
                 if detections.count < self.maxDetections {
                     // -> Yes. add it to detections
@@ -107,20 +93,20 @@ class RoadLightsPhaseManager {
         }
     }
     
-    func determine() -> LightPhase {
+    func determine() -> RoadLightType {
         let qualifiedDetections = detections.filter { $0.confirmed >= self.confidenceThreshold }
         
         if qualifiedDetections.count == 0 {
-            self.currentPhase = LightPhase.none
-            return self.currentPhase
+            self.currentType = RoadLightType.none
+            return self.currentType
         }
         
         // Get detection with the largest area, which is most likely the closest on the frame
         if let max = detections.max() {
-            self.currentPhase = max.phase
+            self.currentType = max.type
         }
         
-        return self.currentPhase
+        return self.currentType
     }
     
     private func predictionExistsInDetections(prediction: RoadLightsModel.RoadLightsPrediction) -> Detection? {
@@ -137,7 +123,7 @@ class RoadLightsPhaseManager {
         return nil
     }
     
-    private func classIndexToPhase(_ index: Int) -> LightPhase {
+    private func classIndexToType(_ index: Int) -> RoadLightType {
         return index == 0 ? .red : .green
     }
 }
