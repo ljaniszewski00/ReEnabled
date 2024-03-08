@@ -85,11 +85,11 @@ class MainRecognizerViewController: UIViewController {
         setupRoadLightsRecognizer()
         setupPedestrianCrossingRecognizer()
         
-        captureSessionManager.setUp(with: self,
-                                    and: self,
-                                    for: .mainRecognizer,
-                                    cameraPosition: .back,
-                                    desiredFrameRate: 20) {
+        captureSessionManager.setUpWithDepthData(with: self,
+                                                 and: self,
+                                                 for: .mainRecognizer,
+                                                 cameraPosition: .back,
+                                                 desiredFrameRate: 20) {
             self.setupSessionPreviewLayer()
             
             self.setupObjectsBoundingBoxes()
@@ -187,7 +187,7 @@ extension MainRecognizerViewController: AVCaptureDepthDataOutputDelegate {
         }
         
         if depthMeasurementsLeftInLoop > 0 {
-            var convertedDepthData: AVDepthData = depthData.converting(
+            let convertedDepthData: AVDepthData = depthData.converting(
                 toDepthDataType: kCVPixelFormatType_DepthFloat16
             )
             let depthFrame = convertedDepthData.depthDataMap
@@ -195,7 +195,6 @@ extension MainRecognizerViewController: AVCaptureDepthDataOutputDelegate {
                                      y: CGFloat(CVPixelBufferGetHeight(depthFrame) / 2))
             let depthVal = getDepthValueFromFrame(fromFrame: depthFrame, 
                                                   atPoint: depthPoint)
-            print(depthVal)
             
             let measurement = depthVal * 100
             

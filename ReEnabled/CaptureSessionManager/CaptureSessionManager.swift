@@ -1,3 +1,4 @@
+import ARKit
 import AVFoundation
 
 final class CaptureSessionManager: CaptureSessionManaging {
@@ -10,20 +11,38 @@ final class CaptureSessionManager: CaptureSessionManaging {
         attributes: [],
         autoreleaseFrequency: .workItem
     )
+    private let captureSessionDepthDataOutputQueue = DispatchQueue(
+        label: "captureSessionVideoDataOutput",
+        qos: .userInitiated,
+        attributes: [],
+        autoreleaseFrequency: .workItem
+    )
     
     private var sampleBufferOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
     private var sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
     private var depthDataOutput: AVCaptureDepthDataOutput = AVCaptureDepthDataOutput()
     private var depthDataOutputDelegate: AVCaptureDepthDataOutputDelegate?
+    
     var cameraMode: CameraMode?
+    private var withDepthData: Bool = false
     private var desiredFrameRate: Double?
     
-    private var videoDevice: AVCaptureDevice? = AVCaptureDevice.default(.builtInLiDARDepthCamera,
-                                                                        for: .video,
-                                                                        position: .back)
-    private let videoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession(
+    private var videoDevice: AVCaptureDevice? = AVCaptureDevice.default(
+        .builtInLiDARDepthCamera,
+        for: .video,
+        position: .back
+    )
+    
+    private let frontPositionedVideoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession(
         deviceTypes: [
-            .builtInLiDARDepthCamera,
+            .builtInTrueDepthCamera
+        ],
+        mediaType: .video,
+        position: .front
+    ).devices
+    
+    private let backPositionedVideoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession(
+        deviceTypes: [
             .builtInWideAngleCamera,
             .builtInDualWideCamera,
             .builtInUltraWideCamera,
@@ -37,20 +56,27 @@ final class CaptureSessionManager: CaptureSessionManaging {
     
     var captureSession: AVCaptureSession!
     
-    func setUp(with sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
-               and depthDataOutputDelegate: AVCaptureDepthDataOutputDelegate,
-               for cameraMode: CameraMode,
-               cameraPosition: AVCaptureDevice.Position,
-               desiredFrameRate: Double,
-               completion: @escaping () -> ()) {
+    private var supportsLiDAR: Bool {
+        return ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh)
+    }
+    
+    func setUpWithDepthData(with sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
+                            and depthDataOutputDelegate: AVCaptureDepthDataOutputDelegate,
+                            for cameraMode: CameraMode,
+                            cameraPosition: AVCaptureDevice.Position,
+                            desiredFrameRate: Double,
+                            completion: @escaping () -> ()) {
         stopCaptureSession()
         
         self.sampleBufferDelegate = sampleBufferDelegate
         self.depthDataOutputDelegate = depthDataOutputDelegate
         self.cameraMode = cameraMode
+        self.withDepthData = supportsLiDAR ? true : false
         self.desiredFrameRate = desiredFrameRate
         
-//        chooseVideoDevice(cameraPosition: cameraPosition)
+        if !(self.withDepthData && supportsLiDAR) {
+            chooseVideoDevice(cameraPosition: cameraPosition)
+        }
         
         authorizeCaptureSession {
             completion()
@@ -66,9 +92,10 @@ final class CaptureSessionManager: CaptureSessionManaging {
         
         self.sampleBufferDelegate = bufferDelegate
         self.cameraMode = cameraMode
+        self.withDepthData = false
         self.desiredFrameRate = desiredFrameRate
         
-//        chooseVideoDevice(cameraPosition: cameraPosition)
+        chooseVideoDevice(cameraPosition: cameraPosition)
         
         authorizeCaptureSession {
             completion()
@@ -83,16 +110,23 @@ final class CaptureSessionManager: CaptureSessionManaging {
     }
     
     private func chooseVideoDevice(cameraPosition: AVCaptureDevice.Position) {
-        guard !videoDevices.isEmpty else {
-            self.videoDevice = AVCaptureDevice.default(for: .video)
-            return
-        }
-        
         switch cameraPosition {
         case .front:
-            self.videoDevice = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
+            guard !frontPositionedVideoDevices.isEmpty,
+                  let videoDeviceToBeSet = frontPositionedVideoDevices.first(where: { device in device.position == cameraPosition }) else {
+                self.videoDevice = AVCaptureDevice.default(for: .video)
+                return
+            }
+            
+            self.videoDevice = videoDeviceToBeSet
         default:
-            self.videoDevice = videoDevices.first(where: { device in device.position == cameraPosition })!
+            guard !backPositionedVideoDevices.isEmpty,
+                  let videoDeviceToBeSet = backPositionedVideoDevices.first(where: { device in device.position == cameraPosition }) else {
+                self.videoDevice = AVCaptureDevice.default(for: .video)
+                return
+            }
+            
+            self.videoDevice = videoDeviceToBeSet
         }
     }
     
@@ -143,15 +177,15 @@ final class CaptureSessionManager: CaptureSessionManaging {
                 return
             }
             
-            guard let depthAndVideoSetupedCaptureSession = setupCaptureSessionForDepth(
+            if withDepthData,
+               let depthAndVideoSetupedCaptureSession = setupCaptureSessionForDepth(
                 captureSession: videoSetupedCaptureSession
-            ) else {
-                return
+               ) {
+                captureSession = depthAndVideoSetupedCaptureSession
+            } else {
+                captureSession = videoSetupedCaptureSession
             }
             
-            
-            
-            captureSession = depthAndVideoSetupedCaptureSession
             captureSession.sessionPreset = sessionPreset.preset
             captureSession.commitConfiguration()
             
@@ -175,7 +209,8 @@ final class CaptureSessionManager: CaptureSessionManaging {
             queue: captureSessionDataOutputQueue
         )
         
-        guard let videoDevice = videoDevice else {
+        guard let videoDevice = videoDevice,
+              videoDevice.formats.indices.contains(0)  else {
             return nil
         }
         
@@ -252,10 +287,9 @@ final class CaptureSessionManager: CaptureSessionManaging {
         
         if let connection = depthDataOutput.connection(with: .depthData) {
             connection.isEnabled = true
-            depthDataOutput.isFilteringEnabled = false
             depthDataOutput.setDelegate(
                 depthDataOutputDelegate,
-                callbackQueue: captureSessionDataOutputQueue
+                callbackQueue: captureSessionDepthDataOutputQueue
             )
         } else {
             return nil
@@ -299,12 +333,12 @@ protocol CaptureSessionManaging {
     
     func manageFlashlight(for sampleBuffer: CMSampleBuffer?,
                           force torchMode: AVCaptureDevice.TorchMode?)
-    func setUp(with sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
-               and depthDataOutputDelegate: AVCaptureDepthDataOutputDelegate,
-               for cameraMode: CameraMode,
-               cameraPosition: AVCaptureDevice.Position,
-               desiredFrameRate: Double,
-               completion: @escaping () -> ())
+    func setUpWithDepthData(with sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
+                            and depthDataOutputDelegate: AVCaptureDepthDataOutputDelegate,
+                            for cameraMode: CameraMode,
+                            cameraPosition: AVCaptureDevice.Position,
+                            desiredFrameRate: Double,
+                            completion: @escaping () -> ())
     func setUp(with bufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate,
                for cameraMode: CameraMode,
                cameraPosition: AVCaptureDevice.Position,

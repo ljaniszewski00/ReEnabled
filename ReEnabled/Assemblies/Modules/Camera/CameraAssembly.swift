@@ -6,10 +6,6 @@ class CaptureSessionManagerAssembly: Assembly {
         container.register(CaptureSessionManaging.self) { _ in
             CaptureSessionManager()
         }
-
-        container.register(CaptureDepthSessionManaging.self) { _ in
-            CaptureDepthSessionManager()
-        }
         
         container.register(FlashlightManaging.self) { _ in
             FlashlightManager()
