@@ -4,10 +4,8 @@ struct HelpView: View {
     @EnvironmentObject private var tabBarStateManager: TabBarStateManager
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                
-            }
+        VStack {
+            
         }
         .environmentObject(tabBarStateManager)
     }

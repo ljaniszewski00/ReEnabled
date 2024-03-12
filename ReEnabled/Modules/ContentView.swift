@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var tabBarStateManager = TabBarStateManager()
-    @State private var tabSelection: TabBarItem = .camera
+    @State private var tabSelection: TabBarItem = .search
     
     private var selection: String {
         tabSelection.title
