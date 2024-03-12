@@ -3,7 +3,7 @@ import SwiftUI
 struct SearchView: View {
     @EnvironmentObject private var tabBarStateManager: TabBarStateManager
     @StateObject private var searchViewModel: SearchViewModel = SearchViewModel()
-    @StateObject private var speechRecognizer: SpeechRecognizer = SpeechRecognizer()
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = VoiceRecordingManager()
     
     var body: some View {
         VStack(spacing: Views.Constants.mainVStackSpacing) {
@@ -24,6 +24,28 @@ struct SearchView: View {
             .environmentObject(searchViewModel)
         }
         .padding(.bottom, tabBarStateManager.screenBottomPaddingForViews)
+        .onLongPressGesture {
+            manageTalking()
+        }
+    }
+    
+    private func manageTalking() {
+        if voiceRecordingManager.isRecording {
+            stopTalking()
+        } else {
+            startTalking()
+        }
+    }
+    
+    private func startTalking() {
+        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        voiceRecordingManager.startTranscribing()
+    }
+    
+    private func stopTalking() {
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        voiceRecordingManager.stopTranscribing()
+        searchViewModel.addNewMessageWith(transcript: voiceRecordingManager.transcript)
     }
 }
 

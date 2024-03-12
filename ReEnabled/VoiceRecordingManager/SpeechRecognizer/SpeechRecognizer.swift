@@ -31,8 +31,8 @@ actor SpeechRecognizer: ObservableObject {
      Initializes a new speech recognizer. If this is the first time you've used the class, it
      requests access to the speech recognizer and the microphone.
      */
-    init() {
-        recognizer = SFSpeechRecognizer()
+    init(language: SupportedLanguage) {
+        recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: language.identifier))
         guard recognizer != nil else {
             transcribe(RecognizerError.nilRecognizer)
             return
@@ -111,7 +111,7 @@ actor SpeechRecognizer: ObservableObject {
         request.shouldReportPartialResults = true
         
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .duckOthers)
+        try audioSession.setCategory(.record, mode: .measurement, options: .interruptSpokenAudioAndMixWithOthers)
         try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         let inputNode = audioEngine.inputNode
         
@@ -139,12 +139,12 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
-    
     nonisolated private func transcribe(_ message: String) {
         Task { @MainActor in
             transcript = message
         }
     }
+    
     nonisolated private func transcribe(_ error: Error) {
         var errorMessage = ""
         if let error = error as? RecognizerError {

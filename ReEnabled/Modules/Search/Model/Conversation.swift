@@ -2,7 +2,7 @@ import Foundation
 
 struct Conversation {
     let id: String = UUID().uuidString
-    let messages: [Message]
+    var messages: [Message]
 }
 
 extension Conversation {
