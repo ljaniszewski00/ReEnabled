@@ -21,7 +21,7 @@ extension MainRecognizerViewController: RoadLightsRecognizing {
     }
     
     func setupRoadLightsRecognizer() {
-        let roadLightsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.roadLightsRecognizer.fileName,
+        let roadLightsRecognizerModelURL = Bundle.main.url(forResource: CameraMLModelFile.roadLightsRecognizer.fileName,
                                                            withExtension: "mlmodelc")
     
         do {

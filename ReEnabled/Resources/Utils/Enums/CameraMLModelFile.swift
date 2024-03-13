@@ -1,4 +1,4 @@
-enum MLModelFile {
+enum CameraMLModelFile {
     case ageRecognizer
     case currencyDetector
     case emotionsRecognizer
@@ -8,7 +8,7 @@ enum MLModelFile {
     case objectsRecognizer
 }
 
-extension MLModelFile {
+extension CameraMLModelFile {
     
     var fileName: String {
         switch self {

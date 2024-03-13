@@ -80,7 +80,7 @@ class CurrencyDetectorViewController: UIViewController, AVCaptureVideoDataOutput
 
 extension CurrencyDetectorViewController {
     func setupDetector() {
-        guard let modelURL = Bundle.main.url(forResource: MLModelFile.currencyDetector.fileName,
+        guard let modelURL = Bundle.main.url(forResource: CameraMLModelFile.currencyDetector.fileName,
                                              withExtension: "mlmodelc") else {
             return
         }

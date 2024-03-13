@@ -3,7 +3,7 @@ import Foundation
 struct Message {
     let id: String = UUID().uuidString
     let content: String
-    let dateSent: Date
+    var dateSent: Date = Date()
     let sentByUser: Bool
 }
 

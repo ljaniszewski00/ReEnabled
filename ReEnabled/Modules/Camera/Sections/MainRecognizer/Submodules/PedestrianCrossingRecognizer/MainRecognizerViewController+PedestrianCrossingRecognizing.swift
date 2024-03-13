@@ -75,7 +75,7 @@ extension MainRecognizerViewController: PedestrianCrossingRecognizing {
     
     func setupPedestrianCrossingRecognizer() {
         let pedestrianCrossingRecognizerModelURL = Bundle.main.url(
-            forResource: MLModelFile.pedestrianCrossingRecognizer.fileName,
+            forResource: CameraMLModelFile.pedestrianCrossingRecognizer.fileName,
             withExtension: "mlmodelc"
         )
     

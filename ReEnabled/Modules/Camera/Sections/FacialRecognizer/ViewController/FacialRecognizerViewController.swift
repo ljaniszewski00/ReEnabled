@@ -88,7 +88,7 @@ extension FacialRecognizerViewController {
     }
     
     private func setupGenderDetector() {
-        let genderRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.genderRecognizer.fileName,
+        let genderRecognizerModelURL = Bundle.main.url(forResource: CameraMLModelFile.genderRecognizer.fileName,
                                                        withExtension: "mlmodelc")
     
         do {
@@ -103,7 +103,7 @@ extension FacialRecognizerViewController {
     }
     
     private func setupAgeDetector() {
-        let ageRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.ageRecognizer.fileName,
+        let ageRecognizerModelURL = Bundle.main.url(forResource: CameraMLModelFile.ageRecognizer.fileName,
                                                     withExtension: "mlmodelc")
     
         do {
@@ -118,7 +118,7 @@ extension FacialRecognizerViewController {
     }
     
     private func setupEmotionDetector() {
-        let emotionsRecognizerModelURL = Bundle.main.url(forResource: MLModelFile.emotionsRecognizer.fileName,
+        let emotionsRecognizerModelURL = Bundle.main.url(forResource: CameraMLModelFile.emotionsRecognizer.fileName,
                                                          withExtension: "mlmodelc")
     
         do {

@@ -21,7 +21,7 @@ class RoadLightsModel {
         let rect: CGRect
     }
     
-    let model = Bundle.main.url(forResource: MLModelFile.roadLightsRecognizer.fileName,
+    let model = Bundle.main.url(forResource: CameraMLModelFile.roadLightsRecognizer.fileName,
                                 withExtension: "mlmodelc")
     
     let labels = ["red", "green"]

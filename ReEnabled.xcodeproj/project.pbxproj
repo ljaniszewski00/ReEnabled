@@ -76,7 +76,7 @@
 		1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */; };
 		1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */; };
 		1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */; };
-		1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31E2B8548F10028CE73 /* MLModel.swift */; };
+		1682D31F2B8548F10028CE73 /* CameraMLModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */; };
 		1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1832B98EF7800928103 /* MainRecognizerViewController.swift */; };
 		1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1852B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift */; };
 		1694F1882B98EF9400928103 /* MainRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1872B98EF9400928103 /* MainRecognizerView.swift */; };
@@ -93,6 +93,8 @@
 		16B446912B9FA22B002504F5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446902B9FA22B002504F5 /* Message.swift */; };
 		16B446932B9FA2C1002504F5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446922B9FA2C1002504F5 /* Conversation.swift */; };
 		16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */; };
+		16B6E47F2BA25A6300B21451 /* gpt2-merges.txt in Resources */ = {isa = PBXBuildFile; fileRef = 16B6E47E2BA25A6300B21451 /* gpt2-merges.txt */; };
+		16B6E4812BA25A8700B21451 /* gpt2-vocab.json in Resources */ = {isa = PBXBuildFile; fileRef = 16B6E4802BA25A8700B21451 /* gpt2-vocab.json */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -108,6 +110,14 @@
 		16F564BB2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */; };
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
+		16FC1A832BA2331100BB9B48 /* distilgpt2-64-6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A802BA2331100BB9B48 /* distilgpt2-64-6.mlmodel */; };
+		16FC1A892BA24B7900BB9B48 /* GPT2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A882BA24B7900BB9B48 /* GPT2.swift */; };
+		16FC1A8E2BA24BA100BB9B48 /* GPT2ByteEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A8D2BA24BA100BB9B48 /* GPT2ByteEncoder.swift */; };
+		16FC1A902BA24BA800BB9B48 /* GPT2Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A8F2BA24BA800BB9B48 /* GPT2Tokenizer.swift */; };
+		16FC1A942BA24BEB00BB9B48 /* SearchModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A932BA24BEB00BB9B48 /* SearchModelUtils.swift */; };
+		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
+		16FC1A992BA24D1B00BB9B48 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A982BA24D1B00BB9B48 /* Math.swift */; };
+		16FC1A9B2BA24E9400BB9B48 /* SearchMLModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A9A2BA24E9400BB9B48 /* SearchMLModelFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -192,7 +202,7 @@
 		1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewController.swift; sourceTree = "<group>"; };
 		1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorView.swift; sourceTree = "<group>"; };
-		1682D31E2B8548F10028CE73 /* MLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModel.swift; sourceTree = "<group>"; };
+		1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMLModelFile.swift; sourceTree = "<group>"; };
 		1694F1832B98EF7800928103 /* MainRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerViewController.swift; sourceTree = "<group>"; };
 		1694F1852B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		1694F1872B98EF9400928103 /* MainRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerView.swift; sourceTree = "<group>"; };
@@ -209,6 +219,8 @@
 		16B446902B9FA22B002504F5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		16B446922B9FA2C1002504F5 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		16B6E47E2BA25A6300B21451 /* gpt2-merges.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "gpt2-merges.txt"; sourceTree = "<group>"; };
+		16B6E4802BA25A8700B21451 /* gpt2-vocab.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "gpt2-vocab.json"; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -225,6 +237,14 @@
 		16FC1A782BA1007200BB9B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
+		16FC1A802BA2331100BB9B48 /* distilgpt2-64-6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "distilgpt2-64-6.mlmodel"; sourceTree = "<group>"; };
+		16FC1A882BA24B7900BB9B48 /* GPT2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2.swift; sourceTree = "<group>"; };
+		16FC1A8D2BA24BA100BB9B48 /* GPT2ByteEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2ByteEncoder.swift; sourceTree = "<group>"; };
+		16FC1A8F2BA24BA800BB9B48 /* GPT2Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT2Tokenizer.swift; sourceTree = "<group>"; };
+		16FC1A932BA24BEB00BB9B48 /* SearchModelUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelUtils.swift; sourceTree = "<group>"; };
+		16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Extension.swift"; sourceTree = "<group>"; };
+		16FC1A982BA24D1B00BB9B48 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		16FC1A9A2BA24E9400BB9B48 /* SearchMLModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMLModelFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +315,7 @@
 		162856D92B8D246300691759 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				16FC1A842BA24B3700BB9B48 /* Onboarding */,
 				164E112B2B46182B008EF153 /* SplashScreen */,
 				164E11452B4720F6008EF153 /* Camera */,
 				164E11462B4720FB008EF153 /* Search */,
@@ -385,6 +406,7 @@
 		16364AA82B51B686005BECC5 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				16FC1A802BA2331100BB9B48 /* distilgpt2-64-6.mlmodel */,
 				163311902B8D3C5600896058 /* AgeNet.mlmodel */,
 				163311A02B90AD4600896058 /* AmpelPilot_2812rg.mlmodel */,
 				1633118E2B8D3C5300896058 /* CNNEmotions.mlmodel */,
@@ -547,7 +569,8 @@
 			children = (
 				164E11292B46172F008EF153 /* Views.swift */,
 				164668FD2B66DE010049AB03 /* CameraMode.swift */,
-				1682D31E2B8548F10028CE73 /* MLModel.swift */,
+				1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */,
+				16FC1A9A2BA24E9400BB9B48 /* SearchMLModelFile.swift */,
 				16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */,
 			);
 			path = Enums;
@@ -570,6 +593,7 @@
 				163311AD2B935D6700896058 /* Array+ArgMax.swift */,
 				163311BE2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift */,
 				16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */,
+				16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -627,7 +651,8 @@
 		164E11462B4720FB008EF153 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				16B4468F2B9FA220002504F5 /* Model */,
+				16FC1A852BA24B5B00BB9B48 /* Model */,
+				16B4468F2B9FA220002504F5 /* Conversation */,
 				164E114A2B47211D008EF153 /* SearchView.swift */,
 				16B4468D2B9FA21B002504F5 /* SearchViewModel.swift */,
 			);
@@ -829,13 +854,22 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		16B4468F2B9FA220002504F5 /* Model */ = {
+		16B4468F2B9FA220002504F5 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				16B446902B9FA22B002504F5 /* Message.swift */,
 				16B446922B9FA2C1002504F5 /* Conversation.swift */,
 			);
-			path = Model;
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		16B6E47D2BA25A5300B21451 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				16B6E47E2BA25A6300B21451 /* gpt2-merges.txt */,
+				16B6E4802BA25A8700B21451 /* gpt2-vocab.json */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		16E170062B6FDA4000F984FB /* ViewModel */ = {
@@ -907,6 +941,42 @@
 			path = VoiceRecordingManager;
 			sourceTree = "<group>";
 		};
+		16FC1A842BA24B3700BB9B48 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		16FC1A852BA24B5B00BB9B48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16FC1A972BA24D1100BB9B48 /* Utils */,
+				16FC1A8C2BA24B8F00BB9B48 /* GPT2 */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		16FC1A8C2BA24B8F00BB9B48 /* GPT2 */ = {
+			isa = PBXGroup;
+			children = (
+				16FC1A882BA24B7900BB9B48 /* GPT2.swift */,
+				16FC1A8D2BA24BA100BB9B48 /* GPT2ByteEncoder.swift */,
+				16FC1A8F2BA24BA800BB9B48 /* GPT2Tokenizer.swift */,
+			);
+			path = GPT2;
+			sourceTree = "<group>";
+		};
+		16FC1A972BA24D1100BB9B48 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				16B6E47D2BA25A5300B21451 /* Files */,
+				16FC1A932BA24BEB00BB9B48 /* SearchModelUtils.swift */,
+				16FC1A982BA24D1B00BB9B48 /* Math.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -974,7 +1044,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B6E4812BA25A8700B21451 /* gpt2-vocab.json in Resources */,
 				164E111E2B45E169008EF153 /* Preview Assets.xcassets in Resources */,
+				16B6E47F2BA25A6300B21451 /* gpt2-merges.txt in Resources */,
 				164E111B2B45E169008EF153 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -996,9 +1068,10 @@
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				163311BD2B936FF500896058 /* FeedbackType.swift in Sources */,
 				1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */,
+				16FC1A992BA24D1B00BB9B48 /* Math.swift in Sources */,
 				1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */,
 				1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */,
-				1682D31F2B8548F10028CE73 /* MLModel.swift in Sources */,
+				1682D31F2B8548F10028CE73 /* CameraMLModelFile.swift in Sources */,
 				1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
@@ -1018,6 +1091,7 @@
 				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
+				16FC1A892BA24B7900BB9B48 /* GPT2.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
@@ -1052,21 +1126,27 @@
 				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
+				16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */,
 				1694F1882B98EF9400928103 /* MainRecognizerView.swift in Sources */,
+				16FC1A9B2BA24E9400BB9B48 /* SearchMLModelFile.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				163311912B8D3C5600896058 /* CNNEmotions.mlmodel in Sources */,
+				16FC1A832BA2331100BB9B48 /* distilgpt2-64-6.mlmodel in Sources */,
 				16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */,
 				1694F1962B98FD2F00928103 /* DistanceMeasuring.swift in Sources */,
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */,
 				163311CB2B939E8C00896058 /* IOU.swift in Sources */,
+				16FC1A942BA24BEB00BB9B48 /* SearchModelUtils.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
+				16FC1A8E2BA24BA100BB9B48 /* GPT2ByteEncoder.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
+				16FC1A902BA24BA800BB9B48 /* GPT2Tokenizer.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
 				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,

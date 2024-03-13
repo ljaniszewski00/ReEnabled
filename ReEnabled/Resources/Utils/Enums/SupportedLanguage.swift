@@ -4,6 +4,15 @@ enum SupportedLanguage {
 }
 
 extension SupportedLanguage {
+    var fullName: String {
+        switch self {
+        case .english:
+            "English"
+        case .polish:
+            "Polish"
+        }
+    }
+    
     var languageCode: String {
         switch self {
         case .english:

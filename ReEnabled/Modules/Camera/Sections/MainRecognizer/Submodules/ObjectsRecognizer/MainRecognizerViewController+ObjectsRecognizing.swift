@@ -22,7 +22,7 @@ extension MainRecognizerViewController: ObjectsRecognizing {
     }
     
     func setupObjectsRecognizer() {
-        guard let modelURL = Bundle.main.url(forResource: MLModelFile.objectsRecognizer.fileName,
+        guard let modelURL = Bundle.main.url(forResource: CameraMLModelFile.objectsRecognizer.fileName,
                                              withExtension: "mlmodelc") else {
             return
         }

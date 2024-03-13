@@ -16,37 +16,28 @@ struct SearchView: View {
                         Views.MessageCell(message: message)
                             .padding(.bottom, Views.Constants.messageCellBottomPadding)
                     }
+                    
+                    if searchViewModel.speechRecordingBlocked {
+                        ProgressView()
+                    }
                 }
                 .padding()
                 .padding(.bottom)
             }
-            .environmentObject(tabBarStateManager)
-            .environmentObject(searchViewModel)
+            .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
-        .padding(.bottom, tabBarStateManager.screenBottomPaddingForViews)
+        .onTapGesture {}
         .onLongPressGesture {
-            manageTalking()
+            if !searchViewModel.speechRecordingBlocked {
+                voiceRecordingManager.manageTalking()
+            }
+        }
+        .onChange(of: voiceRecordingManager.transcript) { newValue in
+            searchViewModel.addNewMessageWith(transcript: newValue)
         }
     }
     
-    private func manageTalking() {
-        if voiceRecordingManager.isRecording {
-            stopTalking()
-        } else {
-            startTalking()
-        }
-    }
     
-    private func startTalking() {
-        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-        voiceRecordingManager.startTranscribing()
-    }
-    
-    private func stopTalking() {
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        voiceRecordingManager.stopTranscribing()
-        searchViewModel.addNewMessageWith(transcript: voiceRecordingManager.transcript)
-    }
 }
 
 #Preview {
@@ -64,9 +55,12 @@ private extension Views {
         static let messageCellNotSentByUserLabel: String = "Device"
         static let messageCellBottomPadding: CGFloat = 15
         
+        static let scrollViewBottomPadding: CGFloat = 35
+        
         static let navigationTitle: String = "Search"
-        static let toolbarButtonPhotoImageName: String = "photo"
         static let toolbarButtonMessageHistoryImageName: String = "list.dash"
+        static let toolbarButtonMessageSaveImageName: String = "square.and.arrow.down.fill"
+        static let toolbarButtonPhotoImageName: String = "photo"
     }
     
     struct NavigationBar: View {
@@ -84,7 +78,13 @@ private extension Views {
                 }
             },
                                 secondLeadingItem: {
-                Text("")
+                Button {
+                    searchViewModel.saveCurrentConversation()
+                } label: {
+                    Image(systemName: Views.Constants.toolbarButtonMessageSaveImageName)
+                        .resizable()
+                        .scaledToFill()
+                }
             },
                                 trailingItem: {
                 Text("")
