@@ -90,6 +90,12 @@
 		16B446912B9FA22B002504F5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446902B9FA22B002504F5 /* Message.swift */; };
 		16B446932B9FA2C1002504F5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446922B9FA2C1002504F5 /* Conversation.swift */; };
 		16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */; };
+		16B6E48C2BA37DD700B21451 /* ModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E48B2BA37DD700B21451 /* ModelState.swift */; };
+		16B6E48E2BA37E1000B21451 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6E48D2BA37E1000B21451 /* ModelLoader.swift */; };
+		16B6E4912BA3801500B21451 /* Path in Frameworks */ = {isa = PBXBuildFile; productRef = 16B6E4902BA3801500B21451 /* Path */; };
+		16B8989F2BA3831000735D93 /* Transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 16B8989E2BA3831000735D93 /* Transformers */; };
+		16B898A12BA3831000735D93 /* transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 16B898A02BA3831000735D93 /* transformers */; };
+		16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -106,7 +112,6 @@
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
 		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
-		16FC1A9B2BA24E9400BB9B48 /* SearchMLModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A9A2BA24E9400BB9B48 /* SearchMLModelFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -205,6 +210,9 @@
 		16B446902B9FA22B002504F5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		16B446922B9FA2C1002504F5 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		16B6E48B2BA37DD700B21451 /* ModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelState.swift; sourceTree = "<group>"; };
+		16B6E48D2BA37E1000B21451 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
+		16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletingPrefix.swift"; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -222,7 +230,6 @@
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
 		16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Extension.swift"; sourceTree = "<group>"; };
-		16FC1A9A2BA24E9400BB9B48 /* SearchMLModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMLModelFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +237,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B6E4912BA3801500B21451 /* Path in Frameworks */,
 				165795BD2B549DD6009142C1 /* OpenAI in Frameworks */,
+				16B8989F2BA3831000735D93 /* Transformers in Frameworks */,
+				16B898A12BA3831000735D93 /* transformers in Frameworks */,
 				1633118D2B8D31E600896058 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +554,6 @@
 				164E11292B46172F008EF153 /* Views.swift */,
 				164668FD2B66DE010049AB03 /* CameraMode.swift */,
 				1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */,
-				16FC1A9A2BA24E9400BB9B48 /* SearchMLModelFile.swift */,
 				16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */,
 			);
 			path = Enums;
@@ -568,6 +577,7 @@
 				163311BE2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift */,
 				16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */,
 				16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */,
+				16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -916,6 +926,8 @@
 		16FC1A852BA24B5B00BB9B48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				16B6E48B2BA37DD700B21451 /* ModelState.swift */,
+				16B6E48D2BA37E1000B21451 /* ModelLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -940,6 +952,9 @@
 			packageProductDependencies = (
 				165795BC2B549DD6009142C1 /* OpenAI */,
 				1633118C2B8D31E600896058 /* Swinject */,
+				16B6E4902BA3801500B21451 /* Path */,
+				16B8989E2BA3831000735D93 /* Transformers */,
+				16B898A02BA3831000735D93 /* transformers */,
 			);
 			productName = ReEnabled;
 			productReference = 164E11132B45E167008EF153 /* ReEnabled.app */;
@@ -972,6 +987,8 @@
 			packageReferences = (
 				165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */,
 				162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */,
+				16B6E48F2BA3801500B21451 /* XCRemoteSwiftPackageReference "Path.swift" */,
+				16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */,
 			);
 			productRefGroup = 164E11142B45E167008EF153 /* Products */;
 			projectDirPath = "";
@@ -1031,6 +1048,7 @@
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
+				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
@@ -1060,12 +1078,12 @@
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
+				16B6E48C2BA37DD700B21451 /* ModelState.swift in Sources */,
 				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
 				16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */,
 				1694F1882B98EF9400928103 /* MainRecognizerView.swift in Sources */,
-				16FC1A9B2BA24E9400BB9B48 /* SearchMLModelFile.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */,
 				1694F1962B98FD2F00928103 /* DistanceMeasuring.swift in Sources */,
@@ -1076,6 +1094,7 @@
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
+				16B6E48E2BA37E1000B21451 /* ModelLoader.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
@@ -1334,6 +1353,22 @@
 				minimumVersion = 0.2.5;
 			};
 		};
+		16B6E48F2BA3801500B21451 /* XCRemoteSwiftPackageReference "Path.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/Path.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
+		16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huggingface/swift-transformers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1346,6 +1381,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;
+		};
+		16B6E4902BA3801500B21451 /* Path */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16B6E48F2BA3801500B21451 /* XCRemoteSwiftPackageReference "Path.swift" */;
+			productName = Path;
+		};
+		16B8989E2BA3831000735D93 /* Transformers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */;
+			productName = Transformers;
+		};
+		16B898A02BA3831000735D93 /* transformers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */;
+			productName = transformers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

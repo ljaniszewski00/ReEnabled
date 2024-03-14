@@ -67,7 +67,7 @@ extension MLMultiArray {
 
 extension MLMultiArray {
     /// Provides a way to index n-dimensionals arrays a la numpy.
-    enum Indexing: Equatable {
+    enum MLMultiArrayIndexing: Equatable {
         case select(Int)
         case slice
     }
@@ -76,12 +76,12 @@ extension MLMultiArray {
     ///
     /// You must specify all dimensions.
     /// Note: only one slice is supported at the moment.
-    static func slice(_ o: MLMultiArray, indexing: [Indexing]) -> MLMultiArray {
+    static func slice(_ o: MLMultiArray, indexing: [MLMultiArrayIndexing]) -> MLMultiArray {
         assert(
             indexing.count == o.shape.count
         )
         assert(
-            indexing.filter { $0 == Indexing.slice }.count == 1
+            indexing.filter { $0 == MLMultiArrayIndexing.slice }.count == 1
         )
         var selectDims: [Int: Int] = [:]
         for (i, idx) in indexing.enumerated() {
@@ -91,7 +91,7 @@ extension MLMultiArray {
         }
         return slice(
             o,
-            sliceDim: indexing.firstIndex { $0 == Indexing.slice }!,
+            sliceDim: indexing.firstIndex { $0 == MLMultiArrayIndexing.slice }!,
             selectDims: selectDims
         )
     }
