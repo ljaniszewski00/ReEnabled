@@ -158,7 +158,6 @@ actor SpeechRecognizer: ObservableObject {
     }
 }
 
-
 extension SFSpeechRecognizer {
     static func hasAuthorizationToRecognize() async -> Bool {
         await withCheckedContinuation { continuation in
@@ -168,7 +167,6 @@ extension SFSpeechRecognizer {
         }
     }
 }
-
 
 extension AVAudioSession {
     func hasPermissionToRecord() async -> Bool {

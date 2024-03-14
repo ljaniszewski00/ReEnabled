@@ -1,13 +1,16 @@
+import Combine
 import Foundation
 
 class SearchViewModel: ObservableObject {
+    @Inject private var openAIManager: OpenAIManaging
+    
     @Published var currentConversation: Conversation = Conversation(messages: [])
     @Published var conversations: [Conversation] = [Conversation]()
     
     @Published var speechRecordingBlocked: Bool = false
     @Published var showPreviousConversations: Bool = false
     
-    private let gpt2: GPT2 = GPT2(strategy: .topK(40))
+    private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     func saveCurrentConversation() {
         let conversationsIds: [String] = conversations.map { $0.id }
@@ -24,27 +27,24 @@ class SearchViewModel: ObservableObject {
         let message: Message = Message(content: transcript, sentByUser: true)
         addMessageToCurrentConversation(message)
         
-        generateResponseWith(searchMLModel: .gpt2, for: transcript)
+        generateResponse(for: transcript)
     }
     
-    private func generateResponseWith(searchMLModel: SearchMLModelFile, for query: String) {
-        switch searchMLModel {
-        case .gpt2:
-            generateResponseWithGPT2(gpt2, for: query)
-        }
-    }
-    
-    private func generateResponseWithGPT2(_ gpt2: GPT2, for query: String) {
+    private func generateResponse(for query: String) {
         speechRecordingBlocked = true
-        DispatchQueue.global(qos: .userInitiated).async {
-            let response = self.gpt2.generate(text: query, nTokens: 50) { _, _ in }
-            
-            DispatchQueue.main.async { [weak self] in
+        openAIManager.generateResponse(for: query)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.speechRecordingBlocked = false
+            } receiveValue: { [weak self] response in
+                guard let response = response else {
+                    return
+                }
+                
                 let message = Message(content: response, sentByUser: false)
                 self?.addMessageToCurrentConversation(message)
-                self?.speechRecordingBlocked = false
             }
-        }
+            .store(in: &cancelBag)
     }
     
     private func addMessageToCurrentConversation(_ message: Message) {

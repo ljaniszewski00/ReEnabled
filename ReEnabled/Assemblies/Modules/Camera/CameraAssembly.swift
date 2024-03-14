@@ -1,6 +1,6 @@
 import Swinject
 
-class CaptureSessionManagerAssembly: Assembly {
+class CameraAssembly: Assembly {
 
     func assemble(container: Container) {
         container.register(CaptureSessionManaging.self) { _ in
