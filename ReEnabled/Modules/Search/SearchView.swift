@@ -32,8 +32,12 @@ struct SearchView: View {
                 voiceRecordingManager.manageTalking()
             }
         }
-        .onChange(of: voiceRecordingManager.transcript) { newValue in
-            searchViewModel.addNewMessageWith(transcript: newValue)
+        .onChange(of: voiceRecordingManager.transcript) { transcript in
+            searchViewModel.addNewMessageWith(transcript: transcript)
+//            searchViewModel.addNewMessageWithImage(transcript: transcript)
+        }
+        .fullScreenCover(isPresented: $searchViewModel.showCamera) {
+            AccessCameraView(selectedImage: $searchViewModel.selectedImage)
         }
     }
     
@@ -54,6 +58,10 @@ private extension Views {
         static let messageCellSentByUserLabel: String = "You"
         static let messageCellNotSentByUserLabel: String = "Device"
         static let messageCellBottomPadding: CGFloat = 15
+        
+        static let messageCellImageClipShapeCornerRadius: CGFloat = 5
+        static let messageCellImageTopPadding: CGFloat = 15
+        static let messageCellImageBottomPadding: CGFloat = 10
         
         static let scrollViewBottomPadding: CGFloat = 35
         
@@ -91,7 +99,7 @@ private extension Views {
             },
                                 secondTrailingItem: {
                 Button {
-                    searchViewModel.uploadImage()
+                    searchViewModel.showCamera = true
                 } label: {
                     Image(systemName: Views.Constants.toolbarButtonPhotoImageName)
                         .resizable()
@@ -117,15 +125,33 @@ private extension Views {
                     }
                     .bold()
                     
-                    Text(" | ")
+                    Divider()
+                    
                     Text(message.hourSent)
                         .foregroundStyle(.tertiary)
                 }
                 
-                
                 Text(message.content)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
+                
+                if let imageContent = message.imageContent {
+                    HStack {
+                        Image(uiImage: imageContent)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(
+                                RoundedRectangle(
+                                    cornerRadius:
+                                        Views.Constants.messageCellImageClipShapeCornerRadius
+                                )
+                            )
+                            .padding(.top, Views.Constants.messageCellImageTopPadding)
+                            .padding(.bottom, Views.Constants.messageCellImageBottomPadding)
+                        
+                        Spacer()
+                    }
+                }
                 
                 Divider()
             }

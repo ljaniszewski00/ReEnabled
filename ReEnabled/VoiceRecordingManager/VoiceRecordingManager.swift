@@ -3,7 +3,7 @@ import UIKit
 
 class VoiceRecordingManager: ObservableObject {
     @Published var isRecording: Bool = false
-    private var speechRecognizer: SpeechRecognizer = SpeechRecognizer(language: .english)
+    private var speechRecognizer: SpeechRecognizer = SpeechRecognizer(language: .polish)
     
     @MainActor
     var transcript: String {

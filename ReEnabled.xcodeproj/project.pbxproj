@@ -13,6 +13,9 @@
 		162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */; };
 		162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */; };
 		162856D72B8D242500691759 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856D62B8D242500691759 /* Inject.swift */; };
+		1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F99B2BA49BD400B89629 /* UIImage+String.swift */; };
+		1629F9A12BA4AABB00B89629 /* AccessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */; };
+		1629F9A42BA4BE4B00B89629 /* ImageInputRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9A32BA4BE4B00B89629 /* ImageInputRequest.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -135,6 +138,9 @@
 		162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerView.swift; sourceTree = "<group>"; };
 		162856D62B8D242500691759 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		1629F99B2BA49BD400B89629 /* UIImage+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
+		1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCameraView.swift; sourceTree = "<group>"; };
+		1629F9A32BA4BE4B00B89629 /* ImageInputRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInputRequest.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -313,6 +319,22 @@
 				164E11182B45E167008EF153 /* ContentView.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		1629F99F2BA4AAAE00B89629 /* AccessCameraView */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */,
+			);
+			path = AccessCameraView;
+			sourceTree = "<group>";
+		};
+		1629F9A22BA4BE3B00B89629 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9A32BA4BE4B00B89629 /* ImageInputRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		162DCA4C2BA0DD7F005CB24A /* SpeechRecognizer */ = {
@@ -582,6 +604,7 @@
 				16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */,
 				16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */,
 				16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */,
+				1629F99B2BA49BD400B89629 /* UIImage+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -639,6 +662,7 @@
 		164E11462B4720FB008EF153 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				1629F99F2BA4AAAE00B89629 /* AccessCameraView */,
 				16B4468F2B9FA220002504F5 /* Conversation */,
 				164E114A2B47211D008EF153 /* SearchView.swift */,
 				16B4468D2B9FA21B002504F5 /* SearchViewModel.swift */,
@@ -853,6 +877,7 @@
 		16B898B12BA3B15700735D93 /* OpenAIManager */ = {
 			isa = PBXGroup;
 			children = (
+				1629F9A22BA4BE3B00B89629 /* Request */,
 				16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */,
 				16B898B52BA3B7F800735D93 /* OpenAIPropertyList.plist */,
 			);
@@ -1059,11 +1084,13 @@
 				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
+				1629F9A12BA4AABB00B89629 /* AccessCameraView.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
+				1629F9A42BA4BE4B00B89629 /* ImageInputRequest.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
 				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
@@ -1072,6 +1099,7 @@
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
+				1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,

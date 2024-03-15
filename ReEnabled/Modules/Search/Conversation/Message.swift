@@ -1,8 +1,10 @@
 import Foundation
+import UIKit
 
 struct Message {
     let id: String = UUID().uuidString
     let content: String
+    var imageContent: UIImage? = nil
     var dateSent: Date = Date()
     let sentByUser: Bool
 }
