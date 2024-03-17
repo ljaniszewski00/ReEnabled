@@ -70,7 +70,7 @@ class SearchViewModel: ObservableObject {
             return
         }
         
-        openAIManager.generateResponse(for: query, with: selectedImage)
+        openAIManager.generateImageResponse(for: query, with: selectedImage)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.speechRecordingBlocked = false

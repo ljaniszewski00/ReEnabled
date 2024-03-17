@@ -15,7 +15,23 @@
 		162856D72B8D242500691759 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856D62B8D242500691759 /* Inject.swift */; };
 		1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F99B2BA49BD400B89629 /* UIImage+String.swift */; };
 		1629F9A12BA4AABB00B89629 /* AccessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */; };
-		1629F9A42BA4BE4B00B89629 /* ImageInputRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9A32BA4BE4B00B89629 /* ImageInputRequest.swift */; };
+		1629F9AC2BA7579500B89629 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9AB2BA7579500B89629 /* APIClient.swift */; };
+		1629F9AF2BA7581700B89629 /* OpenAIAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9AE2BA7581700B89629 /* OpenAIAPIEndpoints.swift */; };
+		1629F9B12BA759A400B89629 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B02BA759A400B89629 /* APIEndpoint.swift */; };
+		1629F9B62BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B52BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift */; };
+		1629F9B82BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B72BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift */; };
+		1629F9BA2BA7623300B89629 /* OpenAIChatCompletionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B92BA7623300B89629 /* OpenAIChatCompletionsResponse.swift */; };
+		1629F9BD2BA7649000B89629 /* OpenAIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9BC2BA7649000B89629 /* OpenAIMessage.swift */; };
+		1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9BE2BA764AC00B89629 /* OpenAIMessageContentType.swift */; };
+		1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C02BA764C700B89629 /* OpenAIMessageContent.swift */; };
+		1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C22BA766B600B89629 /* OpenAIRole.swift */; };
+		1629F9C52BA7672E00B89629 /* OpenAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C42BA7672E00B89629 /* OpenAIModel.swift */; };
+		1629F9C82BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C72BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift */; };
+		1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */; };
+		1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */; };
+		1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */; };
+		1629F9D22BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D12BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift */; };
+		1629F9D42BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D32BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -140,7 +156,23 @@
 		162856D62B8D242500691759 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		1629F99B2BA49BD400B89629 /* UIImage+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
 		1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCameraView.swift; sourceTree = "<group>"; };
-		1629F9A32BA4BE4B00B89629 /* ImageInputRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInputRequest.swift; sourceTree = "<group>"; };
+		1629F9AB2BA7579500B89629 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		1629F9AE2BA7581700B89629 /* OpenAIAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPIEndpoints.swift; sourceTree = "<group>"; };
+		1629F9B02BA759A400B89629 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		1629F9B52BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsRequestInput.swift; sourceTree = "<group>"; };
+		1629F9B72BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsRequestInput.swift; sourceTree = "<group>"; };
+		1629F9B92BA7623300B89629 /* OpenAIChatCompletionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsResponse.swift; sourceTree = "<group>"; };
+		1629F9BC2BA7649000B89629 /* OpenAIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessage.swift; sourceTree = "<group>"; };
+		1629F9BE2BA764AC00B89629 /* OpenAIMessageContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessageContentType.swift; sourceTree = "<group>"; };
+		1629F9C02BA764C700B89629 /* OpenAIMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessageContent.swift; sourceTree = "<group>"; };
+		1629F9C22BA766B600B89629 /* OpenAIRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRole.swift; sourceTree = "<group>"; };
+		1629F9C42BA7672E00B89629 /* OpenAIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModel.swift; sourceTree = "<group>"; };
+		1629F9C72BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsInteractor.swift; sourceTree = "<group>"; };
+		1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsInteractor.swift; sourceTree = "<group>"; };
+		1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAPIClient.swift; sourceTree = "<group>"; };
+		1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+RegisterAPIClient.swift"; sourceTree = "<group>"; };
+		1629F9D12BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsRequestInputProvider.swift; sourceTree = "<group>"; };
+		1629F9D32BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsRequestInputProvider.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -329,12 +361,102 @@
 			path = AccessCameraView;
 			sourceTree = "<group>";
 		};
-		1629F9A22BA4BE3B00B89629 /* Request */ = {
+		1629F9A72BA7573200B89629 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9A32BA4BE4B00B89629 /* ImageInputRequest.swift */,
+				1629F9A82BA7573800B89629 /* Networking */,
+				162856D82B8D245E00691759 /* Assemblies */,
 			);
-			path = Request;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1629F9A82BA7573800B89629 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9AD2BA7580800B89629 /* APIEndpoints */,
+				1629F9AA2BA7577E00B89629 /* APIClient */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		1629F9A92BA7574000B89629 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				163311B32B935E8700896058 /* FeedbackManager */,
+				1670C6182B6FB8C0005CF24B /* CaptureSessionManager */,
+				16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */,
+				16B898B12BA3B15700735D93 /* OpenAIManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1629F9AA2BA7577E00B89629 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9AB2BA7579500B89629 /* APIClient.swift */,
+				1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		1629F9AD2BA7580800B89629 /* APIEndpoints */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9B22BA759A600B89629 /* OpenAI */,
+				1629F9B02BA759A400B89629 /* APIEndpoint.swift */,
+			);
+			path = APIEndpoints;
+			sourceTree = "<group>";
+		};
+		1629F9B22BA759A600B89629 /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9BB2BA7648100B89629 /* Common Components */,
+				1629F9B42BA761F200B89629 /* VisionChatCompletions */,
+				1629F9B32BA761EC00B89629 /* ChatCompletions */,
+				1629F9AE2BA7581700B89629 /* OpenAIAPIEndpoints.swift */,
+			);
+			path = OpenAI;
+			sourceTree = "<group>";
+		};
+		1629F9B32BA761EC00B89629 /* ChatCompletions */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9B72BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift */,
+				1629F9B92BA7623300B89629 /* OpenAIChatCompletionsResponse.swift */,
+				1629F9D32BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift */,
+			);
+			path = ChatCompletions;
+			sourceTree = "<group>";
+		};
+		1629F9B42BA761F200B89629 /* VisionChatCompletions */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9B52BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift */,
+				1629F9D12BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift */,
+			);
+			path = VisionChatCompletions;
+			sourceTree = "<group>";
+		};
+		1629F9BB2BA7648100B89629 /* Common Components */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9BC2BA7649000B89629 /* OpenAIMessage.swift */,
+				1629F9BE2BA764AC00B89629 /* OpenAIMessageContentType.swift */,
+				1629F9C02BA764C700B89629 /* OpenAIMessageContent.swift */,
+				1629F9C22BA766B600B89629 /* OpenAIRole.swift */,
+				1629F9C42BA7672E00B89629 /* OpenAIModel.swift */,
+			);
+			path = "Common Components";
+			sourceTree = "<group>";
+		};
+		1629F9C62BA76CA800B89629 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9C72BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift */,
+				1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		162DCA4C2BA0DD7F005CB24A /* SpeechRecognizer */ = {
@@ -528,13 +650,10 @@
 		164E11152B45E167008EF153 /* ReEnabled */ = {
 			isa = PBXGroup;
 			children = (
-				16B898B12BA3B15700735D93 /* OpenAIManager */,
+				1629F9A92BA7574000B89629 /* Managers */,
+				1629F9A72BA7573200B89629 /* Core */,
 				16FC1A782BA1007200BB9B48 /* Info.plist */,
-				16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */,
-				1670C6182B6FB8C0005CF24B /* CaptureSessionManager */,
-				163311B32B935E8700896058 /* FeedbackManager */,
 				162856D92B8D246300691759 /* Modules */,
-				162856D82B8D245E00691759 /* Assemblies */,
 				164E11262B461711008EF153 /* Resources */,
 				164E111C2B45E169008EF153 /* Preview Content */,
 				164E11162B45E167008EF153 /* ReEnabledApp.swift */,
@@ -605,6 +724,7 @@
 				16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */,
 				16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */,
 				1629F99B2BA49BD400B89629 /* UIImage+String.swift */,
+				1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -877,7 +997,7 @@
 		16B898B12BA3B15700735D93 /* OpenAIManager */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9A22BA4BE3B00B89629 /* Request */,
+				1629F9C62BA76CA800B89629 /* Interactor */,
 				16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */,
 				16B898B52BA3B7F800735D93 /* OpenAIPropertyList.plist */,
 			);
@@ -1053,8 +1173,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1629F9B62BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift in Sources */,
 				1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */,
+				1629F9AC2BA7579500B89629 /* APIClient.swift in Sources */,
 				163311C62B939CC800896058 /* ObjectModel.swift in Sources */,
+				1629F9AF2BA7581700B89629 /* OpenAIAPIEndpoints.swift in Sources */,
 				16F564BB2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift in Sources */,
 				163311CF2B939EF200896058 /* Softmax.swift in Sources */,
 				163311B52B935EAB00896058 /* FeedbackManager.swift in Sources */,
@@ -1062,6 +1185,7 @@
 				16B4468E2B9FA21B002504F5 /* SearchViewModel.swift in Sources */,
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				163311BD2B936FF500896058 /* FeedbackType.swift in Sources */,
+				1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */,
 				1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */,
 				1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */,
 				1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */,
@@ -1090,16 +1214,19 @@
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
-				1629F9A42BA4BE4B00B89629 /* ImageInputRequest.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
 				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
+				1629F9BD2BA7649000B89629 /* OpenAIMessage.swift in Sources */,
 				16B898B42BA3B5B700735D93 /* SearchAssembly.swift in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
+				1629F9C52BA7672E00B89629 /* OpenAIModel.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */,
+				1629F9B12BA759A400B89629 /* APIEndpoint.swift in Sources */,
+				1629F9C82BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
@@ -1108,7 +1235,9 @@
 				16B446932B9FA2C1002504F5 /* Conversation.swift in Sources */,
 				16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */,
 				16B446912B9FA22B002504F5 /* Message.swift in Sources */,
+				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
+				1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */,
 				16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */,
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
@@ -1117,9 +1246,11 @@
 				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
 				1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */,
 				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
+				1629F9B82BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
+				1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */,
 				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
@@ -1136,10 +1267,12 @@
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
+				1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
+				1629F9D42BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift in Sources */,
 				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,
 				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,
 				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
@@ -1150,9 +1283,12 @@
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
 				16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */,
+				1629F9D22BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift in Sources */,
 				16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
+				1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */,
 				16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */,
+				1629F9BA2BA7623300B89629 /* OpenAIChatCompletionsResponse.swift in Sources */,
 				16F564B72B98ED0000A831F2 /* RoadLightsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
