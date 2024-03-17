@@ -14,7 +14,6 @@ class APIClient<RequestInputType: Encodable,
             let encoded = try JSONEncoder().encode(requestInput)
             request.httpBody = encoded
         } catch {
-            
         }
         
         return URLSession.shared.dataTaskPublisher(for: request)

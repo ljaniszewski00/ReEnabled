@@ -29,6 +29,7 @@
 		1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */; };
 		1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */; };
 		1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */; };
+		1629F9D62BA784A800B89629 /* OpenAIPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -108,7 +109,6 @@
 		16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */; };
 		16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */; };
 		16B898B42BA3B5B700735D93 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898B32BA3B5B700735D93 /* SearchAssembly.swift */; };
-		16B898B62BA3B7F800735D93 /* OpenAIPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16B898B52BA3B7F800735D93 /* OpenAIPropertyList.plist */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -163,6 +163,7 @@
 		1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsInteractor.swift; sourceTree = "<group>"; };
 		1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAPIClient.swift; sourceTree = "<group>"; };
 		1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+RegisterAPIClient.swift"; sourceTree = "<group>"; };
+		1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OpenAIPropertyList.plist; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -242,7 +243,6 @@
 		16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletingPrefix.swift"; sourceTree = "<group>"; };
 		16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		16B898B32BA3B5B700735D93 /* SearchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
-		16B898B52BA3B7F800735D93 /* OpenAIPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OpenAIPropertyList.plist; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -982,7 +982,7 @@
 			children = (
 				1629F9C62BA76CA800B89629 /* Interactor */,
 				16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */,
-				16B898B52BA3B7F800735D93 /* OpenAIPropertyList.plist */,
+				1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */,
 			);
 			path = OpenAIManager;
 			sourceTree = "<group>";
@@ -1137,8 +1137,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				164E111E2B45E169008EF153 /* Preview Assets.xcassets in Resources */,
+				1629F9D62BA784A800B89629 /* OpenAIPropertyList.plist in Resources */,
 				164E111B2B45E169008EF153 /* Assets.xcassets in Resources */,
-				16B898B62BA3B7F800735D93 /* OpenAIPropertyList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
