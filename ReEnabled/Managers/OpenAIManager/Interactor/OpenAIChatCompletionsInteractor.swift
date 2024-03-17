@@ -14,8 +14,8 @@ class OpenAIChatCompletionsInteractor: OpenAIChatCompletionsInteracting {
 
     // MARK: - OpenAIChatCompletionsInteracting
 
-    func generateResponse(prompt: String) -> AnyPublisher<String?, Error> {
-        let requestInput = OpenAIChatCompletionsRequestInput(prompt: prompt)
+    func generateResponse(prompt: String, maxTokens: Int) -> AnyPublisher<String?, Error> {
+        let requestInput = OpenAIChatCompletionsRequestInput(prompt: prompt, maxTokens: maxTokens)
         
         return apiClient
             .request(OpenAIEndpoints.chatCompletions, requestInput: requestInput)
@@ -26,5 +26,5 @@ class OpenAIChatCompletionsInteractor: OpenAIChatCompletionsInteracting {
 }
 
 protocol OpenAIChatCompletionsInteracting {
-    func generateResponse(prompt: String) -> AnyPublisher<String?, Error>
+    func generateResponse(prompt: String, maxTokens: Int) -> AnyPublisher<String?, Error>
 }

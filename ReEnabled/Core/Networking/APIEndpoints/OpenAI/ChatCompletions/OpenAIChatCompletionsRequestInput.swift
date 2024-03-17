@@ -1,14 +1,15 @@
 import Foundation
 
 struct OpenAIChatCompletionsRequestInput: Codable {
-    let model: String = OpenAIModel.gpt3_5Turbo
-    let messages: [OpenAIChatCompletionsMessage]
-    let maxTokens: Int = 300
+    private let model: String = OpenAIModel.gpt3_5Turbo
+    private let messages: [OpenAIChatCompletionsMessage]
+    private let maxTokens: Int
     
-    init(prompt: String) {
+    init(prompt: String, maxTokens: Int) {
         self.messages = [
             OpenAIChatCompletionsMessage(role: .user, content: prompt)
         ]
+        self.maxTokens = maxTokens
     }
     
     enum CodingKeys: String, CodingKey {

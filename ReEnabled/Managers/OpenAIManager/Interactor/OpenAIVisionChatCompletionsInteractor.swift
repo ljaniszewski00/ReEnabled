@@ -14,8 +14,8 @@ class OpenAIVisionChatCompletionsInteractor: OpenAIVisionChatCompletionsInteract
 
     // MARK: - OpenAIVisionChatCompletionsInteracting
 
-    func generateResponse(prompt: String, imageBase64String: String) -> AnyPublisher<String?, Error> {
-        let requestInput = OpenAIVisionChatCompletionsRequestInput(prompt: prompt, imageBase64String: imageBase64String)
+    func generateResponse(prompt: String, imageBase64String: String, maxTokens: Int) -> AnyPublisher<String?, Error> {
+        let requestInput = OpenAIVisionChatCompletionsRequestInput(prompt: prompt, imageBase64String: imageBase64String, maxTokens: maxTokens)
         
         return apiClient
             .request(OpenAIEndpoints.visionChatCompletions, requestInput: requestInput)
@@ -26,5 +26,5 @@ class OpenAIVisionChatCompletionsInteractor: OpenAIVisionChatCompletionsInteract
 }
 
 protocol OpenAIVisionChatCompletionsInteracting {
-    func generateResponse(prompt: String, imageBase64String: String) -> AnyPublisher<String?, Error>
+    func generateResponse(prompt: String, imageBase64String: String, maxTokens: Int) -> AnyPublisher<String?, Error>
 }

@@ -9,7 +9,7 @@ class OpenAIManager: ObservableObject, OpenAIManaging {
     
     func generateResponse(for prompt: String) -> AnyPublisher<String?, Never> {
         openAIChatCompletionsInteractor
-            .generateResponse(prompt: prompt)
+            .generateResponse(prompt: prompt, maxTokens: 300)
             .replaceError(with: nil)
             .eraseToAnyPublisher()
     }
@@ -21,7 +21,7 @@ class OpenAIManager: ObservableObject, OpenAIManaging {
         }
         
         return openAIVisionChatCompletionsInteractor
-            .generateResponse(prompt: prompt, imageBase64String: imageBase64String)
+            .generateResponse(prompt: prompt, imageBase64String: imageBase64String, maxTokens: 300)
             .replaceError(with: nil)
             .eraseToAnyPublisher()
     }

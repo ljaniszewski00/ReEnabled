@@ -1,17 +1,18 @@
 import Foundation
 
 struct OpenAIVisionChatCompletionsRequestInput: Codable {
-    let model: String = OpenAIModel.gpt4_vision_preview
-    let messages: [OpenAIVissionChatCompletionsMessage]
-    let maxTokens: Int = 300
+    private let model: String = OpenAIModel.gpt4_vision_preview
+    private let messages: [OpenAIVissionChatCompletionsMessage]
+    private let maxTokens: Int
     
-    init(prompt: String, imageBase64String: String) {
+    init(prompt: String, imageBase64String: String, maxTokens: Int) {
         self.messages = [
             OpenAIVissionChatCompletionsMessage(role: .user, content: [
                 OpenAIMessageContent(type: .text, value: prompt),
                 OpenAIMessageContent(type: .imageURL, value: imageBase64String)
             ])
         ]
+        self.maxTokens = maxTokens
     }
     
     enum CodingKeys: String, CodingKey {

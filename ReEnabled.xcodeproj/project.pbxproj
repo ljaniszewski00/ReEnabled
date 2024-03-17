@@ -21,7 +21,6 @@
 		1629F9B62BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B52BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift */; };
 		1629F9B82BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B72BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift */; };
 		1629F9BA2BA7623300B89629 /* OpenAIChatCompletionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B92BA7623300B89629 /* OpenAIChatCompletionsResponse.swift */; };
-		1629F9BD2BA7649000B89629 /* OpenAIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9BC2BA7649000B89629 /* OpenAIMessage.swift */; };
 		1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9BE2BA764AC00B89629 /* OpenAIMessageContentType.swift */; };
 		1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C02BA764C700B89629 /* OpenAIMessageContent.swift */; };
 		1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C22BA766B600B89629 /* OpenAIRole.swift */; };
@@ -156,7 +155,6 @@
 		1629F9B52BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsRequestInput.swift; sourceTree = "<group>"; };
 		1629F9B72BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsRequestInput.swift; sourceTree = "<group>"; };
 		1629F9B92BA7623300B89629 /* OpenAIChatCompletionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsResponse.swift; sourceTree = "<group>"; };
-		1629F9BC2BA7649000B89629 /* OpenAIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessage.swift; sourceTree = "<group>"; };
 		1629F9BE2BA764AC00B89629 /* OpenAIMessageContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessageContentType.swift; sourceTree = "<group>"; };
 		1629F9C02BA764C700B89629 /* OpenAIMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessageContent.swift; sourceTree = "<group>"; };
 		1629F9C22BA766B600B89629 /* OpenAIRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRole.swift; sourceTree = "<group>"; };
@@ -427,7 +425,6 @@
 		1629F9BB2BA7648100B89629 /* Common Components */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9BC2BA7649000B89629 /* OpenAIMessage.swift */,
 				1629F9BE2BA764AC00B89629 /* OpenAIMessageContentType.swift */,
 				1629F9C02BA764C700B89629 /* OpenAIMessageContent.swift */,
 				1629F9C22BA766B600B89629 /* OpenAIRole.swift */,
@@ -1196,7 +1193,6 @@
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
 				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
-				1629F9BD2BA7649000B89629 /* OpenAIMessage.swift in Sources */,
 				16B898B42BA3B5B700735D93 /* SearchAssembly.swift in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
