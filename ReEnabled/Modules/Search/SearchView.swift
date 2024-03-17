@@ -33,8 +33,8 @@ struct SearchView: View {
             }
         }
         .onChange(of: voiceRecordingManager.transcript) { transcript in
-//            searchViewModel.addNewMessageWith(transcript: transcript)
-            searchViewModel.addNewMessageWithImage(transcript: transcript)
+            searchViewModel.addNewMessageWith(transcript: transcript)
+//            searchViewModel.addNewMessageWithImage(transcript: transcript)
         }
         .fullScreenCover(isPresented: $searchViewModel.showCamera) {
             AccessCameraView(selectedImage: $searchViewModel.selectedImage)

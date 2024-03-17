@@ -1,6 +1,4 @@
 import Combine
-import Foundation
-import OpenAI
 import UIKit
 
 class OpenAIManager: ObservableObject, OpenAIManaging {

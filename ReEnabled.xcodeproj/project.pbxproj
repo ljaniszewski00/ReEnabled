@@ -30,8 +30,6 @@
 		1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */; };
 		1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */; };
 		1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */; };
-		1629F9D22BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D12BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift */; };
-		1629F9D42BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D32BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -80,7 +78,6 @@
 		1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */; };
 		165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117322B94A4E700779E89 /* ExifOrientation.swift */; };
 		165117352B94F41D00779E89 /* SessionPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117342B94F41D00779E89 /* SessionPreset.swift */; };
-		165795BD2B549DD6009142C1 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 165795BC2B549DD6009142C1 /* OpenAI */; };
 		1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6092B6ED76E005CF24B /* DetectorFrame.swift */; };
 		1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C60B2B6ED795005CF24B /* ColorDetectorView.swift */; };
 		1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C60E2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift */; };
@@ -109,9 +106,6 @@
 		16B446912B9FA22B002504F5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446902B9FA22B002504F5 /* Message.swift */; };
 		16B446932B9FA2C1002504F5 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446922B9FA2C1002504F5 /* Conversation.swift */; };
 		16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */; };
-		16B6E4912BA3801500B21451 /* Path in Frameworks */ = {isa = PBXBuildFile; productRef = 16B6E4902BA3801500B21451 /* Path */; };
-		16B8989F2BA3831000735D93 /* Transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 16B8989E2BA3831000735D93 /* Transformers */; };
-		16B898A12BA3831000735D93 /* transformers in Frameworks */ = {isa = PBXBuildFile; productRef = 16B898A02BA3831000735D93 /* transformers */; };
 		16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */; };
 		16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */; };
 		16B898B42BA3B5B700735D93 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898B32BA3B5B700735D93 /* SearchAssembly.swift */; };
@@ -171,8 +165,6 @@
 		1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsInteractor.swift; sourceTree = "<group>"; };
 		1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAPIClient.swift; sourceTree = "<group>"; };
 		1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+RegisterAPIClient.swift"; sourceTree = "<group>"; };
-		1629F9D12BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIVisionChatCompletionsRequestInputProvider.swift; sourceTree = "<group>"; };
-		1629F9D32BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatCompletionsRequestInputProvider.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -277,10 +269,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16B6E4912BA3801500B21451 /* Path in Frameworks */,
-				165795BD2B549DD6009142C1 /* OpenAI in Frameworks */,
-				16B8989F2BA3831000735D93 /* Transformers in Frameworks */,
-				16B898A12BA3831000735D93 /* transformers in Frameworks */,
 				1633118D2B8D31E600896058 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,7 +412,6 @@
 			children = (
 				1629F9B72BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift */,
 				1629F9B92BA7623300B89629 /* OpenAIChatCompletionsResponse.swift */,
-				1629F9D32BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift */,
 			);
 			path = ChatCompletions;
 			sourceTree = "<group>";
@@ -433,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				1629F9B52BA7620200B89629 /* OpenAIVisionChatCompletionsRequestInput.swift */,
-				1629F9D12BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift */,
 			);
 			path = VisionChatCompletions;
 			sourceTree = "<group>";
@@ -1106,11 +1092,7 @@
 			);
 			name = ReEnabled;
 			packageProductDependencies = (
-				165795BC2B549DD6009142C1 /* OpenAI */,
 				1633118C2B8D31E600896058 /* Swinject */,
-				16B6E4902BA3801500B21451 /* Path */,
-				16B8989E2BA3831000735D93 /* Transformers */,
-				16B898A02BA3831000735D93 /* transformers */,
 			);
 			productName = ReEnabled;
 			productReference = 164E11132B45E167008EF153 /* ReEnabled.app */;
@@ -1141,10 +1123,7 @@
 			);
 			mainGroup = 164E110A2B45E167008EF153;
 			packageReferences = (
-				165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */,
 				162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */,
-				16B6E48F2BA3801500B21451 /* XCRemoteSwiftPackageReference "Path.swift" */,
-				16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */,
 			);
 			productRefGroup = 164E11142B45E167008EF153 /* Products */;
 			projectDirPath = "";
@@ -1272,7 +1251,6 @@
 				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
-				1629F9D42BA7735D00B89629 /* OpenAIChatCompletionsRequestInputProvider.swift in Sources */,
 				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,
 				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,
 				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
@@ -1283,7 +1261,6 @@
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
 				16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */,
-				1629F9D22BA772FB00B89629 /* OpenAIVisionChatCompletionsRequestInputProvider.swift in Sources */,
 				16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */,
@@ -1521,30 +1498,6 @@
 				minimumVersion = 2.8.4;
 			};
 		};
-		165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.5;
-			};
-		};
-		16B6E48F2BA3801500B21451 /* XCRemoteSwiftPackageReference "Path.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mxcl/Path.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
-		16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/huggingface/swift-transformers";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1552,26 +1505,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		165795BC2B549DD6009142C1 /* OpenAI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 165795BB2B549DD6009142C1 /* XCRemoteSwiftPackageReference "OpenAI" */;
-			productName = OpenAI;
-		};
-		16B6E4902BA3801500B21451 /* Path */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16B6E48F2BA3801500B21451 /* XCRemoteSwiftPackageReference "Path.swift" */;
-			productName = Path;
-		};
-		16B8989E2BA3831000735D93 /* Transformers */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */;
-			productName = Transformers;
-		};
-		16B898A02BA3831000735D93 /* transformers */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16B8989D2BA3831000735D93 /* XCRemoteSwiftPackageReference "swift-transformers" */;
-			productName = transformers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
