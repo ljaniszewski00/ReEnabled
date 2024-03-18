@@ -14,7 +14,6 @@
 		162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */; };
 		162856D72B8D242500691759 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856D62B8D242500691759 /* Inject.swift */; };
 		1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F99B2BA49BD400B89629 /* UIImage+String.swift */; };
-		1629F9A12BA4AABB00B89629 /* AccessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */; };
 		1629F9AC2BA7579500B89629 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9AB2BA7579500B89629 /* APIClient.swift */; };
 		1629F9AF2BA7581700B89629 /* OpenAIAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9AE2BA7581700B89629 /* OpenAIAPIEndpoints.swift */; };
 		1629F9B12BA759A400B89629 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9B02BA759A400B89629 /* APIEndpoint.swift */; };
@@ -30,6 +29,11 @@
 		1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */; };
 		1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */; };
 		1629F9D62BA784A800B89629 /* OpenAIPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */; };
+		1629F9D82BA8A5FD00B89629 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D72BA8A5FD00B89629 /* TappableView.swift */; };
+		1629F9DA2BA8B07100B89629 /* LabelledDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D92BA8B07100B89629 /* LabelledDivider.swift */; };
+		1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */; };
+		1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */; };
+		1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -148,7 +152,6 @@
 		162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerView.swift; sourceTree = "<group>"; };
 		162856D62B8D242500691759 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		1629F99B2BA49BD400B89629 /* UIImage+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
-		1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCameraView.swift; sourceTree = "<group>"; };
 		1629F9AB2BA7579500B89629 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		1629F9AE2BA7581700B89629 /* OpenAIAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPIEndpoints.swift; sourceTree = "<group>"; };
 		1629F9B02BA759A400B89629 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -164,6 +167,11 @@
 		1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAPIClient.swift; sourceTree = "<group>"; };
 		1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+RegisterAPIClient.swift"; sourceTree = "<group>"; };
 		1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OpenAIPropertyList.plist; sourceTree = "<group>"; };
+		1629F9D72BA8A5FD00B89629 /* TappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
+		1629F9D92BA8B07100B89629 /* LabelledDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelledDivider.swift; sourceTree = "<group>"; };
+		1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraViewController.swift; sourceTree = "<group>"; };
+		1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraManager.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -342,7 +350,9 @@
 		1629F99F2BA4AAAE00B89629 /* AccessCameraView */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9A02BA4AABB00B89629 /* AccessCameraView.swift */,
+				1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */,
+				1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */,
+				1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */,
 			);
 			path = AccessCameraView;
 			sourceTree = "<group>";
@@ -718,6 +728,7 @@
 				162784802B9FC2AE00C5225F /* CustomNavigatioBar */,
 				1670C6082B6ED764005CF24B /* DetectorFrame */,
 				164E11322B4717A9008EF153 /* CustomTabBar */,
+				1629F9D92BA8B07100B89629 /* LabelledDivider.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -748,6 +759,7 @@
 			children = (
 				164E11412B471D1A008EF153 /* TabBarStateManager.swift */,
 				162856D62B8D242500691759 /* Inject.swift */,
+				1629F9D72BA8A5FD00B89629 /* TappableView.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -1184,7 +1196,6 @@
 				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
-				1629F9A12BA4AABB00B89629 /* AccessCameraView.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
@@ -1204,6 +1215,7 @@
 				1629F9C82BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
+				1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
 				163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */,
@@ -1213,9 +1225,11 @@
 				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
 				1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */,
+				1629F9D82BA8A5FD00B89629 /* TappableView.swift in Sources */,
 				16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */,
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
+				1629F9DA2BA8B07100B89629 /* LabelledDivider.swift in Sources */,
 				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
 				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
@@ -1238,6 +1252,7 @@
 				163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */,
 				163311CB2B939E8C00896058 /* IOU.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
+				1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */,
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
@@ -1253,6 +1268,7 @@
 				163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */,
 				162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */,
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
+				1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */,
 				165117352B94F41D00779E89 /* SessionPreset.swift in Sources */,
 				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
 				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
@@ -1408,7 +1424,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1445,7 +1461,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

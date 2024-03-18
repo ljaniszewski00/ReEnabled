@@ -10,34 +10,70 @@ struct SearchView: View {
             Views.NavigationBar()
                 .environmentObject(searchViewModel)
             
-            ScrollView(.vertical) {
-                VStack {
-                    ForEach(searchViewModel.currentConversation.messages, id: \.id) { message in
-                        Views.MessageCell(message: message)
-                            .padding(.bottom, Views.Constants.messageCellBottomPadding)
+            Group {
+                ScrollView(.vertical) {
+                    VStack {
+                        ForEach(searchViewModel.currentConversation.messages, id: \.id) { message in
+                            Views.MessageCell(message: message)
+                                .padding(.bottom, Views.Constants.messageCellBottomPadding)
+                        }
+                        
+                        if searchViewModel.speechRecordingBlocked {
+                            ProgressView()
+                        }
+                        
                     }
-                    
-                    if searchViewModel.speechRecordingBlocked {
-                        ProgressView()
-                    }
+                    .padding()
+                    .padding(.bottom)
                 }
-                .padding()
-                .padding(.bottom)
+                
+                if let image = searchViewModel.selectedImage {
+                    VStack(spacing: 10) {
+                        LabelledDivider(label: "To be send")
+                        
+                        HStack {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 40)
+                                .clipShape(
+                                    RoundedRectangle(
+                                        cornerRadius:
+                                            Views.Constants.messageCellImageClipShapeCornerRadius
+                                    )
+                                )
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                        }
+                    }
+                    .padding(.bottom, Views.Constants.scrollViewBottomPadding)
+                }
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
-        .onTapGesture {}
+        .onTapGesture {
+//            if !searchViewModel.speechRecordingBlocked {
+//                voiceRecordingManager.manageTalking()
+//            }
+            searchViewModel.addNewMessageWithImage(transcript: Message.mockData6.content)
+        }
         .onLongPressGesture {
-            if !searchViewModel.speechRecordingBlocked {
-                voiceRecordingManager.manageTalking()
+            searchViewModel.saveCurrentConversation()
+        }
+//        .overlay {
+//            TappableView { _ in
+//                searchViewModel.deleteCurrentConversation()
+//            }
+//        }
+        .onChange(of: voiceRecordingManager.transcript) { oldTranscript, newTranscript in
+            if oldTranscript != newTranscript {
+//                searchViewModel.addNewMessageWith(transcript: newTranscript)
+                searchViewModel.addNewMessageWithImage(transcript: newTranscript)
             }
         }
-        .onChange(of: voiceRecordingManager.transcript) { transcript in
-//            searchViewModel.addNewMessageWith(transcript: transcript)
-            searchViewModel.addNewMessageWithImage(transcript: transcript)
-        }
         .fullScreenCover(isPresented: $searchViewModel.showCamera) {
-            AccessCameraView(selectedImage: $searchViewModel.selectedImage)
+            SingleTakeCameraViewControllerRepresentable(searchViewModel: searchViewModel)
         }
     }
     

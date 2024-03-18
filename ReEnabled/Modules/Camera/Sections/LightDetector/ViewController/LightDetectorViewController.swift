@@ -31,17 +31,6 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
         }
     }
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let luminosity = CaptureSessionManager.getLuminosityValueFromCamera(with: sampleBuffer) else {
-            return
-        }
-    
-        DispatchQueue.main.async {
-            self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: .off)
-            self.lightDetectorViewModel?.luminosity = luminosity
-        }
-    }
-    
     private func setupUI() {
         setSessionPreviewLayer()
     }
@@ -60,6 +49,17 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
             }
             
             self.view.layer.addSublayer(self.previewLayer)
+        }
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let luminosity = CaptureSessionManager.getLuminosityValueFromCamera(with: sampleBuffer) else {
+            return
+        }
+    
+        DispatchQueue.main.async {
+            self.captureSessionManager.manageFlashlight(for: sampleBuffer, force: .off)
+            self.lightDetectorViewModel?.luminosity = luminosity
         }
     }
 }
