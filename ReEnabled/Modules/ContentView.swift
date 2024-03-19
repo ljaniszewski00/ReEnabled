@@ -2,28 +2,27 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var tabBarStateManager = TabBarStateManager()
-    @State private var tabSelection: TabBarItem = .search
     
     private var selection: String {
-        tabSelection.title
+        tabBarStateManager.tabSelection.title
     }
     
     var body: some View {
-        CustomTabBarContainerView(selection: $tabSelection) {
+        CustomTabBarContainerView(selection: $tabBarStateManager.tabSelection) {
             HomeView()
                 .environmentObject(tabBarStateManager)
                 .tabBarItem(tab: .camera,
-                            selection: $tabSelection)
+                            selection: $tabBarStateManager.tabSelection)
             
             SearchView()
                 .environmentObject(tabBarStateManager)
-                .tabBarItem(tab: .search,
-                            selection: $tabSelection)
+                .tabBarItem(tab: .chat,
+                            selection: $tabBarStateManager.tabSelection)
             
             HelpView()
                 .environmentObject(tabBarStateManager)
-                .tabBarItem(tab: .help,
-                            selection: $tabSelection)
+                .tabBarItem(tab: .settings,
+                            selection: $tabBarStateManager.tabSelection)
         }
         .environmentObject(tabBarStateManager)
         .ignoresSafeArea(edges: .bottom)

@@ -35,7 +35,7 @@ struct CustomTabBarContainerView<Content: View>: View {
 
 #Preview {
     let tabs: [TabBarItem] = [
-        .camera, .search, .help
+        .camera, .chat, .settings
     ]
     let tabBarStateManager = TabBarStateManager()
     return VStack {

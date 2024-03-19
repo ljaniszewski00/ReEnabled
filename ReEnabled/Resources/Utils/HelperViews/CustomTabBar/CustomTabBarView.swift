@@ -14,7 +14,7 @@ struct CustomTabBarView: View {
                     Button {
                         switchToTab(tab: tab)
                     } label: {
-                        if tab == .search {
+                        if tab == .chat {
                             buildSearchTabView()
                         } else {
                             buildTabView(tab: tab)
@@ -45,7 +45,7 @@ struct CustomTabBarView: View {
 
 #Preview {
     let tabs: [TabBarItem] = [
-        .camera, .search, .help
+        .camera, .chat, .settings
     ]
     let tabBarStateManager = TabBarStateManager()
     return VStack {
@@ -68,7 +68,7 @@ extension CustomTabBarView {
                              height: Views.Constants.tabCameraImageFrameHeight)
                     
                 }
-                .if(tab == .help) {
+                .if(tab == .settings) {
                     $0.frame(width: Views.Constants.tabHelpImageFrameWidth,
                              height: Views.Constants.tabHelpImageFrameHeight)
                 }
@@ -86,12 +86,12 @@ extension CustomTabBarView {
     
     private func buildSearchTabView() -> some View {
         VStack(spacing: Views.Constants.tabVStackSpacing) {
-            Image(systemName: TabBarItem.search.iconName)
+            Image(systemName: TabBarItem.chat.iconName)
                 .resizable()
-                .symbolVariant(localSelection == .search ? .fill : .none)
+                .symbolVariant(localSelection == .chat ? .fill : .none)
                 .frame(width: Views.Constants.tabSearchImageFrameWidth,
                        height: Views.Constants.tabSearchImageFrameHeight)
-                .if(localSelection == .search) {
+                .if(localSelection == .chat) {
                     $0
                         .padding(Views.Constants.tabSearchSelectedBackgroundPadding)
                         .background (
@@ -103,13 +103,13 @@ extension CustomTabBarView {
                         .padding(.bottom, Views.Constants.tabSearchSelectedBottomPadding)
                 }
             
-            if localSelection == .search {
-                Text(TabBarItem.search.title)
+            if localSelection == .chat {
+                Text(TabBarItem.chat.title)
                     .font(.system(size: Views.Constants.tabNameFontSize))
                     .lineLimit(Views.Constants.tabNameLineLimit)
             }
         }
-        .foregroundColor(localSelection == .search ? .accentColor : .gray)
+        .foregroundColor(localSelection == .chat ? .accentColor : .gray)
         .frame(height: Views.Constants.tabFrameHeight)
         .frame(maxWidth: .infinity)
     }

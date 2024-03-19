@@ -29,11 +29,12 @@
 		1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */; };
 		1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */; };
 		1629F9D62BA784A800B89629 /* OpenAIPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */; };
-		1629F9D82BA8A5FD00B89629 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D72BA8A5FD00B89629 /* TappableView.swift */; };
 		1629F9DA2BA8B07100B89629 /* LabelledDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9D92BA8B07100B89629 /* LabelledDivider.swift */; };
 		1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */; };
 		1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */; };
 		1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */; };
+		1629F9E22BAA00FB00B89629 /* onMultipleTouchSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E12BAA00FB00B89629 /* onMultipleTouchSwipe.swift */; };
+		1629F9E42BAA0C2300B89629 /* onOneTouchSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E32BAA0C2300B89629 /* onOneTouchSwipe.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -57,7 +58,6 @@
 		164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */; };
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
 		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
-		164669002B6844E50049AB03 /* OnSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FF2B6844E50049AB03 /* OnSwipe.swift */; };
 		164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164669062B6856710049AB03 /* DocumentScannerView.swift */; };
 		1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164669092B685CF50049AB03 /* RoundedRectLabel.swift */; };
 		1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646690E2B6991E00049AB03 /* ColorDetectorViewController.swift */; };
@@ -167,11 +167,12 @@
 		1629F9CD2BA76E4E00B89629 /* AnyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyAPIClient.swift; sourceTree = "<group>"; };
 		1629F9CF2BA7701A00B89629 /* Container+RegisterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+RegisterAPIClient.swift"; sourceTree = "<group>"; };
 		1629F9D52BA784A800B89629 /* OpenAIPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OpenAIPropertyList.plist; sourceTree = "<group>"; };
-		1629F9D72BA8A5FD00B89629 /* TappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		1629F9D92BA8B07100B89629 /* LabelledDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelledDivider.swift; sourceTree = "<group>"; };
 		1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraViewController.swift; sourceTree = "<group>"; };
 		1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraManager.swift; sourceTree = "<group>"; };
+		1629F9E12BAA00FB00B89629 /* onMultipleTouchSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onMultipleTouchSwipe.swift; sourceTree = "<group>"; };
+		1629F9E32BAA0C2300B89629 /* onOneTouchSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onOneTouchSwipe.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -194,7 +195,6 @@
 		164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurerViewModel.swift; sourceTree = "<group>"; };
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
-		164668FF2B6844E50049AB03 /* OnSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSwipe.swift; sourceTree = "<group>"; };
 		164669062B6856710049AB03 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
 		164669092B685CF50049AB03 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
 		1646690E2B6991E00049AB03 /* ColorDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewController.swift; sourceTree = "<group>"; };
@@ -347,14 +347,14 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		1629F99F2BA4AAAE00B89629 /* AccessCameraView */ = {
+		1629F99F2BA4AAAE00B89629 /* SingleTakeCamera */ = {
 			isa = PBXGroup;
 			children = (
 				1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */,
 				1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */,
 				1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */,
 			);
-			path = AccessCameraView;
+			path = SingleTakeCamera;
 			sourceTree = "<group>";
 		};
 		1629F9A72BA7573200B89629 /* Core */ = {
@@ -749,7 +749,8 @@
 			children = (
 				164E11432B471ECB008EF153 /* ConditionalView.swift */,
 				164E113C2B471C94008EF153 /* MeasureViewSize.swift */,
-				164668FF2B6844E50049AB03 /* OnSwipe.swift */,
+				1629F9E12BAA00FB00B89629 /* onMultipleTouchSwipe.swift */,
+				1629F9E32BAA0C2300B89629 /* onOneTouchSwipe.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -759,7 +760,6 @@
 			children = (
 				164E11412B471D1A008EF153 /* TabBarStateManager.swift */,
 				162856D62B8D242500691759 /* Inject.swift */,
-				1629F9D72BA8A5FD00B89629 /* TappableView.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -777,7 +777,7 @@
 		164E11462B4720FB008EF153 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				1629F99F2BA4AAAE00B89629 /* AccessCameraView */,
+				1629F99F2BA4AAAE00B89629 /* SingleTakeCamera */,
 				16B4468F2B9FA220002504F5 /* Conversation */,
 				164E114A2B47211D008EF153 /* SearchView.swift */,
 				16B4468D2B9FA21B002504F5 /* SearchViewModel.swift */,
@@ -1208,6 +1208,7 @@
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
+				1629F9E42BAA0C2300B89629 /* onOneTouchSwipe.swift in Sources */,
 				1629F9C52BA7672E00B89629 /* OpenAIModel.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */,
@@ -1223,14 +1224,13 @@
 				16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */,
 				16B446912B9FA22B002504F5 /* Message.swift in Sources */,
 				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
+				1629F9E22BAA00FB00B89629 /* onMultipleTouchSwipe.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
 				1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */,
-				1629F9D82BA8A5FD00B89629 /* TappableView.swift in Sources */,
 				16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */,
 				16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */,
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				1629F9DA2BA8B07100B89629 /* LabelledDivider.swift in Sources */,
-				164669002B6844E50049AB03 /* OnSwipe.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
 				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
 				1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */,

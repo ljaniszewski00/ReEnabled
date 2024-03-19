@@ -1,7 +1,7 @@
 enum TabBarItem: Hashable {
     case camera
-    case search
-    case help
+    case chat
+    case settings
 }
 
 extension TabBarItem {
@@ -9,9 +9,9 @@ extension TabBarItem {
         switch self {
         case .camera:
             return "camera"
-        case .search:
+        case .chat:
             return "mic"
-        case .help:
+        case .settings:
             return "gear"
         }
     }
@@ -20,9 +20,9 @@ extension TabBarItem {
         switch self {
         case .camera:
             return "Camera"
-        case .search:
-            return "Search"
-        case .help:
+        case .chat:
+            return "Chat"
+        case .settings:
             return "Settings"
         }
     }

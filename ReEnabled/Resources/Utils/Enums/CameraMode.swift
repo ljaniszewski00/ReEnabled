@@ -15,7 +15,7 @@ extension CameraMode {
             .colorDetector,
             .lightDetector,
 //            .currencyDetector,
-//            .facialRecognizer,
+//            .facialRecognizer
         ]
     }
 }
