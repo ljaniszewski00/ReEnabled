@@ -14,20 +14,20 @@ struct HomeView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            switch homeViewModel.cameraMode {
-            case .mainRecognizer:
-                MainRecognizerView()
-            case .documentScanner:
-                DocumentScannerView()
-            case .colorDetector:
-                ColorDetectorView()
-            case .lightDetector:
-                LightDetectorView()
-//            case .currencyDetector:
-//                CurrencyDetectorView()
-//            case .facialRecognizer:
-//                FacialRecognizerView()
-            }
+//            switch homeViewModel.cameraMode {
+//            case .mainRecognizer:
+//                MainRecognizerView()
+//            case .documentScanner:
+//                DocumentScannerView()
+//            case .colorDetector:
+//                ColorDetectorView()
+//            case .lightDetector:
+//                LightDetectorView()
+////            case .currencyDetector:
+////                CurrencyDetectorView()
+////            case .facialRecognizer:
+////                FacialRecognizerView()
+//            }
             
             if homeViewModel.cameraModeNameVisible {
                 Text(homeViewModel.cameraMode.rawValue)

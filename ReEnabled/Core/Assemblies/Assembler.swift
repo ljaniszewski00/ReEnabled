@@ -23,8 +23,9 @@ extension Assembler {
     static var allAssemblies: [Assembly] {
         [
             CameraAssembly(),
-            FeedbackManagerAssembly(),
-            SearchAssembly()
+            RepositoriesAssembly(),
+            SearchAssembly(),
+            UtilsAssembly(),
         ]
     }
 }

@@ -30,7 +30,7 @@ final class SearchViewModel: ObservableObject {
             return firstStartDate < secondStartDate
         }).first else {
             currentConversation = Conversation(messages: [])
-            modelContext.insert(currentConversation)
+//            modelContext.insert(currentConversation)
             return
         }
         
@@ -39,14 +39,14 @@ final class SearchViewModel: ObservableObject {
     
     func saveCurrentConversation() {
         if !currentConversation.messages.isEmpty {
-            modelContext.insert(currentConversation)
+//            modelContext.insert(currentConversation)
         }
     }
     
     func deleteCurrentConversation() {
-        if conversations.contains(currentConversation) {
-            modelContext.delete(currentConversation)
-        }
+//        if conversations.contains(currentConversation) {
+//            modelContext.delete(currentConversation)
+//        }
         
         fetchConversations()
     }

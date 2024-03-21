@@ -37,6 +37,10 @@
 		1629F9E92BAA18CF00B89629 /* OnMultipleTouchSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E82BAA18CF00B89629 /* OnMultipleTouchSwipe.swift */; };
 		1629F9EC2BACE9D900B89629 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1629F9EB2BACE9D900B89629 /* RealmSwift */; };
 		1629F9EF2BACE9F300B89629 /* ConversationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9EE2BACE9F300B89629 /* ConversationsRepository.swift */; };
+		1629F9F12BACEB9600B89629 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9F02BACEB9600B89629 /* RealmManager.swift */; };
+		1629F9F52BACED1100B89629 /* ConversationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9F42BACED1100B89629 /* ConversationObject.swift */; };
+		1629F9F72BACED1700B89629 /* MessageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9F62BACED1700B89629 /* MessageObject.swift */; };
+		1629F9FA2BACF5FC00B89629 /* RepositoriesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9F92BACF5FC00B89629 /* RepositoriesAssembly.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -176,6 +180,10 @@
 		1629F9E32BAA0C2300B89629 /* AddGesturesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGesturesActions.swift; sourceTree = "<group>"; };
 		1629F9E82BAA18CF00B89629 /* OnMultipleTouchSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnMultipleTouchSwipe.swift; sourceTree = "<group>"; };
 		1629F9EE2BACE9F300B89629 /* ConversationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsRepository.swift; sourceTree = "<group>"; };
+		1629F9F02BACEB9600B89629 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		1629F9F42BACED1100B89629 /* ConversationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationObject.swift; sourceTree = "<group>"; };
+		1629F9F62BACED1700B89629 /* MessageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageObject.swift; sourceTree = "<group>"; };
+		1629F9F92BACF5FC00B89629 /* RepositoriesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesAssembly.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -332,6 +340,8 @@
 		162856D82B8D245E00691759 /* Assemblies */ = {
 			isa = PBXGroup;
 			children = (
+				1629F9F92BACF5FC00B89629 /* RepositoriesAssembly.swift */,
+				163311B72B935F2400896058 /* UtilsAssembly.swift */,
 				1633117A2B8D24B500896058 /* Modules */,
 				1633117C2B8D24DD00896058 /* Assembler.swift */,
 			);
@@ -382,6 +392,7 @@
 		1629F9A92BA7574000B89629 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1629F9F22BACEB9B00B89629 /* RealmManager */,
 				163311B32B935E8700896058 /* FeedbackManager */,
 				1670C6182B6FB8C0005CF24B /* CaptureSessionManager */,
 				16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */,
@@ -468,9 +479,27 @@
 		1629F9ED2BACE9E600B89629 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				1629F9F32BACED0600B89629 /* Objects */,
 				1629F9EE2BACE9F300B89629 /* ConversationsRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		1629F9F22BACEB9B00B89629 /* RealmManager */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9F02BACEB9600B89629 /* RealmManager.swift */,
+			);
+			path = RealmManager;
+			sourceTree = "<group>";
+		};
+		1629F9F32BACED0600B89629 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9F42BACED1100B89629 /* ConversationObject.swift */,
+				1629F9F62BACED1700B89629 /* MessageObject.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		162DCA4C2BA0DD7F005CB24A /* SpeechRecognizer */ = {
@@ -484,7 +513,6 @@
 		1633117A2B8D24B500896058 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				163311B62B935F1A00896058 /* Utils */,
 				1633117B2B8D24BE00896058 /* Camera */,
 				16B898B22BA3B5A400735D93 /* Search */,
 			);
@@ -513,14 +541,6 @@
 				163311BC2B936FF500896058 /* FeedbackType.swift */,
 			);
 			path = FeedbackManager;
-			sourceTree = "<group>";
-		};
-		163311B62B935F1A00896058 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				163311B72B935F2400896058 /* UtilsAssembly.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		163311C02B939B3600896058 /* Model */ = {
@@ -1201,6 +1221,7 @@
 				1694F1982B98FD4700928103 /* MainRecognizerViewController+RoadLightsRecognizing.swift in Sources */,
 				1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */,
 				1682D31F2B8548F10028CE73 /* CameraMLModelFile.swift in Sources */,
+				1629F9F12BACEB9600B89629 /* RealmManager.swift in Sources */,
 				1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
@@ -1223,6 +1244,7 @@
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
+				1629F9FA2BACF5FC00B89629 /* RepositoriesAssembly.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
@@ -1275,11 +1297,13 @@
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */,
 				163311CB2B939E8C00896058 /* IOU.swift in Sources */,
+				1629F9F72BACED1700B89629 /* MessageObject.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */,
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
+				1629F9F52BACED1100B89629 /* ConversationObject.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
 				1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
