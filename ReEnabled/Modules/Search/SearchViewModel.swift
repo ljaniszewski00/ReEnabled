@@ -1,8 +1,8 @@
 import Combine
 import Foundation
-import UIKit
+import SwiftUI
 
-class SearchViewModel: ObservableObject {
+final class SearchViewModel: ObservableObject {
     @Inject private var openAIManager: OpenAIManaging
     
     @Published var currentConversation: Conversation = Conversation(messages: [])
@@ -16,11 +16,39 @@ class SearchViewModel: ObservableObject {
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
-    func saveCurrentConversation() {
-        let conversationsIds: [String] = conversations.map { $0.id }
-        if !currentConversation.messages.isEmpty && !conversationsIds.contains(currentConversation.id) {
-            conversations.append(currentConversation)
+    init() {
+        fetchConversations()
+    }
+    
+    func fetchConversations() {
+        guard let newestConversation = conversations.sorted(by: {
+            guard let firstStartDate = $0.startDate,
+                  let secondStartDate = $1.startDate else {
+                return true
+            }
+            
+            return firstStartDate < secondStartDate
+        }).first else {
+            currentConversation = Conversation(messages: [])
+            modelContext.insert(currentConversation)
+            return
         }
+        
+        currentConversation = newestConversation
+    }
+    
+    func saveCurrentConversation() {
+        if !currentConversation.messages.isEmpty {
+            modelContext.insert(currentConversation)
+        }
+    }
+    
+    func deleteCurrentConversation() {
+        if conversations.contains(currentConversation) {
+            modelContext.delete(currentConversation)
+        }
+        
+        fetchConversations()
     }
     
     func addNewMessageWith(transcript: String) {
@@ -43,7 +71,7 @@ class SearchViewModel: ObservableObject {
         let message: Message = Message(content: transcript, imageContent: selectedImage, sentByUser: true)
         addMessageToCurrentConversation(message)
         
-        generateImageResponse(for: transcript)
+//        generateImageResponse(for: transcript)
     }
     
     private func generateResponse(for query: String) {
@@ -74,6 +102,7 @@ class SearchViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.speechRecordingBlocked = false
+                self?.selectedImage = nil
             } receiveValue: { [weak self] response in
                 guard let response = response else {
                     return
@@ -87,5 +116,6 @@ class SearchViewModel: ObservableObject {
     
     private func addMessageToCurrentConversation(_ message: Message) {
         currentConversation.messages.append(message)
+        saveCurrentConversation()
     }
 }

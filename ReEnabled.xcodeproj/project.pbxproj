@@ -33,8 +33,10 @@
 		1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */; };
 		1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */; };
 		1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */; };
-		1629F9E22BAA00FB00B89629 /* onMultipleTouchSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E12BAA00FB00B89629 /* onMultipleTouchSwipe.swift */; };
-		1629F9E42BAA0C2300B89629 /* onOneTouchSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E32BAA0C2300B89629 /* onOneTouchSwipe.swift */; };
+		1629F9E42BAA0C2300B89629 /* AddGesturesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E32BAA0C2300B89629 /* AddGesturesActions.swift */; };
+		1629F9E92BAA18CF00B89629 /* OnMultipleTouchSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9E82BAA18CF00B89629 /* OnMultipleTouchSwipe.swift */; };
+		1629F9EC2BACE9D900B89629 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1629F9EB2BACE9D900B89629 /* RealmSwift */; };
+		1629F9EF2BACE9F300B89629 /* ConversationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9EE2BACE9F300B89629 /* ConversationsRepository.swift */; };
 		162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */; };
 		1633117D2B8D24DD00896058 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117C2B8D24DD00896058 /* Assembler.swift */; };
 		1633117F2B8D255000896058 /* CameraAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1633117E2B8D255000896058 /* CameraAssembly.swift */; };
@@ -171,8 +173,9 @@
 		1629F9DB2BA8B66500B89629 /* SingleTakeCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraViewController.swift; sourceTree = "<group>"; };
 		1629F9DD2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		1629F9DF2BA8BD1400B89629 /* SingleTakeCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTakeCameraManager.swift; sourceTree = "<group>"; };
-		1629F9E12BAA00FB00B89629 /* onMultipleTouchSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onMultipleTouchSwipe.swift; sourceTree = "<group>"; };
-		1629F9E32BAA0C2300B89629 /* onOneTouchSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onOneTouchSwipe.swift; sourceTree = "<group>"; };
+		1629F9E32BAA0C2300B89629 /* AddGesturesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGesturesActions.swift; sourceTree = "<group>"; };
+		1629F9E82BAA18CF00B89629 /* OnMultipleTouchSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnMultipleTouchSwipe.swift; sourceTree = "<group>"; };
+		1629F9EE2BACE9F300B89629 /* ConversationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsRepository.swift; sourceTree = "<group>"; };
 		162DCA4D2BA0DD8D005CB24A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1633117C2B8D24DD00896058 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		1633117E2B8D255000896058 /* CameraAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAssembly.swift; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1629F9EC2BACE9D900B89629 /* RealmSwift in Frameworks */,
 				1633118D2B8D31E600896058 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +454,23 @@
 				1629F9C92BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1629F9E52BAA18A600B89629 /* Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9E82BAA18CF00B89629 /* OnMultipleTouchSwipe.swift */,
+				1629F9E32BAA0C2300B89629 /* AddGesturesActions.swift */,
+			);
+			path = Gestures;
+			sourceTree = "<group>";
+		};
+		1629F9ED2BACE9E600B89629 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9EE2BACE9F300B89629 /* ConversationsRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		162DCA4C2BA0DD7F005CB24A /* SpeechRecognizer */ = {
@@ -643,6 +664,7 @@
 		164E11152B45E167008EF153 /* ReEnabled */ = {
 			isa = PBXGroup;
 			children = (
+				1629F9ED2BACE9E600B89629 /* Repositories */,
 				1629F9A92BA7574000B89629 /* Managers */,
 				1629F9A72BA7573200B89629 /* Core */,
 				16FC1A782BA1007200BB9B48 /* Info.plist */,
@@ -747,10 +769,9 @@
 		164E113B2B471C77008EF153 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				1629F9E52BAA18A600B89629 /* Gestures */,
 				164E11432B471ECB008EF153 /* ConditionalView.swift */,
 				164E113C2B471C94008EF153 /* MeasureViewSize.swift */,
-				1629F9E12BAA00FB00B89629 /* onMultipleTouchSwipe.swift */,
-				1629F9E32BAA0C2300B89629 /* onOneTouchSwipe.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -1102,6 +1123,7 @@
 			name = ReEnabled;
 			packageProductDependencies = (
 				1633118C2B8D31E600896058 /* Swinject */,
+				1629F9EB2BACE9D900B89629 /* RealmSwift */,
 			);
 			productName = ReEnabled;
 			productReference = 164E11132B45E167008EF153 /* ReEnabled.app */;
@@ -1133,6 +1155,7 @@
 			mainGroup = 164E110A2B45E167008EF153;
 			packageReferences = (
 				162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */,
+				1629F9EA2BACE9D900B89629 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 164E11142B45E167008EF153 /* Products */;
 			projectDirPath = "";
@@ -1185,6 +1208,7 @@
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
 				163311BF2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift in Sources */,
 				1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */,
+				1629F9E92BAA18CF00B89629 /* OnMultipleTouchSwipe.swift in Sources */,
 				164E11492B472115008EF153 /* HomeView.swift in Sources */,
 				162784822B9FC2C000C5225F /* CustomNavigationBar.swift in Sources */,
 				1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */,
@@ -1208,7 +1232,7 @@
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
-				1629F9E42BAA0C2300B89629 /* onOneTouchSwipe.swift in Sources */,
+				1629F9E42BAA0C2300B89629 /* AddGesturesActions.swift in Sources */,
 				1629F9C52BA7672E00B89629 /* OpenAIModel.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */,
@@ -1224,7 +1248,6 @@
 				16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */,
 				16B446912B9FA22B002504F5 /* Message.swift in Sources */,
 				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
-				1629F9E22BAA00FB00B89629 /* onMultipleTouchSwipe.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
 				1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */,
 				16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */,
@@ -1240,6 +1263,7 @@
 				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
 				1629F9D02BA7701A00B89629 /* Container+RegisterAPIClient.swift in Sources */,
+				1629F9EF2BACE9F300B89629 /* ConversationsRepository.swift in Sources */,
 				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */,
 				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
@@ -1510,9 +1534,22 @@
 				minimumVersion = 2.8.4;
 			};
 		};
+		1629F9EA2BACE9D900B89629 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1629F9EB2BACE9D900B89629 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1629F9EA2BACE9D900B89629 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		1633118C2B8D31E600896058 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 162856D12B8D23B700691759 /* XCRemoteSwiftPackageReference "Swinject" */;

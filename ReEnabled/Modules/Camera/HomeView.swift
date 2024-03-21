@@ -46,16 +46,29 @@ struct HomeView: View {
             }
         }
         .ignoresSafeArea()
-        .onOneTouchSwipe(fromRightToLeft: {
-            homeViewModel.changeToPreviousCameraMode()
-        }, fromLeftToRight: {
+        .addGesturesActions(onTap: {
+            
+        }, onDoubleTap: {
+            
+        }, onLongPress: {
+            
+        }, onSwipeFromLeftToRight: {
             homeViewModel.changeToNextCameraMode()
-        }, upToDownAction: {
-        }, downToUpAction: {
+        }, onSwipeFromRightToLeft: {
+            homeViewModel.changeToPreviousCameraMode()
+        }, onSwipeFromUpToDown: {
+            
+        }, onSwipeFromDownToUp: {
+            
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            
+        }, onSwipeFromUpToDownAfterLongPress: {
+            
+        }, onSwipeFromDownToUpAfterLongPress: {
+            
         })
-        .onTwoTouchSwipe(direction: .down) {
-            print("Two Fingers Swiped")
-        }
         .onAppear {
             homeViewModel.onNewCameraModeAppear()
         }

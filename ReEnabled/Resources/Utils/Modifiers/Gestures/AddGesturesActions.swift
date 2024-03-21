@@ -38,9 +38,6 @@ private struct GestureActionView: ViewModifier {
     let onSwipeFromRightToLeftAfterLongPress: (() -> ())?
     let onSwipeFromUpToDownAfterLongPress: (() -> ())?
     let onSwipeFromDownToUpAfterLongPress: (() -> ())?
-    
-    @State private var longPressed: Bool = false
-    @State private var isDragging = false
 
     func body(content: Content) -> some View {
         let tapGesture = TapGesture()

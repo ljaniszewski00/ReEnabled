@@ -61,11 +61,9 @@ struct SearchView: View {
         .onLongPressGesture {
             searchViewModel.saveCurrentConversation()
         }
-//        .overlay {
-//            TappableView { _ in
-//                searchViewModel.deleteCurrentConversation()
-//            }
-//        }
+        .onTwoTouchSwipe(direction: .down) {
+            searchViewModel.deleteCurrentConversation()
+        }
         .onChange(of: voiceRecordingManager.transcript) { oldTranscript, newTranscript in
             if oldTranscript != newTranscript {
 //                searchViewModel.addNewMessageWith(transcript: newTranscript)
