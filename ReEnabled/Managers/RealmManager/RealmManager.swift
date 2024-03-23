@@ -1,10 +1,14 @@
+import Combine
 import Realm
 import RealmSwift
 
 class RealmManager: RealmManaging {
-    private var realm: Realm = try! Realm(configuration: .defaultConfiguration, queue: realmQueue)
-    static let realmQueue: DispatchQueue = DispatchQueue(label: "realmQueue")
+    private let realmQueue: DispatchQueue = DispatchQueue(label: "realmQueue")
     private let updatePolicy: Realm.UpdatePolicy = .modified
+    
+    private enum RealmError: Error {
+        case realmConstructionError
+    }
     
     static var shared: RealmManaging {
         RealmManager()
@@ -12,87 +16,98 @@ class RealmManager: RealmManaging {
     
     private init() {}
     
-    func objects<T: Object>(_ type: T.Type, predicate: NSPredicate? = nil) -> Results<T>? {
-        if !isRealmAccessible() { return nil }
-        realm.refresh()
-        
-        return predicate == nil ? realm.objects(type) : realm.objects(type).filter(predicate!)
-    }
-    
-    func object<T: Object>(_ type: T.Type, key: Any) -> T? {
-        if !isRealmAccessible() { return nil }
-        realm.refresh()
-        
-        return realm.object(ofType: type, forPrimaryKey: key)
-    }
-    
-    func add<T: Object>(_ data: [T]) {
-        if !isRealmAccessible() { return }
-        realm.refresh()
-        
-        if realm.isInWriteTransaction {
-            realm.add(data, update: updatePolicy)
-        } else {
-            try? realm.write {
-                realm.add(data, update: updatePolicy)
+    func objects<T: Object>(ofType: T) -> AnyPublisher<[T], Error> {
+        return Future { promise in
+            self.realmQueue.async {
+                do {
+                    guard let realm = try? Realm(configuration: .defaultConfiguration) else {
+                        return promise(Result.failure(RealmError.realmConstructionError))
+                    }
+                    
+                    if realm.isInWriteTransaction || realm.isPerformingAsynchronousWriteOperations {
+                        try realm.commitWrite()
+                    }
+                    
+                    let objects = realm.objects(T.self)
+                    
+                    promise(Result.success(objects.compactMap { $0 }))
+                } catch {
+                    promise(Result.failure(error))
+                }
             }
         }
+        .eraseToAnyPublisher()
     }
     
-    func add<T: Object>(_ data: T) {
-        add([data])
-    }
-    
-    func runTransaction(action: () -> Void) {
-        if !isRealmAccessible() { return }
-        realm.refresh()
-        
-        try? realm.write {
-            action()
+    func updateObjects<T: Object>(with data: [T]) -> AnyPublisher<Void, Error> {
+        return Future { promise in
+            self.realmQueue.async {
+                guard let realm = try? Realm(configuration: .defaultConfiguration) else {
+                    return promise(Result.failure(RealmError.realmConstructionError))
+                }
+
+                realm.writeAsync { [realm] in
+                    guard !data.isEmpty else {
+                        return promise(Result.success(()))
+                    }
+                    
+                    realm.add(data, update: self.updatePolicy)
+                    
+                    promise(Result.success(()))
+                }
+            }
         }
+        .eraseToAnyPublisher()
     }
     
-    func delete<T: Object>(_ data: [T]) {
-        if !isRealmAccessible() { return }
-        realm.refresh()
-        
-        try? realm.write { realm.delete(data) }
+    func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error> {
+        return Future { promise in
+            self.realmQueue.async {
+                guard let realm = try? Realm(configuration: .defaultConfiguration) else {
+                    return promise(Result.failure(RealmError.realmConstructionError))
+                }
+
+                realm.writeAsync { [realm] in
+                    guard !data.isEmpty else {
+                        return promise(Result.success(()))
+                    }
+                    
+                    realm.add(data, update: self.updatePolicy)
+                    realm.delete(data)
+                    
+                    promise(Result.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    func delete<T: Object>(_ data: T) {
-        delete([data])
-    }
-    
-    func clearAllData() {
-        if !isRealmAccessible() { return }
-        realm.refresh()
-        
-        try? realm.write { realm.deleteAll() }
+    func clearAllData() -> AnyPublisher<Void, Error> {
+        return Future { promise in
+            self.realmQueue.async {
+                guard let realm = try? Realm(configuration: .defaultConfiguration) else {
+                    return promise(Result.failure(RealmError.realmConstructionError))
+                }
+
+                realm.writeAsync { [realm] in
+                    realm.deleteAll()
+                    return promise(Result.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
 
 protocol RealmManaging {
-    func objects<T: Object>(_ type: T.Type, predicate: NSPredicate?) -> Results<T>?
-    func object<T: Object>(_ type: T.Type, key: Any) -> T?
-    func add<T: Object>(_ data: [T])
-    func add<T: Object>(_ data: T)
-    func runTransaction(action: () -> Void)
-    func delete<T: Object>(_ data: [T])
-    func delete<T: Object>(_ data: T)
-    func clearAllData()
+    func objects<T: Object>(ofType: T) -> AnyPublisher<[T], Error>
+    func updateObjects<T: Object>(with data: [T]) -> AnyPublisher<Void, Error>
+    func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error>
+    func clearAllData() -> AnyPublisher<Void, Error>
 }
 
 extension RealmManager {
-    func isRealmAccessible() -> Bool {
-        do { _ = try Realm() } catch {
-            return false
-        }
-        return true
-    }
-
-    func configureRealm() {
-        let config = RLMRealmConfiguration.default()
-        config.deleteRealmIfMigrationNeeded = true
-        RLMRealmConfiguration.setDefault(config)
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
     }
 }

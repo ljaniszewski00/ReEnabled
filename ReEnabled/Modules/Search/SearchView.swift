@@ -64,11 +64,9 @@ struct SearchView: View {
         .onTwoTouchSwipe(direction: .down) {
             searchViewModel.deleteCurrentConversation()
         }
-        .onChange(of: voiceRecordingManager.transcript) { oldTranscript, newTranscript in
-            if oldTranscript != newTranscript {
-//                searchViewModel.addNewMessageWith(transcript: newTranscript)
-                searchViewModel.addNewMessageWithImage(transcript: newTranscript)
-            }
+        .onChange(of: voiceRecordingManager.transcript) { newTranscript in
+//            searchViewModel.addNewMessageWith(transcript: newTranscript)
+            searchViewModel.addNewMessageWithImage(transcript: newTranscript)
         }
         .fullScreenCover(isPresented: $searchViewModel.showCamera) {
             SingleTakeCameraViewControllerRepresentable(searchViewModel: searchViewModel)
