@@ -13,15 +13,16 @@ struct SearchView: View {
             Group {
                 ScrollView(.vertical) {
                     VStack {
-                        ForEach(searchViewModel.currentConversation.messages, id: \.id) { message in
-                            Views.MessageCell(message: message)
-                                .padding(.bottom, Views.Constants.messageCellBottomPadding)
+                        if let currentConversation = searchViewModel.currentConversation {
+                            ForEach(currentConversation.messages, id: \.id) { message in
+                                Views.MessageCell(message: message)
+                                    .padding(.bottom, Views.Constants.messageCellBottomPadding)
+                            }
                         }
                         
                         if searchViewModel.speechRecordingBlocked {
                             ProgressView()
                         }
-                        
                     }
                     .padding()
                     .padding(.bottom)

@@ -1,8 +1,13 @@
 import Foundation
+import RealmSwift
 
-struct Conversation {
-    let id: String = UUID().uuidString
+struct Conversation: Equatable {
+    var id: String = UUID().uuidString
     var messages: [Message]
+    
+    static func == (lhs: Conversation, rhs: Conversation) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 extension Conversation {
@@ -46,4 +51,21 @@ extension Conversation {
             Message.mockData6,
         ]
     )
+}
+
+extension Conversation {
+    var toObject: ConversationObject {
+        var messagesObjectsArray = messages.map { $0.toObject }
+        let messagesList: List<MessageObject> = List<MessageObject>()
+        messagesList.append(objectsIn:
+            messagesObjectsArray
+        )
+        
+        return ConversationObject(value:
+            [
+                "id": id,
+                "messages": messagesList
+            ]
+        )
+    }
 }

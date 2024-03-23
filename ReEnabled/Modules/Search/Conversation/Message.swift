@@ -1,12 +1,16 @@
 import Foundation
 import UIKit
 
-struct Message {
-    let id: String = UUID().uuidString
+struct Message: Equatable {
+    var id: String = UUID().uuidString
     let content: String
     var imageContent: UIImage? = nil
     var dateSent: Date = Date()
     let sentByUser: Bool
+    
+    static func == (lhs: Message, rhs: Message) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 extension Message {
@@ -53,3 +57,18 @@ extension Message {
         sentByUser: false
     )
 }
+
+extension Message {
+    var toObject: MessageObject {
+        MessageObject(value:
+            [
+                "id": id,
+                "content": content,
+                "imageContent": imageContent?.base64,
+                "dateSent": dateSent,
+                "sentByUser": sentByUser
+            ]
+        )
+    }
+}
+

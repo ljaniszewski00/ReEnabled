@@ -4,9 +4,10 @@ import SwiftUI
 
 final class SearchViewModel: ObservableObject {
     @Inject private var openAIManager: OpenAIManaging
+    @Inject private var conversationsRepository: ConversationsRepositoryProtocol
     
-    @Published var currentConversation: Conversation = Conversation(messages: [])
-    @Published var conversations: [Conversation] = [Conversation]()
+    @Published var currentConversation: Conversation?
+    @Published var conversations: [Conversation] = []
     
     @Published var speechRecordingBlocked: Bool = false
     @Published var showPreviousConversations: Bool = false
@@ -21,32 +22,81 @@ final class SearchViewModel: ObservableObject {
     }
     
     func fetchConversations() {
-        guard let newestConversation = conversations.sorted(by: {
+        conversationsRepository.getConversations()
+            .sink { _ in
+            } receiveValue: { [weak self] fetchedConversations in
+                guard let self = self,
+                      !fetchedConversations.isEmpty else {
+                    self?.addNewConversation()
+                    return
+                }
+                
+                self.conversations = fetchedConversations
+                self.sortConversations()
+            }
+            .store(in: &cancelBag)
+    }
+    
+    func sortConversations() {
+        conversations.sort {
             guard let firstStartDate = $0.startDate,
                   let secondStartDate = $1.startDate else {
                 return true
             }
             
             return firstStartDate < secondStartDate
-        }).first else {
-            currentConversation = Conversation(messages: [])
-//            modelContext.insert(currentConversation)
+        }
+    }
+    
+    func addNewConversation() {
+        currentConversation = Conversation(messages: [])
+        print("Added new conversation")
+    }
+    
+    func changeCurrentConversationToPrevious() {
+        guard let currentConversation = currentConversation,
+              let previousConversation = conversations.before(currentConversation) else {
             return
         }
         
-        currentConversation = newestConversation
+        self.currentConversation = previousConversation
+    }
+    
+    func changeCurrentConversationToNext() {
+        guard let currentConversation = currentConversation,
+              let nextConversation = conversations.after(currentConversation) else {
+            return
+        }
+        
+        self.currentConversation = nextConversation
     }
     
     func saveCurrentConversation() {
+        guard let currentConversation = currentConversation else {
+            return
+        }
+        
         if !currentConversation.messages.isEmpty {
-//            modelContext.insert(currentConversation)
+            conversationsRepository.updateConversation(currentConversation)
+                .sink { _ in
+                } receiveValue: { _ in
+                }
+                .store(in: &cancelBag)
         }
     }
     
     func deleteCurrentConversation() {
-//        if conversations.contains(currentConversation) {
-//            modelContext.delete(currentConversation)
-//        }
+        guard let currentConversation = currentConversation else {
+            return
+        }
+        
+        if !currentConversation.messages.isEmpty {
+            conversationsRepository.updateConversation(currentConversation)
+                .sink { _ in
+                } receiveValue: { _ in
+                }
+                .store(in: &cancelBag)
+        }
         
         fetchConversations()
     }
@@ -115,7 +165,10 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func addMessageToCurrentConversation(_ message: Message) {
-        currentConversation.messages.append(message)
-        saveCurrentConversation()
+        guard currentConversation != nil else {
+            return
+        }
+        
+        currentConversation!.messages.append(message)
     }
 }

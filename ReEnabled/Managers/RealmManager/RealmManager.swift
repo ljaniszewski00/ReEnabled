@@ -16,7 +16,7 @@ class RealmManager: RealmManaging {
     
     private init() {}
     
-    func objects<T: Object>(ofType: T) -> AnyPublisher<[T], Error> {
+    func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error> {
         return Future { promise in
             self.realmQueue.async {
                 do {
@@ -100,7 +100,7 @@ class RealmManager: RealmManaging {
 }
 
 protocol RealmManaging {
-    func objects<T: Object>(ofType: T) -> AnyPublisher<[T], Error>
+    func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error>
     func updateObjects<T: Object>(with data: [T]) -> AnyPublisher<Void, Error>
     func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error>
     func clearAllData() -> AnyPublisher<Void, Error>
