@@ -63,8 +63,8 @@ extension Conversation {
         
         return ConversationObject(value:
             [
-                "id": id,
-                "messages": messagesList
+                ConversationObject.ConversationObjectKeys.id.rawValue: id,
+                ConversationObject.ConversationObjectKeys.messages.rawValue: messagesList
             ]
         )
     }

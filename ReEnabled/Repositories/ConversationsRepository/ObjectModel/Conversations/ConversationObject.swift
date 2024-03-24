@@ -1,9 +1,16 @@
 import Foundation
 import RealmSwift
 
-class ConversationObject: Object, ObjectKeyIdentifiable {
+class ConversationObject: Object, ObjectKeyIdentifiable, RealmObjectProtocol {
     @Persisted(primaryKey: true) var id: String
     @Persisted var messages: List<MessageObject>
+}
+
+extension ConversationObject {
+    enum ConversationObjectKeys: String {
+        case id
+        case messages
+    }
 }
 
 extension ConversationObject {

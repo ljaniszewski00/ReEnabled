@@ -62,11 +62,11 @@ extension Message {
     var toObject: MessageObject {
         MessageObject(value:
             [
-                "id": id,
-                "content": content,
-                "imageContent": imageContent?.base64?.utf8,
-                "dateSent": dateSent,
-                "sentByUser": sentByUser
+                MessageObject.MessageObjectKeys.id.rawValue: id,
+                MessageObject.MessageObjectKeys.content.rawValue: content,
+                MessageObject.MessageObjectKeys.imageContentData.rawValue: imageContent?.base64,
+                MessageObject.MessageObjectKeys.dateSent.rawValue: dateSent,
+                MessageObject.MessageObjectKeys.sentByUser.rawValue: sentByUser
             ]
         )
     }

@@ -63,6 +63,7 @@
 		163311D42B939F9C00896058 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D32B939F9C00896058 /* Prediction.swift */; };
 		163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163311D52B93A86E00896058 /* NonMaxSuppression.swift */; };
 		163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311D92B93BC6B00896058 /* YOLOV3.mlmodel */; };
+		163EB03A2BB052360012FC89 /* RealmObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163EB0392BB052360012FC89 /* RealmObjectProtocol.swift */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */; };
 		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
 		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
@@ -207,6 +208,7 @@
 		163311D32B939F9C00896058 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		163311D52B93A86E00896058 /* NonMaxSuppression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonMaxSuppression.swift; sourceTree = "<group>"; };
 		163311D92B93BC6B00896058 /* YOLOV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOV3.mlmodel; sourceTree = "<group>"; };
+		163EB0392BB052360012FC89 /* RealmObjectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectProtocol.swift; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurerViewModel.swift; sourceTree = "<group>"; };
 		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
@@ -483,8 +485,9 @@
 		1629F9ED2BACE9E600B89629 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9F32BACED0600B89629 /* Objects */,
-				16D949E92BAF4D8100CCBA16 /* ConversationsRepository.swift */,
+				163EB0392BB052360012FC89 /* RealmObjectProtocol.swift */,
+				163EB03B2BB053040012FC89 /* ConversationsRepository */,
+				1629F9F32BACED0600B89629 /* SettingsRepository */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -497,22 +500,21 @@
 			path = RealmManager;
 			sourceTree = "<group>";
 		};
-		1629F9F32BACED0600B89629 /* Objects */ = {
+		1629F9F32BACED0600B89629 /* SettingsRepository */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9F42BACED1100B89629 /* ConversationObject.swift */,
-				1629F9F62BACED1700B89629 /* MessageObject.swift */,
+				163EB0382BB052240012FC89 /* ObjectModel */,
 			);
-			path = Objects;
+			path = SettingsRepository;
 			sourceTree = "<group>";
 		};
-		1629F9FF2BAF4CD400B89629 /* Conversation */ = {
+		1629F9FF2BAF4CD400B89629 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
 				1629FA002BAF4CE100B89629 /* Conversation.swift */,
 				1629FA022BAF4CE700B89629 /* Message.swift */,
 			);
-			path = Conversation;
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		162DCA4C2BA0DD7F005CB24A /* SpeechRecognizer */ = {
@@ -593,6 +595,39 @@
 				163311D92B93BC6B00896058 /* YOLOV3.mlmodel */,
 			);
 			path = MLModels;
+			sourceTree = "<group>";
+		};
+		163EB0372BB0521B0012FC89 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				1629F9F42BACED1100B89629 /* ConversationObject.swift */,
+				1629F9F62BACED1700B89629 /* MessageObject.swift */,
+			);
+			path = Conversations;
+			sourceTree = "<group>";
+		};
+		163EB0382BB052240012FC89 /* ObjectModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ObjectModel;
+			sourceTree = "<group>";
+		};
+		163EB03B2BB053040012FC89 /* ConversationsRepository */ = {
+			isa = PBXGroup;
+			children = (
+				163EB03C2BB053130012FC89 /* ObjectModel */,
+				16D949E92BAF4D8100CCBA16 /* ConversationsRepository.swift */,
+			);
+			path = ConversationsRepository;
+			sourceTree = "<group>";
+		};
+		163EB03C2BB053130012FC89 /* ObjectModel */ = {
+			isa = PBXGroup;
+			children = (
+				163EB0372BB0521B0012FC89 /* Conversations */,
+			);
+			path = ObjectModel;
 			sourceTree = "<group>";
 		};
 		164668EA2B66CCE50049AB03 /* DistanceMeasurer */ = {
@@ -833,7 +868,7 @@
 		164E11462B4720FB008EF153 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				1629F9FF2BAF4CD400B89629 /* Conversation */,
+				1629F9FF2BAF4CD400B89629 /* DataModel */,
 				1629F99F2BA4AAAE00B89629 /* SingleTakeCamera */,
 				164E114A2B47211D008EF153 /* ChatView.swift */,
 				16B4468D2B9FA21B002504F5 /* ChatViewModel.swift */,
@@ -1334,6 +1369,7 @@
 				1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */,
 				16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */,
 				1629F9BA2BA7623300B89629 /* OpenAIChatCompletionsResponse.swift in Sources */,
+				163EB03A2BB052360012FC89 /* RealmObjectProtocol.swift in Sources */,
 				16F564B72B98ED0000A831F2 /* RoadLightsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

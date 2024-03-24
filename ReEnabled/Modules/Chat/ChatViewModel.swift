@@ -91,9 +91,21 @@ final class ChatViewModel: ObservableObject {
         
         if !currentConversation.messages.isEmpty {
             conversationsRepository.deleteConversation(currentConversation)
+                .sink { _ in
+                } receiveValue: { [weak self] _ in
+                    guard let self = self else {
+                        return
+                    }
+                    
+                    if let currentConversationIndex = self.conversations.firstIndex(of: currentConversation) {
+                        self.conversations.remove(at: currentConversationIndex)
+                    }
+                    
+                    self.addNewConversation()
+                    self.fetchConversations()
+                }
+                .store(in: &cancelBag)
         }
-        
-        fetchConversations()
     }
     
     func addNewMessageWith(transcript: String) {

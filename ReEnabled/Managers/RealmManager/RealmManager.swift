@@ -18,7 +18,7 @@ class RealmManager: RealmManaging {
     private init() {}
     
     func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error> {
-        return Future { promise in
+        Future { promise in
             self.realmQueue.async {
                 do {
                     let realm = try Realm()
@@ -54,19 +54,23 @@ class RealmManager: RealmManaging {
         }
     }
     
-    func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate) {
-        guard let realm = realm else {
-            return
-        }
+    func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate) -> AnyPublisher<Void, Error> {
+        Future { [weak self] promise in
+            guard let self = self,
+                    let realm = realm else {
+                return promise(Result.failure(RealmError.realmConstructionError))
+            }
 
-        realm.writeAsync { [realm] in
-            realm.delete(
-                realm.objects(T.self)
-                    .filter(predicate)
-            )
-            
-            return
+            realm.writeAsync { [realm] in
+                realm.delete(
+                    realm.objects(T.self)
+                        .filter(predicate)
+                )
+                
+                return promise(Result.success(()))
+            }
         }
+        .eraseToAnyPublisher()
     }
     
     func deleteAllData() {
@@ -84,7 +88,7 @@ class RealmManager: RealmManaging {
 protocol RealmManaging {
     func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error>
     func updateObjects<T: Object>(with data: [T])
-    func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate)
+    func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate) -> AnyPublisher<Void, Error>
     func deleteAllData()
 }
 
