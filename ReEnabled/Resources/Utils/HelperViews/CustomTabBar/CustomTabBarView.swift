@@ -89,6 +89,8 @@ extension CustomTabBarView {
             Image(systemName: TabBarItem.chat.iconName)
                 .resizable()
                 .symbolVariant(localSelection == .chat ? .fill : .none)
+                .symbolEffect(.bounce, options: .repeating, value: tabBarStateManager.shouldAnimateChatTabIcon)
+                .symbolEffect(.variableColor.iterative, options: .repeating, value: tabBarStateManager.shouldAnimateChatTabIcon)
                 .frame(width: Views.Constants.tabSearchImageFrameWidth,
                        height: Views.Constants.tabSearchImageFrameHeight)
                 .if(localSelection == .chat) {
@@ -101,6 +103,9 @@ extension CustomTabBarView {
                         .clipShape(Circle())
                         .offset(y: Views.Constants.tabSearchSelectedOffset)
                         .padding(.bottom, Views.Constants.tabSearchSelectedBottomPadding)
+                }
+                .onChange(of: tabBarStateManager.shouldAnimateChatTabIcon) { _, shouldAnimate in
+                    print(shouldAnimate)
                 }
             
             if localSelection == .chat {

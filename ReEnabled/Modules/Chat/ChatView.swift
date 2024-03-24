@@ -25,39 +25,23 @@ struct ChatView: View {
                         }
                     }
                     .padding()
-                    .padding(.bottom)
+                    .if(chatViewModel.selectedImage == nil) {
+                        $0.padding(.bottom)
+                    }
                 }
                 
                 if let image = chatViewModel.selectedImage {
-                    VStack(spacing: 10) {
-                        LabelledDivider(label: "To be send")
-                        
-                        HStack {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 40)
-                                .clipShape(
-                                    RoundedRectangle(
-                                        cornerRadius:
-                                            Views.Constants.messageCellImageClipShapeCornerRadius
-                                    )
-                                )
-                                .padding(.horizontal)
-                            
-                            Spacer()
-                        }
-                    }
-                    .padding(.bottom, Views.Constants.scrollViewBottomPadding)
+                    Views.ToBeSendSection(image: image)
+                        .environmentObject(chatViewModel)
                 }
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
         .addGesturesActions(onTap: {
-//            if !chatViewModel.speechRecordingBlocked {
-//                voiceRecordingManager.manageTalking()
-//            }
-            chatViewModel.addNewMessageWithImage(transcript: Message.mockData6.content)
+            if !chatViewModel.speechRecordingBlocked {
+                voiceRecordingManager.manageTalking()
+            }
+//            chatViewModel.addNewMessageWithImage(transcript: Message.mockData6.content)
         }, onDoubleTap: {
             
         }, onLongPress: {
@@ -79,9 +63,12 @@ struct ChatView: View {
         }, onSwipeFromDownToUpAfterLongPress: {
             
         })
-        .onChange(of: voiceRecordingManager.transcript) { newTranscript in
+        .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
 //            chatViewModel.addNewMessageWith(transcript: newTranscript)
             chatViewModel.addNewMessageWithImage(transcript: newTranscript)
+        }
+        .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
+            tabBarStateManager.shouldAnimateChatTabIcon = isRecording
         }
         .fullScreenCover(isPresented: $chatViewModel.showCamera) {
             SingleTakeCameraViewControllerRepresentable(chatViewModel: chatViewModel)
@@ -109,6 +96,15 @@ private extension Views {
         static let messageCellImageClipShapeCornerRadius: CGFloat = 5
         static let messageCellImageTopPadding: CGFloat = 15
         static let messageCellImageBottomPadding: CGFloat = 10
+        
+        static let toBeSendVStackSpacing: CGFloat = 10
+        static let toBeSendLabel: String = "To be send"
+        static let toBeSendImageWidth: CGFloat = 80
+        static let toBeSendImageHeight: CGFloat = 60
+        static let toBeSendRemoveButtonImageName: String = "x.circle"
+        static let toBeSendRemoveButtonImageWidth: CGFloat = 18
+        static let toBeSendRemoveButtonImageHeight: CGFloat = 16
+        static let toBeSendBottomPadding: CGFloat = scrollViewBottomPadding * 2
         
         static let scrollViewBottomPadding: CGFloat = 35
         
@@ -195,6 +191,45 @@ private extension Views {
                 
                 Divider()
             }
+        }
+    }
+    
+    struct ToBeSendSection: View {
+        @EnvironmentObject private var chatViewModel: ChatViewModel
+        let image: UIImage
+        
+        var body: some View {
+            VStack(spacing: Views.Constants.toBeSendVStackSpacing) {
+                LabelledDivider(label: Views.Constants.toBeSendLabel)
+                
+                HStack(alignment: .center) {
+                    Button {
+                        chatViewModel.selectedImage = nil
+                    } label: {
+                        Image(systemName: Views.Constants.toBeSendRemoveButtonImageName)
+                            .resizable()
+                            .frame(width: Views.Constants.toBeSendRemoveButtonImageWidth,
+                                   height: Views.Constants.toBeSendRemoveButtonImageHeight)
+                            .foregroundStyle(.gray)
+                    }
+                    
+                    Image(uiImage: image)
+                        .resizable(resizingMode: .stretch)
+                        .frame(width: Views.Constants.toBeSendImageWidth,
+                               height: Views.Constants.toBeSendImageHeight)
+                        .clipShape(
+                            RoundedRectangle(
+                                cornerRadius:
+                                    Views.Constants.messageCellImageClipShapeCornerRadius
+                            )
+                        )
+                        .padding(.horizontal)
+                    
+                    Spacer()
+                }
+                .padding(.leading)
+            }
+            .padding(.bottom, Views.Constants.toBeSendBottomPadding)
         }
     }
 }

@@ -5,6 +5,7 @@ class TabBarStateManager: ObservableObject {
     
     @Published var isHidden = false
     @Published var tabBarSize: CGSize = .zero
+    @Published var shouldAnimateChatTabIcon: Bool = false
     var tabBarFirstAppearSet: Bool = false
     var tabBarActualSize: CGSize = .zero
     

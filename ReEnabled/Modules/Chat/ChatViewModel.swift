@@ -51,7 +51,6 @@ final class ChatViewModel: ObservableObject {
     
     func addNewConversation() {
         currentConversation = Conversation(messages: [])
-        print("Added new conversation")
     }
     
     func changeCurrentConversationToPrevious() {
@@ -102,7 +101,6 @@ final class ChatViewModel: ObservableObject {
                     }
                     
                     self.addNewConversation()
-                    self.fetchConversations()
                 }
                 .store(in: &cancelBag)
         }
