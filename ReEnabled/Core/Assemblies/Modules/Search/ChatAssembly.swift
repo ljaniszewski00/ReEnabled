@@ -1,6 +1,6 @@
 import Swinject
 
-class SearchAssembly: Assembly {
+class ChatAssembly: Assembly {
 
     func assemble(container: Container) {
         container.register(OpenAIManaging.self) { _ in

@@ -2,7 +2,7 @@ import Combine
 import Foundation
 import SwiftUI
 
-final class SearchViewModel: ObservableObject {
+final class ChatViewModel: ObservableObject {
     @Inject private var openAIManager: OpenAIManaging
     @Inject private var conversationsRepository: ConversationsRepositoryProtocol
     
@@ -10,7 +10,6 @@ final class SearchViewModel: ObservableObject {
     @Published var conversations: [Conversation] = []
     
     @Published var speechRecordingBlocked: Bool = false
-    @Published var showPreviousConversations: Bool = false
     @Published var showCamera: Bool = false
     
     @Published var selectedImage: UIImage?
@@ -23,6 +22,7 @@ final class SearchViewModel: ObservableObject {
     
     func fetchConversations() {
         conversationsRepository.getConversations()
+            .receive(on: DispatchQueue.main)
             .sink { _ in
             } receiveValue: { [weak self] fetchedConversations in
                 guard let self = self,
@@ -33,6 +33,7 @@ final class SearchViewModel: ObservableObject {
                 
                 self.conversations = fetchedConversations
                 self.sortConversations()
+                self.currentConversation = self.conversations.last
             }
             .store(in: &cancelBag)
     }
@@ -56,6 +57,7 @@ final class SearchViewModel: ObservableObject {
     func changeCurrentConversationToPrevious() {
         guard let currentConversation = currentConversation,
               let previousConversation = conversations.before(currentConversation) else {
+            addNewConversation()
             return
         }
         
@@ -65,6 +67,7 @@ final class SearchViewModel: ObservableObject {
     func changeCurrentConversationToNext() {
         guard let currentConversation = currentConversation,
               let nextConversation = conversations.after(currentConversation) else {
+            addNewConversation()
             return
         }
         
@@ -78,10 +81,6 @@ final class SearchViewModel: ObservableObject {
         
         if !currentConversation.messages.isEmpty {
             conversationsRepository.updateConversation(currentConversation)
-                .sink { _ in
-                } receiveValue: { _ in
-                }
-                .store(in: &cancelBag)
         }
     }
     
@@ -91,11 +90,7 @@ final class SearchViewModel: ObservableObject {
         }
         
         if !currentConversation.messages.isEmpty {
-            conversationsRepository.updateConversation(currentConversation)
-                .sink { _ in
-                } receiveValue: { _ in
-                }
-                .store(in: &cancelBag)
+            conversationsRepository.deleteConversation(currentConversation)
         }
         
         fetchConversations()
@@ -152,7 +147,6 @@ final class SearchViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.speechRecordingBlocked = false
-                self?.selectedImage = nil
             } receiveValue: { [weak self] response in
                 guard let response = response else {
                     return
@@ -169,6 +163,8 @@ final class SearchViewModel: ObservableObject {
             return
         }
         
+        selectedImage = nil
         currentConversation!.messages.append(message)
+        saveCurrentConversation()
     }
 }

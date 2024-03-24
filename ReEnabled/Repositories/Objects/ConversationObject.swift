@@ -8,6 +8,14 @@ class ConversationObject: Object, ObjectKeyIdentifiable {
 
 extension ConversationObject {
     var toModel: Conversation {
-        Conversation(id: id, messages: Array(_immutableCocoaArray: messages))
+        let messagesArray: [Message] = messages.map {
+            Message(id: $0.id,
+                    content: $0.content,
+                    imageContent: $0.imageContentData?.uiImageFromBase64,
+                    dateSent: $0.dateSent,
+                    sentByUser: $0.sentByUser)
+        }
+        
+        return Conversation(id: id, messages: messagesArray)
     }
 }

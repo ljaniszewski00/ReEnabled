@@ -15,7 +15,7 @@ struct CustomTabBarView: View {
                         switchToTab(tab: tab)
                     } label: {
                         if tab == .chat {
-                            buildSearchTabView()
+                            buildChatTabView()
                         } else {
                             buildTabView(tab: tab)
                         }
@@ -84,7 +84,7 @@ extension CustomTabBarView {
         .frame(maxWidth: .infinity)
     }
     
-    private func buildSearchTabView() -> some View {
+    private func buildChatTabView() -> some View {
         VStack(spacing: Views.Constants.tabVStackSpacing) {
             Image(systemName: TabBarItem.chat.iconName)
                 .resizable()

@@ -84,7 +84,7 @@
 		164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11412B471D1A008EF153 /* TabBarStateManager.swift */; };
 		164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11432B471ECB008EF153 /* ConditionalView.swift */; };
 		164E11492B472115008EF153 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11482B472115008EF153 /* HomeView.swift */; };
-		164E114B2B47211D008EF153 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114A2B47211D008EF153 /* SearchView.swift */; };
+		164E114B2B47211D008EF153 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114A2B47211D008EF153 /* ChatView.swift */; };
 		164E114D2B472122008EF153 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114C2B472122008EF153 /* HelpView.swift */; };
 		165117252B94A0DD00779E89 /* LytNetV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 165117242B94A0DD00779E89 /* LytNetV1.mlmodel */; };
 		1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */; };
@@ -114,11 +114,11 @@
 		1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */; };
 		1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */; };
 		1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19E2B9A1E8700928103 /* RoadLightType.swift */; };
-		16B4468E2B9FA21B002504F5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4468D2B9FA21B002504F5 /* SearchViewModel.swift */; };
+		16B4468E2B9FA21B002504F5 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4468D2B9FA21B002504F5 /* ChatViewModel.swift */; };
 		16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */; };
 		16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */; };
 		16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */; };
-		16B898B42BA3B5B700735D93 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898B32BA3B5B700735D93 /* SearchAssembly.swift */; };
+		16B898B42BA3B5B700735D93 /* ChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898B32BA3B5B700735D93 /* ChatAssembly.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -229,7 +229,7 @@
 		164E11412B471D1A008EF153 /* TabBarStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarStateManager.swift; sourceTree = "<group>"; };
 		164E11432B471ECB008EF153 /* ConditionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalView.swift; sourceTree = "<group>"; };
 		164E11482B472115008EF153 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		164E114A2B47211D008EF153 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		164E114A2B47211D008EF153 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		164E114C2B472122008EF153 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		165117242B94A0DD00779E89 /* LytNetV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LytNetV1.mlmodel; sourceTree = "<group>"; };
 		1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerViewModel.swift; sourceTree = "<group>"; };
@@ -259,11 +259,11 @@
 		1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+PedestrianCrossingRecognizing.swift"; sourceTree = "<group>"; };
 		1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizing.swift; sourceTree = "<group>"; };
 		1694F19E2B9A1E8700928103 /* RoadLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightType.swift; sourceTree = "<group>"; };
-		16B4468D2B9FA21B002504F5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		16B4468D2B9FA21B002504F5 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletingPrefix.swift"; sourceTree = "<group>"; };
 		16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
-		16B898B32BA3B5B700735D93 /* SearchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
+		16B898B32BA3B5B700735D93 /* ChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAssembly.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 				16FC1A842BA24B3700BB9B48 /* Onboarding */,
 				164E112B2B46182B008EF153 /* SplashScreen */,
 				164E11452B4720F6008EF153 /* Camera */,
-				164E11462B4720FB008EF153 /* Search */,
+				164E11462B4720FB008EF153 /* Chat */,
 				164E11472B47210A008EF153 /* Settings */,
 				164E11182B45E167008EF153 /* ContentView.swift */,
 			);
@@ -830,15 +830,15 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
-		164E11462B4720FB008EF153 /* Search */ = {
+		164E11462B4720FB008EF153 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
 				1629F9FF2BAF4CD400B89629 /* Conversation */,
 				1629F99F2BA4AAAE00B89629 /* SingleTakeCamera */,
-				164E114A2B47211D008EF153 /* SearchView.swift */,
-				16B4468D2B9FA21B002504F5 /* SearchViewModel.swift */,
+				164E114A2B47211D008EF153 /* ChatView.swift */,
+				16B4468D2B9FA21B002504F5 /* ChatViewModel.swift */,
 			);
-			path = Search;
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		164E11472B47210A008EF153 /* Settings */ = {
@@ -1049,7 +1049,7 @@
 		16B898B22BA3B5A400735D93 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				16B898B32BA3B5B700735D93 /* SearchAssembly.swift */,
+				16B898B32BA3B5B700735D93 /* ChatAssembly.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1219,7 +1219,7 @@
 				163311CF2B939EF200896058 /* Softmax.swift in Sources */,
 				163311B52B935EAB00896058 /* FeedbackManager.swift in Sources */,
 				165117252B94A0DD00779E89 /* LytNetV1.mlmodel in Sources */,
-				16B4468E2B9FA21B002504F5 /* SearchViewModel.swift in Sources */,
+				16B4468E2B9FA21B002504F5 /* ChatViewModel.swift in Sources */,
 				1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */,
 				163311BD2B936FF500896058 /* FeedbackType.swift in Sources */,
 				1629F9CE2BA76E4E00B89629 /* AnyAPIClient.swift in Sources */,
@@ -1256,7 +1256,7 @@
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
 				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
-				16B898B42BA3B5B700735D93 /* SearchAssembly.swift in Sources */,
+				16B898B42BA3B5B700735D93 /* ChatAssembly.swift in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
@@ -1309,7 +1309,7 @@
 				1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */,
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
-				164E114B2B47211D008EF153 /* SearchView.swift in Sources */,
+				164E114B2B47211D008EF153 /* ChatView.swift in Sources */,
 				1629F9F52BACED1100B89629 /* ConversationObject.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
 				1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */,

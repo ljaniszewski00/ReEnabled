@@ -2,7 +2,7 @@ import RealmSwift
 import UIKit
 
 class MessageObject: EmbeddedObject, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var id: String
+    @Persisted var id: String
     @Persisted var content: String
     @Persisted var imageContentData: String?
     @Persisted var dateSent: Date

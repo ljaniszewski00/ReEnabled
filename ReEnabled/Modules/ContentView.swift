@@ -14,7 +14,7 @@ struct ContentView: View {
                 .tabBarItem(tab: .camera,
                             selection: $tabBarStateManager.tabSelection)
             
-            SearchView()
+            ChatView()
                 .environmentObject(tabBarStateManager)
                 .tabBarItem(tab: .chat,
                             selection: $tabBarStateManager.tabSelection)

@@ -64,7 +64,7 @@ extension Message {
             [
                 "id": id,
                 "content": content,
-                "imageContent": imageContent?.base64,
+                "imageContent": imageContent?.base64?.utf8,
                 "dateSent": dateSent,
                 "sentByUser": sentByUser
             ]

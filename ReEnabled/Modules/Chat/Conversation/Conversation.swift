@@ -55,7 +55,7 @@ extension Conversation {
 
 extension Conversation {
     var toObject: ConversationObject {
-        var messagesObjectsArray = messages.map { $0.toObject }
+        let messagesObjectsArray = messages.map { $0.toObject }
         let messagesList: List<MessageObject> = List<MessageObject>()
         messagesList.append(objectsIn:
             messagesObjectsArray

@@ -24,7 +24,7 @@ extension Assembler {
         [
             CameraAssembly(),
             RepositoriesAssembly(),
-            SearchAssembly(),
+            ChatAssembly(),
             UtilsAssembly(),
         ]
     }

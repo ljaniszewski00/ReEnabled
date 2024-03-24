@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct SingleTakeCameraViewControllerRepresentable: UIViewControllerRepresentable {
-    private var searchViewModel: SearchViewModel
+    private var chatViewModel: ChatViewModel
     
-    init(searchViewModel: SearchViewModel) {
-        self.searchViewModel = searchViewModel
+    init(chatViewModel: ChatViewModel) {
+        self.chatViewModel = chatViewModel
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        return SingleTakeCameraViewController(searchViewModel: searchViewModel)
+        return SingleTakeCameraViewController(chatViewModel: chatViewModel)
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

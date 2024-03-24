@@ -3,6 +3,7 @@ import Realm
 import RealmSwift
 
 class RealmManager: RealmManaging {
+    private let realm = try? Realm()
     private let realmQueue: DispatchQueue = DispatchQueue(label: "realmQueue")
     private let updatePolicy: Realm.UpdatePolicy = .modified
     
@@ -20,9 +21,7 @@ class RealmManager: RealmManaging {
         return Future { promise in
             self.realmQueue.async {
                 do {
-                    guard let realm = try? Realm(configuration: .defaultConfiguration) else {
-                        return promise(Result.failure(RealmError.realmConstructionError))
-                    }
+                    let realm = try Realm()
                     
                     if realm.isInWriteTransaction || realm.isPerformingAsynchronousWriteOperations {
                         try realm.commitWrite()
@@ -39,71 +38,54 @@ class RealmManager: RealmManaging {
         .eraseToAnyPublisher()
     }
     
-    func updateObjects<T: Object>(with data: [T]) -> AnyPublisher<Void, Error> {
-        return Future { promise in
-            self.realmQueue.async {
-                guard let realm = try? Realm(configuration: .defaultConfiguration) else {
-                    return promise(Result.failure(RealmError.realmConstructionError))
-                }
-
-                realm.writeAsync { [realm] in
-                    guard !data.isEmpty else {
-                        return promise(Result.success(()))
-                    }
-                    
-                    realm.add(data, update: self.updatePolicy)
-                    
-                    promise(Result.success(()))
-                }
-            }
+    func updateObjects<T: Object>(with data: [T]) {
+        guard let realm = realm else {
+            return
         }
-        .eraseToAnyPublisher()
+
+        realm.writeAsync { [realm] in
+            guard !data.isEmpty else {
+                return
+            }
+            
+            realm.add(data, update: self.updatePolicy)
+            
+            return
+        }
     }
     
-    func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error> {
-        return Future { promise in
-            self.realmQueue.async {
-                guard let realm = try? Realm(configuration: .defaultConfiguration) else {
-                    return promise(Result.failure(RealmError.realmConstructionError))
-                }
-
-                realm.writeAsync { [realm] in
-                    guard !data.isEmpty else {
-                        return promise(Result.success(()))
-                    }
-                    
-                    realm.add(data, update: self.updatePolicy)
-                    realm.delete(data)
-                    
-                    promise(Result.success(()))
-                }
-            }
+    func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate) {
+        guard let realm = realm else {
+            return
         }
-        .eraseToAnyPublisher()
+
+        realm.writeAsync { [realm] in
+            realm.delete(
+                realm.objects(T.self)
+                    .filter(predicate)
+            )
+            
+            return
+        }
     }
     
-    func clearAllData() -> AnyPublisher<Void, Error> {
-        return Future { promise in
-            self.realmQueue.async {
-                guard let realm = try? Realm(configuration: .defaultConfiguration) else {
-                    return promise(Result.failure(RealmError.realmConstructionError))
-                }
-
-                realm.writeAsync { [realm] in
-                    realm.deleteAll()
-                    return promise(Result.success(()))
-                }
-            }
+    func deleteAllData() {
+        guard let realm = realm else {
+            return
         }
-        .eraseToAnyPublisher()
+        
+        realm.writeAsync { [realm] in
+            realm.deleteAll()
+            return
+        }
     }
 }
 
 protocol RealmManaging {
     func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error>
-    func updateObjects<T: Object>(with data: [T]) -> AnyPublisher<Void, Error>
-    func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error>
-    func clearAllData() -> AnyPublisher<Void, Error>
+    func updateObjects<T: Object>(with data: [T])
+    func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate)
+    func deleteAllData()
 }
 
 extension RealmManager {

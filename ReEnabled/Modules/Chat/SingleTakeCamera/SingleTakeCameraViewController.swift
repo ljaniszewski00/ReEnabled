@@ -3,21 +3,21 @@ import UIKit
 
 class SingleTakeCameraViewController: UIViewController {
     private var singleTakeCameraManager: SingleTakeCameraManager = SingleTakeCameraManager()
-    private var searchViewModel: SearchViewModel?
+    private var chatViewModel: ChatViewModel?
 
     private var screenRect: CGRect = UIScreen.main.bounds
     private var previewLayer = AVCaptureVideoPreviewLayer()
     
     var photoCaptureCompletionBlock: ((UIImage?) -> Void)?
     
-    init(searchViewModel: SearchViewModel) {
+    init(chatViewModel: ChatViewModel) {
         super.init(nibName: nil, bundle: nil)
-        self.searchViewModel = searchViewModel
+        self.chatViewModel = chatViewModel
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.searchViewModel = nil
+        self.chatViewModel = nil
     }
     
     override func viewDidLoad() {
@@ -47,8 +47,8 @@ class SingleTakeCameraViewController: UIViewController {
             self.view.layer.addSublayer(self.previewLayer)
             
             self.captureImage { [weak self] image in
-                self?.searchViewModel?.selectedImage = image
-                self?.searchViewModel?.showCamera = false
+                self?.chatViewModel?.selectedImage = image
+                self?.chatViewModel?.showCamera = false
             }
         }
     }

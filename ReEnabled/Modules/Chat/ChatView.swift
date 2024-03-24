@@ -1,26 +1,26 @@
 import SwiftUI
 
-struct SearchView: View {
+struct ChatView: View {
     @EnvironmentObject private var tabBarStateManager: TabBarStateManager
-    @StateObject private var searchViewModel: SearchViewModel = SearchViewModel()
+    @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = VoiceRecordingManager()
     
     var body: some View {
         VStack(spacing: Views.Constants.mainVStackSpacing) {
             Views.NavigationBar()
-                .environmentObject(searchViewModel)
+                .environmentObject(chatViewModel)
             
             Group {
                 ScrollView(.vertical) {
                     VStack {
-                        if let currentConversation = searchViewModel.currentConversation {
+                        if let currentConversation = chatViewModel.currentConversation {
                             ForEach(currentConversation.messages, id: \.id) { message in
                                 Views.MessageCell(message: message)
                                     .padding(.bottom, Views.Constants.messageCellBottomPadding)
                             }
                         }
                         
-                        if searchViewModel.speechRecordingBlocked {
+                        if chatViewModel.speechRecordingBlocked {
                             ProgressView()
                         }
                     }
@@ -28,7 +28,7 @@ struct SearchView: View {
                     .padding(.bottom)
                 }
                 
-                if let image = searchViewModel.selectedImage {
+                if let image = chatViewModel.selectedImage {
                     VStack(spacing: 10) {
                         LabelledDivider(label: "To be send")
                         
@@ -53,24 +53,38 @@ struct SearchView: View {
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
-        .onTapGesture {
-//            if !searchViewModel.speechRecordingBlocked {
+        .addGesturesActions(onTap: {
+//            if !chatViewModel.speechRecordingBlocked {
 //                voiceRecordingManager.manageTalking()
 //            }
-            searchViewModel.addNewMessageWithImage(transcript: Message.mockData6.content)
-        }
-        .onLongPressGesture {
-            searchViewModel.saveCurrentConversation()
-        }
-        .onTwoTouchSwipe(direction: .down) {
-            searchViewModel.deleteCurrentConversation()
-        }
+            chatViewModel.addNewMessageWithImage(transcript: Message.mockData6.content)
+        }, onDoubleTap: {
+            
+        }, onLongPress: {
+            chatViewModel.saveCurrentConversation()
+        }, onSwipeFromLeftToRight: {
+            chatViewModel.changeCurrentConversationToNext()
+        }, onSwipeFromRightToLeft: {
+            chatViewModel.changeCurrentConversationToPrevious()
+        }, onSwipeFromUpToDown: {
+            
+        }, onSwipeFromDownToUp: {
+            
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            
+        }, onSwipeFromUpToDownAfterLongPress: {
+            chatViewModel.deleteCurrentConversation()
+        }, onSwipeFromDownToUpAfterLongPress: {
+            
+        })
         .onChange(of: voiceRecordingManager.transcript) { newTranscript in
-//            searchViewModel.addNewMessageWith(transcript: newTranscript)
-            searchViewModel.addNewMessageWithImage(transcript: newTranscript)
+//            chatViewModel.addNewMessageWith(transcript: newTranscript)
+            chatViewModel.addNewMessageWithImage(transcript: newTranscript)
         }
-        .fullScreenCover(isPresented: $searchViewModel.showCamera) {
-            SingleTakeCameraViewControllerRepresentable(searchViewModel: searchViewModel)
+        .fullScreenCover(isPresented: $chatViewModel.showCamera) {
+            SingleTakeCameraViewControllerRepresentable(chatViewModel: chatViewModel)
         }
     }
     
@@ -80,7 +94,7 @@ struct SearchView: View {
 #Preview {
     let tabBarStateManager: TabBarStateManager = TabBarStateManager()
     
-    return SearchView()
+    return ChatView()
         .environmentObject(tabBarStateManager)
 }
 
@@ -98,41 +112,34 @@ private extension Views {
         
         static let scrollViewBottomPadding: CGFloat = 35
         
-        static let navigationTitle: String = "Search"
-        static let toolbarButtonMessageHistoryImageName: String = "list.dash"
-        static let toolbarButtonMessageSaveImageName: String = "square.and.arrow.down.fill"
+        static let navigationTitle: String = "Chat"
+        static let toolbarButtonMessageDeleteImageName: String = "trash"
         static let toolbarButtonPhotoImageName: String = "photo"
     }
     
     struct NavigationBar: View {
-        @EnvironmentObject private var searchViewModel: SearchViewModel
+        @EnvironmentObject private var chatViewModel: ChatViewModel
         
         var body: some View {
             CustomNavigationBar(title: Views.Constants.navigationTitle,
                                 leadingItem: {
                 Button {
-                    searchViewModel.showPreviousConversations = true
+                    chatViewModel.deleteCurrentConversation()
                 } label: {
-                    Image(systemName: Views.Constants.toolbarButtonMessageHistoryImageName)
+                    Image(systemName: Views.Constants.toolbarButtonMessageDeleteImageName)
                         .resizable()
                         .scaledToFill()
                 }
             },
                                 secondLeadingItem: {
-                Button {
-                    searchViewModel.saveCurrentConversation()
-                } label: {
-                    Image(systemName: Views.Constants.toolbarButtonMessageSaveImageName)
-                        .resizable()
-                        .scaledToFill()
-                }
+                Text("")
             },
                                 trailingItem: {
                 Text("")
             },
                                 secondTrailingItem: {
                 Button {
-                    searchViewModel.showCamera = true
+                    chatViewModel.showCamera = true
                 } label: {
                     Image(systemName: Views.Constants.toolbarButtonPhotoImageName)
                         .resizable()
