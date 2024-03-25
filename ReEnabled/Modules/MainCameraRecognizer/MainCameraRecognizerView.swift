@@ -1,8 +1,10 @@
 import SwiftUI
 
-struct HomeView: View {
-    @EnvironmentObject private var tabBarStateManager: TabBarStateManager
-    @StateObject private var homeViewModel: HomeViewModel = HomeViewModel()
+struct MainCameraRecognizerView: View {
+    @Inject private var tabBarStateManager: TabBarStateManager
+    @Inject private var feedbackManager: FeedbackManager
+    @Inject private var voiceRecordingManager: VoiceRecordingManager
+    @StateObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel = MainCameraRecognizerViewModel()
     
     private var topInsetValue: CGFloat {
         guard let window = UIApplication.shared.connectedScenes.first?.inputView?.window else {
@@ -29,8 +31,8 @@ struct HomeView: View {
 ////                FacialRecognizerView()
 //            }
             
-            if homeViewModel.cameraModeNameVisible {
-                Text(homeViewModel.cameraMode.rawValue)
+            if mainCameraRecognizerViewModel.cameraModeNameVisible {
+                Text(mainCameraRecognizerViewModel.cameraMode.rawValue)
                     .padding()
                     .padding(.top, topInsetValue)
                     .frame(width: UIScreen.main.bounds.width)
@@ -53,9 +55,9 @@ struct HomeView: View {
         }, onLongPress: {
             
         }, onSwipeFromLeftToRight: {
-            homeViewModel.changeToNextCameraMode()
+            mainCameraRecognizerViewModel.changeToNextCameraMode()
         }, onSwipeFromRightToLeft: {
-            homeViewModel.changeToPreviousCameraMode()
+            mainCameraRecognizerViewModel.changeToPreviousCameraMode()
         }, onSwipeFromUpToDown: {
             
         }, onSwipeFromDownToUp: {
@@ -70,16 +72,13 @@ struct HomeView: View {
             
         })
         .onAppear {
-            homeViewModel.onNewCameraModeAppear()
+            mainCameraRecognizerViewModel.onNewCameraModeAppear()
         }
     }
 }
 
 #Preview {
-    let tabBarStateManager: TabBarStateManager = TabBarStateManager()
-    
-    return HomeView()
-        .environmentObject(tabBarStateManager)
+    MainCameraRecognizerView()
 }
 
 private extension Views {

@@ -1,46 +1,54 @@
-//
-//  Created by Patrick Valenta on 08.10.17.
-//  Copyright © 2017 Patrick Valenta. All rights reserved.
-//
-
-import AudioToolbox.AudioServices
 import AVFoundation
 import Foundation
 import UIKit
 
-class FeedbackManager: FeedbackManaging {
+class FeedbackManager: ObservableObject {
     private var hapticTimer: Timer?
     private var speechTimer: Timer?
-    
     private var speechSynthesizer: AVSpeechSynthesizer?
     private var speechVoice: AVSpeechSynthesisVoice?
     
-    init() {
+    private init() {
         self.hapticTimer = Timer()
         self.speechTimer = Timer()
         
         self.speechSynthesizer = AVSpeechSynthesizer()
-        self.speechVoice = AVSpeechSynthesisVoice(language: "en-US")
+        self.speechVoice = AVSpeechSynthesisVoice(language: SupportedLanguage.polish.languageCode)
     }
     
-    public func start(text: String,
-                      withInterval interval: TimeInterval,
-                      feedbackType: FeedbackType) {
+    static let shared: FeedbackManager = {
+        FeedbackManager()
+    }()
+    
+    func changeVoiceLanguage(to language: SupportedLanguage) {
+        self.speechVoice = AVSpeechSynthesisVoice(language: language.languageCode)
+    }
+    
+    func startHaptic(withInterval interval: TimeInterval) {
         DispatchQueue.main.async {
-            if feedbackType.sound {
-                self.speekText(text: text)
-                self.speechTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.doSpeechFeedback), userInfo: ["speech": text], repeats: true)
-            }
-            
-            if feedbackType.vibration {
-                self.doHapticFeedback()
-                self.hapticTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(self.doHapticFeedback), userInfo: nil, repeats: true)
-            }
+            self.doHapticFeedback()
+            self.hapticTimer = Timer.scheduledTimer(timeInterval: interval, 
+                                                    target: self,
+                                                    selector: #selector(self.doHapticFeedback),
+                                                    userInfo: nil,
+                                                    repeats: true)
+        }
+    }
+    
+    func startSpeech(text: String,
+                     withInterval interval: TimeInterval) {
+        DispatchQueue.main.async {
+            self.speekText(text: text)
+            self.speechTimer = Timer.scheduledTimer(timeInterval: 3, 
+                                                    target: self,
+                                                    selector: #selector(self.doSpeechFeedback),
+                                                    userInfo: ["speech": text],
+                                                    repeats: true)
         }
         
     }
     
-    public func stop() {
+    func stop() {
         hapticTimer?.invalidate()
         speechTimer?.invalidate()
     }
@@ -68,9 +76,8 @@ class FeedbackManager: FeedbackManaging {
     }
 }
 
-protocol FeedbackManaging {
-    func start(text: String,
-               withInterval interval: TimeInterval,
-               feedbackType: FeedbackType)
-    func stop()
+extension FeedbackManager {
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
+    }
 }

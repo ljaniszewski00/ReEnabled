@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var tabBarStateManager = TabBarStateManager()
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @Inject private var feedbackManager: FeedbackManager
+    @Inject private var voiceRecordingManager: VoiceRecordingManager
     
     private var selection: String {
         tabBarStateManager.tabSelection.title
@@ -9,22 +11,18 @@ struct ContentView: View {
     
     var body: some View {
         CustomTabBarContainerView(selection: $tabBarStateManager.tabSelection) {
-            HomeView()
-                .environmentObject(tabBarStateManager)
+            MainCameraRecognizerView()
                 .tabBarItem(tab: .camera,
                             selection: $tabBarStateManager.tabSelection)
             
             ChatView()
-                .environmentObject(tabBarStateManager)
                 .tabBarItem(tab: .chat,
                             selection: $tabBarStateManager.tabSelection)
             
-            HelpView()
-                .environmentObject(tabBarStateManager)
+            SettingsView()
                 .tabBarItem(tab: .settings,
                             selection: $tabBarStateManager.tabSelection)
         }
-        .environmentObject(tabBarStateManager)
         .ignoresSafeArea(edges: .bottom)
     }
 }

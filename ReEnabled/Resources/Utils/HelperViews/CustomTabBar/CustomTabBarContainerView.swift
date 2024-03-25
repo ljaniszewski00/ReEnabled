@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomTabBarContainerView<Content: View>: View {
-    @EnvironmentObject private var tabBarStateManager: TabBarStateManager
+    @StateObject var tabBarStateManager: TabBarStateManager = .shared
     
     @Binding var selection: TabBarItem
     let content: Content
@@ -21,9 +21,8 @@ struct CustomTabBarContainerView<Content: View>: View {
             CustomTabBarView(selection: $selection,
                              localSelection: selection,
                              tabs: tabs)
-            .environmentObject(tabBarStateManager)
             .measureSize(size: $tabBarStateManager.tabBarSize)
-            .onChange(of: tabBarStateManager.tabBarSize) { newSize in
+            .onChange(of: tabBarStateManager.tabBarSize) { _, newSize in
                 tabBarStateManager.changeTabBarValuesFor(tabBarNewSize: newSize)
             }
         }
@@ -37,13 +36,12 @@ struct CustomTabBarContainerView<Content: View>: View {
     let tabs: [TabBarItem] = [
         .camera, .chat, .settings
     ]
-    let tabBarStateManager = TabBarStateManager()
+    
     return VStack {
         Spacer()
         CustomTabBarContainerView(selection: .constant(tabs.first!)) {
             Color.red
         }
-        .environmentObject(tabBarStateManager)
         Spacer()
     }
 }

@@ -11,11 +11,11 @@ class RealmManager: RealmManaging {
         case realmConstructionError
     }
     
-    static var shared: RealmManaging {
-        RealmManager()
-    }
-    
     private init() {}
+    
+    static let shared: RealmManaging = {
+        RealmManager()
+    }()
     
     func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error> {
         Future { promise in
@@ -86,6 +86,8 @@ class RealmManager: RealmManaging {
 }
 
 protocol RealmManaging {
+    static var shared: RealmManaging { get }
+    
     func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error>
     func updateObjects<T: Object>(with data: [T])
     func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate) -> AnyPublisher<Void, Error>

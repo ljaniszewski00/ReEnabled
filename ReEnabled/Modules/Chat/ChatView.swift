@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ChatView: View {
-    @EnvironmentObject private var tabBarStateManager: TabBarStateManager
+    @Inject private var tabBarStateManager: TabBarStateManager
+    @Inject private var feedbackManager: FeedbackManager
+    @Inject private var voiceRecordingManager: VoiceRecordingManager
+    
     @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
-    @StateObject private var voiceRecordingManager: VoiceRecordingManager = VoiceRecordingManager()
     
     var body: some View {
         VStack(spacing: Views.Constants.mainVStackSpacing) {
@@ -79,10 +81,7 @@ struct ChatView: View {
 }
 
 #Preview {
-    let tabBarStateManager: TabBarStateManager = TabBarStateManager()
-    
-    return ChatView()
-        .environmentObject(tabBarStateManager)
+    ChatView()
 }
 
 private extension Views {

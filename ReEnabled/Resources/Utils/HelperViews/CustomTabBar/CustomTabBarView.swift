@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomTabBarView: View {
-    @EnvironmentObject private var tabBarStateManager: TabBarStateManager
+    @Inject private var tabBarStateManager: TabBarStateManager
     
     @Binding var selection: TabBarItem
     @State var localSelection: TabBarItem
@@ -47,13 +47,12 @@ struct CustomTabBarView: View {
     let tabs: [TabBarItem] = [
         .camera, .chat, .settings
     ]
-    let tabBarStateManager = TabBarStateManager()
+    
     return VStack {
         Spacer()
         CustomTabBarView(selection: .constant(tabs.first!),
                          localSelection: tabs[1],
                          tabs: tabs)
-        .environmentObject(tabBarStateManager)
     }
 }
 
@@ -89,8 +88,12 @@ extension CustomTabBarView {
             Image(systemName: TabBarItem.chat.iconName)
                 .resizable()
                 .symbolVariant(localSelection == .chat ? .fill : .none)
-                .symbolEffect(.bounce, options: .repeating, value: tabBarStateManager.shouldAnimateChatTabIcon)
-                .symbolEffect(.variableColor.iterative, options: .repeating, value: tabBarStateManager.shouldAnimateChatTabIcon)
+                .symbolEffect(.bounce,
+                              options: tabBarStateManager.shouldAnimateChatTabIcon ? .repeating : .nonRepeating,
+                              value: tabBarStateManager.shouldAnimateChatTabIcon)
+                .symbolEffect(.variableColor.iterative,
+                              options: tabBarStateManager.shouldAnimateChatTabIcon ? .repeating : .nonRepeating,
+                              value: tabBarStateManager.shouldAnimateChatTabIcon)
                 .frame(width: Views.Constants.tabSearchImageFrameWidth,
                        height: Views.Constants.tabSearchImageFrameHeight)
                 .if(localSelection == .chat) {
@@ -104,10 +107,6 @@ extension CustomTabBarView {
                         .offset(y: Views.Constants.tabSearchSelectedOffset)
                         .padding(.bottom, Views.Constants.tabSearchSelectedBottomPadding)
                 }
-                .onChange(of: tabBarStateManager.shouldAnimateChatTabIcon) { _, shouldAnimate in
-                    print(shouldAnimate)
-                }
-            
             if localSelection == .chat {
                 Text(TabBarItem.chat.title)
                     .font(.system(size: Views.Constants.tabNameFontSize))

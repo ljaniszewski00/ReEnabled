@@ -2,10 +2,16 @@ import SwiftUI
 
 class TabBarStateManager: ObservableObject {
     @Published var tabSelection: TabBarItem = .chat
-    
     @Published var isHidden = false
     @Published var tabBarSize: CGSize = .zero
     @Published var shouldAnimateChatTabIcon: Bool = false
+    
+    private init() {}
+    
+    static var shared: TabBarStateManager = {
+        TabBarStateManager()
+    }()
+    
     var tabBarFirstAppearSet: Bool = false
     var tabBarActualSize: CGSize = .zero
     
@@ -35,5 +41,11 @@ class TabBarStateManager: ObservableObject {
                 tabBarSize = tabBarActualSize
             }
         }
+    }
+}
+
+extension TabBarStateManager {
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
     }
 }

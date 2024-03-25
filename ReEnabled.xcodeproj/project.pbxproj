@@ -65,7 +65,7 @@
 		163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 163311D92B93BC6B00896058 /* YOLOV3.mlmodel */; };
 		163EB03A2BB052360012FC89 /* RealmObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163EB0392BB052360012FC89 /* RealmObjectProtocol.swift */; };
 		164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */; };
-		164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */; };
+		164668FC2B66DDAE0049AB03 /* MainCameraRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FB2B66DDAE0049AB03 /* MainCameraRecognizerViewModel.swift */; };
 		164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164668FD2B66DE010049AB03 /* CameraMode.swift */; };
 		164669072B6856710049AB03 /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164669062B6856710049AB03 /* DocumentScannerView.swift */; };
 		1646690A2B685CF50049AB03 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164669092B685CF50049AB03 /* RoundedRectLabel.swift */; };
@@ -84,9 +84,9 @@
 		164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E113C2B471C94008EF153 /* MeasureViewSize.swift */; };
 		164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11412B471D1A008EF153 /* TabBarStateManager.swift */; };
 		164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11432B471ECB008EF153 /* ConditionalView.swift */; };
-		164E11492B472115008EF153 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11482B472115008EF153 /* HomeView.swift */; };
+		164E11492B472115008EF153 /* MainCameraRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E11482B472115008EF153 /* MainCameraRecognizerView.swift */; };
 		164E114B2B47211D008EF153 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114A2B47211D008EF153 /* ChatView.swift */; };
-		164E114D2B472122008EF153 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114C2B472122008EF153 /* HelpView.swift */; };
+		164E114D2B472122008EF153 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E114C2B472122008EF153 /* SettingsView.swift */; };
 		165117252B94A0DD00779E89 /* LytNetV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 165117242B94A0DD00779E89 /* LytNetV1.mlmodel */; };
 		1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */; };
 		165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165117322B94A4E700779E89 /* ExifOrientation.swift */; };
@@ -210,7 +210,7 @@
 		163311D92B93BC6B00896058 /* YOLOV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOV3.mlmodel; sourceTree = "<group>"; };
 		163EB0392BB052360012FC89 /* RealmObjectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectProtocol.swift; sourceTree = "<group>"; };
 		164668F42B66D37E0049AB03 /* DistanceMeasurerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasurerViewModel.swift; sourceTree = "<group>"; };
-		164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		164668FB2B66DDAE0049AB03 /* MainCameraRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCameraRecognizerViewModel.swift; sourceTree = "<group>"; };
 		164668FD2B66DE010049AB03 /* CameraMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMode.swift; sourceTree = "<group>"; };
 		164669062B6856710049AB03 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
 		164669092B685CF50049AB03 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
@@ -230,9 +230,9 @@
 		164E113C2B471C94008EF153 /* MeasureViewSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewSize.swift; sourceTree = "<group>"; };
 		164E11412B471D1A008EF153 /* TabBarStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarStateManager.swift; sourceTree = "<group>"; };
 		164E11432B471ECB008EF153 /* ConditionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalView.swift; sourceTree = "<group>"; };
-		164E11482B472115008EF153 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		164E11482B472115008EF153 /* MainCameraRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCameraRecognizerView.swift; sourceTree = "<group>"; };
 		164E114A2B47211D008EF153 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		164E114C2B472122008EF153 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		164E114C2B472122008EF153 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		165117242B94A0DD00779E89 /* LytNetV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LytNetV1.mlmodel; sourceTree = "<group>"; };
 		1651172A2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizerViewModel.swift; sourceTree = "<group>"; };
 		165117322B94A4E700779E89 /* ExifOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifOrientation.swift; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 			children = (
 				16FC1A842BA24B3700BB9B48 /* Onboarding */,
 				164E112B2B46182B008EF153 /* SplashScreen */,
-				164E11452B4720F6008EF153 /* Camera */,
+				164E11452B4720F6008EF153 /* MainCameraRecognizer */,
 				164E11462B4720FB008EF153 /* Chat */,
 				164E11472B47210A008EF153 /* Settings */,
 				164E11182B45E167008EF153 /* ContentView.swift */,
@@ -855,14 +855,14 @@
 			path = Structures;
 			sourceTree = "<group>";
 		};
-		164E11452B4720F6008EF153 /* Camera */ = {
+		164E11452B4720F6008EF153 /* MainCameraRecognizer */ = {
 			isa = PBXGroup;
 			children = (
 				1670C6172B6FB8A7005CF24B /* Sections */,
-				164E11482B472115008EF153 /* HomeView.swift */,
-				164668FB2B66DDAE0049AB03 /* HomeViewModel.swift */,
+				164E11482B472115008EF153 /* MainCameraRecognizerView.swift */,
+				164668FB2B66DDAE0049AB03 /* MainCameraRecognizerViewModel.swift */,
 			);
-			path = Camera;
+			path = MainCameraRecognizer;
 			sourceTree = "<group>";
 		};
 		164E11462B4720FB008EF153 /* Chat */ = {
@@ -879,7 +879,7 @@
 		164E11472B47210A008EF153 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				164E114C2B472122008EF153 /* HelpView.swift */,
+				164E114C2B472122008EF153 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1271,7 +1271,7 @@
 				163311BF2B9371EB00896058 /* CMSampleBuffer+ConvertToPixelBuffer.swift in Sources */,
 				1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */,
 				1629F9E92BAA18CF00B89629 /* OnMultipleTouchSwipe.swift in Sources */,
-				164E11492B472115008EF153 /* HomeView.swift in Sources */,
+				164E11492B472115008EF153 /* MainCameraRecognizerView.swift in Sources */,
 				162784822B9FC2C000C5225F /* CustomNavigationBar.swift in Sources */,
 				1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */,
 				163311872B8D2A9500896058 /* FlashlightManager.swift in Sources */,
@@ -1361,8 +1361,8 @@
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */,
 				165117352B94F41D00779E89 /* SessionPreset.swift in Sources */,
-				164E114D2B472122008EF153 /* HelpView.swift in Sources */,
-				164668FC2B66DDAE0049AB03 /* HomeViewModel.swift in Sources */,
+				164E114D2B472122008EF153 /* SettingsView.swift in Sources */,
+				164668FC2B66DDAE0049AB03 /* MainCameraRecognizerViewModel.swift in Sources */,
 				16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */,
 				16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,

@@ -1,6 +1,6 @@
 import SwiftUI
 
-class HomeViewModel: ObservableObject {
+class MainCameraRecognizerViewModel: ObservableObject {
     @Published var cameraMode: CameraMode = .mainRecognizer
     @Published var cameraModeNameVisible: Bool = true
     

@@ -23,9 +23,9 @@ extension Assembler {
     static var allAssemblies: [Assembly] {
         [
             CameraAssembly(),
-            RepositoriesAssembly(),
             ChatAssembly(),
-            UtilsAssembly(),
+            RepositoriesAssembly(),
+            UtilsAssembly()
         ]
     }
 }
