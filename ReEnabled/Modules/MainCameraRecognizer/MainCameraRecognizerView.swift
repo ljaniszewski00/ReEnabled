@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct MainCameraRecognizerView: View {
-    @Inject private var tabBarStateManager: TabBarStateManager
-    @Inject private var feedbackManager: FeedbackManager
-    @Inject private var voiceRecordingManager: VoiceRecordingManager
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     @StateObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel = MainCameraRecognizerViewModel()
     
     private var topInsetValue: CGFloat {

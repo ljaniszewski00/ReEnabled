@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomTabBarView: View {
-    @Inject private var tabBarStateManager: TabBarStateManager
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     
     @Binding var selection: TabBarItem
     @State var localSelection: TabBarItem

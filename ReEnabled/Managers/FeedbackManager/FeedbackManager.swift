@@ -1,16 +1,26 @@
 import AVFoundation
+import Combine
 import Foundation
 import UIKit
 
 class FeedbackManager: ObservableObject {
-    private var hapticTimer: Timer?
-    private var speechTimer: Timer?
+    private var hapticTimer: AnyCancellable?
+    private var continuousHapticTimer: AnyCancellable?
+    private var speechTimer: AnyCancellable?
+    
     private var speechSynthesizer: AVSpeechSynthesizer?
     private var speechVoice: AVSpeechSynthesisVoice?
     
+    @Published var shouldStartHaptic: Bool = false
+    @Published var shouldStartContinuousHaptic: Bool = false
+    @Published var shouldStartSpeech: Bool = false
+    
+    private var cancelBag = Set<AnyCancellable>()
+    
     private init() {
-        self.hapticTimer = Timer()
-        self.speechTimer = Timer()
+        self.setupHapticDemandObservation()
+        self.setupContinuousHapticDemandObservation()
+        self.setupSpeechDemandObservation()
         
         self.speechSynthesizer = AVSpeechSynthesizer()
         self.speechVoice = AVSpeechSynthesisVoice(language: SupportedLanguage.polish.languageCode)
@@ -24,46 +34,73 @@ class FeedbackManager: ObservableObject {
         self.speechVoice = AVSpeechSynthesisVoice(language: language.languageCode)
     }
     
-    func startHaptic(withInterval interval: TimeInterval) {
-        DispatchQueue.main.async {
-            self.doHapticFeedback()
-            self.hapticTimer = Timer.scheduledTimer(timeInterval: interval, 
-                                                    target: self,
-                                                    selector: #selector(self.doHapticFeedback),
-                                                    userInfo: nil,
-                                                    repeats: true)
-        }
-    }
-    
-    func startSpeech(text: String,
-                     withInterval interval: TimeInterval) {
-        DispatchQueue.main.async {
-            self.speekText(text: text)
-            self.speechTimer = Timer.scheduledTimer(timeInterval: 3, 
-                                                    target: self,
-                                                    selector: #selector(self.doSpeechFeedback),
-                                                    userInfo: ["speech": text],
-                                                    repeats: true)
-        }
+    func executeHapticFeedback() {
         
     }
     
-    func stop() {
-        hapticTimer?.invalidate()
-        speechTimer?.invalidate()
+    func executeNextTypeOfContinuousHapticFeedback() {
+        guard continuousHapticSequence.indices.contains(currentContinuousHapticSequenceIndex) else {
+            return
+        }
+        
+        let hapticType = continuousHapticSequence[currentContinuousHapticSequenceIndex]
+        generateHapticFeedback(of: hapticType)
+        
+        currentContinuousHapticSequenceIndex = (currentContinuousHapticSequenceIndex + 1) % continuousHapticSequence.count
     }
     
-    @objc private func doHapticFeedback() {
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    private func generateHapticFeedback(of type: HapticFeedbackType) {
+        continuousHapticQueue.addOperation(SignalOperation(operation: {
+            switch type {
+            case .notificationError:
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                generator.notificationOccurred(.error)
+            case .notificationSuccess:
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                generator.notificationOccurred(.success)
+            case .notificationWarning:
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                generator.notificationOccurred(.warning)
+            case .impactLight:
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.prepare()
+                generator.impactOccurred()
+            case .impactMedium:
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.prepare()
+                generator.impactOccurred()
+            case .impactHeavy:
+                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                generator.prepare()
+                generator.impactOccurred()
+            }
+        }))
     }
     
-    @objc private func doSpeechFeedback(sender: Timer) {
-        if let userInfo = sender.userInfo as? Dictionary<String, String>{
-            self.speekText(text: userInfo["speech"]!)
+    class SignalOperation: Operation {
+        private let operation: () -> ()
+        
+        init(operation: @escaping () -> Void) {
+            self.operation = operation
+        }
+        
+        override func main() {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                self.operation()
+            }
+            
+            Thread.sleep(forTimeInterval: 0.8)
         }
     }
     
-    private func speekText(text: String) {
+    func executeSpeechFeedback(text: String) {
         if let isSpeaking = self.speechSynthesizer?.isSpeaking {
             if isSpeaking {
                 return
@@ -73,6 +110,129 @@ class FeedbackManager: ObservableObject {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = self.speechVoice
         self.speechSynthesizer?.speak(utterance)
+    }
+    
+    // MARK: - Haptic Feedback
+    
+    private func setupHapticDemandObservation() {
+        $shouldStartHaptic
+            .sink { [weak self] shouldStart in
+                guard let self = self else {
+                    return
+                }
+                
+                shouldStart ? self.startHapticTimer() : self.stopHapticTimer()
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func startHapticTimer() {
+        stopHapticTimer()
+        
+        hapticTimer = Timer
+            .publish(every: 0.6, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else {
+                    return
+                }
+                
+                
+            }
+    }
+    
+    private func stopHapticTimer() {
+        hapticTimer?.cancel()
+        hapticTimer = nil
+    }
+    
+    // MARK: - Continuous Haptic Feedback
+    
+    private lazy var continuousHapticQueue: OperationQueue = {
+        var queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+    
+    private var continuousHapticSequence: [HapticFeedbackType] = [
+        .impactLight,
+        .impactMedium,
+        .impactHeavy
+    ]
+    
+    private var currentContinuousHapticSequenceIndex = 0
+    private let timeBetweenHapticOcurrences: Double = 0.8
+    
+    private func setupContinuousHapticDemandObservation() {
+        $shouldStartContinuousHaptic
+            .sink { [weak self] shouldStart in
+                guard let self = self else {
+                    return
+                }
+                
+                print()
+                print("HERE")
+                print(shouldStart)
+                print()
+                
+                shouldStart ? self.startContinuousHapticTimer() : self.stopContinuousHapticTimer()
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func startContinuousHapticTimer() {
+        stopContinuousHapticTimer()
+        
+        continuousHapticTimer = Timer
+            .publish(every: 0.8, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else {
+                    return
+                }
+                
+                self.executeNextTypeOfContinuousHapticFeedback()
+            }
+    }
+    
+    private func stopContinuousHapticTimer() {
+        continuousHapticTimer?.cancel()
+        continuousHapticTimer = nil
+        currentContinuousHapticSequenceIndex = 0
+    }
+    
+    // MARK: - Speech Feedback
+    
+    private func setupSpeechDemandObservation() {
+        $shouldStartSpeech
+            .sink { [weak self] shouldStart in
+                guard let self = self else {
+                    return
+                }
+                
+                shouldStart ? self.startSpeechTimer() : self.stopSpeechTimer()
+            }
+            .store(in: &cancelBag)
+    }
+    
+    private func startSpeechTimer() {
+        stopSpeechTimer()
+        
+        speechTimer = Timer
+            .publish(every: 0.6, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else {
+                    return
+                }
+                
+                
+            }
+    }
+    
+    private func stopSpeechTimer() {
+        speechTimer?.cancel()
+        speechTimer = nil
     }
 }
 

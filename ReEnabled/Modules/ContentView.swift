@@ -2,8 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
-    @Inject private var feedbackManager: FeedbackManager
-    @Inject private var voiceRecordingManager: VoiceRecordingManager
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     
     private var selection: String {
         tabBarStateManager.tabSelection.title
@@ -24,6 +24,9 @@ struct ContentView: View {
                             selection: $tabBarStateManager.tabSelection)
         }
         .ignoresSafeArea(edges: .bottom)
+        .onChange(of: tabBarStateManager.shouldAnimateChatTabIcon) { _, shouldStart in
+            feedbackManager.shouldStartContinuousHaptic = shouldStart
+        }
     }
 }
 

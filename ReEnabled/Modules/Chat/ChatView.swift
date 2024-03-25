@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct ChatView: View {
-    @Inject private var tabBarStateManager: TabBarStateManager
-    @Inject private var feedbackManager: FeedbackManager
-    @Inject private var voiceRecordingManager: VoiceRecordingManager
-    
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
     
     var body: some View {
