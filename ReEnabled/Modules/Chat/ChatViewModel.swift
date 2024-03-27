@@ -106,6 +106,18 @@ final class ChatViewModel: ObservableObject {
         }
     }
     
+    func selectPhoto() {
+        showCamera = true
+    }
+    
+    func manageAddingMessageWith(transcript: String) {
+        if selectedImage != nil {
+            addNewMessageWithImage(transcript: transcript)
+        } else {
+            addNewMessageWith(transcript: transcript)
+        }
+    }
+    
     func addNewMessageWith(transcript: String) {
         guard !transcript.isEmpty else {
             return
@@ -126,7 +138,7 @@ final class ChatViewModel: ObservableObject {
         let message: Message = Message(content: transcript, imageContent: selectedImage, sentByUser: true)
         addMessageToCurrentConversation(message)
         
-//        generateImageResponse(for: transcript)
+        generateImageResponse(for: transcript)
     }
     
     private func generateResponse(for query: String) {
@@ -147,23 +159,25 @@ final class ChatViewModel: ObservableObject {
     }
     
     private func generateImageResponse(for query: String) {
-        speechRecordingBlocked = true
-        
         guard let selectedImage = selectedImage else {
             return
         }
+        
+        speechRecordingBlocked = true
         
         openAIManager.generateImageResponse(for: query, with: selectedImage)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.speechRecordingBlocked = false
             } receiveValue: { [weak self] response in
-                guard let response = response else {
+                guard let self = self,
+                      let response = response else {
                     return
                 }
                 
                 let message = Message(content: response, sentByUser: false)
-                self?.addMessageToCurrentConversation(message)
+                self.addMessageToCurrentConversation(message)
+                self.selectedImage = nil
             }
             .store(in: &cancelBag)
     }
@@ -173,7 +187,6 @@ final class ChatViewModel: ObservableObject {
             return
         }
         
-        selectedImage = nil
         currentConversation!.messages.append(message)
         saveCurrentConversation()
     }

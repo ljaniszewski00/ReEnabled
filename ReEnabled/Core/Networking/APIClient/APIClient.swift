@@ -13,7 +13,8 @@ class APIClient<RequestInputType: Encodable,
         do {
             let encoded = try JSONEncoder().encode(requestInput)
             request.httpBody = encoded
-        } catch {
+        } catch(let error) {
+            print(error.localizedDescription)
         }
         
         return URLSession.shared.dataTaskPublisher(for: request)
@@ -23,6 +24,7 @@ class APIClient<RequestInputType: Encodable,
                       (200...299).contains(httpResponse.statusCode) else {
                     throw APIError.invalidResponse
                 }
+                
                 return data
             }
             .decode(type: RequestResponseType.self, decoder: JSONDecoder())

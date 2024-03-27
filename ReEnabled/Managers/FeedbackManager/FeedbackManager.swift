@@ -45,7 +45,7 @@ final class FeedbackManager: ObservableObject {
         await continuousHapticFeedbackGenerator.generate(for: sequences, withDelayBetweenThem: intersectionDelay)
     }
     
-    func generateHapticFeedbackForMicrophoneUsage() {
+    func generateHapticFeedbackForSwipeAction() {
         generate(.impact(.medium))
     }
     

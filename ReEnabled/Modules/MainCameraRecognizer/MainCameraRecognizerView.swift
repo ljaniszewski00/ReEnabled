@@ -48,7 +48,11 @@ struct MainCameraRecognizerView: View {
             }
         }
         .ignoresSafeArea()
-        .addGesturesActions(onTap: {
+        .addGesturesActions(toExecuteBeforeEveryAction: {
+            
+        }, toExecuteAfterEveryAction: {
+            
+        }, onTap: {
             
         }, onDoubleTap: {
             

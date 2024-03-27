@@ -15,9 +15,13 @@ struct ChatView: View {
                 ScrollView(.vertical) {
                     VStack {
                         if let currentConversation = chatViewModel.currentConversation {
-                            ForEach(currentConversation.messages, id: \.id) { message in
-                                Views.MessageCell(message: message)
-                                    .padding(.bottom, Views.Constants.messageCellBottomPadding)
+                            if currentConversation.messages.isEmpty {
+                                Views.emptyConversationPlaceholder
+                            } else {
+                                ForEach(currentConversation.messages, id: \.id) { message in
+                                    Views.MessageCell(message: message)
+                                        .padding(.bottom, Views.Constants.messageCellBottomPadding)
+                                }
                             }
                         }
                         
@@ -38,15 +42,18 @@ struct ChatView: View {
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
-        .addGesturesActions(onTap: {
+        .addGesturesActions(toExecuteBeforeEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, toExecuteAfterEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, onTap: {
+            
+        }, onDoubleTap: {
             if !chatViewModel.speechRecordingBlocked {
                 voiceRecordingManager.manageTalking()
             }
-//            chatViewModel.addNewMessageWithImage(transcript: Message.mockData6.content)
-        }, onDoubleTap: {
-            
         }, onLongPress: {
-            chatViewModel.saveCurrentConversation()
+            
         }, onSwipeFromLeftToRight: {
             chatViewModel.changeCurrentConversationToNext()
         }, onSwipeFromRightToLeft: {
@@ -56,17 +63,16 @@ struct ChatView: View {
         }, onSwipeFromDownToUp: {
             
         }, onSwipeFromLeftToRightAfterLongPress: {
-            
+            tabBarStateManager.changeTabSelectionTo(.settings)
         }, onSwipeFromRightToLeftAfterLongPress: {
-            
+            tabBarStateManager.changeTabSelectionTo(.camera)
         }, onSwipeFromUpToDownAfterLongPress: {
             chatViewModel.deleteCurrentConversation()
         }, onSwipeFromDownToUpAfterLongPress: {
-            
+            chatViewModel.selectPhoto()
         })
         .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-//            chatViewModel.addNewMessageWith(transcript: newTranscript)
-            chatViewModel.addNewMessageWithImage(transcript: newTranscript)
+            chatViewModel.manageAddingMessageWith(transcript: newTranscript)
         }
         .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
             tabBarStateManager.shouldAnimateChatTabIcon = isRecording
@@ -90,6 +96,12 @@ private extension Views {
         static let messageCellSentByUserLabel: String = "You"
         static let messageCellNotSentByUserLabel: String = "Device"
         static let messageCellBottomPadding: CGFloat = 15
+        
+        static let emptyConversationPlaceholderVStackSpacing: CGFloat = 40
+        static let emptyConversationPlaceholderImageName: String = "plus.message"
+        static let emptyConversationPlaceholderImageSize: CGFloat = 200
+        static let emptyConversationPlaceholderText: String = "Looks like this conversation is empty. Tap the screen to record new message or upload a photo"
+        static let emptyConversationPlaceholderPaddingDivider: CGFloat = 4
         
         static let messageCellImageClipShapeCornerRadius: CGFloat = 5
         static let messageCellImageTopPadding: CGFloat = 15
@@ -133,7 +145,7 @@ private extension Views {
             },
                                 secondTrailingItem: {
                 Button {
-                    chatViewModel.showCamera = true
+                    chatViewModel.selectPhoto()
                 } label: {
                     Image(systemName: Views.Constants.toolbarButtonPhotoImageName)
                         .resizable()
@@ -141,6 +153,22 @@ private extension Views {
                 }
             })
         }
+    }
+    
+    static var emptyConversationPlaceholder: some View {
+        VStack(spacing: Views.Constants.emptyConversationPlaceholderVStackSpacing) {
+            Image(systemName: Views.Constants.emptyConversationPlaceholderImageName)
+                .resizable()
+                .frame(width: Views.Constants.emptyConversationPlaceholderImageSize,
+                       height: Views.Constants.emptyConversationPlaceholderImageSize)
+                .foregroundStyle(.placeholder)
+            
+            Text(Views.Constants.emptyConversationPlaceholderText)
+                .font(.headline)
+                .foregroundStyle(.placeholder)
+                .multilineTextAlignment(.center)
+        }
+        .padding(.top, UIScreen.main.bounds.height / Views.Constants.emptyConversationPlaceholderPaddingDivider)
     }
     
     struct MessageCell: View {

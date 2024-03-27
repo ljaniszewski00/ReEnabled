@@ -1,7 +1,9 @@
 import SwiftUI
 
 extension View {
-    func addGesturesActions(onTap: @escaping () -> (),
+    func addGesturesActions(toExecuteBeforeEveryAction: @escaping () -> (),
+                            toExecuteAfterEveryAction: @escaping () -> (),
+                            onTap: @escaping () -> (),
                             onDoubleTap: @escaping () -> (),
                             onLongPress: @escaping () -> (),
                             onSwipeFromLeftToRight: @escaping () -> (),
@@ -12,7 +14,9 @@ extension View {
                             onSwipeFromRightToLeftAfterLongPress: @escaping () -> (),
                             onSwipeFromUpToDownAfterLongPress: @escaping () -> (),
                             onSwipeFromDownToUpAfterLongPress: @escaping () -> ()) -> some View {
-        modifier(GestureActionView(onTap: onTap,
+        modifier(GestureActionView(toExecuteBeforeEveryAction: toExecuteBeforeEveryAction,
+                                   toExecuteAfterEveryAction: toExecuteAfterEveryAction,
+                                   onTap: onTap,
                                    onDoubleTap: onDoubleTap,
                                    onLongPress: onLongPress,
                                    onSwipeFromLeftToRight: onSwipeFromLeftToRight,
@@ -27,6 +31,8 @@ extension View {
 }
 
 private struct GestureActionView: ViewModifier {
+    let toExecuteBeforeEveryAction: (() -> ())?
+    let toExecuteAfterEveryAction: (() -> ())?
     let onTap: (() -> ())?
     let onDoubleTap: (() -> ())?
     let onLongPress: (() -> ())?
@@ -43,21 +49,27 @@ private struct GestureActionView: ViewModifier {
         let tapGesture = TapGesture()
             .onEnded {
                 withAnimation {
+                    toExecuteBeforeEveryAction?()
                     onTap?()
+                    toExecuteAfterEveryAction?()
                 }
             }
         
         let doubleTapGesture = TapGesture(count: 2)
             .onEnded {
                 withAnimation {
+                    toExecuteBeforeEveryAction?()
                     onDoubleTap?()
+                    toExecuteAfterEveryAction?()
                 }
             }
         
         let longPressGesture = LongPressGesture(minimumDuration: 1.5, maximumDistance: 3)
             .onEnded { _ in
                 withAnimation {
+                    toExecuteBeforeEveryAction?()
                     onLongPress?()
+                    toExecuteAfterEveryAction?()
                 }
             }
         
@@ -68,11 +80,15 @@ private struct GestureActionView: ViewModifier {
                 
                 if abs(horizontalAmount) > abs(verticalAmount) {
                     withAnimation {
+                        toExecuteBeforeEveryAction?()
                         horizontalAmount < 0 ? onSwipeFromRightToLeft?() :  onSwipeFromLeftToRight?()
+                        toExecuteAfterEveryAction?()
                     }
                 } else {
                     withAnimation {
+                        toExecuteBeforeEveryAction?()
                         verticalAmount < 0 ? onSwipeFromDownToUp?() :  onSwipeFromUpToDown?()
+                        toExecuteAfterEveryAction?()
                     }
                 }
         }
@@ -85,11 +101,15 @@ private struct GestureActionView: ViewModifier {
                 
                 if abs(horizontalAmount) > abs(verticalAmount) {
                     withAnimation {
+                        toExecuteBeforeEveryAction?()
                         horizontalAmount < 0 ? onSwipeFromRightToLeftAfterLongPress?() :  onSwipeFromLeftToRightAfterLongPress?()
+                        toExecuteAfterEveryAction?()
                     }
                 } else {
                     withAnimation {
+                        toExecuteBeforeEveryAction?()
                         verticalAmount < 0 ? onSwipeFromDownToUpAfterLongPress?() :  onSwipeFromUpToDownAfterLongPress?()
+                        toExecuteAfterEveryAction?()
                     }
                 }
             }
