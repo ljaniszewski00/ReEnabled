@@ -24,8 +24,8 @@ struct ContentView: View {
                             selection: $tabBarStateManager.tabSelection)
         }
         .ignoresSafeArea(edges: .bottom)
-        .onChange(of: tabBarStateManager.shouldAnimateChatTabIcon) { _, shouldStart in
-            feedbackManager.shouldStartContinuousHaptic = shouldStart
+        .onChange(of: tabBarStateManager.shouldAnimateChatTabIcon) { _, _ in
+            feedbackManager.generateHapticFeedbackForMicrophoneUsage()
         }
     }
 }
