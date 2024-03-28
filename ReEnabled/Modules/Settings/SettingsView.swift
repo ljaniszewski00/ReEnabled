@@ -1,17 +1,47 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Inject private var tabBarStateManager: TabBarStateManager
-    @Inject private var feedbackManager: FeedbackManager
-    @Inject private var voiceRecordingManager: VoiceRecordingManager
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
     
     var body: some View {
-        VStack {
-            
+        NavigationView {
+            VStack {
+                Views.navigationBar
+                
+                List {
+                    
+                }
+                .listStyle(GroupedListStyle())
+            }
         }
     }
 }
 
 #Preview {
     SettingsView()
+}
+
+private extension Views {
+    struct Constants {
+        static let navigationTitle: String = "Settings"
+    }
+    
+    static var navigationBar: some View {
+        CustomNavigationBar(title: Views.Constants.navigationTitle,
+                            leadingItem: {
+            Text("")
+        },
+                            secondLeadingItem: {
+            Text("")
+        },
+                            trailingItem: {
+            Text("")
+        },
+                            secondTrailingItem: {
+            Text("")
+        })
+    }
 }

@@ -129,6 +129,7 @@
 		16D949EA2BAF4D8100CCBA16 /* ConversationsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D949E92BAF4D8100CCBA16 /* ConversationsRepository.swift */; };
 		16D949EC2BAF569C00CCBA16 /* Collection+After+Before.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D949EB2BAF569C00CCBA16 /* Collection+After+Before.swift */; };
 		16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E170072B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift */; };
+		16E514042BB5BDAB0035B586 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514032BB5BDAB0035B586 /* SettingsViewModel.swift */; };
 		16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */; };
 		16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */; };
 		16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564822B96623500A831F2 /* PedestrianCrossingLightType.swift */; };
@@ -278,6 +279,7 @@
 		16D949E92BAF4D8100CCBA16 /* ConversationsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsRepository.swift; sourceTree = "<group>"; };
 		16D949EB2BAF569C00CCBA16 /* Collection+After+Before.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+After+Before.swift"; sourceTree = "<group>"; };
 		16E170072B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsRecognizerViewModel.swift; sourceTree = "<group>"; };
+		16E514032BB5BDAB0035B586 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingModel.swift; sourceTree = "<group>"; };
 		16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingPrediction.swift; sourceTree = "<group>"; };
 		16F564822B96623500A831F2 /* PedestrianCrossingLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingLightType.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 			isa = PBXGroup;
 			children = (
 				164E114C2B472122008EF153 /* SettingsView.swift */,
+				16E514032BB5BDAB0035B586 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1395,6 +1398,7 @@
 				16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
 				1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */,
+				16E514042BB5BDAB0035B586 /* SettingsViewModel.swift in Sources */,
 				16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */,
 				1629F9BA2BA7623300B89629 /* OpenAIChatCompletionsResponse.swift in Sources */,
 				163EB03A2BB052360012FC89 /* RealmObjectProtocol.swift in Sources */,
