@@ -35,7 +35,7 @@ class ContinuousHapticFeedbackGenerator: ContinuousHapticFeedbackGenerating {
             for sequence in sequences {
                 for (index, feedbackType) in sequence.feedbackSequence.enumerated() {
                     self.generator?.generate(feedbackType)
-                    if index != sequence.feedbackSequence.endIndex {
+                    if index != (sequence.feedbackSequence.endIndex - 1) {
                         try? await Task.sleep(for: .seconds(sequence.delay))
                     }
                 }

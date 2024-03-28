@@ -16,7 +16,9 @@ struct ChatView: View {
                     VStack {
                         if let currentConversation = chatViewModel.currentConversation {
                             if currentConversation.messages.isEmpty {
-                                Views.emptyConversationPlaceholder
+                                Views.EmptyConversationPlaceholder()
+                                    .environmentObject(chatViewModel)
+                                    .environmentObject(voiceRecordingManager)
                             } else {
                                 ForEach(currentConversation.messages, id: \.id) { message in
                                     Views.MessageCell(message: message)
@@ -100,8 +102,14 @@ private extension Views {
         static let emptyConversationPlaceholderVStackSpacing: CGFloat = 40
         static let emptyConversationPlaceholderImageName: String = "plus.message"
         static let emptyConversationPlaceholderImageSize: CGFloat = 200
-        static let emptyConversationPlaceholderText: String = "Looks like this conversation is empty. Tap the screen to record new message or upload a photo"
-        static let emptyConversationPlaceholderPaddingDivider: CGFloat = 4
+        static let emptyConversationPlaceholderTextsVStackSpacing: CGFloat = 30
+        static let emptyConversationPlaceholderTextTitle: String = "Looks like this conversation is empty"
+        static let emptyConversationPlaceholderSubbuttonsVStackSpacing: CGFloat = 12
+        static let emptyConversationPlaceholderTextDoubleTapAction: String = "Double tap the screen to record new message"
+        static let emptyConversationPlaceholderTextLongPressSwipeUpAction: String = "Long press on one point of the screen, swipe up and release to upload a photo"
+        static let emptyConversationPlaceholderTextLongPressAndSayAction: String = "Long press on one point of the screen and release, then say what you want to do"
+        static let emptyConversationPlaceholderSubbuttonCornerRadius: CGFloat = 8
+        static let emptyConversationPlaceholderTopPadding: CGFloat = 50
         
         static let messageCellImageClipShapeCornerRadius: CGFloat = 5
         static let messageCellImageTopPadding: CGFloat = 15
@@ -155,20 +163,66 @@ private extension Views {
         }
     }
     
-    static var emptyConversationPlaceholder: some View {
-        VStack(spacing: Views.Constants.emptyConversationPlaceholderVStackSpacing) {
-            Image(systemName: Views.Constants.emptyConversationPlaceholderImageName)
-                .resizable()
-                .frame(width: Views.Constants.emptyConversationPlaceholderImageSize,
-                       height: Views.Constants.emptyConversationPlaceholderImageSize)
-                .foregroundStyle(.placeholder)
-            
-            Text(Views.Constants.emptyConversationPlaceholderText)
-                .font(.headline)
-                .foregroundStyle(.placeholder)
-                .multilineTextAlignment(.center)
+    struct EmptyConversationPlaceholder: View {
+        @EnvironmentObject private var chatViewModel: ChatViewModel
+        @EnvironmentObject private var voiceRecordingManager: VoiceRecordingManager
+        
+        var body: some View {
+            VStack(spacing: Views.Constants.emptyConversationPlaceholderVStackSpacing) {
+                Image(systemName: Views.Constants.emptyConversationPlaceholderImageName)
+                    .resizable()
+                    .frame(width: Views.Constants.emptyConversationPlaceholderImageSize,
+                           height: Views.Constants.emptyConversationPlaceholderImageSize)
+                    .padding(.bottom)
+                
+                VStack(spacing: Views.Constants.emptyConversationPlaceholderTextsVStackSpacing) {
+                    Text(Views.Constants.emptyConversationPlaceholderTextTitle)
+                        .font(.title2)
+                        
+                    
+                    VStack(alignment: .leading, spacing: Views.Constants.emptyConversationPlaceholderSubbuttonsVStackSpacing) {
+                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextDoubleTapAction) {
+                            if !chatViewModel.speechRecordingBlocked {
+                                voiceRecordingManager.manageTalking()
+                            }
+                        }
+                        
+                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextLongPressSwipeUpAction) {
+                            chatViewModel.selectPhoto()
+                        }
+                        
+                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextLongPressAndSayAction) {
+                            
+                        }
+                    }
+                    .multilineTextAlignment(.leading)
+                }
+            }
+            .foregroundStyle(.placeholder)
+            .padding(.top, Views.Constants.emptyConversationPlaceholderTopPadding)
         }
-        .padding(.top, UIScreen.main.bounds.height / Views.Constants.emptyConversationPlaceholderPaddingDivider)
+    }
+    
+    struct EmptyConversationPlaceholderActionButton: View {
+        let label: String
+        let action: () -> ()
+        
+        var body: some View {
+            Button {
+                withAnimation {
+                    action()
+                }
+            } label: {
+                ZStack(alignment: .center) {
+                    RoundedRectangle(cornerRadius: Views.Constants.emptyConversationPlaceholderSubbuttonCornerRadius)
+                    
+                    Text(label)
+                        .foregroundStyle(.foreground)
+                        .font(.title3)
+                        .padding()
+                }
+            }
+        }
     }
     
     struct MessageCell: View {
