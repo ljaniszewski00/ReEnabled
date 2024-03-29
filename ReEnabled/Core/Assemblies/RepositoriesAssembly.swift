@@ -6,5 +6,9 @@ class RepositoriesAssembly: Assembly {
         container.register(ConversationsRepositoryProtocol.self) { _ in
             ConversationsRepository()
         }
+        
+        container.register(SettingsRepositoryProtocol.self) { _ in
+            SettingsRepository()
+        }
     }
 }

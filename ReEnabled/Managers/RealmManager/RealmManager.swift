@@ -73,6 +73,22 @@ class RealmManager: RealmManaging {
         .eraseToAnyPublisher()
     }
     
+    func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error> {
+        Future { [weak self] promise in
+            guard let self = self,
+                    let realm = realm else {
+                return promise(Result.failure(RealmError.realmConstructionError))
+            }
+            
+            realm.writeAsync { [realm] in
+                realm.delete(data)
+            }
+            
+            return promise(Result.success(()))
+        }
+        .eraseToAnyPublisher()
+    }
+    
     func deleteAllData() {
         guard let realm = realm else {
             return
@@ -91,6 +107,7 @@ protocol RealmManaging {
     func objects<T: Object>(ofType: T.Type) -> AnyPublisher<[T], Error>
     func updateObjects<T: Object>(with data: [T])
     func delete<T: Object>(dataOfType: T.Type, with predicate: NSPredicate) -> AnyPublisher<Void, Error>
+    func delete<T: Object>(data: [T]) -> AnyPublisher<Void, Error>
     func deleteAllData()
 }
 

@@ -7,7 +7,7 @@ enum CameraMode: String {
 //    case facialRecognizer = "Facial Recognizer"
 }
 
-extension CameraMode {
+extension CameraMode: CaseIterable {
     static var allCases: [CameraMode] {
         [
             .mainRecognizer,

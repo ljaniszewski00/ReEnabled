@@ -26,10 +26,17 @@ final class ConversationsRepository: ConversationsRepositoryProtocol {
         return realmManager.delete(dataOfType: ConversationObject.self, with: predicate)
             .eraseToAnyPublisher()
     }
+    
+    func deleteAllConversations() -> AnyPublisher<Void, Error> {
+        realmManager.objects(ofType: ConversationObject.self)
+            .flatMap { self.realmManager.delete(data: $0) }
+            .eraseToAnyPublisher()
+    }
 }
 
 protocol ConversationsRepositoryProtocol {
     func getConversations() -> AnyPublisher<[Conversation], Error>
     func updateConversation(_ conversation: Conversation)
     func deleteConversation(_ conversation: Conversation) -> AnyPublisher<Void, Error>
+    func deleteAllConversations() -> AnyPublisher<Void, Error>
 }

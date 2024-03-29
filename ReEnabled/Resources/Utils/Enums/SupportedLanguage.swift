@@ -30,4 +30,23 @@ extension SupportedLanguage {
             "pl"
         }
     }
+    
+    static func getSupportLanguageFrom(_ value: String) -> Self? {
+        if self.english.fullName == value {
+            return self.english
+        } else if self.polish.fullName == value {
+            return self.polish
+        } else {
+            return nil
+        }
+    }
+}
+
+extension SupportedLanguage: CaseIterable {
+    static var allCases: [SupportedLanguage] {
+        [
+            .english,
+            .polish
+        ]
+    }
 }

@@ -217,7 +217,7 @@ private extension Views {
                     RoundedRectangle(cornerRadius: Views.Constants.emptyConversationPlaceholderSubbuttonCornerRadius)
                     
                     Text(label)
-                        .foregroundStyle(.foreground)
+                        .foregroundStyle(.white)
                         .font(.title3)
                         .padding()
                 }
