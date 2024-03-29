@@ -124,6 +124,7 @@
 		16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */; };
 		16B898B42BA3B5B700735D93 /* ChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898B32BA3B5B700735D93 /* ChatAssembly.swift */; };
 		16C1072E2BB632E700797394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1072D2BB632E700797394 /* AppDelegate.swift */; };
+		16C107302BB74E0900797394 /* ApplicationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1072F2BB74E0900797394 /* ApplicationSetting.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -282,6 +283,7 @@
 		16B898AF2BA3B14F00735D93 /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		16B898B32BA3B5B700735D93 /* ChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAssembly.swift; sourceTree = "<group>"; };
 		16C1072D2BB632E700797394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		16C1072F2BB74E0900797394 /* ApplicationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSetting.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */,
 				16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */,
 				16E5141A2BB62B380035B586 /* SubscriptionPlan.swift */,
+				16C1072F2BB74E0900797394 /* ApplicationSetting.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1415,6 +1418,7 @@
 				163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */,
 				163EB0412BB31D580012FC89 /* HapticFeedbackGenerator.swift in Sources */,
 				16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */,
+				16C107302BB74E0900797394 /* ApplicationSetting.swift in Sources */,
 				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
 				1629FA012BAF4CE100B89629 /* Conversation.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,

@@ -72,7 +72,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.defaultCameraMode.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.defaultCameraMode.settingName,
+                                  description: ApplicationSetting.defaultCameraMode.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let defaultCameraModeCases: [CameraMode] = CameraMode.allCases
@@ -104,7 +105,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.defaultDistanceMeasureUnit.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.defaultDistanceMeasureUnit.settingName,
+                                  description: ApplicationSetting.defaultDistanceMeasureUnit.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let distanceMeasureUnitCases: [DistanceMeasureUnit] = DistanceMeasureUnit.allCases
@@ -136,7 +138,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.documentScannerLanguage.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.documentScannerLanguage.settingName,
+                                  description: ApplicationSetting.documentScannerLanguage.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
@@ -168,7 +171,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.flashlightTriggerMode.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.flashlightTriggerMode.settingName,
+                                  description: ApplicationSetting.flashlightTriggerMode.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
@@ -178,6 +182,7 @@ private extension Views {
                         }
                     } label: {
                         SettingsSectionDetailsTile(value: FlashlightTriggerMode.automatic.rawValue,
+                                                   description: "Let device manage flashlight for itself",
                                                    isSelectedValue: currentSettings.flashlightTriggerLightValue == nil)
                     }
                     .padding(.vertical)
@@ -187,9 +192,9 @@ private extension Views {
                     ForEach(settingsViewModel.availableFlashlightTriggerValues, id: \.self) { flashlightTriggerValue in
                         var tileDescription: String? {
                             if settingsViewModel.availableFlashlightTriggerValues.first == flashlightTriggerValue {
-                                return "Greater tolerance towards dark"
+                                return "Greater tolerance towards darkness"
                             } else if settingsViewModel.availableFlashlightTriggerValues.last == flashlightTriggerValue {
-                                return "Smaller tolerance towards dark"
+                                return "Smaller tolerance towards darkness"
                             } else {
                                 return nil
                             }
@@ -221,17 +226,29 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.speechSpeed.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.speechSpeed.settingName,
+                                  description: ApplicationSetting.speechSpeed.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
                     ForEach(settingsViewModel.availableSpeechSpeeds, id: \.self) { speechSpeed in
+                        var tileDescription: String? {
+                            if settingsViewModel.availableSpeechSpeeds.first == speechSpeed {
+                                return "Fastest"
+                            } else if settingsViewModel.availableSpeechSpeeds.last == speechSpeed {
+                                return "Slowest"
+                            } else {
+                                return nil
+                            }
+                        }
+                        
                         Button {
                             withAnimation {
                                 settingsViewModel.changeSpeechSpeed(to: speechSpeed)
                             }
                         } label: {
                             SettingsSectionDetailsTile(value: "\(speechSpeed)",
+                                                       description: tileDescription,
                                                        isSelectedValue: currentSettings.speechSpeed == speechSpeed)
                         }
                         .padding(.vertical)
@@ -251,7 +268,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.speechVoiceType.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.speechVoiceType.settingName,
+                                  description: ApplicationSetting.speechVoiceType.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let speechVoiceTypeCases: [SpeechVoiceType] = SpeechVoiceType.allCases
@@ -282,7 +300,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.speechLanguage.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.speechLanguage.settingName,
+                                  description: ApplicationSetting.speechLanguage.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
@@ -313,7 +332,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.voiceRecordingLanguage.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.voiceRecordingLanguage.settingName,
+                                  description: ApplicationSetting.voiceRecordingLanguage.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
@@ -344,7 +364,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.subscriptionPlan.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.subscriptionPlan.settingName,
+                                  description: ApplicationSetting.subscriptionPlan.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let subscriptionPlanCases: [SubscriptionPlan] = SubscriptionPlan.allCases
@@ -376,7 +397,8 @@ private extension Views {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         
         var body: some View {
-            SettingsSectionHeader(title: SettingName.others.rawValue)
+            SettingsSectionHeader(title: ApplicationSetting.others.settingName,
+                                  description: nil)
             
             if let currentSettings = settingsViewModel.currentSettings {
                 VStack(spacing: 0) {
@@ -402,13 +424,28 @@ private extension Views {
     
     struct SettingsSectionHeader: View {
         let title: String
+        let description: String?
         
         var body: some View {
-            HStack {
-                Text(title)
-                    .font(.title2)
-                    .foregroundStyle(.placeholder)
-                Spacer()
+            VStack(spacing: 15) {
+                HStack {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.placeholder)
+                    Spacer()
+                }
+                
+                if let description = description {
+                    HStack {
+                        Text(description)
+                            .font(.subheadline)
+                            .foregroundStyle(.placeholder)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    .padding(.trailing)
+                }
             }
             .padding([.horizontal, .top])
             .padding(.leading)
@@ -445,7 +482,7 @@ private extension Views {
         
         var body: some View {
             VStack {
-                HStack {
+                HStack() {
                     VStack(alignment: .leading, spacing: 10) {
                         HStack(spacing: 8) {
                             Text(value)
@@ -465,6 +502,7 @@ private extension Views {
                                 .font(.subheadline)
                                 .foregroundStyle(.gray)
                                 .multilineTextAlignment(.leading)
+                                .padding(.trailing)
                         }
                     }
                     

@@ -48,16 +48,3 @@ extension SettingsModel {
                       subscriptionPlan: .standard)
     }
 }
-
-enum SettingName: String {
-    case defaultCameraMode = "Default Camera Mode"
-    case defaultDistanceMeasureUnit = "Default Distance Measure Unit"
-    case documentScannerLanguage = "Document Scanner Language"
-    case flashlightTriggerMode = "Flashlight Trigger Mode"
-    case speechSpeed = "Speech Speed"
-    case speechVoiceType = "Speech Voice Type"
-    case speechLanguage = "Speech Language"
-    case voiceRecordingLanguage = "Voice Recording Language"
-    case subscriptionPlan = "Subscription Plan"
-    case others = "Others"
-}
