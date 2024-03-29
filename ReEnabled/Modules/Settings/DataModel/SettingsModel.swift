@@ -59,4 +59,5 @@ enum SettingName: String {
     case speechLanguage = "Speech Language"
     case voiceRecordingLanguage = "Voice Recording Language"
     case subscriptionPlan = "Subscription Plan"
+    case others = "Others"
 }
