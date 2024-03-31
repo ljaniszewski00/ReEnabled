@@ -16,8 +16,7 @@ final class SettingsRepository: SettingsRepositoryProtocol {
     }
     
     func deleteAllSettings() -> AnyPublisher<Void, Error> {
-        realmManager.objects(ofType: SettingsObject.self)
-            .flatMap { self.realmManager.delete(data: $0) }
+        return realmManager.delete(dataOfType: SettingsObject.self, forPredicate: nil)
             .eraseToAnyPublisher()
     }
 }

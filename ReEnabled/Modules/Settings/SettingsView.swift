@@ -432,7 +432,6 @@ private extension Views {
                     Text(title)
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundStyle(.placeholder)
                     Spacer()
                 }
                 

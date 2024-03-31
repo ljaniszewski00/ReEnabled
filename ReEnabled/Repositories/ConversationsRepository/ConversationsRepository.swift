@@ -23,13 +23,12 @@ final class ConversationsRepository: ConversationsRepositoryProtocol {
     
     func deleteConversation(_ conversation: Conversation) -> AnyPublisher<Void, Error> {
         let predicate: NSPredicate = NSPredicate(format: predicateKeyFilteringFormat, conversation.id)
-        return realmManager.delete(dataOfType: ConversationObject.self, with: predicate)
+        return realmManager.delete(dataOfType: ConversationObject.self, forPredicate: predicate)
             .eraseToAnyPublisher()
     }
     
     func deleteAllConversations() -> AnyPublisher<Void, Error> {
-        realmManager.objects(ofType: ConversationObject.self)
-            .flatMap { self.realmManager.delete(data: $0) }
+        return realmManager.delete(dataOfType: ConversationObject.self, forPredicate: nil)
             .eraseToAnyPublisher()
     }
 }
