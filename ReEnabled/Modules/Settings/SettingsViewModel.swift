@@ -5,6 +5,7 @@ import RealmSwift
 final class SettingsViewModel: ObservableObject {
     @Inject private var settingsRepository: SettingsRepositoryProtocol
     @Inject private var conversationsRepository: ConversationsRepositoryProtocol
+    @Inject private var settingsProvider: SettingsProviding
     
     @Published var currentSettings: SettingsModel?
     
@@ -97,6 +98,7 @@ final class SettingsViewModel: ObservableObject {
             return
         }
         
+        settingsProvider.currentSettings = currentSettings
         settingsRepository.updateSettings(currentSettings)
     }
 }

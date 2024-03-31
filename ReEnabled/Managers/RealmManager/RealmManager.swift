@@ -2,7 +2,7 @@ import Combine
 import Realm
 import RealmSwift
 
-class RealmManager: RealmManaging {
+final class RealmManager: RealmManaging {
     private let realm = try? Realm()
     private let realmQueue: DispatchQueue = DispatchQueue(label: "realmQueue")
     private let updatePolicy: Realm.UpdatePolicy = .modified
