@@ -1,3 +1,4 @@
+import RealmSwift
 import SwiftUI
 
 struct SettingsView: View {
@@ -5,6 +6,8 @@ struct SettingsView: View {
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
+    
+    @ObservedResults(SettingsObject.self) var settingsObjects
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,6 +39,9 @@ struct SettingsView: View {
                 .padding(.bottom, Views.Constants.mainVStackBottomPadding)
             }
             .environmentObject(settingsViewModel)
+            .onChange(of: settingsObjects) { _, updatedSettingsObjects in
+                settingsViewModel.getSettings(from: updatedSettingsObjects)
+            }
         }
     }
 }

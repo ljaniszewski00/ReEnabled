@@ -1,3 +1,4 @@
+import RealmSwift
 import SwiftUI
 
 struct ChatView: View {
@@ -5,6 +6,8 @@ struct ChatView: View {
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
+    
+    @ObservedResults(ConversationObject.self) var conversationsObjects
     
     var body: some View {
         VStack(spacing: Views.Constants.mainVStackSpacing) {
@@ -78,6 +81,9 @@ struct ChatView: View {
         }
         .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
             tabBarStateManager.shouldAnimateChatTabIcon = isRecording
+        }
+        .onChange(of: conversationsObjects) { _, updatedConversationsObjects in
+            chatViewModel.getConversations(from: updatedConversationsObjects)
         }
         .fullScreenCover(isPresented: $chatViewModel.showCamera) {
             SingleTakeCameraViewControllerRepresentable(chatViewModel: chatViewModel)

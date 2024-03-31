@@ -1,8 +1,13 @@
 import Combine
 import Foundation
+import RealmSwift
 
 final class SettingsRepository: SettingsRepositoryProtocol {
     @Inject private var realmManager: RealmManaging
+    
+    func getSettings(from settingsObjects: Results<SettingsObject>) -> SettingsModel? {
+        settingsObjects.last?.toModel
+    }
     
     func getSettings() -> AnyPublisher<SettingsModel?, Error> {
         realmManager.objects(ofType: SettingsObject.self)
@@ -22,6 +27,7 @@ final class SettingsRepository: SettingsRepositoryProtocol {
 }
 
 protocol SettingsRepositoryProtocol {
+    func getSettings(from settingsObjects: Results<SettingsObject>) -> SettingsModel?
     func getSettings() -> AnyPublisher<SettingsModel?, Error>
     func updateSettings(_ settings: SettingsModel)
     func deleteAllSettings() -> AnyPublisher<Void, Error>

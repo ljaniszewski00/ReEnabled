@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import RealmSwift
 
 final class SettingsViewModel: ObservableObject {
     @Inject private var settingsRepository: SettingsRepositoryProtocol
@@ -17,26 +18,14 @@ final class SettingsViewModel: ObservableObject {
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
-    init() {
-        fetchSettings()
-    }
-    
-    func fetchSettings() {
-        settingsRepository.getSettings()
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-            } receiveValue: { [weak self] fetchedSettings in
-                guard let self = self else {
-                    return
-                }
-                
-                if let fetchedSettings = fetchedSettings {
-                    self.currentSettings = fetchedSettings
-                } else {
-                    self.currentSettings = SettingsModel.defaultSettings
-                }
-            }
-            .store(in: &cancelBag)
+    func getSettings(from settingsObjects: Results<SettingsObject>) {
+        let fetchedSettings: SettingsModel? = settingsRepository.getSettings(from: settingsObjects)
+        
+        if let fetchedSettings = fetchedSettings {
+            self.currentSettings = fetchedSettings
+        } else {
+            self.currentSettings = SettingsModel.defaultSettings
+        }
     }
     
     func changeDefaultCameraMode(to newCameraMode: CameraMode) {

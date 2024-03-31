@@ -1,4 +1,6 @@
-enum SubscriptionPlan: String {
+import RealmSwift
+
+enum SubscriptionPlan: String, PersistableEnum {
     case standard = "Standard"
     case premium = "Premium"
 }

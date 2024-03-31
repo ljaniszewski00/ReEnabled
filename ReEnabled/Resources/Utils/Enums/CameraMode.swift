@@ -1,4 +1,6 @@
-enum CameraMode: String {
+import RealmSwift
+
+enum CameraMode: String, PersistableEnum {
     case mainRecognizer = "Main Recognizer"
     case documentScanner = "Document Scanner"
     case colorDetector = "Color Detector"

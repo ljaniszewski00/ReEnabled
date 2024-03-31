@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import RealmSwift
 import SwiftUI
 
 final class ChatViewModel: ObservableObject {
@@ -16,26 +17,17 @@ final class ChatViewModel: ObservableObject {
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
-    init() {
-        fetchConversations()
-    }
-    
-    func fetchConversations() {
-        conversationsRepository.getConversations()
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-            } receiveValue: { [weak self] fetchedConversations in
-                guard let self = self,
-                      !fetchedConversations.isEmpty else {
-                    self?.addNewConversation()
-                    return
-                }
-                
-                self.conversations = fetchedConversations
-                self.sortConversations()
-                self.currentConversation = self.conversations.last
-            }
-            .store(in: &cancelBag)
+    func getConversations(from conversationsObjects: Results<ConversationObject>) {
+        let fetchedConversations: [Conversation] = conversationsRepository.getConversations(from: conversationsObjects)
+        
+        guard !fetchedConversations.isEmpty else {
+            self.addNewConversation()
+            return
+        }
+        
+        self.conversations = fetchedConversations
+        self.sortConversations()
+        self.currentConversation = self.conversations.last
     }
     
     func sortConversations() {

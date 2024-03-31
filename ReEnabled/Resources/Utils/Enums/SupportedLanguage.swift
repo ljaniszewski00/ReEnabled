@@ -1,6 +1,8 @@
-enum SupportedLanguage {
-    case english
-    case polish
+import RealmSwift
+
+enum SupportedLanguage: String, PersistableEnum {
+    case english = "English"
+    case polish = "Polish"
 }
 
 extension SupportedLanguage {
@@ -28,16 +30,6 @@ extension SupportedLanguage {
             "en"
         case .polish:
             "pl"
-        }
-    }
-    
-    static func getSupportLanguageFrom(_ value: String) -> Self? {
-        if self.english.fullName == value {
-            return self.english
-        } else if self.polish.fullName == value {
-            return self.polish
-        } else {
-            return nil
         }
     }
 }

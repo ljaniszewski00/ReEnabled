@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import RealmSwift
 
 final class ConversationsRepository: ConversationsRepositoryProtocol {
     @Inject private var realmManager: RealmManaging
@@ -10,6 +11,10 @@ final class ConversationsRepository: ConversationsRepositoryProtocol {
 //    init() {
 //        realmManager.deleteAllData()
 //    }
+    
+    func getConversations(from conversationsObjects: Results<ConversationObject>) -> [Conversation] {
+        conversationsObjects.map { $0.toModel }
+    }
     
     func getConversations() -> AnyPublisher<[Conversation], Error> {
         realmManager.objects(ofType: ConversationObject.self)
@@ -34,6 +39,7 @@ final class ConversationsRepository: ConversationsRepositoryProtocol {
 }
 
 protocol ConversationsRepositoryProtocol {
+    func getConversations(from conversationsObjects: Results<ConversationObject>) -> [Conversation]
     func getConversations() -> AnyPublisher<[Conversation], Error>
     func updateConversation(_ conversation: Conversation)
     func deleteConversation(_ conversation: Conversation) -> AnyPublisher<Void, Error>

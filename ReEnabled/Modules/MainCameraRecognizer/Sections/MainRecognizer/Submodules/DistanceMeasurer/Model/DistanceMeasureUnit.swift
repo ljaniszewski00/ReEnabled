@@ -1,4 +1,6 @@
-enum DistanceMeasureUnit: String {
+import RealmSwift
+
+enum DistanceMeasureUnit: String, PersistableEnum {
     case centimeters = "Centimeters"
     case meters = "Meters"
 }

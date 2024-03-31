@@ -1,4 +1,6 @@
-enum SpeechVoiceType: String {
+import RealmSwift
+
+enum SpeechVoiceType: String, PersistableEnum {
     case female = "Female"
     case male = "Male"    
 }
