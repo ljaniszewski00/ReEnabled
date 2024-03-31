@@ -5,6 +5,7 @@ struct SettingsView: View {
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
     
     @ObservedResults(SettingsObject.self) var settingsObjects
@@ -84,19 +85,7 @@ private extension Views {
     }
     
     static var navigationBar: some View {
-        CustomNavigationBar(title: Views.Constants.navigationTitle,
-                            leadingItem: {
-            Text("")
-        },
-                            secondLeadingItem: {
-            Text("")
-        },
-                            trailingItem: {
-            Text("")
-        },
-                            secondTrailingItem: {
-            Text("")
-        })
+        CustomNavigationBar(title: Views.Constants.navigationTitle)
     }
     
     // MARK: - Camera Mode
@@ -114,9 +103,7 @@ private extension Views {
                 Views.SettingsSectionDetails {
                     ForEach(defaultCameraModeCases, id: \.self) { cameraMode in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeDefaultCameraMode(to: cameraMode)
-                            }
+                            settingsViewModel.changeDefaultCameraMode(to: cameraMode)
                         } label: {
                             SettingsSectionDetailsTile(value: cameraMode.rawValue,
                                                        isSelectedValue: currentSettings.defaultCameraMode == cameraMode)
@@ -147,9 +134,7 @@ private extension Views {
                 Views.SettingsSectionDetails {
                     ForEach(distanceMeasureUnitCases, id: \.self) { distanceMeasureUnit in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeDefaultDistanceMeasureUnit(to: distanceMeasureUnit)
-                            }
+                            settingsViewModel.changeDefaultDistanceMeasureUnit(to: distanceMeasureUnit)
                         } label: {
                             SettingsSectionDetailsTile(value: distanceMeasureUnit.rawValue,
                                                        isSelectedValue: currentSettings.defaultDistanceMeasureUnit == distanceMeasureUnit)
@@ -180,9 +165,7 @@ private extension Views {
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
-                            }
+                            settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
                         } label: {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.documentScannerLanguage == supportedLanguage)
@@ -210,9 +193,7 @@ private extension Views {
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
                     Button {
-                        withAnimation {
-                            settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
-                        }
+                        settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
                     } label: {
                         SettingsSectionDetailsTile(value: FlashlightTriggerMode.automatic.rawValue,
                                                    description: "Let device manage flashlight for itself",
@@ -234,9 +215,7 @@ private extension Views {
                         }
                         
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
-                            }
+                            settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
                         } label: {
                             SettingsSectionDetailsTile(value: "\(flashlightTriggerValue)",
                                                        description: tileDescription,
@@ -276,9 +255,7 @@ private extension Views {
                         }
                         
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeSpeechSpeed(to: speechSpeed)
-                            }
+                            settingsViewModel.changeSpeechSpeed(to: speechSpeed)
                         } label: {
                             SettingsSectionDetailsTile(value: "\(speechSpeed)",
                                                        description: tileDescription,
@@ -305,15 +282,14 @@ private extension Views {
                                   description: ApplicationSetting.speechVoiceType.settingDescription)
             
             if let currentSettings = settingsViewModel.currentSettings {
-                let speechVoiceTypeCases: [SpeechVoiceType] = SpeechVoiceType.allCases
+                let currentSpeechLanguage = currentSettings.speechLanguage
+                let speechVoiceTypeCases: [SpeechVoiceType] = currentSpeechLanguage.supportedSpeechVoiceTypes
                 Views.SettingsSectionDetails {
                     ForEach(speechVoiceTypeCases, id: \.self) { speechVoiceType in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeSpeechVoiceType(to: speechVoiceType)
-                            }
+                            settingsViewModel.changeSpeechVoiceType(to: speechVoiceType)
                         } label: {
-                            SettingsSectionDetailsTile(value: speechVoiceType.rawValue,
+                            SettingsSectionDetailsTile(value: "\(speechVoiceType.rawValue) - \(speechVoiceType.getVoiceName(for: currentSpeechLanguage))",
                                                        isSelectedValue: currentSettings.speechVoiceType == speechVoiceType)
                         }
                         .padding(.vertical)
@@ -341,9 +317,7 @@ private extension Views {
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
-                            }
+                            settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
                         } label: {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.speechLanguage == supportedLanguage)
@@ -373,9 +347,7 @@ private extension Views {
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
-                            }
+                            settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
                         } label: {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.voiceRecordingLanguage == supportedLanguage)
@@ -405,9 +377,7 @@ private extension Views {
                 Views.SettingsSectionDetails {
                     ForEach(subscriptionPlanCases, id: \.self) { subscriptionPlan in
                         Button {
-                            withAnimation {
-                                settingsViewModel.changeSubscriptionPlan(to: subscriptionPlan)
-                            }
+                            settingsViewModel.changeSubscriptionPlan(to: subscriptionPlan)
                         } label: {
                             SettingsSectionDetailsTile(value: subscriptionPlan.rawValue,
                                                        imageName: subscriptionPlan == .premium ? "crown.fill" : nil,

@@ -14,10 +14,10 @@ struct CustomNavigationBar<LeadingItem,
     private let secondTrailingItem: () -> SecondTrailingItem
     
     init(title: String,
-         @ViewBuilder leadingItem: @escaping () -> LeadingItem,
-         @ViewBuilder secondLeadingItem: @escaping () -> SecondLeadingItem,
-         @ViewBuilder trailingItem: @escaping () -> TrailingItem,
-         @ViewBuilder secondTrailingItem: @escaping () -> SecondTrailingItem) {
+         @ViewBuilder leadingItem: @escaping () -> LeadingItem = { Text("") },
+         @ViewBuilder secondLeadingItem: @escaping () -> SecondLeadingItem = { Text("") },
+         @ViewBuilder trailingItem: @escaping () -> TrailingItem = { Text("") },
+         @ViewBuilder secondTrailingItem: @escaping () -> SecondTrailingItem = { Text("") }) {
         self.title = title
         self.leadingItem = leadingItem
         self.secondLeadingItem = secondLeadingItem

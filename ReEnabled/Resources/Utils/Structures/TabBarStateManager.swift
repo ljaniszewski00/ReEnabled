@@ -1,7 +1,7 @@
 import SwiftUI
 
 class TabBarStateManager: ObservableObject {
-    @Published var tabSelection: TabBarItem = .settings
+    @Published var tabSelection: TabBarItem = .camera
     @Published var isHidden = false
     @Published var tabBarSize: CGSize = .zero
     @Published var shouldAnimateChatTabIcon: Bool = false

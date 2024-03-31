@@ -28,12 +28,12 @@ final class FeedbackManager: ObservableObject {
     
     @Inject var speechFeedbackGenerator: SpeechFeedbackGenerating
     
-    func changeVoiceLanguage(to language: SupportedLanguage) {
-        speechFeedbackGenerator.changeVoiceLanguage(to: language)
-    }
-    
     func generateSpeechFeedback(text: String) {
         speechFeedbackGenerator.generate(for: text)
+    }
+    
+    func generateSampleSpeechFeedback() {
+        speechFeedbackGenerator.generateSample()
     }
 }
 

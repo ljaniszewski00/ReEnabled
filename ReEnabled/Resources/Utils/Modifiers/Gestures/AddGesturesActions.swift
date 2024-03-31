@@ -1,19 +1,19 @@
 import SwiftUI
 
 extension View {
-    func addGesturesActions(toExecuteBeforeEveryAction: @escaping () -> (),
-                            toExecuteAfterEveryAction: @escaping () -> (),
-                            onTap: @escaping () -> (),
-                            onDoubleTap: @escaping () -> (),
-                            onLongPress: @escaping () -> (),
-                            onSwipeFromLeftToRight: @escaping () -> (),
-                            onSwipeFromRightToLeft: @escaping () -> (),
-                            onSwipeFromUpToDown: @escaping () -> (),
-                            onSwipeFromDownToUp: @escaping () -> (),
-                            onSwipeFromLeftToRightAfterLongPress: @escaping () -> (),
-                            onSwipeFromRightToLeftAfterLongPress: @escaping () -> (),
-                            onSwipeFromUpToDownAfterLongPress: @escaping () -> (),
-                            onSwipeFromDownToUpAfterLongPress: @escaping () -> ()) -> some View {
+    func addGesturesActions(toExecuteBeforeEveryAction: (() -> ())? = nil,
+                            toExecuteAfterEveryAction: (() -> ())? = nil,
+                            onTap: (() -> ())? = nil,
+                            onDoubleTap: (() -> ())? = nil,
+                            onLongPress: (() -> ())? = nil,
+                            onSwipeFromLeftToRight: (() -> ())? = nil,
+                            onSwipeFromRightToLeft: (() -> ())? = nil,
+                            onSwipeFromUpToDown: (() -> ())? = nil,
+                            onSwipeFromDownToUp: (() -> ())? = nil,
+                            onSwipeFromLeftToRightAfterLongPress: (() -> ())? = nil,
+                            onSwipeFromRightToLeftAfterLongPress: (() -> ())? = nil,
+                            onSwipeFromUpToDownAfterLongPress: (() -> ())? = nil,
+                            onSwipeFromDownToUpAfterLongPress: (() -> ())? = nil) -> some View {
         modifier(GestureActionView(toExecuteBeforeEveryAction: toExecuteBeforeEveryAction,
                                    toExecuteAfterEveryAction: toExecuteAfterEveryAction,
                                    onTap: onTap,
@@ -49,27 +49,33 @@ private struct GestureActionView: ViewModifier {
         let tapGesture = TapGesture()
             .onEnded {
                 withAnimation {
-                    toExecuteBeforeEveryAction?()
-                    onTap?()
-                    toExecuteAfterEveryAction?()
+                    if let onTap = onTap {
+                        toExecuteBeforeEveryAction?()
+                        onTap()
+                        toExecuteAfterEveryAction?()
+                    }
                 }
             }
         
         let doubleTapGesture = TapGesture(count: 2)
             .onEnded {
                 withAnimation {
-                    toExecuteBeforeEveryAction?()
-                    onDoubleTap?()
-                    toExecuteAfterEveryAction?()
+                    if let onDoubleTap = onDoubleTap {
+                        toExecuteBeforeEveryAction?()
+                        onDoubleTap()
+                        toExecuteAfterEveryAction?()
+                    }
                 }
             }
         
         let longPressGesture = LongPressGesture(minimumDuration: 1.5, maximumDistance: 3)
             .onEnded { _ in
                 withAnimation {
-                    toExecuteBeforeEveryAction?()
-                    onLongPress?()
-                    toExecuteAfterEveryAction?()
+                    if let onLongPress = onLongPress {
+                        toExecuteBeforeEveryAction?()
+                        onLongPress()
+                        toExecuteAfterEveryAction?()
+                    }
                 }
             }
         
@@ -80,15 +86,35 @@ private struct GestureActionView: ViewModifier {
                 
                 if abs(horizontalAmount) > abs(verticalAmount) {
                     withAnimation {
-                        toExecuteBeforeEveryAction?()
-                        horizontalAmount < 0 ? onSwipeFromRightToLeft?() :  onSwipeFromLeftToRight?()
-                        toExecuteAfterEveryAction?()
+                        if horizontalAmount < 0 {
+                            if let onSwipeFromRightToLeft = onSwipeFromRightToLeft {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromRightToLeft()
+                                toExecuteAfterEveryAction?()
+                            }
+                        } else {
+                            if let onSwipeFromLeftToRight = onSwipeFromLeftToRight {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromLeftToRight()
+                                toExecuteAfterEveryAction?()
+                            }
+                        }
                     }
                 } else {
                     withAnimation {
-                        toExecuteBeforeEveryAction?()
-                        verticalAmount < 0 ? onSwipeFromDownToUp?() :  onSwipeFromUpToDown?()
-                        toExecuteAfterEveryAction?()
+                        if verticalAmount < 0 {
+                            if let onSwipeFromDownToUp = onSwipeFromDownToUp {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromDownToUp()
+                                toExecuteAfterEveryAction?()
+                            }
+                        } else {
+                            if let onSwipeFromUpToDown = onSwipeFromUpToDown {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromUpToDown()
+                                toExecuteAfterEveryAction?()
+                            }
+                        }
                     }
                 }
         }
@@ -101,15 +127,35 @@ private struct GestureActionView: ViewModifier {
                 
                 if abs(horizontalAmount) > abs(verticalAmount) {
                     withAnimation {
-                        toExecuteBeforeEveryAction?()
-                        horizontalAmount < 0 ? onSwipeFromRightToLeftAfterLongPress?() :  onSwipeFromLeftToRightAfterLongPress?()
-                        toExecuteAfterEveryAction?()
+                        if horizontalAmount < 0 {
+                            if let onSwipeFromRightToLeftAfterLongPress = onSwipeFromRightToLeftAfterLongPress {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromRightToLeftAfterLongPress()
+                                toExecuteAfterEveryAction?()
+                            }
+                        } else {
+                            if let onSwipeFromLeftToRightAfterLongPress = onSwipeFromLeftToRightAfterLongPress {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromLeftToRightAfterLongPress()
+                                toExecuteAfterEveryAction?()
+                            }
+                        }
                     }
                 } else {
                     withAnimation {
-                        toExecuteBeforeEveryAction?()
-                        verticalAmount < 0 ? onSwipeFromDownToUpAfterLongPress?() :  onSwipeFromUpToDownAfterLongPress?()
-                        toExecuteAfterEveryAction?()
+                        if verticalAmount < 0 {
+                            if let onSwipeFromDownToUpAfterLongPress = onSwipeFromDownToUpAfterLongPress {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromDownToUpAfterLongPress()
+                                toExecuteAfterEveryAction?()
+                            }
+                        } else {
+                            if let onSwipeFromUpToDownAfterLongPress = onSwipeFromUpToDownAfterLongPress {
+                                toExecuteBeforeEveryAction?()
+                                onSwipeFromUpToDownAfterLongPress()
+                                toExecuteAfterEveryAction?()
+                            }
+                        }
                     }
                 }
             }

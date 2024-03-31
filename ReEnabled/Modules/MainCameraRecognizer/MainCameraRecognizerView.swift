@@ -48,39 +48,13 @@ struct MainCameraRecognizerView: View {
             }
         }
         .ignoresSafeArea()
-        .addGesturesActions(toExecuteBeforeEveryAction: {
-            
-        }, toExecuteAfterEveryAction: {
-            
-        }, onTap: {
-            
-        }, onDoubleTap: {
-            
-        }, onLongPress: {
-            
-        }, onSwipeFromLeftToRight: {
-            mainCameraRecognizerViewModel.changeToNextCameraMode()
-        }, onSwipeFromRightToLeft: {
-            mainCameraRecognizerViewModel.changeToPreviousCameraMode()
-        }, onSwipeFromUpToDown: {
-            
-        }, onSwipeFromDownToUp: {
-            
-        }, onSwipeFromLeftToRightAfterLongPress: {
-            tabBarStateManager.changeTabSelectionTo(.chat)
-        }, onSwipeFromRightToLeftAfterLongPress: {
-            tabBarStateManager.changeTabSelectionTo(.settings)
-        }, onSwipeFromUpToDownAfterLongPress: {
-            
-        }, onSwipeFromDownToUpAfterLongPress: {
-            
-        })
         .onAppear {
             mainCameraRecognizerViewModel.onNewCameraModeAppear()
         }
         .onChange(of: mainCameraRecognizerViewModel.settingsProvider.cameraMode) { _, newDefaultCameraMode in
             mainCameraRecognizerViewModel.defaultCameraMode = newDefaultCameraMode
         }
+        .environmentObject(mainCameraRecognizerViewModel)
     }
 }
 

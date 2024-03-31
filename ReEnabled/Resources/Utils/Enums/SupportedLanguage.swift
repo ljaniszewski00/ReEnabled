@@ -32,6 +32,36 @@ extension SupportedLanguage {
             "pl"
         }
     }
+    
+    var supportedSpeechVoiceTypes: [SpeechVoiceType] {
+        switch self {
+        case .english:
+            return [.female, .male]
+        case .polish:
+            return [.female]
+        }
+    }
+    
+    func getSpeechVoiceSampleText(voiceName: String?) -> String {
+        var sampleText: String = ""
+        
+        switch self {
+        case .english:
+            if let voiceName = voiceName {
+                sampleText = "Hi! My name is \(voiceName)."
+            }
+            
+            sampleText += " What can I do for you?"
+        case .polish:
+            if let voiceName = voiceName {
+                sampleText = "Cześć! Mam na imię \(voiceName)."
+            }
+            
+            sampleText += " Co mogę dla Ciebie zrobić?"
+        }
+        
+        return sampleText
+    }
 }
 
 extension SupportedLanguage: CaseIterable {

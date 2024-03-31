@@ -12,4 +12,32 @@ extension SpeechVoiceType: CaseIterable {
             .male
         ]
     }
+    
+    func getVoiceName(for language: SupportedLanguage) -> String {
+        switch language {
+        case .english:
+            switch self {
+            case .female:
+                return "Siri"
+            case .male:
+                return "Siri"
+            }
+        case .polish:
+            return "Zosia"
+        }
+    }
+    
+    func getVoiceIdentifier(for language: SupportedLanguage) -> String {
+        switch language {
+        case .english:
+            switch self {
+            case .female:
+                return "com.apple.ttsbundle.siri_female_en-GB_compact"
+            case .male:
+                return "com.apple.ttsbundle.siri_male_en-GB_compact"
+            }
+        case .polish:
+            return "Zosia"
+        }
+    }
 }

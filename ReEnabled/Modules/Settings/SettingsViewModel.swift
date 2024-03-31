@@ -5,7 +5,9 @@ import RealmSwift
 final class SettingsViewModel: ObservableObject {
     @Inject private var settingsRepository: SettingsRepositoryProtocol
     @Inject private var conversationsRepository: ConversationsRepositoryProtocol
-    @Inject private var settingsProvider: SettingsProviding
+    @Inject private var settingsProvider: SettingsProvider
+    
+    private var feedbackManager: FeedbackManager = .shared
     
     @Published var currentSettings: SettingsModel?
     
@@ -14,7 +16,7 @@ final class SettingsViewModel: ObservableObject {
     ]
     
     let availableSpeechSpeeds: [Float] = [
-        1.5, 1.2, 1, 0.8, 0.5
+        0.8, 0.7, 0.6, 0.5, 0.4
     ]
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -58,16 +60,26 @@ final class SettingsViewModel: ObservableObject {
     func changeSpeechSpeed(to newSpeed: Float) {
         currentSettings?.speechSpeed = newSpeed
         saveSettings()
+        feedbackManager.generateSampleSpeechFeedback()
     }
     
     func changeSpeechVoiceType(to newSpeechVoiceType: SpeechVoiceType) {
         currentSettings?.speechVoiceType = newSpeechVoiceType
         saveSettings()
+        feedbackManager.generateSampleSpeechFeedback()
     }
     
     func changeSpeechLanguage(to newSpeechLanguage: SupportedLanguage) {
         currentSettings?.speechLanguage = newSpeechLanguage
+        
+        let speechVoiceTypeCases: [SpeechVoiceType] = newSpeechLanguage.supportedSpeechVoiceTypes
+        if speechVoiceTypeCases.count == 1,
+           let availableSpeechVoiceType = speechVoiceTypeCases.first {
+            currentSettings?.speechVoiceType = availableSpeechVoiceType
+        }
+        
         saveSettings()
+        feedbackManager.generateSampleSpeechFeedback()
     }
     
     func changeVoiceRecordingLanguage(to newVoiceRecordingLanguage: SupportedLanguage) {

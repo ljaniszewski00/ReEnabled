@@ -5,6 +5,7 @@ struct ChatView: View {
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    
     @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
     
     @ObservedResults(ConversationObject.self) var conversationsObjects
@@ -150,12 +151,6 @@ private extension Views {
                         .resizable()
                         .scaledToFill()
                 }
-            },
-                                secondLeadingItem: {
-                Text("")
-            },
-                                trailingItem: {
-                Text("")
             },
                                 secondTrailingItem: {
                 Button {

@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct ColorDetectorView: View {
+    @EnvironmentObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel
+    
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    
     @StateObject private var colorDetectorViewModel: ColorDetectorViewModel = ColorDetectorViewModel()
     
     var body: some View {
@@ -19,6 +25,21 @@ struct ColorDetectorView: View {
                 }
             }
         }
+        .addGesturesActions(toExecuteAfterEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, onTap: {
+            if let colorName = colorDetectorViewModel.detectedColorName {
+                feedbackManager.generateSpeechFeedback(text: colorName)
+            }
+        }, onSwipeFromLeftToRight: {
+            mainCameraRecognizerViewModel.changeToNextCameraMode()
+        }, onSwipeFromRightToLeft: {
+            mainCameraRecognizerViewModel.changeToPreviousCameraMode()
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.chat)
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.settings)
+        })
     }
 }
 

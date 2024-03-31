@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct MainRecognizerView: View {
+    @EnvironmentObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel
+    
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    
     @StateObject private var objectsRecognizerViewModel: ObjectsRecognizerViewModel = ObjectsRecognizerViewModel()
     @StateObject private var distanceMeasurerViewModel: DistanceMeasurerViewModel = DistanceMeasurerViewModel()
     @StateObject private var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel = RoadLightsRecognizerViewModel()
@@ -34,6 +40,25 @@ struct MainRecognizerView: View {
             }
             .padding(.bottom, Views.Constants.recognitionsBottomPadding)
         }
+        .addGesturesActions(toExecuteBeforeEveryAction: {
+        }, toExecuteAfterEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, onTap: {
+        }, onDoubleTap: {
+        }, onLongPress: {
+        }, onSwipeFromLeftToRight: {
+            mainCameraRecognizerViewModel.changeToNextCameraMode()
+        }, onSwipeFromRightToLeft: {
+            mainCameraRecognizerViewModel.changeToPreviousCameraMode()
+        }, onSwipeFromUpToDown: {
+        }, onSwipeFromDownToUp: {
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.chat)
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.settings)
+        }, onSwipeFromUpToDownAfterLongPress: {
+        }, onSwipeFromDownToUpAfterLongPress: {
+        })
     }
 }
 

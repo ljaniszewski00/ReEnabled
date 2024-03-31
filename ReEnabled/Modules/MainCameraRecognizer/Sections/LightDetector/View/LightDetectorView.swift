@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct LightDetectorView: View {
+    @EnvironmentObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel
+    
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    
     @StateObject private var lightDetectorViewModel: LightDetectorViewModel = LightDetectorViewModel()
     
     var body: some View {
@@ -19,6 +25,25 @@ struct LightDetectorView: View {
                 }
             }
         }
+        .addGesturesActions(toExecuteBeforeEveryAction: {
+        }, toExecuteAfterEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, onTap: {
+        }, onDoubleTap: {
+        }, onLongPress: {
+        }, onSwipeFromLeftToRight: {
+            mainCameraRecognizerViewModel.changeToNextCameraMode()
+        }, onSwipeFromRightToLeft: {
+            mainCameraRecognizerViewModel.changeToPreviousCameraMode()
+        }, onSwipeFromUpToDown: {
+        }, onSwipeFromDownToUp: {
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.chat)
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.settings)
+        }, onSwipeFromUpToDownAfterLongPress: {
+        }, onSwipeFromDownToUpAfterLongPress: {
+        })
     }
 }
 
