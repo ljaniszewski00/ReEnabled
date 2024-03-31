@@ -31,7 +31,7 @@ class UtilsAssembly: Assembly {
             RealmManager.shared
         }
         
-        container.register(SettingsProviding.self) { _ in
+        container.register(SettingsProvider.self) { _ in
             SettingsProvider.shared
         }
     }

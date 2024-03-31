@@ -1,28 +1,23 @@
 import AVFoundation
 
 final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
-    private var speechSynthesizer: AVSpeechSynthesizer?
-    private var speechVoice: AVSpeechSynthesisVoice?
+    @Inject private var settingsProvider: SettingsProviding
     
-    init() {
-        self.speechSynthesizer = AVSpeechSynthesizer()
-        self.speechVoice = AVSpeechSynthesisVoice(language: SupportedLanguage.polish.languageCode)
-    }
+    private var speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
+    private var speechVoice: AVSpeechSynthesisVoice? = AVSpeechSynthesisVoice(language: SettingsProvider.shared.speechLanguage.languageCode)
     
     func changeVoiceLanguage(to language: SupportedLanguage) {
         self.speechVoice = AVSpeechSynthesisVoice(language: language.languageCode)
     }
     
     func generate(for text: String) {
-        if let isSpeaking = self.speechSynthesizer?.isSpeaking {
-            if isSpeaking {
-                return
-            }
+        if speechSynthesizer.isSpeaking {
+            return
         }
         
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = self.speechVoice
-        self.speechSynthesizer?.speak(utterance)
+        self.speechSynthesizer.speak(utterance)
     }
 }
 

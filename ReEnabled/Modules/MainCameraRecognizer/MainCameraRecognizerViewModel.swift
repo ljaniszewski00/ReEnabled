@@ -1,8 +1,16 @@
 import SwiftUI
 
 class MainCameraRecognizerViewModel: ObservableObject {
+    @Inject var settingsProvider: SettingsProvider
+    
+    @Published var defaultCameraMode: CameraMode = .mainRecognizer
     @Published var cameraMode: CameraMode = .mainRecognizer
     @Published var cameraModeNameVisible: Bool = true
+    
+    init() {
+        self.defaultCameraMode = settingsProvider.cameraMode
+        self.cameraMode = self.defaultCameraMode
+    }
     
     func changeToPreviousCameraMode() {
         let currentIndex = CameraMode.allCases.firstIndex(of: cameraMode) ?? -1

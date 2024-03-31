@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-final class SettingsProvider: ObservableObject, SettingsProviding {
+final class SettingsProvider: ObservableObject {
     @Inject private var settingsRepository: SettingsRepositoryProtocol
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -10,7 +10,7 @@ final class SettingsProvider: ObservableObject, SettingsProviding {
         fetchSettings()
     }
     
-    static let shared: SettingsProviding = {
+    static let shared: SettingsProvider = {
         SettingsProvider()
     }()
     
@@ -69,21 +69,6 @@ final class SettingsProvider: ObservableObject, SettingsProviding {
             .store(in: &cancelBag)
 
     }
-}
-
-protocol SettingsProviding {
-    static var shared: SettingsProviding { get }
-    
-    var currentSettings: SettingsModel { get set }
-    var cameraMode: CameraMode { get }
-    var distanceMeasureUnit: DistanceMeasureUnit { get }
-    var documentScannerLanguage: SupportedLanguage { get }
-    var flashlightTriggerMode: FlashlightTriggerMode { get }
-    var speechSpeed: Float { get }
-    var speechVoiceType: SpeechVoiceType { get }
-    var speechLanguage: SupportedLanguage { get }
-    var voiceRecordingLanguage: SupportedLanguage { get }
-    var subscriptionPlan: SubscriptionPlan { get }
 }
 
 extension SettingsProvider {

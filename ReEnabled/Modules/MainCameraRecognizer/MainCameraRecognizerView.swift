@@ -78,6 +78,9 @@ struct MainCameraRecognizerView: View {
         .onAppear {
             mainCameraRecognizerViewModel.onNewCameraModeAppear()
         }
+        .onChange(of: mainCameraRecognizerViewModel.settingsProvider.cameraMode) { _, newDefaultCameraMode in
+            mainCameraRecognizerViewModel.defaultCameraMode = newDefaultCameraMode
+        }
     }
 }
 
