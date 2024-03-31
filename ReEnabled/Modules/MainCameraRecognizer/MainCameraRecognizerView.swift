@@ -16,20 +16,20 @@ struct MainCameraRecognizerView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-//            switch homeViewModel.cameraMode {
-//            case .mainRecognizer:
-//                MainRecognizerView()
-//            case .documentScanner:
-//                DocumentScannerView()
-//            case .colorDetector:
-//                ColorDetectorView()
-//            case .lightDetector:
-//                LightDetectorView()
-////            case .currencyDetector:
-////                CurrencyDetectorView()
-////            case .facialRecognizer:
-////                FacialRecognizerView()
-//            }
+            switch mainCameraRecognizerViewModel.cameraMode {
+            case .mainRecognizer:
+                MainRecognizerView()
+            case .documentScanner:
+                DocumentScannerView()
+            case .colorDetector:
+                ColorDetectorView()
+            case .lightDetector:
+                LightDetectorView()
+//            case .currencyDetector:
+//                CurrencyDetectorView()
+//            case .facialRecognizer:
+//                FacialRecognizerView()
+            }
             
             if mainCameraRecognizerViewModel.cameraModeNameVisible {
                 Text(mainCameraRecognizerViewModel.cameraMode.rawValue)
@@ -67,9 +67,9 @@ struct MainCameraRecognizerView: View {
         }, onSwipeFromDownToUp: {
             
         }, onSwipeFromLeftToRightAfterLongPress: {
-            
+            tabBarStateManager.changeTabSelectionTo(.chat)
         }, onSwipeFromRightToLeftAfterLongPress: {
-            
+            tabBarStateManager.changeTabSelectionTo(.settings)
         }, onSwipeFromUpToDownAfterLongPress: {
             
         }, onSwipeFromDownToUpAfterLongPress: {

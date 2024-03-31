@@ -43,6 +43,33 @@ struct SettingsView: View {
                 settingsViewModel.getSettings(from: updatedSettingsObjects)
             }
         }
+        .addGesturesActions(toExecuteBeforeEveryAction: {
+            
+        }, toExecuteAfterEveryAction: {
+            
+        }, onTap: {
+            
+        }, onDoubleTap: {
+            
+        }, onLongPress: {
+            
+        }, onSwipeFromLeftToRight: {
+            
+        }, onSwipeFromRightToLeft: {
+            
+        }, onSwipeFromUpToDown: {
+            
+        }, onSwipeFromDownToUp: {
+            
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.camera)
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.chat)
+        }, onSwipeFromUpToDownAfterLongPress: {
+            
+        }, onSwipeFromDownToUpAfterLongPress: {
+            
+        })
     }
 }
 

@@ -125,6 +125,7 @@
 		16B898B42BA3B5B700735D93 /* ChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898B32BA3B5B700735D93 /* ChatAssembly.swift */; };
 		16C1072E2BB632E700797394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1072D2BB632E700797394 /* AppDelegate.swift */; };
 		16C107302BB74E0900797394 /* ApplicationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1072F2BB74E0900797394 /* ApplicationSetting.swift */; };
+		16C107332BB9A39800797394 /* SpeechFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107322BB9A39800797394 /* SpeechFeedbackGenerator.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -137,7 +138,7 @@
 		16E5140D2BB600F80035B586 /* DistanceMeasureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5140C2BB600F80035B586 /* DistanceMeasureUnit.swift */; };
 		16E514102BB602160035B586 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5140F2BB602160035B586 /* SettingsModel.swift */; };
 		16E514132BB6065B0035B586 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514122BB6065B0035B586 /* SettingsRepository.swift */; };
-		16E514192BB621A50035B586 /* flashlightTriggerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514182BB621A50035B586 /* flashlightTriggerMode.swift */; };
+		16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514182BB621A50035B586 /* FlashlightTriggerMode.swift */; };
 		16E5141B2BB62B380035B586 /* SubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E5141A2BB62B380035B586 /* SubscriptionPlan.swift */; };
 		16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */; };
 		16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */; };
@@ -284,6 +285,7 @@
 		16B898B32BA3B5B700735D93 /* ChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAssembly.swift; sourceTree = "<group>"; };
 		16C1072D2BB632E700797394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C1072F2BB74E0900797394 /* ApplicationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSetting.swift; sourceTree = "<group>"; };
+		16C107322BB9A39800797394 /* SpeechFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechFeedbackGenerator.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -296,7 +298,7 @@
 		16E5140C2BB600F80035B586 /* DistanceMeasureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMeasureUnit.swift; sourceTree = "<group>"; };
 		16E5140F2BB602160035B586 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		16E514122BB6065B0035B586 /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
-		16E514182BB621A50035B586 /* flashlightTriggerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flashlightTriggerMode.swift; sourceTree = "<group>"; };
+		16E514182BB621A50035B586 /* FlashlightTriggerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashlightTriggerMode.swift; sourceTree = "<group>"; };
 		16E5141A2BB62B380035B586 /* SubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlan.swift; sourceTree = "<group>"; };
 		16F5647E2B9655F500A831F2 /* PedestrianCrossingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingModel.swift; sourceTree = "<group>"; };
 		16F564802B965CE300A831F2 /* PedestrianCrossingPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingPrediction.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 			isa = PBXGroup;
 			children = (
 				16E514092BB600730035B586 /* SpeechVoiceType.swift */,
+				16C107322BB9A39800797394 /* SpeechFeedbackGenerator.swift */,
 			);
 			path = Speech;
 			sourceTree = "<group>";
@@ -1195,7 +1198,7 @@
 			isa = PBXGroup;
 			children = (
 				163311862B8D2A9500896058 /* FlashlightManager.swift */,
-				16E514182BB621A50035B586 /* flashlightTriggerMode.swift */,
+				16E514182BB621A50035B586 /* FlashlightTriggerMode.swift */,
 			);
 			path = Flashlight;
 			sourceTree = "<group>";
@@ -1386,7 +1389,7 @@
 				16E514072BB5FCCF0035B586 /* SettingsObject.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
-				16E514192BB621A50035B586 /* flashlightTriggerMode.swift in Sources */,
+				16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */,
 				163EB03E2BB1F3240012FC89 /* HapticFeedbackType.swift in Sources */,
 				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
 				16E5140D2BB600F80035B586 /* DistanceMeasureUnit.swift in Sources */,
@@ -1472,6 +1475,7 @@
 				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
 				163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */,
 				162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */,
+				16C107332BB9A39800797394 /* SpeechFeedbackGenerator.swift in Sources */,
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */,
 				165117352B94F41D00779E89 /* SessionPreset.swift in Sources */,

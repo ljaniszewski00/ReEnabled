@@ -1,8 +1,20 @@
 import Swinject
 
 class UtilsAssembly: Assembly {
-
+    
     func assemble(container: Container) {
+        container.register(HapticFeedbackGenerating.self) { _ in
+            HapticFeedbackGenerator()
+        }
+
+        container.register(ContinuousHapticFeedbackGenerating.self) { resolver in
+            ContinuousHapticFeedbackGenerator(generator: resolver.resolve(HapticFeedbackGenerating.self)!)
+        }
+        
+        container.register(SpeechFeedbackGenerating.self) { _ in
+            SpeechFeedbackGenerator()
+        }
+        
         container.register(FeedbackManager.self) { _ in
             FeedbackManager.shared
         }
