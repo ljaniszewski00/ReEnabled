@@ -25,6 +25,15 @@ struct LightDetectorView: View {
                 }
             }
         }
+        .onAppear {
+            lightDetectorViewModel.playSound()
+        }
+        .onDisappear {
+            lightDetectorViewModel.stopSound()
+        }
+        .onChange(of: lightDetectorViewModel.luminosity) { _, newValue in
+            lightDetectorViewModel.playSound()
+        }
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

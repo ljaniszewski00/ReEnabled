@@ -10,5 +10,9 @@ class CameraAssembly: Assembly {
         container.register(FlashlightManaging.self) { _ in
             FlashlightManager()
         }
+        
+        container.register(AudioPlayerManaging.self) { _ in
+            AudioPlayerManager()
+        }
     }
 }

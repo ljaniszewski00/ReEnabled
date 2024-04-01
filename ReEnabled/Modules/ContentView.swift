@@ -24,6 +24,9 @@ struct ContentView: View {
                             selection: $tabBarStateManager.tabSelection)
         }
         .ignoresSafeArea(edges: .bottom)
+        .onChange(of: tabBarStateManager.tabSelection) { _, newTab in
+            feedbackManager.generateSpeechFeedback(text: "Changed tab to \(newTab)")
+        }
     }
 }
 

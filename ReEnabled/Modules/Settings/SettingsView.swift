@@ -45,31 +45,11 @@ struct SettingsView: View {
             }
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
-            
-        }, toExecuteAfterEveryAction: {
-            
-        }, onTap: {
-            
-        }, onDoubleTap: {
-            
-        }, onLongPress: {
-            
-        }, onSwipeFromLeftToRight: {
-            
-        }, onSwipeFromRightToLeft: {
-            
-        }, onSwipeFromUpToDown: {
-            
-        }, onSwipeFromDownToUp: {
-            
+            feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onSwipeFromLeftToRightAfterLongPress: {
             tabBarStateManager.changeTabSelectionTo(.camera)
         }, onSwipeFromRightToLeftAfterLongPress: {
             tabBarStateManager.changeTabSelectionTo(.chat)
-        }, onSwipeFromUpToDownAfterLongPress: {
-            
-        }, onSwipeFromDownToUpAfterLongPress: {
-            
         })
     }
 }
@@ -92,6 +72,7 @@ private extension Views {
     
     struct CameraModeSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.defaultCameraMode.settingName,
@@ -102,17 +83,28 @@ private extension Views {
                 
                 Views.SettingsSectionDetails {
                     ForEach(defaultCameraModeCases, id: \.self) { cameraMode in
-                        Button {
-                            settingsViewModel.changeDefaultCameraMode(to: cameraMode)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: cameraMode.rawValue,
                                                        isSelectedValue: currentSettings.defaultCameraMode == cameraMode)
+                                .padding(.vertical)
+                            
+                            if defaultCameraModeCases.last != cameraMode {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if defaultCameraModeCases.last != cameraMode {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.defaultCameraMode.settingName) \(cameraMode)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.defaultCameraMode.settingName) to \(cameraMode)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeDefaultCameraMode(to: cameraMode)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.defaultCameraMode.settingDescription)
+                        })
                     }
                 }
             }
@@ -123,6 +115,7 @@ private extension Views {
     
     struct DistanceMeasureUnitSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.defaultDistanceMeasureUnit.settingName,
@@ -133,17 +126,28 @@ private extension Views {
                 
                 Views.SettingsSectionDetails {
                     ForEach(distanceMeasureUnitCases, id: \.self) { distanceMeasureUnit in
-                        Button {
-                            settingsViewModel.changeDefaultDistanceMeasureUnit(to: distanceMeasureUnit)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: distanceMeasureUnit.rawValue,
                                                        isSelectedValue: currentSettings.defaultDistanceMeasureUnit == distanceMeasureUnit)
+                                .padding(.vertical)
+                            
+                            if distanceMeasureUnitCases.last != distanceMeasureUnit {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if distanceMeasureUnitCases.last != distanceMeasureUnit {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.defaultDistanceMeasureUnit.settingName) \(distanceMeasureUnit)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.defaultDistanceMeasureUnit.settingName) to \(distanceMeasureUnit)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeDefaultDistanceMeasureUnit(to: distanceMeasureUnit)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.defaultDistanceMeasureUnit.settingDescription)
+                        })
                     }
                 }
             }
@@ -154,6 +158,7 @@ private extension Views {
     
     struct DocumentScannerLanguageSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.documentScannerLanguage.settingName,
@@ -164,17 +169,28 @@ private extension Views {
                 
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        Button {
-                            settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.documentScannerLanguage == supportedLanguage)
+                                .padding(.vertical)
+                            
+                            if supportedLanguages.last != supportedLanguage {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if supportedLanguages.last != supportedLanguage {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.documentScannerLanguage.settingName) \(supportedLanguage)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.documentScannerLanguage.settingName) to \(supportedLanguage)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.documentScannerLanguage.settingDescription)
+                        })
                     }
                 }
             }
@@ -185,6 +201,7 @@ private extension Views {
     
     struct FlashlightTriggerModeSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.flashlightTriggerMode.settingName,
@@ -192,16 +209,28 @@ private extension Views {
             
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
-                    Button {
-                        settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
-                    } label: {
+                    let tileDescription: String = "Let device manage flashlight for itself"
+                    VStack(spacing: 0) {
                         SettingsSectionDetailsTile(value: FlashlightTriggerMode.automatic.rawValue,
-                                                   description: "Let device manage flashlight for itself",
+                                                   description: tileDescription,
                                                    isSelectedValue: currentSettings.flashlightTriggerLightValue == nil)
+                            .padding(.vertical)
+                        
+                        Divider()
                     }
-                    .padding(.vertical)
-                    
-                    Divider()
+                    .contentShape(Rectangle())
+                    .addGesturesActions(toExecuteBeforeEveryAction: {
+                        feedbackManager.generateHapticFeedbackForSwipeAction()
+                    }, onTap: {
+                        let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(FlashlightTriggerMode.automatic.rawValue) \(tileDescription)"
+                        feedbackManager.generateSpeechFeedback(text: speechText)
+                    }, onDoubleTap: {
+                        let speechText: String = "Changed \(ApplicationSetting.flashlightTriggerMode.settingName) to \(FlashlightTriggerMode.automatic.rawValue)"
+                        feedbackManager.generateSpeechFeedback(text: speechText)
+                        settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
+                    }, onLongPress: {
+                        feedbackManager.generateSpeechFeedback(text: ApplicationSetting.flashlightTriggerMode.settingDescription)
+                    })
                     
                     ForEach(settingsViewModel.availableFlashlightTriggerValues, id: \.self) { flashlightTriggerValue in
                         var tileDescription: String? {
@@ -214,18 +243,29 @@ private extension Views {
                             }
                         }
                         
-                        Button {
-                            settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: "\(flashlightTriggerValue)",
                                                        description: tileDescription,
                                                        isSelectedValue: currentSettings.flashlightTriggerLightValue == flashlightTriggerValue)
+                                .padding(.vertical)
+                            
+                            if settingsViewModel.availableFlashlightTriggerValues.last != flashlightTriggerValue {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if settingsViewModel.availableFlashlightTriggerValues.last != flashlightTriggerValue {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(flashlightTriggerValue) \(String(describing: tileDescription))"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.flashlightTriggerMode.settingName) to \(flashlightTriggerValue)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.flashlightTriggerMode.settingDescription)
+                        })
                     }
                 }
             }
@@ -236,6 +276,7 @@ private extension Views {
     
     struct SpeechSpeedSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.speechSpeed.settingName,
@@ -254,18 +295,29 @@ private extension Views {
                             }
                         }
                         
-                        Button {
-                            settingsViewModel.changeSpeechSpeed(to: speechSpeed)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: "\(speechSpeed)",
                                                        description: tileDescription,
                                                        isSelectedValue: currentSettings.speechSpeed == speechSpeed)
+                                .padding(.vertical)
+                            
+                            if settingsViewModel.availableSpeechSpeeds.last != speechSpeed {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if settingsViewModel.availableSpeechSpeeds.last != speechSpeed {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.speechSpeed.settingName) \(speechSpeed) \(String(describing: tileDescription))"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.speechSpeed.settingName) to \(speechSpeed)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeSpeechSpeed(to: speechSpeed)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.speechSpeed.settingDescription)
+                        })
                     }
                 }
             }
@@ -276,6 +328,7 @@ private extension Views {
     
     struct SpeechVoiceSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.speechVoiceType.settingName,
@@ -286,17 +339,29 @@ private extension Views {
                 let speechVoiceTypeCases: [SpeechVoiceType] = currentSpeechLanguage.supportedSpeechVoiceTypes
                 Views.SettingsSectionDetails {
                     ForEach(speechVoiceTypeCases, id: \.self) { speechVoiceType in
-                        Button {
-                            settingsViewModel.changeSpeechVoiceType(to: speechVoiceType)
-                        } label: {
-                            SettingsSectionDetailsTile(value: "\(speechVoiceType.rawValue) - \(speechVoiceType.getVoiceName(for: currentSpeechLanguage))",
+                        VStack(spacing: 0) {
+                            SettingsSectionDetailsTile(value: speechVoiceType.rawValue,
+                                                       description: speechVoiceType.getVoiceName(for: currentSpeechLanguage),
                                                        isSelectedValue: currentSettings.speechVoiceType == speechVoiceType)
+                                .padding(.vertical)
+                            
+                            if speechVoiceTypeCases.last != speechVoiceType {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if speechVoiceTypeCases.last != speechVoiceType {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.speechVoiceType.settingName) \(speechVoiceType)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.speechVoiceType.settingName) to \(speechVoiceType)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeSpeechVoiceType(to: speechVoiceType)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.speechVoiceType.settingDescription)
+                        })
                     }
                 }
             }
@@ -307,6 +372,7 @@ private extension Views {
     
     struct SpeechLanguageSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.speechLanguage.settingName,
@@ -316,17 +382,28 @@ private extension Views {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        Button {
-                            settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.speechLanguage == supportedLanguage)
+                                .padding(.vertical)
+                            
+                            if supportedLanguages.last != supportedLanguage {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if supportedLanguages.last != supportedLanguage {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.speechLanguage.settingName) \(supportedLanguage)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.speechLanguage.settingName) to \(supportedLanguage)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.speechLanguage.settingDescription)
+                        })
                     }
                 }
             }
@@ -337,6 +414,7 @@ private extension Views {
     
     struct VoiceRecordingLanguageSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.voiceRecordingLanguage.settingName,
@@ -346,17 +424,28 @@ private extension Views {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        Button {
-                            settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.voiceRecordingLanguage == supportedLanguage)
+                                .padding(.vertical)
+                            
+                            if supportedLanguages.last != supportedLanguage {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if supportedLanguages.last != supportedLanguage {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.voiceRecordingLanguage.settingName) \(supportedLanguage)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.voiceRecordingLanguage.settingName) to \(supportedLanguage)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.voiceRecordingLanguage.settingDescription)
+                        })
                     }
                 }
             }
@@ -367,6 +456,7 @@ private extension Views {
     
     struct SubscriptionPlanSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.subscriptionPlan.settingName,
@@ -376,20 +466,31 @@ private extension Views {
                 let subscriptionPlanCases: [SubscriptionPlan] = SubscriptionPlan.allCases
                 Views.SettingsSectionDetails {
                     ForEach(subscriptionPlanCases, id: \.self) { subscriptionPlan in
-                        Button {
-                            settingsViewModel.changeSubscriptionPlan(to: subscriptionPlan)
-                        } label: {
+                        VStack(spacing: 0) {
                             SettingsSectionDetailsTile(value: subscriptionPlan.rawValue,
                                                        imageName: subscriptionPlan == .premium ? "crown.fill" : nil,
                                                        imageColor: .yellow.opacity(0.9),
                                                        description: subscriptionPlan.description,
                                                        isSelectedValue: currentSettings.subscriptionPlan == subscriptionPlan)
+                                .padding(.vertical)
+                            
+                            if subscriptionPlanCases.last != subscriptionPlan {
+                                Divider()
+                            }
                         }
-                        .padding(.vertical)
-                        
-                        if subscriptionPlanCases.last != subscriptionPlan {
-                            Divider()
-                        }
+                        .contentShape(Rectangle())
+                        .addGesturesActions(toExecuteBeforeEveryAction: {
+                            feedbackManager.generateHapticFeedbackForSwipeAction()
+                        }, onTap: {
+                            let speechText: String = "\(ApplicationSetting.subscriptionPlan.settingName) \(subscriptionPlan) \(subscriptionPlan.description)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                        }, onDoubleTap: {
+                            let speechText: String = "Changed \(ApplicationSetting.subscriptionPlan.settingName) to \(subscriptionPlan)"
+                            feedbackManager.generateSpeechFeedback(text: speechText)
+                            settingsViewModel.changeSubscriptionPlan(to: subscriptionPlan)
+                        }, onLongPress: {
+                            feedbackManager.generateSpeechFeedback(text: ApplicationSetting.subscriptionPlan.settingDescription)
+                        })
                     }
                 }
             }
@@ -524,37 +625,53 @@ private extension Views {
     
     struct DeleteConversationsButton: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
-            Button {
-                _ = settingsViewModel.deleteAllConversations()
-            } label: {
-                HStack {
-                    Text("Delete All Conversations")
-                        .foregroundStyle(.white)
-                    
-                    Spacer()
-                }
-                .padding()
+            HStack {
+                Text("Delete All Conversations")
+                    .foregroundStyle(.white)
+                
+                Spacer()
             }
+            .contentShape(Rectangle())
+            .padding()
+            .addGesturesActions(toExecuteBeforeEveryAction: {
+                feedbackManager.generateHapticFeedbackForSwipeAction()
+            }, onTap: {
+                let speechText: String = "Double tap to delete conversations"
+                feedbackManager.generateSpeechFeedback(text: speechText)
+            }, onDoubleTap: {
+                let speechText: String = "Deleted conversations"
+                feedbackManager.generateSpeechFeedback(text: speechText)
+                _ = settingsViewModel.deleteAllConversations()
+            })
         }
     }
     
     struct RestoreDefaultSettingsButton: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
         
         var body: some View {
-            Button {
-                _ = settingsViewModel.restoreDefaultSettings()
-            } label: {
-                HStack {
-                    Text("Restore Default Settings")
-                        .foregroundStyle(.white)
-                    
-                    Spacer()
-                }
-                .padding()
+            HStack {
+                Text("Restore Default Settings")
+                    .foregroundStyle(.white)
+                
+                Spacer()
             }
+            .contentShape(Rectangle())
+            .padding()
+            .addGesturesActions(toExecuteBeforeEveryAction: {
+                feedbackManager.generateHapticFeedbackForSwipeAction()
+            }, onTap: {
+                let speechText: String = "Double tap to restore default settings"
+                feedbackManager.generateSpeechFeedback(text: speechText)
+            }, onDoubleTap: {
+                let speechText: String = "Restored default settings"
+                feedbackManager.generateSpeechFeedback(text: speechText)
+                _ = settingsViewModel.restoreDefaultSettings()
+            })
         }
     }
 }

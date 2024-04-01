@@ -4,7 +4,7 @@ class MainCameraRecognizerViewModel: ObservableObject {
     @Inject var settingsProvider: SettingsProvider
     
     @Published var defaultCameraMode: CameraMode = .mainRecognizer
-    @Published var cameraMode: CameraMode = .mainRecognizer
+    @Published var cameraMode: CameraMode = .lightDetector
     @Published var cameraModeNameVisible: Bool = true
     
     init() {

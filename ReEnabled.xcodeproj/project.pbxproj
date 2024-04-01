@@ -128,6 +128,12 @@
 		16C107332BB9A39800797394 /* SpeechFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107322BB9A39800797394 /* SpeechFeedbackGenerator.swift */; };
 		16C107352BB9A90A00797394 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107342BB9A90A00797394 /* SettingsProvider.swift */; };
 		16C1073C2BB9D5F900797394 /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1073B2BB9D5F900797394 /* DocumentScannerView.swift */; };
+		16C1073F2BBAE5DA00797394 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1073E2BBAE5DA00797394 /* AudioPlayerManager.swift */; };
+		16C107452BBAEBDD00797394 /* laser-weld.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107412BBAEBDD00797394 /* laser-weld.mp3 */; };
+		16C107462BBAEBDD00797394 /* radio-static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107422BBAEBDD00797394 /* radio-static.mp3 */; };
+		16C107472BBAEBDD00797394 /* laser-beam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107432BBAEBDD00797394 /* laser-beam.mp3 */; };
+		16C107482BBAEBDD00797394 /* energy-sword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107442BBAEBDD00797394 /* energy-sword.mp3 */; };
+		16C1074A2BBAEBF300797394 /* AudioResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107492BBAEBF300797394 /* AudioResource.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -290,6 +296,12 @@
 		16C107322BB9A39800797394 /* SpeechFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechFeedbackGenerator.swift; sourceTree = "<group>"; };
 		16C107342BB9A90A00797394 /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		16C1073B2BB9D5F900797394 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
+		16C1073E2BBAE5DA00797394 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		16C107412BBAEBDD00797394 /* laser-weld.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "laser-weld.mp3"; sourceTree = "<group>"; };
+		16C107422BBAEBDD00797394 /* radio-static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radio-static.mp3"; sourceTree = "<group>"; };
+		16C107432BBAEBDD00797394 /* laser-beam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "laser-beam.mp3"; sourceTree = "<group>"; };
+		16C107442BBAEBDD00797394 /* energy-sword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "energy-sword.mp3"; sourceTree = "<group>"; };
+		16C107492BBAEBF300797394 /* AudioResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioResource.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -737,6 +749,7 @@
 		164669032B6856320049AB03 /* LightDetector */ = {
 			isa = PBXGroup;
 			children = (
+				16C1073D2BBAE5C800797394 /* AudioPlayerManager */,
 				1670C6132B6FAA7C005CF24B /* ViewModel */,
 				1670C6122B6FAA76005CF24B /* ViewController */,
 				1670C6142B6FAA83005CF24B /* View */,
@@ -1159,6 +1172,27 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		16C1073D2BBAE5C800797394 /* AudioPlayerManager */ = {
+			isa = PBXGroup;
+			children = (
+				16C107402BBAEBD400797394 /* Resources */,
+				16C1073E2BBAE5DA00797394 /* AudioPlayerManager.swift */,
+				16C107492BBAEBF300797394 /* AudioResource.swift */,
+			);
+			path = AudioPlayerManager;
+			sourceTree = "<group>";
+		};
+		16C107402BBAEBD400797394 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				16C107442BBAEBDD00797394 /* energy-sword.mp3 */,
+				16C107432BBAEBDD00797394 /* laser-beam.mp3 */,
+				16C107412BBAEBDD00797394 /* laser-weld.mp3 */,
+				16C107422BBAEBDD00797394 /* radio-static.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		16E170062B6FDA4000F984FB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1352,8 +1386,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C107452BBAEBDD00797394 /* laser-weld.mp3 in Resources */,
+				16C107472BBAEBDD00797394 /* laser-beam.mp3 in Resources */,
+				16C107462BBAEBDD00797394 /* radio-static.mp3 in Resources */,
 				164E111E2B45E169008EF153 /* Preview Assets.xcassets in Resources */,
 				1629F9D62BA784A800B89629 /* OpenAIPropertyList.plist in Resources */,
+				16C107482BBAEBDD00797394 /* energy-sword.mp3 in Resources */,
 				164E111B2B45E169008EF153 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1405,6 +1443,7 @@
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */,
+				16C1074A2BBAEBF300797394 /* AudioResource.swift in Sources */,
 				163EB03E2BB1F3240012FC89 /* HapticFeedbackType.swift in Sources */,
 				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
 				16E5140D2BB600F80035B586 /* DistanceMeasureUnit.swift in Sources */,
@@ -1482,6 +1521,7 @@
 				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
 				164E11392B47180C008EF153 /* CustomTabBarContainerView.swift in Sources */,
+				16C1073F2BBAE5DA00797394 /* AudioPlayerManager.swift in Sources */,
 				16C1072E2BB632E700797394 /* AppDelegate.swift in Sources */,
 				16D949EC2BAF569C00CCBA16 /* Collection+After+Before.swift in Sources */,
 				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,
