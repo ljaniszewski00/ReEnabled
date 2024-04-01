@@ -2,7 +2,7 @@ import AVFoundation
 
 final class AudioPlayerManager: AudioPlayerManaging {
     private var audioPlayer: AVAudioPlayer?
-    private let audioResource: String = AudioResource.laserBeam.rawValue
+    private let audioResource: String = AudioResource.laserWeld.rawValue
     
     init() {
         prepareToPlay()
@@ -29,7 +29,13 @@ final class AudioPlayerManager: AudioPlayerManaging {
     }
     
     func playWithIntensity(_ intensity: Double) {
-        audioPlayer?.volume = Float(intensity)
+        var newVolume = Float(intensity)
+        print(newVolume)
+        if newVolume > 50 {
+            newVolume = 50
+        }
+        
+        audioPlayer?.volume = newVolume
         audioPlayer?.numberOfLoops = -1
         audioPlayer?.play()
     }

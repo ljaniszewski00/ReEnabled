@@ -34,6 +34,11 @@ struct LightDetectorView: View {
         .onChange(of: lightDetectorViewModel.luminosity) { _, newValue in
             lightDetectorViewModel.playSound()
         }
+        .onChange(of: tabBarStateManager.tabSelection) { oldTab, newTab in
+            if oldTab == .camera && newTab != .camera {
+                lightDetectorViewModel.stopSound()
+            }
+        }
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
