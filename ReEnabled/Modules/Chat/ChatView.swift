@@ -7,6 +7,7 @@ struct ChatView: View {
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     
     @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
+    @StateObject private var voiceRecordingChatManager: VoiceRecordingChatManager = VoiceRecordingChatManager()
     
     @ObservedResults(ConversationObject.self) var conversationsObjects
     
@@ -56,7 +57,7 @@ struct ChatView: View {
             
         }, onDoubleTap: {
             if !chatViewModel.speechRecordingBlocked {
-                voiceRecordingManager.manageTalking()
+                voiceRecordingChatManager.manageTalking()
             }
         }, onLongPress: {
             
@@ -77,10 +78,16 @@ struct ChatView: View {
         }, onSwipeFromDownToUpAfterLongPress: {
             chatViewModel.selectPhoto()
         })
+        .onTwoTouchSwipe(direction: .up, onSwipe: {
+            voiceRecordingManager.manageTalking()
+        })
         .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
             chatViewModel.manageAddingMessageWith(transcript: newTranscript)
         }
-        .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
+        .onChange(of: voiceRecordingChatManager.chatMessageTranscript) { _, newTranscript in
+            chatViewModel.manageAddingMessageWith(transcript: newTranscript)
+        }
+        .onChange(of: voiceRecordingChatManager.isRecordingChatMessage) { _, isRecording in
             tabBarStateManager.shouldAnimateChatTabIcon = isRecording
         }
         .onChange(of: conversationsObjects) { _, updatedConversationsObjects in
