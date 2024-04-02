@@ -11,12 +11,32 @@ final class SettingsViewModel: ObservableObject {
     
     @Published var currentSettings: SettingsModel?
     
-    let availableFlashlightTriggerValues: [Float] = [
-        100, 50, 30, 10, 5
+    let availableFlashlightTriggerValues: [String: Float] = [
+        "Highest Tolerance": 5.0,
+        "Medium Tolerance": 30.0,
+        "Lowest Tolerance": 50.0
     ]
     
-    let availableSpeechSpeeds: [Float] = [
-        0.8, 0.7, 0.6, 0.5, 0.4
+    var availableFlashlightTriggerValuesKeys: [String] = [
+        "Highest Tolerance",
+        "Medium Tolerance",
+        "Lowest Tolerance"
+    ]
+    
+    let availableSpeechSpeeds: [String: Float] = [
+        "Fastest": 0.8,
+        "Faster": 0.7,
+        "Normal": 0.6,
+        "Slower": 0.5,
+        "Slowest": 0.4
+    ]
+    
+    let availableSpeechSpeedsKeys: [String] = [
+        "Fastest",
+        "Faster",
+        "Normal",
+        "Slower",
+        "Slowest"
     ]
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()

@@ -246,24 +246,26 @@ private extension Views {
                         feedbackManager.generateSpeechFeedback(text: ApplicationSetting.flashlightTriggerMode.settingDescription)
                     })
                     
-                    ForEach(settingsViewModel.availableFlashlightTriggerValues, id: \.self) { flashlightTriggerValue in
+                    ForEach(settingsViewModel.availableFlashlightTriggerValuesKeys, id: \.self) { flashlightTriggerValueKey in
                         var tileDescription: String? {
-                            if settingsViewModel.availableFlashlightTriggerValues.first == flashlightTriggerValue {
-                                return "Greater tolerance towards darkness"
-                            } else if settingsViewModel.availableFlashlightTriggerValues.last == flashlightTriggerValue {
-                                return "Smaller tolerance towards darkness"
+                            if settingsViewModel.availableFlashlightTriggerValuesKeys.first == flashlightTriggerValueKey {
+                                return "Highest tolerance towards darkness"
+                            } else if settingsViewModel.availableFlashlightTriggerValuesKeys.last == flashlightTriggerValueKey {
+                                return "Lowest tolerance towards darkness"
                             } else {
                                 return nil
                             }
                         }
                         
+                        let flashlightTriggerValue: Float = settingsViewModel.availableFlashlightTriggerValues[flashlightTriggerValueKey]!
+                        
                         VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: "\(flashlightTriggerValue)",
+                            SettingsSectionDetailsTile(value: flashlightTriggerValueKey,
                                                        description: tileDescription,
                                                        isSelectedValue: currentSettings.flashlightTriggerLightValue == flashlightTriggerValue)
                                 .padding(.vertical)
                             
-                            if settingsViewModel.availableFlashlightTriggerValues.last != flashlightTriggerValue {
+                            if settingsViewModel.availableFlashlightTriggerValuesKeys.last != flashlightTriggerValueKey {
                                 Divider()
                             }
                         }
@@ -271,10 +273,10 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(flashlightTriggerValue) \(String(describing: tileDescription))"
+                            let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(flashlightTriggerValueKey) \(String(describing: tileDescription))"
                             feedbackManager.generateSpeechFeedback(text: speechText)
                         }, onDoubleTap: {
-                            let speechText: String = "Changed \(ApplicationSetting.flashlightTriggerMode.settingName) to \(flashlightTriggerValue)"
+                            let speechText: String = "Changed \(ApplicationSetting.flashlightTriggerMode.settingName) to \(flashlightTriggerValueKey)"
                             feedbackManager.generateSpeechFeedback(text: speechText)
                             settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
                         }, onLongPress: {
@@ -298,24 +300,15 @@ private extension Views {
             
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
-                    ForEach(settingsViewModel.availableSpeechSpeeds, id: \.self) { speechSpeed in
-                        var tileDescription: String? {
-                            if settingsViewModel.availableSpeechSpeeds.first == speechSpeed {
-                                return "Fastest"
-                            } else if settingsViewModel.availableSpeechSpeeds.last == speechSpeed {
-                                return "Slowest"
-                            } else {
-                                return nil
-                            }
-                        }
+                    ForEach(settingsViewModel.availableSpeechSpeedsKeys, id: \.self) { speechSpeedKey in
+                        let speechSpeedValue: Float = settingsViewModel.availableSpeechSpeeds[speechSpeedKey]!
                         
                         VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: "\(speechSpeed)",
-                                                       description: tileDescription,
-                                                       isSelectedValue: currentSettings.speechSpeed == speechSpeed)
+                            SettingsSectionDetailsTile(value: speechSpeedKey,
+                                                       isSelectedValue: currentSettings.speechSpeed == speechSpeedValue)
                                 .padding(.vertical)
                             
-                            if settingsViewModel.availableSpeechSpeeds.last != speechSpeed {
+                            if settingsViewModel.availableSpeechSpeedsKeys.last != speechSpeedKey {
                                 Divider()
                             }
                         }
@@ -323,12 +316,12 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.speechSpeed.settingName) \(speechSpeed) \(String(describing: tileDescription))"
+                            let speechText: String = "\(ApplicationSetting.speechSpeed.settingName) \(speechSpeedKey)"
                             feedbackManager.generateSpeechFeedback(text: speechText)
                         }, onDoubleTap: {
-                            let speechText: String = "Changed \(ApplicationSetting.speechSpeed.settingName) to \(speechSpeed)"
+                            let speechText: String = "Changed \(ApplicationSetting.speechSpeed.settingName) to \(speechSpeedKey)"
                             feedbackManager.generateSpeechFeedback(text: speechText)
-                            settingsViewModel.changeSpeechSpeed(to: speechSpeed)
+                            settingsViewModel.changeSpeechSpeed(to: speechSpeedValue)
                         }, onLongPress: {
                             feedbackManager.generateSpeechFeedback(text: ApplicationSetting.speechSpeed.settingDescription)
                         })
