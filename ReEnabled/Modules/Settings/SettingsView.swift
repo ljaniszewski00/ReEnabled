@@ -11,29 +11,20 @@ struct SettingsView: View {
     @ObservedResults(SettingsObject.self) var settingsObjects
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: Views.Constants.mainVStackSpacing) {
             Views.navigationBar
             
             ScrollView(.vertical) {
-                VStack {
+                VStack(spacing: Views.Constants.sectionsVStackSpacing) {
                     Views.CameraModeSettingsSection()
-                        .padding(.bottom, 10)
                     Views.DistanceMeasureUnitSettingsSection()
-                        .padding(.bottom, 10)
                     Views.DocumentScannerLanguageSettingsSection()
-                        .padding(.bottom, 10)
                     Views.FlashlightTriggerModeSettingsSection()
-                        .padding(.bottom, 10)
                     Views.SpeechSpeedSettingsSection()
-                        .padding(.bottom, 10)
                     Views.SpeechVoiceSettingsSection()
-                        .padding(.bottom, 10)
                     Views.SpeechLanguageSettingsSection()
-                        .padding(.bottom, 10)
                     Views.VoiceRecordingLanguageSettingsSection()
-                        .padding(.bottom, 10)
                     Views.SubscriptionPlanSettingsSection()
-                        .padding(.bottom, 10)
                     Views.OtherSettingsSection()
                 }
                 .padding(.top)
@@ -60,8 +51,31 @@ struct SettingsView: View {
 
 private extension Views {
     struct Constants {
+        static let mainVStackSpacing: CGFloat = 0
+        static let sectionsVStackSpacing: CGFloat = 10
         static let navigationTitle: String = "Settings"
         static let mainVStackBottomPadding: CGFloat = 100
+        
+        static let sectionInnerVStackSpacing: CGFloat = 0
+        
+        static let otherSettingsSectionDividerColorOpacity: CGFloat = 0.8
+        static let otherSettingsSectionBackgroundCornerRadius: CGFloat = 15
+        static let otherSettingsSectionBackgroundColorOpacity: CGFloat = 0.8
+        
+        static let settingsSectionHeaderVStackSpacing: CGFloat = 15
+        
+        static let settingsSectionDetailsVStackSpacing: CGFloat = 0
+        static let settingsSectionDetailsBackgroundCornerRadius: CGFloat = 15
+        static let settingsSectionDetailsBottomPadding: CGFloat = 10
+        
+        static let settingsSectionDetailsTileInnerVStackSpacing: CGFloat = 10
+        static let settingsSectionDetailsTileInnerHStackSpacing: CGFloat = 8
+        static let settingsSectionDetailsTileImageSize: CGFloat = 14
+        static let settingsSectionDetailsTileIsSelectedImageName: String = "checkmark"
+        static let settingsSectionDetailsTileIsSelectedImageSize: CGFloat = 15
+        
+        static let deleteConversationsButtonText: String = "Delete All Conversations"
+        static let restoreDefaultSettingsButtonText: String = "Restore Default Settings"
     }
     
     static var navigationBar: some View {
@@ -83,7 +97,7 @@ private extension Views {
                 
                 Views.SettingsSectionDetails {
                     ForEach(defaultCameraModeCases, id: \.self) { cameraMode in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: cameraMode.rawValue,
                                                        isSelectedValue: currentSettings.defaultCameraMode == cameraMode)
                                 .padding(.vertical)
@@ -126,7 +140,7 @@ private extension Views {
                 
                 Views.SettingsSectionDetails {
                     ForEach(distanceMeasureUnitCases, id: \.self) { distanceMeasureUnit in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: distanceMeasureUnit.rawValue,
                                                        isSelectedValue: currentSettings.defaultDistanceMeasureUnit == distanceMeasureUnit)
                                 .padding(.vertical)
@@ -169,7 +183,7 @@ private extension Views {
                 
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.documentScannerLanguage == supportedLanguage)
                                 .padding(.vertical)
@@ -210,7 +224,7 @@ private extension Views {
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
                     let tileDescription: String = "Let device manage flashlight for itself"
-                    VStack(spacing: 0) {
+                    VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                         SettingsSectionDetailsTile(value: FlashlightTriggerMode.automatic.rawValue,
                                                    description: tileDescription,
                                                    isSelectedValue: currentSettings.flashlightTriggerLightValue == nil)
@@ -243,7 +257,7 @@ private extension Views {
                             }
                         }
                         
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: "\(flashlightTriggerValue)",
                                                        description: tileDescription,
                                                        isSelectedValue: currentSettings.flashlightTriggerLightValue == flashlightTriggerValue)
@@ -295,7 +309,7 @@ private extension Views {
                             }
                         }
                         
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: "\(speechSpeed)",
                                                        description: tileDescription,
                                                        isSelectedValue: currentSettings.speechSpeed == speechSpeed)
@@ -339,7 +353,7 @@ private extension Views {
                 let speechVoiceTypeCases: [SpeechVoiceType] = currentSpeechLanguage.supportedSpeechVoiceTypes
                 Views.SettingsSectionDetails {
                     ForEach(speechVoiceTypeCases, id: \.self) { speechVoiceType in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: speechVoiceType.rawValue,
                                                        description: speechVoiceType.getVoiceName(for: currentSpeechLanguage),
                                                        isSelectedValue: currentSettings.speechVoiceType == speechVoiceType)
@@ -382,7 +396,7 @@ private extension Views {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.speechLanguage == supportedLanguage)
                                 .padding(.vertical)
@@ -424,7 +438,7 @@ private extension Views {
                 let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
                 Views.SettingsSectionDetails {
                     ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: supportedLanguage.fullName,
                                                        isSelectedValue: currentSettings.voiceRecordingLanguage == supportedLanguage)
                                 .padding(.vertical)
@@ -466,7 +480,7 @@ private extension Views {
                 let subscriptionPlanCases: [SubscriptionPlan] = SubscriptionPlan.allCases
                 Views.SettingsSectionDetails {
                     ForEach(subscriptionPlanCases, id: \.self) { subscriptionPlan in
-                        VStack(spacing: 0) {
+                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                             SettingsSectionDetailsTile(value: subscriptionPlan.rawValue,
                                                        imageName: subscriptionPlan == .premium ? "crown.fill" : nil,
                                                        imageColor: .yellow.opacity(0.9),
@@ -505,20 +519,29 @@ private extension Views {
                                   description: nil)
             
             if let currentSettings = settingsViewModel.currentSettings {
-                VStack(spacing: 0) {
+                VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                     Views.DeleteConversationsButton()
                         .padding(.vertical)
                     
                     Divider()
-                        .overlay(Color.white.opacity(0.8))
+                        .overlay(
+                            Color.white.opacity(
+                                Views.Constants.otherSettingsSectionDividerColorOpacity
+                            )
+                        )
                     
                     Views.RestoreDefaultSettingsButton()
                         .padding(.vertical)
                 }
                 .padding(.horizontal)
                 .background {
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundStyle(.red.opacity(0.8))
+                    RoundedRectangle(cornerRadius:
+                                        Views.Constants.otherSettingsSectionBackgroundCornerRadius)
+                        .foregroundStyle(
+                            .red.opacity(
+                                Views.Constants.otherSettingsSectionBackgroundColorOpacity
+                            )
+                        )
                         .ignoresSafeArea()
                 }
                 .padding(.horizontal)
@@ -531,7 +554,7 @@ private extension Views {
         let description: String?
         
         var body: some View {
-            VStack(spacing: 15) {
+            VStack(spacing: Views.Constants.settingsSectionHeaderVStackSpacing) {
                 HStack {
                     Text(title)
                         .font(.title2)
@@ -552,6 +575,7 @@ private extension Views {
             }
             .padding([.horizontal, .top])
             .padding(.leading)
+            .padding(.bottom, Views.Constants.settingsSectionDetailsBottomPadding)
         }
     }
     
@@ -563,16 +587,18 @@ private extension Views {
         }
         
         var body: some View {
-            VStack(spacing: 0) {
+            VStack(spacing: Views.Constants.settingsSectionDetailsVStackSpacing) {
                 content
             }
             .padding(.horizontal)
             .background {
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius:
+                                    Views.Constants.settingsSectionDetailsBackgroundCornerRadius)
                     .foregroundStyle(.thinMaterial)
                     .ignoresSafeArea()
             }
             .padding(.horizontal)
+            .padding(.bottom, Views.Constants.settingsSectionDetailsBottomPadding)
         }
     }
     
@@ -586,8 +612,9 @@ private extension Views {
         var body: some View {
             VStack {
                 HStack() {
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack(spacing: 8) {
+                    VStack(alignment: .leading, 
+                           spacing: Views.Constants.settingsSectionDetailsTileInnerVStackSpacing) {
+                        HStack(spacing: Views.Constants.settingsSectionDetailsTileInnerHStackSpacing) {
                             Text(value)
                                 .font(.title3)
                                 .foregroundStyle(.white)
@@ -595,7 +622,8 @@ private extension Views {
                             if let imageName = imageName {
                                 Image(systemName: imageName)
                                     .resizable()
-                                    .frame(width: 14, height: 14)
+                                    .frame(width: Views.Constants.settingsSectionDetailsTileImageSize,
+                                           height: Views.Constants.settingsSectionDetailsTileImageSize)
                                     .foregroundColor(imageColor)
                             }
                         }
@@ -612,9 +640,10 @@ private extension Views {
                     Spacer()
                     
                     if isSelectedValue {
-                        Image(systemName: "checkmark")
+                        Image(systemName: Views.Constants.settingsSectionDetailsTileIsSelectedImageName)
                             .resizable()
-                            .frame(width: 15, height: 15)
+                            .frame(width: Views.Constants.settingsSectionDetailsTileIsSelectedImageSize,
+                                   height: Views.Constants.settingsSectionDetailsTileIsSelectedImageSize)
                             .foregroundStyle(.white)
                     }
                 }
@@ -629,7 +658,7 @@ private extension Views {
         
         var body: some View {
             HStack {
-                Text("Delete All Conversations")
+                Text(Views.Constants.deleteConversationsButtonText)
                     .foregroundStyle(.white)
                 
                 Spacer()
@@ -655,7 +684,7 @@ private extension Views {
         
         var body: some View {
             HStack {
-                Text("Restore Default Settings")
+                Text(Views.Constants.restoreDefaultSettingsButtonText)
                     .foregroundStyle(.white)
                 
                 Spacer()

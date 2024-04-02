@@ -30,7 +30,6 @@ final class AudioPlayerManager: AudioPlayerManaging {
     
     func playWithIntensity(_ intensity: Double) {
         var newVolume = Float(intensity)
-        print(newVolume)
         if newVolume > 50 {
             newVolume = 50
         }
