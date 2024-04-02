@@ -1,9 +1,33 @@
-class VoiceRequestor: VoiceRequesting {
-    func getVoiceRequest(from transcript: String) -> VoiceRequest {
-        .camera(.colorDetector(.readDetectedColor))
+import Foundation
+
+class VoiceRequestor: ObservableObject {
+    @Published var selectedVoiceRequest: VoiceRequest = .empty
+    
+    static let shared: VoiceRequestor = {
+       VoiceRequestor()
+    }()
+    
+    private init() {}
+    
+    func getVoiceRequest(from transcript: String) {
+        var voiceRequestChoosen: VoiceRequest = .empty
+        var similarityChoosen: Double = 0.0
+        
+        for voiceRequest in VoiceRequest.allCases {
+            let stringSimilarityPercentage = stringSimilarityPercentage(transcript, voiceRequest.rawValue)
+            if stringSimilarityPercentage > 90 && stringSimilarityPercentage > similarityChoosen {
+                voiceRequestChoosen = voiceRequest
+                similarityChoosen = stringSimilarityPercentage
+            }
+        }
+        
+        selectedVoiceRequest = voiceRequestChoosen
     }
     
     private func stringSimilarityPercentage(_ s1: String, _ s2: String) -> Double {
+        let s1: String = s1.lowercased()
+        let s2: String = s2.lowercased()
+        
         guard let distance = levenshteinDistance(s1, s2) else {
             return 0.0
         }
@@ -36,6 +60,8 @@ class VoiceRequestor: VoiceRequesting {
     }
 }
 
-protocol VoiceRequesting {
-    func getVoiceRequest(from transcript: String) -> VoiceRequest
+extension VoiceRequestor {
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
+    }
 }

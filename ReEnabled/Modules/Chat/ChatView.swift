@@ -5,6 +5,7 @@ struct ChatView: View {
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     @StateObject private var chatViewModel: ChatViewModel = ChatViewModel()
     @StateObject private var voiceRecordingChatManager: VoiceRecordingChatManager = VoiceRecordingChatManager()
@@ -60,7 +61,7 @@ struct ChatView: View {
                 voiceRecordingChatManager.manageTalking()
             }
         }, onLongPress: {
-            
+            voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {
             chatViewModel.changeCurrentConversationToNext()
         }, onSwipeFromRightToLeft: {
@@ -82,16 +83,44 @@ struct ChatView: View {
             voiceRecordingManager.manageTalking()
         })
         .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-            chatViewModel.manageAddingMessageWith(transcript: newTranscript)
+            if !voiceRecordingChatManager.isRecordingChatMessage {
+                voiceRequestor.getVoiceRequest(from: newTranscript)
+            }
         }
         .onChange(of: voiceRecordingChatManager.chatMessageTranscript) { _, newTranscript in
-            chatViewModel.manageAddingMessageWith(transcript: newTranscript)
+            if !voiceRecordingManager.isRecording {
+                chatViewModel.manageAddingMessageWith(transcript: newTranscript)
+            }
         }
         .onChange(of: voiceRecordingChatManager.isRecordingChatMessage) { _, isRecording in
             tabBarStateManager.shouldAnimateChatTabIcon = isRecording
         }
         .onChange(of: conversationsObjects) { _, updatedConversationsObjects in
             chatViewModel.getConversations(from: updatedConversationsObjects)
+        }
+        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+            guard voiceRequest != VoiceRequest.empty else {
+                return
+            }
+            
+            switch voiceRequest {
+            case .chat(.sendMessage):
+                if !chatViewModel.speechRecordingBlocked {
+                    voiceRecordingChatManager.manageTalking()
+                }
+            case .chat(.describePhoto):
+                return
+            case .chat(.readConversation):
+                return
+            case .chat(.saveCurrentConversation):
+                return
+            case .chat(.deleteCurrentConversation):
+                return
+            case .chat(.deleteAllConversations):
+                return
+            default:
+                return
+            }
         }
         .fullScreenCover(isPresented: $chatViewModel.showCamera) {
             SingleTakeCameraViewControllerRepresentable(chatViewModel: chatViewModel)

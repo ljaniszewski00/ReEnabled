@@ -4,6 +4,7 @@ enum VoiceRequest {
     case settings(SettingsVoiceRequest)
     case onboarding(OnboardingVoiceRequest)
     case other(OtherVoiceRequest)
+    case empty
 }
 
 extension VoiceRequest: VoiceRequestRawRepresentable {
@@ -28,7 +29,15 @@ extension VoiceRequest: VoiceRequestRawRepresentable {
             return onboardingVoiceRequest.rawValue
         case .other(let otherVoiceRequest):
             return otherVoiceRequest.rawValue
+        case .empty:
+            return ""
         }
+    }
+}
+
+extension VoiceRequest: Equatable {
+    static func == (lhs: VoiceRequest, rhs: VoiceRequest) -> Bool {
+        lhs.rawValue == rhs.rawValue
     }
 }
 
