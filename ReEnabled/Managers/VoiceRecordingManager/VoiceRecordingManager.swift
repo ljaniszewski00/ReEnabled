@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class VoiceRecordingManager: ObservableObject {
+final class VoiceRecordingManager: ObservableObject {
     @Published var isRecording: Bool = false
     
     private var speechRecognizer: SpeechRecognizer = SpeechRecognizer(language: .polish)

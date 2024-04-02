@@ -2,22 +2,30 @@ import SwiftUI
 
 extension View {
     func onTwoTouchSwipe(direction: UISwipeGestureRecognizer.Direction,
+                         toExecuteBeforeSwipe: (() -> ())? = nil,
+                         toExecuteAfterSwipe: (() -> ())? = nil,
                          onSwipe: @escaping () -> ()) -> some View {
         self.modifier(
             MultipleTouchSwipeView(
                 numberOfTouchesRequired: 2,
                 direction: direction,
+                toExecuteBeforeSwipe: toExecuteBeforeSwipe,
+                toExecuteAfterSwipe: toExecuteAfterSwipe,
                 onSwipe: onSwipe
             )
         )
     }
     
     func onThreeTouchSwipe(direction: UISwipeGestureRecognizer.Direction,
+                           toExecuteBeforeSwipe: (() -> ())? = nil,
+                           toExecuteAfterSwipe: (() -> ())? = nil,
                            onSwipe: @escaping () -> ()) -> some View {
         self.modifier(
             MultipleTouchSwipeView(
                 numberOfTouchesRequired: 3,
                 direction: direction,
+                toExecuteBeforeSwipe: toExecuteBeforeSwipe,
+                toExecuteAfterSwipe: toExecuteAfterSwipe,
                 onSwipe: onSwipe
             )
         )
@@ -27,12 +35,16 @@ extension View {
 private struct MultipleTouchSwipeView: ViewModifier {
     let numberOfTouchesRequired: Int
     let direction: UISwipeGestureRecognizer.Direction
+    let toExecuteBeforeSwipe: (() -> ())?
+    let toExecuteAfterSwipe: (() -> ())?
     let onSwipe: () -> ()
     
     func body(content: Content) -> some View {
         content.background {
             SwipeableViewRepresentable(numberOfTouchesRequired: numberOfTouchesRequired,
-                                       direction: direction) { _ in
+                                       direction: direction,
+                                       toExecuteBeforeSwipe: toExecuteBeforeSwipe,
+                                       toExecuteAfterSwipe: toExecuteAfterSwipe) { _ in
                 onSwipe()
             }
         }
@@ -42,6 +54,8 @@ private struct MultipleTouchSwipeView: ViewModifier {
 private struct SwipeableViewRepresentable: UIViewRepresentable {
     let numberOfTouchesRequired: Int
     let direction: UISwipeGestureRecognizer.Direction
+    let toExecuteBeforeSwipe: (() -> ())?
+    let toExecuteAfterSwipe: (() -> ())?
     let onSwipe: (UISwipeGestureRecognizer) -> Void
 
     typealias UIViewType = UIView
@@ -65,14 +79,22 @@ private struct SwipeableViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: Context) {}
 
     class SwipeCoordinator {
+        let toExecuteBeforeSwipe: (() -> ())?
+        let toExecuteAfterSwipe: (() -> ())?
         let onSwipe: (UISwipeGestureRecognizer) -> Void
 
-        init(onSwipe: @escaping (UISwipeGestureRecognizer) -> Void) {
+        init(toExecuteBeforeSwipe: (() -> ())? = nil,
+             toExecuteAfterSwipe: (() -> ())? = nil,
+             onSwipe: @escaping (UISwipeGestureRecognizer) -> Void) {
+            self.toExecuteBeforeSwipe = toExecuteBeforeSwipe
+            self.toExecuteAfterSwipe = toExecuteAfterSwipe
             self.onSwipe = onSwipe
         }
 
         @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+            self.toExecuteBeforeSwipe?()
             self.onSwipe(sender)
+            self.toExecuteAfterSwipe?()
         }
     }
 }

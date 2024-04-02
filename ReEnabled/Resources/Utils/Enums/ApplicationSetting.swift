@@ -46,7 +46,7 @@ extension ApplicationSetting {
         case .documentScannerLanguage:
             return "Choose language in which documents you scan are written"
         case .flashlightTriggerMode:
-            return "Select value for which the flashlight will be triggered. The greater the value, the greater resiliance towards darkness"
+            return "Select value for which the flashlight will be triggered. When set to automatic, device will decide for itself, whereas all other values represent tolerance towards darkness - the higher tolerance, the more dark is needed to turn the flashlight on"
         case .speechSpeed:
             return "Select speed that should be applied for speech feedback"
         case .speechVoiceType:
