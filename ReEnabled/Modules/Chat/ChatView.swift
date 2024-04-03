@@ -50,6 +50,11 @@ struct ChatView: View {
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
+        .onTwoTouchSwipe(direction: .up, onSwipe: {
+            if !voiceRecordingChatManager.isRecordingChatMessage {
+                voiceRecordingManager.manageTalking()
+            }
+        })
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, toExecuteAfterEveryAction: {
@@ -61,7 +66,7 @@ struct ChatView: View {
                 voiceRecordingChatManager.manageTalking()
             }
         }, onLongPress: {
-            voiceRecordingManager.manageTalking()
+            
         }, onSwipeFromLeftToRight: {
             chatViewModel.changeCurrentConversationToNext()
         }, onSwipeFromRightToLeft: {
@@ -79,16 +84,11 @@ struct ChatView: View {
         }, onSwipeFromDownToUpAfterLongPress: {
             chatViewModel.selectPhoto()
         })
-        .onTwoTouchSwipe(direction: .up, onSwipe: {
-            voiceRecordingManager.manageTalking()
-        })
         .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-            if !voiceRecordingChatManager.isRecordingChatMessage {
-                voiceRequestor.getVoiceRequest(from: newTranscript)
-            }
+            voiceRequestor.getVoiceRequest(from: newTranscript)
         }
         .onChange(of: voiceRecordingChatManager.chatMessageTranscript) { _, newTranscript in
-            if !voiceRecordingManager.isRecording {
+            if !voiceRecordingChatManager.isRecording {
                 chatViewModel.manageAddingMessageWith(transcript: newTranscript)
             }
         }

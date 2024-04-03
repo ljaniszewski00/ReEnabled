@@ -40,7 +40,7 @@ private struct MultipleTouchSwipeView: ViewModifier {
     let onSwipe: () -> ()
     
     func body(content: Content) -> some View {
-        content.background {
+        content.overlay {
             SwipeableViewRepresentable(numberOfTouchesRequired: numberOfTouchesRequired,
                                        direction: direction,
                                        toExecuteBeforeSwipe: toExecuteBeforeSwipe,
