@@ -147,6 +147,17 @@
 		16C1076C2BBC894500797394 /* VoiceRecordingChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1076B2BBC894500797394 /* VoiceRecordingChatManager.swift */; };
 		16C1076E2BBC8DEC00797394 /* VoiceRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1076D2BBC8DEC00797394 /* VoiceRequestor.swift */; };
 		16C107702BBCA9A200797394 /* VoiceRequest+AllCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1076F2BBCA9A200797394 /* VoiceRequest+AllCases.swift */; };
+		16C107732BBDB4E700797394 /* SpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107722BBDB4E700797394 /* SpeechFeedback.swift */; };
+		16C107752BBDB4EF00797394 /* SpeechFeedback+AllCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107742BBDB4EF00797394 /* SpeechFeedback+AllCases.swift */; };
+		16C107792BBDB5D000797394 /* MainRecognizerSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107782BBDB5D000797394 /* MainRecognizerSpeechFeedback.swift */; };
+		16C1077E2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1077D2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift */; };
+		16C107802BBDB62300797394 /* ColorDetectorSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1077F2BBDB62300797394 /* ColorDetectorSpeechFeedback.swift */; };
+		16C107822BBDB62C00797394 /* LightDetectorSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107812BBDB62C00797394 /* LightDetectorSpeechFeedback.swift */; };
+		16C107862BBDB65400797394 /* ChatSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107852BBDB65400797394 /* ChatSpeechFeedback.swift */; };
+		16C107882BBDB65B00797394 /* SettingsSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107872BBDB65B00797394 /* SettingsSpeechFeedback.swift */; };
+		16C1078B2BBDB69600797394 /* OnboardingSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1078A2BBDB69600797394 /* OnboardingSpeechFeedback.swift */; };
+		16C1078E2BBDB6A800797394 /* OtherSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1078D2BBDB6A800797394 /* OtherSpeechFeedback.swift */; };
+		16C107902BBDBCE300797394 /* CameraSpeechFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1078F2BBDBCE300797394 /* CameraSpeechFeedback.swift */; };
 		16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */; };
 		16CF87772B74132000AD5ABC /* LightDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */; };
 		16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF87782B74132E00AD5ABC /* LightDetectorView.swift */; };
@@ -328,6 +339,17 @@
 		16C1076B2BBC894500797394 /* VoiceRecordingChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingChatManager.swift; sourceTree = "<group>"; };
 		16C1076D2BBC8DEC00797394 /* VoiceRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRequestor.swift; sourceTree = "<group>"; };
 		16C1076F2BBCA9A200797394 /* VoiceRequest+AllCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceRequest+AllCases.swift"; sourceTree = "<group>"; };
+		16C107722BBDB4E700797394 /* SpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechFeedback.swift; sourceTree = "<group>"; };
+		16C107742BBDB4EF00797394 /* SpeechFeedback+AllCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpeechFeedback+AllCases.swift"; sourceTree = "<group>"; };
+		16C107782BBDB5D000797394 /* MainRecognizerSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C1077D2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C1077F2BBDB62300797394 /* ColorDetectorSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C107812BBDB62C00797394 /* LightDetectorSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C107852BBDB65400797394 /* ChatSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C107872BBDB65B00797394 /* SettingsSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C1078A2BBDB69600797394 /* OnboardingSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C1078D2BBDB6A800797394 /* OtherSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSpeechFeedback.swift; sourceTree = "<group>"; };
+		16C1078F2BBDBCE300797394 /* CameraSpeechFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSpeechFeedback.swift; sourceTree = "<group>"; };
 		16CF87742B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		16CF87762B74132000AD5ABC /* LightDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewModel.swift; sourceTree = "<group>"; };
 		16CF87782B74132E00AD5ABC /* LightDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorView.swift; sourceTree = "<group>"; };
@@ -1327,6 +1349,96 @@
 			path = VoiceRecordingChatManager;
 			sourceTree = "<group>";
 		};
+		16C107712BBDB4B100797394 /* SpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C107762BBDB5A700797394 /* CameraSpeechFeedback */,
+				16C107832BBDB63300797394 /* ChatSpeechFeedback */,
+				16C107842BBDB63A00797394 /* SettingsSpeechFeedback */,
+				16C107892BBDB68C00797394 /* OnboardingSpeechFeedback */,
+				16C1078C2BBDB6A000797394 /* OtherSpeechFeedback */,
+				16C107722BBDB4E700797394 /* SpeechFeedback.swift */,
+				16C107742BBDB4EF00797394 /* SpeechFeedback+AllCases.swift */,
+			);
+			path = SpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C107762BBDB5A700797394 /* CameraSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C107772BBDB5BC00797394 /* MainRecognizerSpeechFeedback */,
+				16C1077A2BBDB5D600797394 /* DocumentScannerSpeechFeedback */,
+				16C1077B2BBDB5EC00797394 /* ColorDetectorSpeechFeedback */,
+				16C1077C2BBDB5F400797394 /* LightDetectorSpeechFeedback */,
+				16C1078F2BBDBCE300797394 /* CameraSpeechFeedback.swift */,
+			);
+			path = CameraSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C107772BBDB5BC00797394 /* MainRecognizerSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C107782BBDB5D000797394 /* MainRecognizerSpeechFeedback.swift */,
+			);
+			path = MainRecognizerSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C1077A2BBDB5D600797394 /* DocumentScannerSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C1077D2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift */,
+			);
+			path = DocumentScannerSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C1077B2BBDB5EC00797394 /* ColorDetectorSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C1077F2BBDB62300797394 /* ColorDetectorSpeechFeedback.swift */,
+			);
+			path = ColorDetectorSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C1077C2BBDB5F400797394 /* LightDetectorSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C107812BBDB62C00797394 /* LightDetectorSpeechFeedback.swift */,
+			);
+			path = LightDetectorSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C107832BBDB63300797394 /* ChatSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C107852BBDB65400797394 /* ChatSpeechFeedback.swift */,
+			);
+			path = ChatSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C107842BBDB63A00797394 /* SettingsSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C107872BBDB65B00797394 /* SettingsSpeechFeedback.swift */,
+			);
+			path = SettingsSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C107892BBDB68C00797394 /* OnboardingSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C1078A2BBDB69600797394 /* OnboardingSpeechFeedback.swift */,
+			);
+			path = OnboardingSpeechFeedback;
+			sourceTree = "<group>";
+		};
+		16C1078C2BBDB6A000797394 /* OtherSpeechFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				16C1078D2BBDB6A800797394 /* OtherSpeechFeedback.swift */,
+			);
+			path = OtherSpeechFeedback;
+			sourceTree = "<group>";
+		};
 		16E170062B6FDA4000F984FB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1346,6 +1458,7 @@
 		16E514082BB600670035B586 /* Speech */ = {
 			isa = PBXGroup;
 			children = (
+				16C107712BBDB4B100797394 /* SpeechFeedback */,
 				16E514092BB600730035B586 /* SpeechVoiceType.swift */,
 				16C107322BB9A39800797394 /* SpeechFeedbackGenerator.swift */,
 			);
@@ -1560,6 +1673,7 @@
 				1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
+				16C107882BBDB65B00797394 /* SettingsSpeechFeedback.swift in Sources */,
 				164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */,
 				16C1075B2BBC7C3300797394 /* SettingsVoiceRequest.swift in Sources */,
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
@@ -1582,12 +1696,15 @@
 				16E514072BB5FCCF0035B586 /* SettingsObject.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
+				16C1077E2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift in Sources */,
 				16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */,
 				16C1074A2BBAEBF300797394 /* AudioResource.swift in Sources */,
 				163EB03E2BB1F3240012FC89 /* HapticFeedbackType.swift in Sources */,
 				16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */,
+				16C107752BBDB4EF00797394 /* SpeechFeedback+AllCases.swift in Sources */,
 				16E5140D2BB600F80035B586 /* DistanceMeasureUnit.swift in Sources */,
 				164E112A2B46172F008EF153 /* Views.swift in Sources */,
+				16C107792BBDB5D000797394 /* MainRecognizerSpeechFeedback.swift in Sources */,
 				1629F9FA2BACF5FC00B89629 /* RepositoriesAssembly.swift in Sources */,
 				164668FE2B66DE010049AB03 /* CameraMode.swift in Sources */,
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
@@ -1601,13 +1718,16 @@
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
+				16C107802BBDB62300797394 /* ColorDetectorSpeechFeedback.swift in Sources */,
 				1629F9E42BAA0C2300B89629 /* AddGesturesActions.swift in Sources */,
+				16C107822BBDB62C00797394 /* LightDetectorSpeechFeedback.swift in Sources */,
 				16C1076E2BBC8DEC00797394 /* VoiceRequestor.swift in Sources */,
 				1629F9C52BA7672E00B89629 /* OpenAIModel.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */,
 				1629F9B12BA759A400B89629 /* APIEndpoint.swift in Sources */,
 				1629F9C82BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift in Sources */,
+				16C107732BBDB4E700797394 /* SpeechFeedback.swift in Sources */,
 				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				16C107652BBC832700797394 /* DocumentScannerVoiceRequest.swift in Sources */,
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
@@ -1646,6 +1766,7 @@
 				164669072B6856710049AB03 /* DocumentScannerViewControllerRepresentable.swift in Sources */,
 				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
 				16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */,
+				16C107902BBDBCE300797394 /* CameraSpeechFeedback.swift in Sources */,
 				1694F1882B98EF9400928103 /* MainRecognizerView.swift in Sources */,
 				164E11422B471D1A008EF153 /* TabBarStateManager.swift in Sources */,
 				16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */,
@@ -1678,9 +1799,11 @@
 				163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */,
 				16C1076C2BBC894500797394 /* VoiceRecordingChatManager.swift in Sources */,
 				162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */,
+				16C1078B2BBDB69600797394 /* OnboardingSpeechFeedback.swift in Sources */,
 				16C107332BB9A39800797394 /* SpeechFeedbackGenerator.swift in Sources */,
 				1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */,
 				1629F9E02BA8BD1400B89629 /* SingleTakeCameraManager.swift in Sources */,
+				16C1078E2BBDB6A800797394 /* OtherSpeechFeedback.swift in Sources */,
 				16C1074D2BBC79A400797394 /* VoiceRequest.swift in Sources */,
 				165117352B94F41D00779E89 /* SessionPreset.swift in Sources */,
 				16E5140A2BB600730035B586 /* SpeechVoiceType.swift in Sources */,
@@ -1692,6 +1815,7 @@
 				1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */,
 				16E514042BB5BDAB0035B586 /* SettingsViewModel.swift in Sources */,
 				16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */,
+				16C107862BBDB65400797394 /* ChatSpeechFeedback.swift in Sources */,
 				1629F9BA2BA7623300B89629 /* OpenAIChatCompletionsResponse.swift in Sources */,
 				163EB03A2BB052360012FC89 /* RealmObjectProtocol.swift in Sources */,
 				16F564B72B98ED0000A831F2 /* RoadLightsModel.swift in Sources */,

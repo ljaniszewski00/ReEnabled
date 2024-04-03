@@ -6,6 +6,8 @@ class TabBarStateManager: ObservableObject {
     @Published var tabBarSize: CGSize = .zero
     @Published var shouldAnimateChatTabIcon: Bool = false
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     private init() {}
     
     static var shared: TabBarStateManager = {
@@ -20,7 +22,9 @@ class TabBarStateManager: ObservableObject {
     }
     
     func changeTabSelectionTo(_ newTab: TabBarItem) {
-        self.tabSelection = newTab
+        if tabSelection != newTab {
+            self.tabSelection = newTab
+        }
     }
     
     func hideTabBar() {

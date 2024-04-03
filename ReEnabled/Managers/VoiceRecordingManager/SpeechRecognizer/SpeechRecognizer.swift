@@ -111,7 +111,7 @@ actor SpeechRecognizer: ObservableObject {
         request.shouldReportPartialResults = true
         
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.record, mode: .measurement, options: .interruptSpokenAudioAndMixWithOthers)
+        try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .defaultToSpeaker)
         try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         let inputNode = audioEngine.inputNode
         

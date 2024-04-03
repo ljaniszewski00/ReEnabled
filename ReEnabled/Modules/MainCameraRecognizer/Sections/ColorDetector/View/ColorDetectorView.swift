@@ -25,11 +25,14 @@ struct ColorDetectorView: View {
                 }
             }
         }
+        .onTwoTouchSwipe(direction: .up, onSwipe: {
+            voiceRecordingManager.manageTalking()
+        })
         .addGesturesActions(toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
             if let colorName = colorDetectorViewModel.detectedColorName {
-                feedbackManager.generateSpeechFeedback(text: colorName)
+                feedbackManager.generateSpeechFeedback(with: colorName)
             }
         }, onSwipeFromLeftToRight: {
             mainCameraRecognizerViewModel.changeToNextCameraMode()

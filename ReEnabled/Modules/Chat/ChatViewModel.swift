@@ -7,6 +7,8 @@ final class ChatViewModel: ObservableObject {
     @Inject private var openAIManager: OpenAIManaging
     @Inject private var conversationsRepository: ConversationsRepositoryProtocol
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     @Published var currentConversation: Conversation?
     @Published var conversations: [Conversation] = []
     
@@ -15,7 +17,7 @@ final class ChatViewModel: ObservableObject {
     
     @Published var selectedImage: UIImage?
     
-    private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
+    var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     func getConversations(from conversationsObjects: Results<ConversationObject>) {
         let fetchedConversations: [Conversation] = conversationsRepository.getConversations(from: conversationsObjects)
@@ -90,11 +92,28 @@ final class ChatViewModel: ObservableObject {
                     
                     if let currentConversationIndex = self.conversations.firstIndex(of: currentConversation) {
                         self.conversations.remove(at: currentConversationIndex)
+                        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.chat(.conversationDeleted).rawValue)
                     }
                     
                     self.addNewConversation()
                 }
                 .store(in: &cancelBag)
+        }
+    }
+    
+    func deleteAllConversations() -> AnyPublisher<Void, Never> {
+        conversationsRepository.deleteAllConversations()
+            .replaceError(with: ())
+            .eraseToAnyPublisher()
+    }
+    
+    func readConversation() {
+        guard let currentConversation = currentConversation else {
+            return
+        }
+        
+        if !currentConversation.transcriptText.isEmpty {
+            feedbackManager.generateSpeechFeedback(with: currentConversation.transcriptText)
         }
     }
     
@@ -140,12 +159,15 @@ final class ChatViewModel: ObservableObject {
             .sink { [weak self] _ in
                 self?.speechRecordingBlocked = false
             } receiveValue: { [weak self] response in
-                guard let response = response else {
+                guard let self = self,
+                      let response = response else {
                     return
                 }
                 
                 let message = Message(content: response, sentByUser: false)
-                self?.addMessageToCurrentConversation(message)
+                self.feedbackManager.generateSpeechFeedback(with: SpeechFeedback.chat(.thisIsTheResponse),
+                                                            and: message.content)
+                self.addMessageToCurrentConversation(message)
             }
             .store(in: &cancelBag)
     }
@@ -169,6 +191,8 @@ final class ChatViewModel: ObservableObject {
                 
                 let message = Message(content: response, sentByUser: false)
                 self.addMessageToCurrentConversation(message)
+                self.feedbackManager.generateSpeechFeedback(with: SpeechFeedback.chat(.thisIsTheResponse),
+                                                            and: message.content)
                 self.selectedImage = nil
             }
             .store(in: &cancelBag)

@@ -40,6 +40,9 @@ struct MainRecognizerView: View {
             }
             .padding(.bottom, Views.Constants.recognitionsBottomPadding)
         }
+        .onTwoTouchSwipe(direction: .up, onSwipe: {
+            voiceRecordingManager.manageTalking()
+        })
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

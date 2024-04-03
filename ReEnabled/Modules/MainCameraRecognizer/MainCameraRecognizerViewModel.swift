@@ -7,6 +7,8 @@ class MainCameraRecognizerViewModel: ObservableObject {
     @Published var cameraMode: CameraMode = .mainRecognizer
     @Published var cameraModeNameVisible: Bool = true
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     init() {
         self.defaultCameraMode = settingsProvider.cameraMode
         self.cameraMode = self.defaultCameraMode
@@ -19,6 +21,8 @@ class MainCameraRecognizerViewModel: ObservableObject {
         previousIndex : CameraMode.allCases.count - 1
         cameraMode = CameraMode.allCases[previousIndex]
         onNewCameraModeAppear()
+        feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.cameraModeHasBeenSetTo)),
+                                               and: cameraMode.rawValue)
     }
     
     func changeToNextCameraMode() {
@@ -27,6 +31,8 @@ class MainCameraRecognizerViewModel: ObservableObject {
         nextIndex = CameraMode.allCases.indices.contains(nextIndex) ? nextIndex : 0
         cameraMode = CameraMode.allCases[nextIndex]
         onNewCameraModeAppear()
+        feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.cameraModeHasBeenSetTo)),
+                                               and: cameraMode.rawValue)
     }
     
     func onNewCameraModeAppear() {

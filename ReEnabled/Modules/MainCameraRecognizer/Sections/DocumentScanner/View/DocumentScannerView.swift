@@ -9,6 +9,9 @@ struct DocumentScannerView: View {
     
     var body: some View {
         DocumentScannerViewControllerRepresentable()
+            .onTwoTouchSwipe(direction: .up, onSwipe: {
+                voiceRecordingManager.manageTalking()
+            })
             .addGesturesActions(toExecuteBeforeEveryAction: {
             }, toExecuteAfterEveryAction: {
                 feedbackManager.generateHapticFeedbackForSwipeAction()

@@ -39,6 +39,9 @@ struct LightDetectorView: View {
                 lightDetectorViewModel.stopSound()
             }
         }
+        .onTwoTouchSwipe(direction: .up, onSwipe: {
+            voiceRecordingManager.manageTalking()
+        })
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

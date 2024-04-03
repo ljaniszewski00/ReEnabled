@@ -27,6 +27,23 @@ extension Conversation {
     var messagesCount: Int {
         messages.count
     }
+    
+    var transcriptText: String {
+        var text: String = ""
+        
+        for message in self.messages {
+            text += "\n"
+            text += message.sentByUser ? "User" : "Device"
+            text += " "
+            text += message.hourSent.description
+            text += " "
+            text += message.content
+            text += "\n"
+            text += "\n"
+        }
+        
+        return text
+    }
 }
 
 extension Conversation {

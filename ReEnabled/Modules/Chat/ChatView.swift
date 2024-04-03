@@ -50,11 +50,7 @@ struct ChatView: View {
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
-        .onTwoTouchSwipe(direction: .up, onSwipe: {
-            if !voiceRecordingChatManager.isRecordingChatMessage {
-                voiceRecordingManager.manageTalking()
-            }
-        })
+        
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, toExecuteAfterEveryAction: {
@@ -66,7 +62,7 @@ struct ChatView: View {
                 voiceRecordingChatManager.manageTalking()
             }
         }, onLongPress: {
-            
+            chatViewModel.readConversation()
         }, onSwipeFromLeftToRight: {
             chatViewModel.changeCurrentConversationToNext()
         }, onSwipeFromRightToLeft: {
@@ -84,11 +80,8 @@ struct ChatView: View {
         }, onSwipeFromDownToUpAfterLongPress: {
             chatViewModel.selectPhoto()
         })
-        .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-            voiceRequestor.getVoiceRequest(from: newTranscript)
-        }
         .onChange(of: voiceRecordingChatManager.chatMessageTranscript) { _, newTranscript in
-            if !voiceRecordingChatManager.isRecording {
+            if !voiceRecordingChatManager.isRecordingChatMessage {
                 chatViewModel.manageAddingMessageWith(transcript: newTranscript)
             }
         }
@@ -109,15 +102,18 @@ struct ChatView: View {
                     voiceRecordingChatManager.manageTalking()
                 }
             case .chat(.describePhoto):
-                return
+                chatViewModel.selectPhoto()
             case .chat(.readConversation):
-                return
-            case .chat(.saveCurrentConversation):
-                return
+                chatViewModel.readConversation()
             case .chat(.deleteCurrentConversation):
-                return
+                chatViewModel.deleteCurrentConversation()
             case .chat(.deleteAllConversations):
-                return
+                chatViewModel.deleteAllConversations()
+                    .sink { _ in
+                    } receiveValue: { _ in
+                        feedbackManager.generateSpeechFeedback(with: .chat(.allConversationsDeleted))
+                    }
+                    .store(in: &chatViewModel.cancelBag)
             default:
                 return
             }
@@ -126,8 +122,6 @@ struct ChatView: View {
             SingleTakeCameraViewControllerRepresentable(chatViewModel: chatViewModel)
         }
     }
-    
-    
 }
 
 #Preview {

@@ -39,7 +39,7 @@ final class SettingsViewModel: ObservableObject {
         "Slowest"
     ]
     
-    private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
+    var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     func getSettings(from settingsObjects: Results<SettingsObject>) {
         let fetchedSettings: SettingsModel? = settingsRepository.getSettings(from: settingsObjects)
@@ -53,16 +53,22 @@ final class SettingsViewModel: ObservableObject {
     
     func changeDefaultCameraMode(to newCameraMode: CameraMode) {
         currentSettings?.defaultCameraMode = newCameraMode
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.defaultCameraModeHasBeenSetTo),
+                                               and: newCameraMode.rawValue)
         saveSettings()
     }
     
     func changeDefaultDistanceMeasureUnit(to newUnit: DistanceMeasureUnit) {
         currentSettings?.defaultDistanceMeasureUnit = newUnit
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.defaultMeasureUnitHasBeenSetTo),
+                                               and: newUnit.rawValue)
         saveSettings()
     }
     
     func changeDocumentScannerLanguage(to newDocumentScannerLanguage: SupportedLanguage) {
         currentSettings?.documentScannerLanguage = newDocumentScannerLanguage
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.scannerLanguageHasBeenSetTo),
+                                               and: newDocumentScannerLanguage.fullName)
         saveSettings()
     }
     
@@ -70,6 +76,7 @@ final class SettingsViewModel: ObservableObject {
         switch newFlashlightTriggerMode {
         case .automatic:
             currentSettings?.flashlightTriggerLightValue = nil
+            
         case .specificLightValue(let lightValue):
             currentSettings?.flashlightTriggerLightValue = lightValue
         }
@@ -104,11 +111,15 @@ final class SettingsViewModel: ObservableObject {
     
     func changeVoiceRecordingLanguage(to newVoiceRecordingLanguage: SupportedLanguage) {
         currentSettings?.voiceRecordingLanguage = newVoiceRecordingLanguage
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.voiceRecordingLanguageHasBeenSetTo),
+                                               and: newVoiceRecordingLanguage.rawValue)
         saveSettings()
     }
     
     func changeSubscriptionPlan(to newSubscriptionPlan: SubscriptionPlan) {
         currentSettings?.subscriptionPlan = newSubscriptionPlan
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.subscriptionPlanHasBeenChangedTo),
+                                               and: newSubscriptionPlan.rawValue)
         saveSettings()
     }
     
