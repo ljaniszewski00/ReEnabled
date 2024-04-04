@@ -16,7 +16,7 @@ final class AudioPlayerManager: AudioPlayerManaging {
         do {
             try AVAudioSession.sharedInstance().setCategory(
                 AVAudioSession.Category.playback,
-                options: AVAudioSession.CategoryOptions.duckOthers
+                options: AVAudioSession.CategoryOptions.mixWithOthers
             )
             
             try AVAudioSession.sharedInstance().setActive(true)

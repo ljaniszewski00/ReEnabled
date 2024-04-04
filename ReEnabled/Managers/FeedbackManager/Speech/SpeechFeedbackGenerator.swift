@@ -13,8 +13,7 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         return settingsProvider.speechVoiceType.getVoiceIdentifier(for: speechLanguage)
     }
     
-    private let speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
-    
+    private var speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     private var speechVoice: AVSpeechSynthesisVoice? {
         guard let currentSpeechVoiceIdentifier = currentSpeechVoiceIdentifier else {
             return nil
@@ -24,7 +23,13 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
     }
     
     func generate(for text: String) {
-        if speechSynthesizer.isSpeaking {
+        guard !speechSynthesizer.isSpeaking else {
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+        } catch {
             return
         }
         
@@ -32,11 +37,11 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         utterance.voice = self.speechVoice
         utterance.rate = settingsProvider.speechSpeed
         
-        self.speechSynthesizer.speak(utterance)
+        speechSynthesizer.speak(utterance)
     }
     
     func generateSample() {
-        var sampleText: String = settingsProvider.speechLanguage.getSpeechVoiceSampleText(voiceName: currentSpeechVoiceName)
+        let sampleText: String = settingsProvider.speechLanguage.getSpeechVoiceSampleText(voiceName: currentSpeechVoiceName)
         generate(for: sampleText)
     }
 }
