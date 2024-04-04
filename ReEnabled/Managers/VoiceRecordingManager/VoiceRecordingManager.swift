@@ -19,27 +19,19 @@ final class VoiceRecordingManager: ObservableObject {
     
     @MainActor
     func manageTalking() {
-        print("Voice Recording Manager Manage Talking")
-        if isRecording {
-            stopTranscribing()
-        } else {
-            startTranscribing()
-        }
+        isRecording ? stopTranscribing() : startTranscribing()
     }
     
     @MainActor 
     private func startTranscribing() {
         speechRecognizer.transcript.removeAll()
         isRecording = true
-        print("Voice Recording Manager Start Transcribing")
         speechRecognizer.startTranscribing()
-        
     }
     
     @MainActor 
     private func stopTranscribing() {
         speechRecognizer.stopTranscribing()
-        print("Voice Recording Manager Stop Transcribing")
         isRecording = false
     }
 }

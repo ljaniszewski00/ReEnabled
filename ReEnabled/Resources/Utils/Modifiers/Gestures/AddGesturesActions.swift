@@ -5,6 +5,7 @@ extension View {
                             toExecuteAfterEveryAction: (() -> ())? = nil,
                             onTap: (() -> ())? = nil,
                             onDoubleTap: (() -> ())? = nil,
+                            onTrippleTap: (() -> ())? = nil,
                             onLongPress: (() -> ())? = nil,
                             onSwipeFromLeftToRight: (() -> ())? = nil,
                             onSwipeFromRightToLeft: (() -> ())? = nil,
@@ -18,6 +19,7 @@ extension View {
                                    toExecuteAfterEveryAction: toExecuteAfterEveryAction,
                                    onTap: onTap,
                                    onDoubleTap: onDoubleTap,
+                                   onTrippleTap: onTrippleTap,
                                    onLongPress: onLongPress,
                                    onSwipeFromLeftToRight: onSwipeFromLeftToRight,
                                    onSwipeFromRightToLeft: onSwipeFromRightToLeft,
@@ -35,6 +37,7 @@ private struct GestureActionView: ViewModifier {
     let toExecuteAfterEveryAction: (() -> ())?
     let onTap: (() -> ())?
     let onDoubleTap: (() -> ())?
+    let onTrippleTap: (() -> ())?
     let onLongPress: (() -> ())?
     let onSwipeFromLeftToRight: (() -> ())?
     let onSwipeFromRightToLeft: (() -> ())?
@@ -63,6 +66,17 @@ private struct GestureActionView: ViewModifier {
                     if let onDoubleTap = onDoubleTap {
                         toExecuteBeforeEveryAction?()
                         onDoubleTap()
+                        toExecuteAfterEveryAction?()
+                    }
+                }
+            }
+        
+        let trippleTapGesture = TapGesture(count: 3)
+            .onEnded {
+                withAnimation {
+                    if let onTrippleTap = onTrippleTap {
+                        toExecuteBeforeEveryAction?()
+                        onTrippleTap()
                         toExecuteAfterEveryAction?()
                     }
                 }
@@ -164,6 +178,7 @@ private struct GestureActionView: ViewModifier {
         
         // Order matters!
         content
+            .gesture(trippleTapGesture)
             .gesture(doubleTapGesture)
             .gesture(tapGesture)
             .gesture(sequenceGesture)

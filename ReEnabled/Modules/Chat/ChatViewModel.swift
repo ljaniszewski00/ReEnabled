@@ -92,7 +92,7 @@ final class ChatViewModel: ObservableObject {
                     
                     if let currentConversationIndex = self.conversations.firstIndex(of: currentConversation) {
                         self.conversations.remove(at: currentConversationIndex)
-                        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.chat(.conversationDeleted).rawValue)
+                        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.chat(.conversationDeleted))
                     }
                     
                     self.addNewConversation()
@@ -150,6 +150,22 @@ final class ChatViewModel: ObservableObject {
         addMessageToCurrentConversation(message)
         
         generateImageResponse(for: transcript)
+    }
+    
+    func addNewMessageWithImageOnVoiceCommand(messageContent: String = "Describe the photo") {
+        selectPhoto()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let self = self,
+                  let selectedImage = selectedImage else {
+                return
+            }
+            
+            let message: Message = Message(content: messageContent, imageContent: selectedImage, sentByUser: true)
+            addMessageToCurrentConversation(message)
+            
+            generateImageResponse(for: messageContent)
+        }
     }
     
     private func generateResponse(for query: String) {

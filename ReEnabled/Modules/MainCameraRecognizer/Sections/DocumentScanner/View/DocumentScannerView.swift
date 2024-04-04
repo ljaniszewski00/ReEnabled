@@ -17,6 +17,8 @@ struct DocumentScannerView: View {
                 feedbackManager.generateHapticFeedbackForSwipeAction()
             }, onTap: {
             }, onDoubleTap: {
+            }, onTrippleTap: {
+                voiceRecordingManager.manageTalking()
             }, onLongPress: {
             }, onSwipeFromLeftToRight: {
                 mainCameraRecognizerViewModel.changeToNextCameraMode()

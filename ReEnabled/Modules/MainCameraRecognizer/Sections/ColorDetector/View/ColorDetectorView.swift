@@ -34,6 +34,8 @@ struct ColorDetectorView: View {
             if let colorName = colorDetectorViewModel.detectedColorName {
                 feedbackManager.generateSpeechFeedback(with: colorName)
             }
+        }, onTrippleTap: {
+            voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {
             mainCameraRecognizerViewModel.changeToNextCameraMode()
         }, onSwipeFromRightToLeft: {

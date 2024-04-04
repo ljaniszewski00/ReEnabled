@@ -4,6 +4,7 @@ import UIKit
 class SingleTakeCameraViewController: UIViewController {
     private var singleTakeCameraManager: SingleTakeCameraManager = SingleTakeCameraManager()
     private var chatViewModel: ChatViewModel?
+    private var feedbackManager: FeedbackManager = .shared
 
     private var screenRect: CGRect = UIScreen.main.bounds
     private var previewLayer = AVCaptureVideoPreviewLayer()
@@ -47,7 +48,11 @@ class SingleTakeCameraViewController: UIViewController {
             self.view.layer.addSublayer(self.previewLayer)
             
             self.captureImage { [weak self] image in
-                self?.chatViewModel?.selectedImage = image
+                if let image = image {
+                    self?.chatViewModel?.selectedImage = image
+                    self?.feedbackManager.generateSpeechFeedback(with: .chat(.photoUploaded))
+                }
+                
                 self?.chatViewModel?.showCamera = false
             }
         }

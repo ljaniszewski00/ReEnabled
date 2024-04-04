@@ -29,18 +29,15 @@ final class FeedbackManager: ObservableObject {
     @Inject var speechFeedbackGenerator: SpeechFeedbackGenerating
     
     func generateSpeechFeedback(with text: String) {
-        print(text)
         speechFeedbackGenerator.generate(for: text)
     }
     
     func generateSpeechFeedback(with speechFeedbackText: SpeechFeedback) {
-        print(speechFeedbackText.rawValue)
         speechFeedbackGenerator.generate(for: speechFeedbackText.rawValue)
     }
     
     func generateSpeechFeedback(with speechFeedback: SpeechFeedback, and text: String) {
         let speechText: String = "\(speechFeedback.rawValue)\n\(text)"
-        print(speechText)
         speechFeedbackGenerator.generate(for: speechText)
     }
     

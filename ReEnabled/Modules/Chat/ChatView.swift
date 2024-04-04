@@ -50,7 +50,6 @@ struct ChatView: View {
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
-        
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, toExecuteAfterEveryAction: {
@@ -60,6 +59,10 @@ struct ChatView: View {
         }, onDoubleTap: {
             if !chatViewModel.speechRecordingBlocked {
                 voiceRecordingChatManager.manageTalking()
+            }
+        }, onTrippleTap: {
+            if !voiceRecordingChatManager.isRecordingChatMessage {
+                voiceRecordingManager.manageTalking()
             }
         }, onLongPress: {
             chatViewModel.readConversation()
@@ -80,6 +83,9 @@ struct ChatView: View {
         }, onSwipeFromDownToUpAfterLongPress: {
             chatViewModel.selectPhoto()
         })
+        .onChange(of: conversationsObjects) { _, updatedConversationsObjects in
+            chatViewModel.getConversations(from: updatedConversationsObjects)
+        }
         .onChange(of: voiceRecordingChatManager.chatMessageTranscript) { _, newTranscript in
             if !voiceRecordingChatManager.isRecordingChatMessage {
                 chatViewModel.manageAddingMessageWith(transcript: newTranscript)
@@ -88,8 +94,8 @@ struct ChatView: View {
         .onChange(of: voiceRecordingChatManager.isRecordingChatMessage) { _, isRecording in
             tabBarStateManager.shouldAnimateChatTabIcon = isRecording
         }
-        .onChange(of: conversationsObjects) { _, updatedConversationsObjects in
-            chatViewModel.getConversations(from: updatedConversationsObjects)
+        .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
+            voiceRequestor.getVoiceRequest(from: newTranscript)
         }
         .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
             guard voiceRequest != VoiceRequest.empty else {
@@ -102,7 +108,7 @@ struct ChatView: View {
                     voiceRecordingChatManager.manageTalking()
                 }
             case .chat(.describePhoto):
-                chatViewModel.selectPhoto()
+                chatViewModel.addNewMessageWithImageOnVoiceCommand()
             case .chat(.readConversation):
                 chatViewModel.readConversation()
             case .chat(.deleteCurrentConversation):

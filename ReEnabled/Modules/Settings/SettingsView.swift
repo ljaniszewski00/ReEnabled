@@ -37,6 +37,8 @@ struct SettingsView: View {
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, onTrippleTap: {
+            voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRightAfterLongPress: {
             tabBarStateManager.changeTabSelectionTo(.camera)
         }, onSwipeFromRightToLeftAfterLongPress: {

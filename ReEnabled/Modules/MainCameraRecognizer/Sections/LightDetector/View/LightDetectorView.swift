@@ -47,6 +47,8 @@ struct LightDetectorView: View {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
         }, onDoubleTap: {
+        }, onTrippleTap: {
+            voiceRecordingManager.manageTalking()
         }, onLongPress: {
         }, onSwipeFromLeftToRight: {
             mainCameraRecognizerViewModel.changeToNextCameraMode()
