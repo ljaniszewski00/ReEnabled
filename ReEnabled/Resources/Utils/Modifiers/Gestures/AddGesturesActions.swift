@@ -60,25 +60,19 @@ private struct GestureActionView: ViewModifier {
                 }
             }
         
-        let doubleTapGesture = TapGesture(count: 2)
-            .onEnded {
+        let multiTapGestures = SimultaneousGesture(TapGesture(count: 2), TapGesture(count: 3))
+            .onEnded { gestureValue in
                 withAnimation {
-                    if let onDoubleTap = onDoubleTap {
-                        toExecuteBeforeEveryAction?()
+                    toExecuteBeforeEveryAction?()
+                    if gestureValue.first != nil,
+                       let onDoubleTap = onDoubleTap {
                         onDoubleTap()
-                        toExecuteAfterEveryAction?()
                     }
-                }
-            }
-        
-        let trippleTapGesture = TapGesture(count: 3)
-            .onEnded {
-                withAnimation {
-                    if let onTrippleTap = onTrippleTap {
-                        toExecuteBeforeEveryAction?()
+                    if gestureValue.second != nil,
+                       let onTrippleTap = onTrippleTap {
                         onTrippleTap()
-                        toExecuteAfterEveryAction?()
                     }
+                    toExecuteAfterEveryAction?()
                 }
             }
         
@@ -174,14 +168,13 @@ private struct GestureActionView: ViewModifier {
                 }
             }
         
-        let sequenceGesture = SequenceGesture(longPressGestureToDrag, swipeAfterLongPressGesture)
+        let swipeAfterLongPressSequenceGesture = SequenceGesture(longPressGestureToDrag, swipeAfterLongPressGesture)
         
         // Order matters!
         content
-            .gesture(trippleTapGesture)
-            .gesture(doubleTapGesture)
+            .gesture(multiTapGestures)
             .gesture(tapGesture)
-            .gesture(sequenceGesture)
+            .gesture(swipeAfterLongPressSequenceGesture)
             .gesture(longPressGesture)
             .gesture(swipeGesture)
     }

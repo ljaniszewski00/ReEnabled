@@ -1,20 +1,59 @@
+import Combine
 import Foundation
+import SwiftUI
 import UIKit
 
 final class VoiceRecordingManager: ObservableObject {
+    @Inject private var settingsProvider: SettingsProvider
+    
     @Published var isRecording: Bool = false
+    @Published var shouldDisplayVoiceCommandPreviewView: Bool = false
     
-    private var speechRecognizer: SpeechRecognizer = SpeechRecognizer(language: .english)
+    private var speechRecognizer: SpeechRecognizer?
     
-    private init() {}
+    private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
+    
+    private init() {
+        speechRecognizer = SpeechRecognizer(
+            language: settingsProvider.voiceRecordingLanguage
+        )
+        
+        observeVoiceRecordingLanguageChanges()
+    }
+    
+    private func observeVoiceRecordingLanguageChanges() {
+        settingsProvider.$currentSettings
+            .sink { [weak self] newSettings in
+                guard let self = self else { return }
+                
+                Task { [self] in
+                    await self.speechRecognizer?.changeLanguage(to: newSettings.voiceRecordingLanguage)
+                }
+            }
+            .store(in: &cancelBag)
+    }
     
     static let shared: VoiceRecordingManager = {
         VoiceRecordingManager()
     }()
     
+    func enableVoiceCommandPreviewView() {
+        withAnimation {
+            shouldDisplayVoiceCommandPreviewView = true
+        }
+    }
+    
+    func disableVoiceCommandPreviewView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            withAnimation {
+                self?.shouldDisplayVoiceCommandPreviewView = false
+            }
+        }
+    }
+    
     @MainActor
     var transcript: String {
-        speechRecognizer.transcript
+        speechRecognizer?.transcript ?? ""
     }
     
     @MainActor
@@ -24,14 +63,14 @@ final class VoiceRecordingManager: ObservableObject {
     
     @MainActor 
     private func startTranscribing() {
-        speechRecognizer.transcript.removeAll()
+        speechRecognizer?.transcript.removeAll()
         isRecording = true
-        speechRecognizer.startTranscribing()
+        speechRecognizer?.startTranscribing()
     }
     
     @MainActor 
     private func stopTranscribing() {
-        speechRecognizer.stopTranscribing()
+        speechRecognizer?.stopTranscribing()
         isRecording = false
     }
 }

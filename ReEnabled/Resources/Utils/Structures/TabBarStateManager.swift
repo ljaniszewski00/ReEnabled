@@ -6,8 +6,6 @@ class TabBarStateManager: ObservableObject {
     @Published var tabBarSize: CGSize = .zero
     @Published var shouldAnimateChatTabIcon: Bool = false
     
-    private var feedbackManager: FeedbackManager = .shared
-    
     private init() {}
     
     static var shared: TabBarStateManager = {

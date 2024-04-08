@@ -39,7 +39,8 @@ struct ChatView: View {
                     }
                     .padding()
                     .if(chatViewModel.selectedImage == nil) {
-                        $0.padding(.bottom)
+                        $0.padding(.bottom, 
+                                   tabBarStateManager.tabBarSize.height * Views.Constants.messageListBottomPaddingMultiplier)
                     }
                 }
                 
@@ -167,6 +168,7 @@ private extension Views {
         static let toBeSendRemoveButtonImageHeight: CGFloat = 16
         static let toBeSendBottomPadding: CGFloat = scrollViewBottomPadding * 2
         
+        static let messageListBottomPaddingMultiplier: CGFloat = 2.3
         static let scrollViewBottomPadding: CGFloat = 35
         
         static let navigationTitle: String = "Chat"

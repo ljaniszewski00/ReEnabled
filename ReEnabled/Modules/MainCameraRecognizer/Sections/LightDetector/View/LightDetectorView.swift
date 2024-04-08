@@ -26,7 +26,9 @@ struct LightDetectorView: View {
             }
         }
         .onAppear {
-            lightDetectorViewModel.playSound()
+            if tabBarStateManager.tabSelection == .camera {
+                lightDetectorViewModel.playSound()
+            }
         }
         .onDisappear {
             lightDetectorViewModel.stopSound()
@@ -37,6 +39,10 @@ struct LightDetectorView: View {
         .onChange(of: tabBarStateManager.tabSelection) { oldTab, newTab in
             if oldTab == .camera && newTab != .camera {
                 lightDetectorViewModel.stopSound()
+            } 
+            
+            if newTab == .camera {
+                lightDetectorViewModel.playSound()
             }
         }
         .onTwoTouchSwipe(direction: .up, onSwipe: {

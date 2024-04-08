@@ -3,6 +3,8 @@ import Foundation
 class VoiceRequestor: ObservableObject {
     @Published var selectedVoiceRequest: VoiceRequest = .empty
     
+    private let stringSimilarityLevelRequired: Double = 80.0
+    
     static let shared: VoiceRequestor = {
        VoiceRequestor()
     }()
@@ -15,7 +17,7 @@ class VoiceRequestor: ObservableObject {
         
         for voiceRequest in VoiceRequest.allCases {
             let stringSimilarityPercentage = stringSimilarityPercentage(transcript, voiceRequest.rawValue)
-            if stringSimilarityPercentage > 90 && stringSimilarityPercentage > similarityChoosen {
+            if stringSimilarityPercentage > stringSimilarityLevelRequired && stringSimilarityPercentage > similarityChoosen {
                 voiceRequestChoosen = voiceRequest
                 similarityChoosen = stringSimilarityPercentage
             }

@@ -25,7 +25,7 @@ actor SpeechRecognizer: ObservableObject {
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
-    private let recognizer: SFSpeechRecognizer?
+    private var recognizer: SFSpeechRecognizer?
     
     /**
      Initializes a new speech recognizer. If this is the first time you've used the class, it
@@ -49,6 +49,14 @@ actor SpeechRecognizer: ObservableObject {
             } catch {
                 transcribe(error)
             }
+        }
+    }
+    
+    func changeLanguage(to newLanguage: SupportedLanguage) {
+        recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: newLanguage.identifier))
+        guard recognizer != nil else {
+            transcribe(RecognizerError.nilRecognizer)
+            return
         }
     }
     
@@ -102,6 +110,17 @@ actor SpeechRecognizer: ObservableObject {
         audioEngine = nil
         request = nil
         task = nil
+        
+        deactivateAudioSession()
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     private static func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
@@ -111,8 +130,14 @@ actor SpeechRecognizer: ObservableObject {
         request.shouldReportPartialResults = true
         
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.playAndRecord, mode: .measurement, options: .defaultToSpeaker)
-        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .voicePrompt, options: .defaultToSpeaker)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         let inputNode = audioEngine.inputNode
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
@@ -146,14 +171,10 @@ actor SpeechRecognizer: ObservableObject {
     }
     
     nonisolated private func transcribe(_ error: Error) {
-        var errorMessage = ""
         if let error = error as? RecognizerError {
-            errorMessage += error.message
+            print(error.message)
         } else {
-            errorMessage += error.localizedDescription
-        }
-        Task { @MainActor [errorMessage] in
-            transcript = "<< \(errorMessage) >>"
+            print(error.localizedDescription)
         }
     }
 }
