@@ -12,8 +12,8 @@ final class SettingsViewModel: ObservableObject {
     @Published var currentSettings: SettingsModel?
     
     let availableFlashlightTriggerValues: [String: Float] = [
-        "Highest Tolerance": 5.0,
-        "Medium Tolerance": 30.0,
+        "Highest Tolerance": 2.0,
+        "Medium Tolerance": 15.0,
         "Lowest Tolerance": 50.0
     ]
     

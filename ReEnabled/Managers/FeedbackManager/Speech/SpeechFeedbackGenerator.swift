@@ -28,7 +28,8 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         }
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playback, mode: .default)
         } catch {
             return
         }

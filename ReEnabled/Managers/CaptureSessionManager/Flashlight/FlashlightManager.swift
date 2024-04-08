@@ -3,6 +3,8 @@ import Foundation
 import SwiftUI
 
 final class FlashlightManager: FlashlightManaging {
+    @Inject private var settingsProvider: SettingsProvider
+    
     func manageFlashlight(for sampleBuffer: CMSampleBuffer?,
                           and captureDevice: AVCaptureDevice?,
                           force torchMode: AVCaptureDevice.TorchMode? = nil) {
@@ -16,10 +18,15 @@ final class FlashlightManager: FlashlightManaging {
             return
         }
         
-        if luminosity < 1.6 {
-            setTorchMode(.on, for: captureDevice)
-        } else {
-            setTorchMode(.off, for: captureDevice)
+        switch settingsProvider.flashlightTriggerMode {
+        case .automatic:
+            setTorchMode(.auto, for: captureDevice)
+        case .specificLightValue(let lightValue):
+            if Float(luminosity) < lightValue {
+                setTorchMode(.on, for: captureDevice)
+            } else {
+                setTorchMode(.off, for: captureDevice)
+            }
         }
     }
     

@@ -29,7 +29,6 @@ struct ContentView: View {
                 feedbackManager.generateSpeechFeedback(with: newTab.title)
             }
             .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-                print(newTranscript)
                 voiceRequestor.getVoiceRequest(from: newTranscript)
             }
             .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
