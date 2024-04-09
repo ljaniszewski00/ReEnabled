@@ -7,9 +7,6 @@ enum SettingsVoiceRequest: String {
     case changeDefaultDistanceMeasureUnitToCentimeters = "Change default measure unit to centimeters"
     case changeDefaultDistanceMeasureUnitToMeters = "Change default measure unit to meters"
     
-    case changeScannerLanguageToEnglish = "Change scanner language to english"
-    case changeScannerLanguageToPolish = "Change scanner language to polish"
-    
     case changeFlashlightTriggerModeToAutomatic = "Change flashlight trigger mode to automatic"
     case changeFlashlightTriggerModeToManualWithHighTolerance = "Change flashlight trigger mode to manual with high tolerance"
     case changeFlashlightTriggerModeToManualWithMediumTolerance = "Change flashlight trigger mode to manual with medium tolerance"

@@ -17,8 +17,6 @@ extension VoiceRequest: CaseIterable {
         .settings(.changeDefaultCameraModeToLightDetector),
         .settings(.changeDefaultDistanceMeasureUnitToCentimeters),
         .settings(.changeDefaultDistanceMeasureUnitToMeters),
-        .settings(.changeScannerLanguageToEnglish),
-        .settings(.changeScannerLanguageToPolish),
         .settings(.changeFlashlightTriggerModeToAutomatic),
         .settings(.changeFlashlightTriggerModeToManualWithHighTolerance),
         .settings(.changeFlashlightTriggerModeToManualWithMediumTolerance),

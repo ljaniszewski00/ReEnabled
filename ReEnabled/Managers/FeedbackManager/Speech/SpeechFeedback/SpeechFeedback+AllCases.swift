@@ -9,7 +9,6 @@ extension SpeechFeedback: CaseIterable {
         .chat(.photoUploaded),
         .settings(.defaultCameraModeHasBeenSetTo),
         .settings(.defaultMeasureUnitHasBeenSetTo),
-        .settings(.scannerLanguageHasBeenSetTo),
         .settings(.flashlightTriggerModeHasBeenSetTo),
         .settings(.speechSpeedHasBeenSetTo),
         .settings(.speechVoiceTypeHasBeenSetTo),
