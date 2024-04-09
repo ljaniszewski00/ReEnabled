@@ -37,8 +37,6 @@ struct SettingsView: View {
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
-        }, onLongPress: {
-            voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRightAfterLongPress: {
             tabBarStateManager.changeTabSelectionTo(.camera)
         }, onSwipeFromRightToLeftAfterLongPress: {
@@ -89,10 +87,14 @@ private extension Views {
     struct CameraModeSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.defaultCameraMode.settingName,
                                   description: ApplicationSetting.defaultCameraMode.settingDescription)
+                .addGesturesActions(onLongPress: {
+                    voiceRecordingManager.manageTalking()
+                })
             
             if let currentSettings = settingsViewModel.currentSettings {
                 let defaultCameraModeCases: [CameraMode] = CameraMode.allCases
@@ -126,6 +128,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultCameraMode.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -138,6 +142,7 @@ private extension Views {
     struct DistanceMeasureUnitSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.defaultDistanceMeasureUnit.settingName,
@@ -175,6 +180,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultDistanceMeasureUnit.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -187,6 +194,7 @@ private extension Views {
     struct DocumentScannerLanguageSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.documentScannerLanguage.settingName,
@@ -224,6 +232,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.documentScannerLanguage.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -236,6 +246,7 @@ private extension Views {
     struct FlashlightTriggerModeSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.flashlightTriggerMode.settingName,
@@ -272,6 +283,8 @@ private extension Views {
                         } else {
                             feedbackManager.generateSpeechFeedback(with: ApplicationSetting.flashlightTriggerMode.settingDescription)
                         }
+                    }, onLongPress: {
+                        voiceRecordingManager.manageTalking()
                     })
                     
                     ForEach(settingsViewModel.availableFlashlightTriggerValuesKeys, id: \.self) { flashlightTriggerValueKey in
@@ -317,6 +330,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.flashlightTriggerMode.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -329,6 +344,7 @@ private extension Views {
     struct SpeechSpeedSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.speechSpeed.settingName,
@@ -367,6 +383,8 @@ private extension Views {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechSpeed.settingDescription)
                             }
                             
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -379,6 +397,7 @@ private extension Views {
     struct SpeechVoiceSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.speechVoiceType.settingName,
@@ -417,6 +436,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechVoiceType.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -429,6 +450,7 @@ private extension Views {
     struct SpeechLanguageSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.speechLanguage.settingName,
@@ -465,6 +487,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechLanguage.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -477,6 +501,7 @@ private extension Views {
     struct VoiceRecordingLanguageSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.voiceRecordingLanguage.settingName,
@@ -513,6 +538,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.voiceRecordingLanguage.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -525,6 +552,7 @@ private extension Views {
     struct SubscriptionPlanSettingsSection: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             SettingsSectionHeader(title: ApplicationSetting.subscriptionPlan.settingName,
@@ -564,6 +592,8 @@ private extension Views {
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.subscriptionPlan.settingDescription)
                             }
+                        }, onLongPress: {
+                            voiceRecordingManager.manageTalking()
                         })
                     }
                 }
@@ -610,6 +640,8 @@ private extension Views {
     }
     
     struct SettingsSectionHeader: View {
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+        
         let title: String
         let description: String?
         
@@ -636,6 +668,9 @@ private extension Views {
             .padding([.horizontal, .top])
             .padding(.leading)
             .padding(.bottom, Views.Constants.settingsSectionDetailsBottomPadding)
+            .addGesturesActions(onLongPress: {
+                voiceRecordingManager.manageTalking()
+            })
         }
     }
     
@@ -715,6 +750,7 @@ private extension Views {
     struct DeleteConversationsButton: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             HStack {
@@ -741,6 +777,8 @@ private extension Views {
                         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.allConversationsDeleted))
                     })
                     .store(in: &settingsViewModel.cancelBag)
+            }, onLongPress: {
+                voiceRecordingManager.manageTalking()
             })
         }
     }
@@ -748,6 +786,7 @@ private extension Views {
     struct RestoreDefaultSettingsButton: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
         
         var body: some View {
             HStack {
@@ -774,6 +813,8 @@ private extension Views {
                         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.restoredDefaultSettings))
                     })
                     .store(in: &settingsViewModel.cancelBag)
+            }, onLongPress: {
+                voiceRecordingManager.manageTalking()
             })
         }
     }

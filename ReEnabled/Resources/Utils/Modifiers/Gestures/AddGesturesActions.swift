@@ -77,7 +77,7 @@ private struct GestureActionView: ViewModifier {
                 }
             }
         
-        let longPressGesture = LongPressGesture(minimumDuration: 1, maximumDistance: 3)
+        let longPressGesture = LongPressGesture(minimumDuration: 0.7, maximumDistance: 3)
             .onEnded { _ in
                 withAnimation {
                     if let onLongPress = onLongPress {

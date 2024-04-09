@@ -58,10 +58,9 @@ struct ContentView: View {
                 Views.VoiceCommandPreviewView()
                     .addGesturesActions(toExecuteBeforeEveryAction: {
                         feedbackManager.generateHapticFeedbackForSwipeAction()
-                    }, onTrippleTap: {
+                    }, onLongPress: {
                         voiceRecordingManager.manageTalking()
                     })
-                    .zIndex(1)
             }
         }
         .ignoresSafeArea()
@@ -84,8 +83,6 @@ private extension Views {
     }
     
     struct VoiceCommandPreviewView: View {
-        @State private var shouldAnimate: Bool = true
-        
         var body: some View {
             Color.black
                 .opacity(Views.Constants.voiceCommandPreviewViewOpacity)
@@ -94,8 +91,7 @@ private extension Views {
             Image(systemName: Views.Constants.voiceCommandPreviewViewImageName)
             .resizable()
             .symbolEffect(.pulse,
-                          options: .repeating,
-                          value: shouldAnimate)
+                          options: .repeating)
             .frame(width: Views.Constants.voiceCommandPreviewViewImageSize,
                    height: Views.Constants.voiceCommandPreviewViewImageSize)
             .padding()
