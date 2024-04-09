@@ -44,10 +44,8 @@ final class VoiceRecordingManager: ObservableObject {
     }
     
     func disableVoiceCommandPreviewView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            withAnimation {
-                self?.shouldDisplayVoiceCommandPreviewView = false
-            }
+        withAnimation {
+            shouldDisplayVoiceCommandPreviewView = false
         }
     }
     

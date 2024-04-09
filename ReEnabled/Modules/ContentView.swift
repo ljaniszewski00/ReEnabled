@@ -51,7 +51,7 @@ struct ContentView: View {
                 }
             }
             .if(voiceRecordingManager.shouldDisplayVoiceCommandPreviewView) {
-                $0.blur(radius: 2.0)
+                $0.blur(radius: Views.Constants.conditionalContentBlurRadius)
             }
             
             if voiceRecordingManager.shouldDisplayVoiceCommandPreviewView {
@@ -75,6 +75,12 @@ struct ContentView: View {
 private extension Views {
     struct Constants {
         static let voiceCommandPreviewViewOpacity: CGFloat = 0.7
+        static let conditionalContentBlurRadius: CGFloat = 2.0
+        
+        static let voiceCommandPreviewViewImageName: String = "waveform.badge.mic"
+        static let voiceCommandPreviewViewImageSize: CGFloat = 120
+        static let voiceCommandPreviewViewBackgroundCornerRadius: CGFloat = 10
+        static let voiceCommandPreviewViewFrameSize: CGFloat = 300
     }
     
     struct VoiceCommandPreviewView: View {
@@ -85,16 +91,18 @@ private extension Views {
                 .opacity(Views.Constants.voiceCommandPreviewViewOpacity)
                 .ignoresSafeArea()
             
-            Image(systemName: "waveform.badge.mic")
+            Image(systemName: Views.Constants.voiceCommandPreviewViewImageName)
             .resizable()
             .symbolEffect(.pulse,
                           options: .repeating,
                           value: shouldAnimate)
-            .frame(width: 80, height: 80)
+            .frame(width: Views.Constants.voiceCommandPreviewViewImageSize,
+                   height: Views.Constants.voiceCommandPreviewViewImageSize)
             .padding()
-            .frame(width: 300, height: 300)
+            .frame(width: Views.Constants.voiceCommandPreviewViewFrameSize,
+                   height: Views.Constants.voiceCommandPreviewViewFrameSize)
             .background {
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: Views.Constants.voiceCommandPreviewViewBackgroundCornerRadius)
                     .foregroundStyle(.ultraThinMaterial)
             }
         }

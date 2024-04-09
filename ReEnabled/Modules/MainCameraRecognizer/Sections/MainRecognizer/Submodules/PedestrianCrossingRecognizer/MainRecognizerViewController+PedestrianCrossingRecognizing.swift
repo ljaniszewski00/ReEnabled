@@ -114,7 +114,7 @@ extension MainRecognizerViewController: PedestrianCrossingRecognizing {
          pedestrianCrossingModel.pedestrianCrossingPrediction?.deviceMovementInstruction == .goodOrientation)
         
         if detectionOverlayCanBeHidden {
-            self.pedestrianCrossingRecognitionLayer.isHidden = true
+            self.pedestrianCrossingRecognitionLayer?.isHidden = true
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 if detectionOverlayCanBeHidden {
