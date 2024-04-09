@@ -24,11 +24,11 @@ final class SettingsViewModel: ObservableObject {
     ]
     
     let availableSpeechSpeeds: [String: Float] = [
-        "Fastest": 0.8,
-        "Faster": 0.7,
-        "Normal": 0.6,
-        "Slower": 0.5,
-        "Slowest": 0.4
+        "Fastest": 0.7,
+        "Faster": 0.6,
+        "Normal": 0.5,
+        "Slower": 0.4,
+        "Slowest": 0.3
     ]
     
     let availableSpeechSpeedsKeys: [String] = [
