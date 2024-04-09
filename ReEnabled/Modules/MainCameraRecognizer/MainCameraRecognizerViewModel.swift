@@ -21,7 +21,7 @@ class MainCameraRecognizerViewModel: ObservableObject {
         previousIndex : CameraMode.allCases.count - 1
         cameraMode = CameraMode.allCases[previousIndex]
         onNewCameraModeAppear()
-        feedbackManager.generateSpeechFeedback(with: cameraMode.rawValue)
+        speakCameraModeName()
     }
     
     func changeToNextCameraMode() {
@@ -30,12 +30,16 @@ class MainCameraRecognizerViewModel: ObservableObject {
         nextIndex = CameraMode.allCases.indices.contains(nextIndex) ? nextIndex : 0
         cameraMode = CameraMode.allCases[nextIndex]
         onNewCameraModeAppear()
-        feedbackManager.generateSpeechFeedback(with: cameraMode.rawValue)
+        speakCameraModeName()
     }
     
     func onNewCameraModeAppear() {
         showCameraModeName()
         hideCameraModeNameAfterDelay()
+    }
+    
+    func speakCameraModeName() {
+        feedbackManager.generateSpeechFeedback(with: cameraMode.rawValue)
     }
     
     private func showCameraModeName() {

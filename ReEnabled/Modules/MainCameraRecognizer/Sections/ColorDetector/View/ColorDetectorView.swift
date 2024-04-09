@@ -35,6 +35,8 @@ struct ColorDetectorView: View {
                     feedbackManager.generateSpeechFeedback(with: colorName)
                 }
             }
+        }, onTrippleTap: {
+            mainCameraRecognizerViewModel.speakCameraModeName()
         }, onLongPress: {
             voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {

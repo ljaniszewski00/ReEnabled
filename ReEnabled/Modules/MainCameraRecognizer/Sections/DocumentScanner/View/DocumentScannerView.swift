@@ -15,6 +15,7 @@ struct DocumentScannerView: View {
             }, onTap: {
             }, onDoubleTap: {
             }, onTrippleTap: {
+                mainCameraRecognizerViewModel.speakCameraModeName()
             }, onLongPress: {
                 voiceRecordingManager.manageTalking()
             }, onSwipeFromLeftToRight: {

@@ -46,6 +46,7 @@ struct MainRecognizerView: View {
         }, onTap: {
         }, onDoubleTap: {
         }, onTrippleTap: {
+            mainCameraRecognizerViewModel.speakCameraModeName()
         }, onLongPress: {
             voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {
