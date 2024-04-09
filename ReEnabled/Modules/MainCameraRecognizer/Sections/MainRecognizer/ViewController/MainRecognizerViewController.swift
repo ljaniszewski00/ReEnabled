@@ -214,7 +214,7 @@ extension MainRecognizerViewController: AVCaptureDepthDataOutputDelegate {
             //                depthMeasurementRepeats - depthMeasurementsLeftInLoop, measurement)
             
             DispatchQueue.main.async { [weak self] in
-                self?.distanceMeasurerViewModel?.distanceString = String(format: "%.2f", measurement)
+                self?.distanceMeasurerViewModel?.distance = measurement
             }
         }
     }

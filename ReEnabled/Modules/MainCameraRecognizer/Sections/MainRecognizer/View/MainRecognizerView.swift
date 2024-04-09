@@ -33,12 +33,19 @@ struct MainRecognizerView: View {
                             .padding(.bottom)
                     }
                     
-                    Text(distanceMeasurerViewModel.distanceString)
+                    if let distanceString = distanceMeasurerViewModel.distanceString {
+                        Text(distanceString)
+                    }
                 }
                 .foregroundColor(.white)
                 .font(.headline)
             }
             .padding(.bottom, Views.Constants.recognitionsBottomPadding)
+        }
+        .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
+            if isNear {
+                feedbackManager.generateHapticFeedback(.impact(.heavy))
+            }
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
