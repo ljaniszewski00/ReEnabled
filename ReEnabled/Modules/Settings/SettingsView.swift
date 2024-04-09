@@ -316,9 +316,7 @@ private extension Views {
                             let speechText: String = "\(ApplicationSetting.speechSpeed.settingName) \(speechSpeedKey)"
                             feedbackManager.generateSpeechFeedback(with: speechText)
                         }, onDoubleTap: {
-                            feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.speechSpeedHasBeenSetTo),
-                                                                   and: speechSpeedKey)
-                            settingsViewModel.changeSpeechSpeed(to: speechSpeedValue)
+                            settingsViewModel.changeSpeechSpeed(to: speechSpeedValue, labeled: speechSpeedKey)
                         }, onLongPress: {
                             feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechSpeed.settingDescription)
                         })

@@ -84,10 +84,11 @@ final class SettingsViewModel: ObservableObject {
         saveSettings()
     }
     
-    func changeSpeechSpeed(to newSpeed: Float) {
+    func changeSpeechSpeed(to newSpeed: Float, labeled: String) {
         currentSettings?.speechSpeed = newSpeed
         saveSettings()
-        feedbackManager.generateSampleSpeechFeedback()
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.speechSpeedHasBeenSetTo),
+                                               and: labeled)
     }
     
     func changeSpeechVoiceType(to newSpeechVoiceType: SpeechVoiceType) {
