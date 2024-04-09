@@ -112,13 +112,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.defaultCameraMode.settingName) \(cameraMode)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.defaultCameraMode.settingName) \(cameraMode)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
-                            let speechText: String = "Changed \(ApplicationSetting.defaultCameraMode.settingName) to \(cameraMode)"
                             settingsViewModel.changeDefaultCameraMode(to: cameraMode)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultCameraMode.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultCameraMode.settingDescription)
+                            }
                         })
                     }
                 }
@@ -154,12 +161,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.defaultDistanceMeasureUnit.settingName) \(distanceMeasureUnit)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.defaultDistanceMeasureUnit.settingName) \(distanceMeasureUnit)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeDefaultDistanceMeasureUnit(to: distanceMeasureUnit)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultDistanceMeasureUnit.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultDistanceMeasureUnit.settingDescription)
+                            }
                         })
                     }
                 }
@@ -195,12 +210,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.documentScannerLanguage.settingName) \(supportedLanguage)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.documentScannerLanguage.settingName) \(supportedLanguage)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.documentScannerLanguage.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.documentScannerLanguage.settingDescription)
+                            }
                         })
                     }
                 }
@@ -233,14 +256,22 @@ private extension Views {
                     .addGesturesActions(toExecuteBeforeEveryAction: {
                         feedbackManager.generateHapticFeedbackForSwipeAction()
                     }, onTap: {
-                        let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(FlashlightTriggerMode.automatic.rawValue) \(tileDescription)"
-                        feedbackManager.generateSpeechFeedback(with: speechText)
+                        if feedbackManager.speechFeedbackIsBeingGenerated {
+                            feedbackManager.stopSpeechFeedback()
+                        } else {
+                            let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(FlashlightTriggerMode.automatic.rawValue) \(tileDescription)"
+                            feedbackManager.generateSpeechFeedback(with: speechText)
+                        }
                     }, onDoubleTap: {
                         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
                                                                and: FlashlightTriggerMode.automatic.rawValue)
                         settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
                     }, onLongPress: {
-                        feedbackManager.generateSpeechFeedback(with: ApplicationSetting.flashlightTriggerMode.settingDescription)
+                        if feedbackManager.speechFeedbackIsBeingGenerated {
+                            feedbackManager.stopSpeechFeedback()
+                        } else {
+                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.flashlightTriggerMode.settingDescription)
+                        }
                     })
                     
                     ForEach(settingsViewModel.availableFlashlightTriggerValuesKeys, id: \.self) { flashlightTriggerValueKey in
@@ -270,14 +301,22 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(flashlightTriggerValueKey) \(String(describing: tileDescription))"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.flashlightTriggerMode.settingName) \(flashlightTriggerValueKey) \(String(describing: tileDescription))"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
                                                                    and: flashlightTriggerValueKey)
                             settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.flashlightTriggerMode.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.flashlightTriggerMode.settingDescription)
+                            }
                         })
                     }
                 }
@@ -313,12 +352,21 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.speechSpeed.settingName) \(speechSpeedKey)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.speechSpeed.settingName) \(speechSpeedKey)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeSpeechSpeed(to: speechSpeedValue, labeled: speechSpeedKey)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechSpeed.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechSpeed.settingDescription)
+                            }
+                            
                         })
                     }
                 }
@@ -355,12 +403,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.speechVoiceType.settingName) \(speechVoiceType)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.speechVoiceType.settingName) \(speechVoiceType)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeSpeechVoiceType(to: speechVoiceType)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechVoiceType.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechVoiceType.settingDescription)
+                            }
                         })
                     }
                 }
@@ -395,12 +451,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.speechLanguage.settingName) \(supportedLanguage)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.speechLanguage.settingName) \(supportedLanguage)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechLanguage.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechLanguage.settingDescription)
+                            }
                         })
                     }
                 }
@@ -435,12 +499,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.voiceRecordingLanguage.settingName) \(supportedLanguage)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.voiceRecordingLanguage.settingName) \(supportedLanguage)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.voiceRecordingLanguage.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.voiceRecordingLanguage.settingDescription)
+                            }
                         })
                     }
                 }
@@ -478,12 +550,20 @@ private extension Views {
                         .addGesturesActions(toExecuteBeforeEveryAction: {
                             feedbackManager.generateHapticFeedbackForSwipeAction()
                         }, onTap: {
-                            let speechText: String = "\(ApplicationSetting.subscriptionPlan.settingName) \(subscriptionPlan) \(subscriptionPlan.description)"
-                            feedbackManager.generateSpeechFeedback(with: speechText)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                let speechText: String = "\(ApplicationSetting.subscriptionPlan.settingName) \(subscriptionPlan) \(subscriptionPlan.description)"
+                                feedbackManager.generateSpeechFeedback(with: speechText)
+                            }
                         }, onDoubleTap: {
                             settingsViewModel.changeSubscriptionPlan(to: subscriptionPlan)
                         }, onLongPress: {
-                            feedbackManager.generateSpeechFeedback(with: ApplicationSetting.subscriptionPlan.settingDescription)
+                            if feedbackManager.speechFeedbackIsBeingGenerated {
+                                feedbackManager.stopSpeechFeedback()
+                            } else {
+                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.subscriptionPlan.settingDescription)
+                            }
                         })
                     }
                 }
@@ -498,7 +578,7 @@ private extension Views {
             SettingsSectionHeader(title: ApplicationSetting.others.settingName,
                                   description: nil)
             
-            if let currentSettings = settingsViewModel.currentSettings {
+            if settingsViewModel.currentSettings != nil {
                 VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                     Views.DeleteConversationsButton()
                         .padding(.vertical)
@@ -648,8 +728,12 @@ private extension Views {
             .addGesturesActions(toExecuteBeforeEveryAction: {
                 feedbackManager.generateHapticFeedbackForSwipeAction()
             }, onTap: {
-                let speechText: String = "Double tap to delete conversations"
-                feedbackManager.generateSpeechFeedback(with: speechText)
+                if feedbackManager.speechFeedbackIsBeingGenerated {
+                    feedbackManager.stopSpeechFeedback()
+                } else {
+                    let speechText: String = "Double tap to delete conversations"
+                    feedbackManager.generateSpeechFeedback(with: speechText)
+                }
             }, onDoubleTap: {
                 settingsViewModel.deleteAllConversations()
                     .sink(receiveCompletion: { _ in
@@ -677,8 +761,12 @@ private extension Views {
             .addGesturesActions(toExecuteBeforeEveryAction: {
                 feedbackManager.generateHapticFeedbackForSwipeAction()
             }, onTap: {
-                let speechText: String = "Double tap to restore default settings"
-                feedbackManager.generateSpeechFeedback(with: speechText)
+                if feedbackManager.speechFeedbackIsBeingGenerated {
+                    feedbackManager.stopSpeechFeedback()
+                } else {
+                    let speechText: String = "Double tap to restore default settings"
+                    feedbackManager.generateSpeechFeedback(with: speechText)
+                }
             }, onDoubleTap: {
                 settingsViewModel.restoreDefaultSettings()
                     .sink(receiveCompletion: { _ in

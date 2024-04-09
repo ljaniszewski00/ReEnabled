@@ -22,6 +22,10 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         return AVSpeechSynthesisVoice(identifier: currentSpeechVoiceIdentifier)
     }
     
+    var isSpeaking: Bool {
+        speechSynthesizer.isSpeaking
+    }
+    
     func generate(for text: String) {
         guard !speechSynthesizer.isSpeaking else {
             return
@@ -45,9 +49,20 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         let sampleText: String = settingsProvider.speechLanguage.getSpeechVoiceSampleText(voiceName: currentSpeechVoiceName)
         generate(for: sampleText)
     }
+    
+    func stopGenerating() {
+        guard speechSynthesizer.isSpeaking else {
+            return
+        }
+        
+        speechSynthesizer.stopSpeaking(at: .word)
+    }
 }
 
 protocol SpeechFeedbackGenerating {
+    var isSpeaking: Bool { get }
+    
     func generate(for text: String)
     func generateSample()
+    func stopGenerating()
 }

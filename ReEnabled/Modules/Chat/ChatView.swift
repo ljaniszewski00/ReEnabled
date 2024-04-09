@@ -42,6 +42,7 @@ struct ChatView: View {
                         $0.padding(.bottom, 
                                    tabBarStateManager.tabBarSize.height * Views.Constants.messageListBottomPaddingMultiplier)
                     }
+                    .contentShape(Rectangle())
                 }
                 
                 if let image = chatViewModel.selectedImage {
@@ -56,7 +57,11 @@ struct ChatView: View {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
-            
+            if feedbackManager.speechFeedbackIsBeingGenerated {
+                feedbackManager.stopSpeechFeedback()
+            } else {
+                chatViewModel.readConversation()
+            }
         }, onDoubleTap: {
             if !chatViewModel.speechRecordingBlocked {
                 voiceRecordingChatManager.manageTalking()

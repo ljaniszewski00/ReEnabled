@@ -28,6 +28,10 @@ final class FeedbackManager: ObservableObject {
     
     @Inject var speechFeedbackGenerator: SpeechFeedbackGenerating
     
+    var speechFeedbackIsBeingGenerated: Bool {
+        speechFeedbackGenerator.isSpeaking
+    }
+    
     func generateSpeechFeedback(with text: String) {
         speechFeedbackGenerator.generate(for: text)
     }
@@ -43,6 +47,10 @@ final class FeedbackManager: ObservableObject {
     
     func generateSampleSpeechFeedback() {
         speechFeedbackGenerator.generateSample()
+    }
+    
+    func stopSpeechFeedback() {
+        speechFeedbackGenerator.stopGenerating()
     }
 }
 

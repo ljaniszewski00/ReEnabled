@@ -31,8 +31,12 @@ struct ColorDetectorView: View {
         .addGesturesActions(toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
-            if let colorName = colorDetectorViewModel.detectedColorName {
-                feedbackManager.generateSpeechFeedback(with: colorName)
+            if feedbackManager.speechFeedbackIsBeingGenerated {
+                feedbackManager.stopSpeechFeedback()
+            } else {
+                if let colorName = colorDetectorViewModel.detectedColorName {
+                    feedbackManager.generateSpeechFeedback(with: colorName)
+                }
             }
         }, onTrippleTap: {
             voiceRecordingManager.manageTalking()
