@@ -64,13 +64,14 @@ private struct GestureActionView: ViewModifier {
             .onEnded { gestureValue in
                 withAnimation {
                     toExecuteBeforeEveryAction?()
-                    if gestureValue.first != nil,
-                       let onDoubleTap = onDoubleTap {
-                        onDoubleTap()
-                    }
                     if gestureValue.second != nil,
                        let onTrippleTap = onTrippleTap {
                         onTrippleTap()
+                        return
+                    }
+                    if gestureValue.first != nil,
+                       let onDoubleTap = onDoubleTap {
+                        onDoubleTap()
                     }
                     toExecuteAfterEveryAction?()
                 }

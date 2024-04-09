@@ -37,7 +37,7 @@ struct SettingsView: View {
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
-        }, onTrippleTap: {
+        }, onLongPress: {
             voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRightAfterLongPress: {
             tabBarStateManager.changeTabSelectionTo(.camera)
@@ -120,7 +120,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeDefaultCameraMode(to: cameraMode)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -169,7 +169,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeDefaultDistanceMeasureUnit(to: distanceMeasureUnit)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -218,7 +218,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -266,7 +266,7 @@ private extension Views {
                         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
                                                                and: FlashlightTriggerMode.automatic.rawValue)
                         settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
-                    }, onLongPress: {
+                    }, onTrippleTap: {
                         if feedbackManager.speechFeedbackIsBeingGenerated {
                             feedbackManager.stopSpeechFeedback()
                         } else {
@@ -311,7 +311,7 @@ private extension Views {
                             feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
                                                                    and: flashlightTriggerValueKey)
                             settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -360,7 +360,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeSpeechSpeed(to: speechSpeedValue, labeled: speechSpeedKey)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -411,7 +411,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeSpeechVoiceType(to: speechVoiceType)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -459,7 +459,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -507,7 +507,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
@@ -558,7 +558,7 @@ private extension Views {
                             }
                         }, onDoubleTap: {
                             settingsViewModel.changeSubscriptionPlan(to: subscriptionPlan)
-                        }, onLongPress: {
+                        }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
                             } else {

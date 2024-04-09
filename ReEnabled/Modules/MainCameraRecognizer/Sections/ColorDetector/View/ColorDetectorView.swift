@@ -25,9 +25,6 @@ struct ColorDetectorView: View {
                 }
             }
         }
-        .onTwoTouchSwipe(direction: .up, onSwipe: {
-            voiceRecordingManager.manageTalking()
-        })
         .addGesturesActions(toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
@@ -38,7 +35,7 @@ struct ColorDetectorView: View {
                     feedbackManager.generateSpeechFeedback(with: colorName)
                 }
             }
-        }, onTrippleTap: {
+        }, onLongPress: {
             voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {
             mainCameraRecognizerViewModel.changeToNextCameraMode()

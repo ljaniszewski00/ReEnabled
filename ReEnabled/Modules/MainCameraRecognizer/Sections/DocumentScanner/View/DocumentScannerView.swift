@@ -9,17 +9,14 @@ struct DocumentScannerView: View {
     
     var body: some View {
         DocumentScannerViewControllerRepresentable()
-            .onTwoTouchSwipe(direction: .up, onSwipe: {
-                voiceRecordingManager.manageTalking()
-            })
             .addGesturesActions(toExecuteBeforeEveryAction: {
             }, toExecuteAfterEveryAction: {
                 feedbackManager.generateHapticFeedbackForSwipeAction()
             }, onTap: {
             }, onDoubleTap: {
             }, onTrippleTap: {
-                voiceRecordingManager.manageTalking()
             }, onLongPress: {
+                voiceRecordingManager.manageTalking()
             }, onSwipeFromLeftToRight: {
                 mainCameraRecognizerViewModel.changeToNextCameraMode()
             }, onSwipeFromRightToLeft: {

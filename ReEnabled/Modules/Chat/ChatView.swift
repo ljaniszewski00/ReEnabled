@@ -67,19 +67,15 @@ struct ChatView: View {
                 voiceRecordingChatManager.manageTalking()
             }
         }, onTrippleTap: {
+            
+        }, onLongPress: {
             if !voiceRecordingChatManager.isRecordingChatMessage {
                 voiceRecordingManager.manageTalking()
             }
-        }, onLongPress: {
-            chatViewModel.readConversation()
         }, onSwipeFromLeftToRight: {
             chatViewModel.changeCurrentConversationToNext()
         }, onSwipeFromRightToLeft: {
             chatViewModel.changeCurrentConversationToPrevious()
-        }, onSwipeFromUpToDown: {
-            
-        }, onSwipeFromDownToUp: {
-            
         }, onSwipeFromLeftToRightAfterLongPress: {
             tabBarStateManager.changeTabSelectionTo(.settings)
         }, onSwipeFromRightToLeftAfterLongPress: {

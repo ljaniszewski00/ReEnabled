@@ -34,7 +34,9 @@ struct LightDetectorView: View {
             lightDetectorViewModel.stopSound()
         }
         .onChange(of: lightDetectorViewModel.luminosity) { _, newValue in
-            lightDetectorViewModel.playSound()
+            if tabBarStateManager.tabSelection == .camera {
+                lightDetectorViewModel.playSound()
+            }
         }
         .onChange(of: tabBarStateManager.tabSelection) { oldTab, newTab in
             if oldTab == .camera && newTab != .camera {
@@ -45,17 +47,14 @@ struct LightDetectorView: View {
                 lightDetectorViewModel.playSound()
             }
         }
-        .onTwoTouchSwipe(direction: .up, onSwipe: {
-            voiceRecordingManager.manageTalking()
-        })
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
         }, onDoubleTap: {
         }, onTrippleTap: {
-            voiceRecordingManager.manageTalking()
         }, onLongPress: {
+            voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {
             mainCameraRecognizerViewModel.changeToNextCameraMode()
         }, onSwipeFromRightToLeft: {
