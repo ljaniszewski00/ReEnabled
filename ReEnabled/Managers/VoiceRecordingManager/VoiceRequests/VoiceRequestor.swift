@@ -3,6 +3,8 @@ import Foundation
 class VoiceRequestor: ObservableObject {
     @Published var selectedVoiceRequest: VoiceRequest = .empty
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     private let stringSimilarityLevelRequired: Double = 80.0
     
     static let shared: VoiceRequestor = {
@@ -21,6 +23,11 @@ class VoiceRequestor: ObservableObject {
                 voiceRequestChoosen = voiceRequest
                 similarityChoosen = stringSimilarityPercentage
             }
+        }
+        
+        guard voiceRequestChoosen != .empty else {
+            feedbackManager.generateSpeechFeedback(with: .other(.voiceCommandWasNotRecognized))
+            return
         }
         
         selectedVoiceRequest = voiceRequestChoosen
