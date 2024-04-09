@@ -9,8 +9,8 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
     
     static let textDataType: DataScannerViewController.RecognizedDataType = .text(
         languages: [
-            "en-US",
-            "pl-PL"
+            SupportedLanguage.english.identifier,
+            SupportedLanguage.polish.identifier
         ]
     )
     

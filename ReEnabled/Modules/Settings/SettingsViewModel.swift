@@ -65,13 +65,6 @@ final class SettingsViewModel: ObservableObject {
         saveSettings()
     }
     
-    func changeDocumentScannerLanguage(to newDocumentScannerLanguage: SupportedLanguage) {
-        currentSettings?.documentScannerLanguage = newDocumentScannerLanguage
-        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.scannerLanguageHasBeenSetTo),
-                                               and: newDocumentScannerLanguage.fullName)
-        saveSettings()
-    }
-    
     func changeFlashlightTriggerMode(to newFlashlightTriggerMode: FlashlightTriggerMode) {
         switch newFlashlightTriggerMode {
         case .automatic:

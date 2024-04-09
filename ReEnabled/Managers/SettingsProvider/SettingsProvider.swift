@@ -24,10 +24,6 @@ final class SettingsProvider: ObservableObject {
         currentSettings.defaultDistanceMeasureUnit
     }
     
-    var documentScannerLanguage: SupportedLanguage {
-        currentSettings.documentScannerLanguage
-    }
-    
     var flashlightTriggerMode: FlashlightTriggerMode {
         guard let flashlightTriggerLightValue = currentSettings.flashlightTriggerLightValue else {
             return .automatic

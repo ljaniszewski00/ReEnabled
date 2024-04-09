@@ -18,7 +18,6 @@ struct SettingsView: View {
                 VStack(spacing: Views.Constants.sectionsVStackSpacing) {
                     Views.CameraModeSettingsSection()
                     Views.DistanceMeasureUnitSettingsSection()
-                    Views.DocumentScannerLanguageSettingsSection()
                     Views.FlashlightTriggerModeSettingsSection()
                     Views.SpeechSpeedSettingsSection()
                     Views.SpeechVoiceSettingsSection()
@@ -179,58 +178,6 @@ private extension Views {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.defaultDistanceMeasureUnit.settingDescription)
-                            }
-                        }, onLongPress: {
-                            voiceRecordingManager.manageTalking()
-                        })
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: - Document Scanner Language
-    
-    struct DocumentScannerLanguageSettingsSection: View {
-        @EnvironmentObject private var settingsViewModel: SettingsViewModel
-        @StateObject private var feedbackManager: FeedbackManager = .shared
-        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
-        
-        var body: some View {
-            SettingsSectionHeader(title: ApplicationSetting.documentScannerLanguage.settingName,
-                                  description: ApplicationSetting.documentScannerLanguage.settingDescription)
-            
-            if let currentSettings = settingsViewModel.currentSettings {
-                let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
-                
-                Views.SettingsSectionDetails {
-                    ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: supportedLanguage.fullName,
-                                                       isSelectedValue: currentSettings.documentScannerLanguage == supportedLanguage)
-                                .padding(.vertical)
-                            
-                            if supportedLanguages.last != supportedLanguage {
-                                Divider()
-                            }
-                        }
-                        .contentShape(Rectangle())
-                        .addGesturesActions(toExecuteBeforeEveryAction: {
-                            feedbackManager.generateHapticFeedbackForSwipeAction()
-                        }, onTap: {
-                            if feedbackManager.speechFeedbackIsBeingGenerated {
-                                feedbackManager.stopSpeechFeedback()
-                            } else {
-                                let speechText: String = "\(ApplicationSetting.documentScannerLanguage.settingName) \(supportedLanguage)"
-                                feedbackManager.generateSpeechFeedback(with: speechText)
-                            }
-                        }, onDoubleTap: {
-                            settingsViewModel.changeDocumentScannerLanguage(to: supportedLanguage)
-                        }, onTrippleTap: {
-                            if feedbackManager.speechFeedbackIsBeingGenerated {
-                                feedbackManager.stopSpeechFeedback()
-                            } else {
-                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.documentScannerLanguage.settingDescription)
                             }
                         }, onLongPress: {
                             voiceRecordingManager.manageTalking()
