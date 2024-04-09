@@ -219,9 +219,7 @@ final class ChatViewModel: ObservableObject {
             return
         }
         
-        DispatchQueue.main.async { [weak self] in
-            self?.currentConversation!.messages.append(message)
-        }
+        currentConversation!.messages.append(message)
         
         saveCurrentConversation()
     }
