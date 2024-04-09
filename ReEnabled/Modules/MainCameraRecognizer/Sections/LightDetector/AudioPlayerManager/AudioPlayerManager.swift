@@ -2,7 +2,7 @@ import AVFoundation
 
 final class AudioPlayerManager: AudioPlayerManaging {
     private var audioPlayer: AVAudioPlayer?
-    private let audioResource: String = AudioResource.laserWeld.rawValue
+    private let audioResource: String = AudioResource.alphaWaves.rawValue
     
     init() {
         prepareToPlay()

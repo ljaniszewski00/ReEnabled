@@ -101,6 +101,7 @@
 		1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */; };
 		1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */; };
 		1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */; };
+		167853332BC49F3100B10396 /* alpha_waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167853322BC49F3100B10396 /* alpha_waves.mp3 */; };
 		1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */; };
 		1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */; };
 		1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */; };
@@ -129,10 +130,6 @@
 		16C107352BB9A90A00797394 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107342BB9A90A00797394 /* SettingsProvider.swift */; };
 		16C1073C2BB9D5F900797394 /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1073B2BB9D5F900797394 /* DocumentScannerView.swift */; };
 		16C1073F2BBAE5DA00797394 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1073E2BBAE5DA00797394 /* AudioPlayerManager.swift */; };
-		16C107452BBAEBDD00797394 /* laser-weld.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107412BBAEBDD00797394 /* laser-weld.mp3 */; };
-		16C107462BBAEBDD00797394 /* radio-static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107422BBAEBDD00797394 /* radio-static.mp3 */; };
-		16C107472BBAEBDD00797394 /* laser-beam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107432BBAEBDD00797394 /* laser-beam.mp3 */; };
-		16C107482BBAEBDD00797394 /* energy-sword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 16C107442BBAEBDD00797394 /* energy-sword.mp3 */; };
 		16C1074A2BBAEBF300797394 /* AudioResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107492BBAEBF300797394 /* AudioResource.swift */; };
 		16C1074D2BBC79A400797394 /* VoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1074C2BBC79A400797394 /* VoiceRequest.swift */; };
 		16C107542BBC7A8C00797394 /* CameraVoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C107532BBC7A8C00797394 /* CameraVoiceRequest.swift */; };
@@ -293,6 +290,7 @@
 		1670C6152B6FAA9B005CF24B /* LightDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorViewController.swift; sourceTree = "<group>"; };
 		1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewModel.swift; sourceTree = "<group>"; };
+		167853322BC49F3100B10396 /* alpha_waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alpha_waves.mp3; sourceTree = "<group>"; };
 		1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewModel.swift; sourceTree = "<group>"; };
 		1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewController.swift; sourceTree = "<group>"; };
 		1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
@@ -321,10 +319,6 @@
 		16C107342BB9A90A00797394 /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		16C1073B2BB9D5F900797394 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
 		16C1073E2BBAE5DA00797394 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
-		16C107412BBAEBDD00797394 /* laser-weld.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "laser-weld.mp3"; sourceTree = "<group>"; };
-		16C107422BBAEBDD00797394 /* radio-static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radio-static.mp3"; sourceTree = "<group>"; };
-		16C107432BBAEBDD00797394 /* laser-beam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "laser-beam.mp3"; sourceTree = "<group>"; };
-		16C107442BBAEBDD00797394 /* energy-sword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "energy-sword.mp3"; sourceTree = "<group>"; };
 		16C107492BBAEBF300797394 /* AudioResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioResource.swift; sourceTree = "<group>"; };
 		16C1074C2BBC79A400797394 /* VoiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRequest.swift; sourceTree = "<group>"; };
 		16C107532BBC7A8C00797394 /* CameraVoiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVoiceRequest.swift; sourceTree = "<group>"; };
@@ -1234,10 +1228,7 @@
 		16C107402BBAEBD400797394 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				16C107442BBAEBDD00797394 /* energy-sword.mp3 */,
-				16C107432BBAEBDD00797394 /* laser-beam.mp3 */,
-				16C107412BBAEBDD00797394 /* laser-weld.mp3 */,
-				16C107422BBAEBDD00797394 /* radio-static.mp3 */,
+				167853322BC49F3100B10396 /* alpha_waves.mp3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1634,12 +1625,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16C107452BBAEBDD00797394 /* laser-weld.mp3 in Resources */,
-				16C107472BBAEBDD00797394 /* laser-beam.mp3 in Resources */,
-				16C107462BBAEBDD00797394 /* radio-static.mp3 in Resources */,
+				167853332BC49F3100B10396 /* alpha_waves.mp3 in Resources */,
 				164E111E2B45E169008EF153 /* Preview Assets.xcassets in Resources */,
 				1629F9D62BA784A800B89629 /* OpenAIPropertyList.plist in Resources */,
-				16C107482BBAEBDD00797394 /* energy-sword.mp3 in Resources */,
 				164E111B2B45E169008EF153 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
