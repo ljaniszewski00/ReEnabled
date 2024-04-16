@@ -71,4 +71,8 @@ extension SupportedLanguage: CaseIterable {
             .polish
         ]
     }
+    
+    static func getSupportedLanguageFrom(languageIdentifier: String?) -> Self? {
+        allCases.first(where: { $0.identifier == languageIdentifier })
+    }
 }

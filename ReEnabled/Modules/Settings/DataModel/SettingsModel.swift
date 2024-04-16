@@ -19,7 +19,7 @@ struct SettingsModel: Equatable {
 
 extension SettingsModel {
     var toObject: SettingsObject {
-        return SettingsObject(value:
+        SettingsObject(value:
             [
                 SettingsObject.SettingsObjectKeys.id.rawValue: id,
                 SettingsObject.SettingsObjectKeys.defaultCameraMode.rawValue: defaultCameraMode.rawValue,
@@ -35,13 +35,16 @@ extension SettingsModel {
     }
     
     static var defaultSettings: Self {
-        SettingsModel(defaultCameraMode: .mainRecognizer,
-                      defaultDistanceMeasureUnit: .meters,
-                      flashlightTriggerLightValue: nil,
-                      speechSpeed: 1.0,
-                      speechVoiceType: .female,
-                      speechLanguage: .english,
-                      voiceRecordingLanguage: .english,
-                      subscriptionPlan: .standard)
+        let languageIdentifier = Locale.current.language.languageCode?.identifier
+        let deviceLanguage: SupportedLanguage? = .getSupportedLanguageFrom(languageIdentifier: languageIdentifier)
+        
+        return SettingsModel(defaultCameraMode: .mainRecognizer,
+                             defaultDistanceMeasureUnit: .meters,
+                             flashlightTriggerLightValue: nil,
+                             speechSpeed: 0.5,
+                             speechVoiceType: .female,
+                             speechLanguage: deviceLanguage ?? .english,
+                             voiceRecordingLanguage: deviceLanguage ?? .english,
+                             subscriptionPlan: .standard)
     }
 }

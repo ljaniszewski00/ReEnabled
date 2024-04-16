@@ -3,6 +3,9 @@ import AVFoundation
 final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
     @Inject private var settingsProvider: SettingsProvider
     
+    private let backgroundQueue = DispatchQueue(label: "speechFeedbackGeneratorQueue",
+                                                qos: .userInteractive)
+    
     private var currentSpeechVoiceName: String? {
         let speechLanguage: SupportedLanguage = settingsProvider.speechLanguage
         return settingsProvider.speechVoiceType.getVoiceName(for: speechLanguage)
@@ -31,18 +34,26 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
             return
         }
         
-        do {
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.playback, mode: .default)
-        } catch {
-            return
+        backgroundQueue.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            do {
+                let audioSession = AVAudioSession.sharedInstance()
+                try audioSession.setCategory(.playback, mode: .default)
+            } catch {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                let utterance = AVSpeechUtterance(string: text)
+                utterance.voice = self.speechVoice
+                utterance.rate = self.settingsProvider.speechSpeed
+                
+                self.speechSynthesizer.speak(utterance)
+            }
         }
-        
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = self.speechVoice
-        utterance.rate = settingsProvider.speechSpeed
-        
-        speechSynthesizer.speak(utterance)
     }
     
     func generateSample() {

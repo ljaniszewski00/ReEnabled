@@ -2,6 +2,9 @@ import SwiftUI
 
 struct MainCameraRecognizerView: View {
     @StateObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel = MainCameraRecognizerViewModel()
+    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
+    
+    @StateObject private var feedbackManager: FeedbackManager = .shared
     
     private var topInsetValue: CGFloat {
         guard let window = UIApplication.shared.connectedScenes.first?.inputView?.window else {
@@ -46,7 +49,17 @@ struct MainCameraRecognizerView: View {
         }
         .ignoresSafeArea()
         .onAppear {
+            if tabBarStateManager.tabSelection == .camera {
+                feedbackManager.generateSpeechFeedback(with: .other(.currentTab),
+                                                       and: "\(TabBarItem.camera.title) \(mainCameraRecognizerViewModel.cameraMode.rawValue)")
+            }
+            
             mainCameraRecognizerViewModel.onNewCameraModeAppear()
+        }
+        .onChange(of: tabBarStateManager.tabSelection) { _, newTab in
+            if newTab == .camera {
+                feedbackManager.generateSpeechFeedback(with: "\(TabBarItem.camera.title) \(mainCameraRecognizerViewModel.cameraMode.rawValue)")
+            }
         }
         .onChange(of: mainCameraRecognizerViewModel.settingsProvider.cameraMode) { _, newDefaultCameraMode in
             mainCameraRecognizerViewModel.defaultCameraMode = newDefaultCameraMode

@@ -45,6 +45,7 @@ struct MainRecognizerView: View {
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
             if isNear {
                 feedbackManager.generateHapticFeedback(.impact(.heavy))
+                feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.distanceWarning)))
             }
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {

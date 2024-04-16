@@ -52,6 +52,12 @@ struct ChatView: View {
             }
             .padding(.bottom, Views.Constants.scrollViewBottomPadding)
         }
+        .onAppear {
+            if tabBarStateManager.tabSelection == .chat {
+                feedbackManager.generateSpeechFeedback(with: .other(.currentTab),
+                                                       and: TabBarItem.chat.title)
+            }
+        }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, toExecuteAfterEveryAction: {

@@ -41,7 +41,7 @@ struct LightDetectorView: View {
         .onChange(of: tabBarStateManager.tabSelection) { oldTab, newTab in
             if oldTab == .camera && newTab != .camera {
                 lightDetectorViewModel.stopSound()
-            } 
+            }
             
             if newTab == .camera {
                 lightDetectorViewModel.playSound()

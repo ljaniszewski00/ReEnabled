@@ -3,6 +3,7 @@ import Foundation
 
 final class SettingsProvider: ObservableObject {
     @Inject private var settingsRepository: SettingsRepositoryProtocol
+    @Published var currentSettings: SettingsModel = .defaultSettings
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
@@ -13,8 +14,6 @@ final class SettingsProvider: ObservableObject {
     static let shared: SettingsProvider = {
         SettingsProvider()
     }()
-    
-    @Published var currentSettings: SettingsModel = .defaultSettings
     
     var cameraMode: CameraMode {
         currentSettings.defaultCameraMode

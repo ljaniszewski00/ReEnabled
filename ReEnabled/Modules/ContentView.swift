@@ -26,7 +26,9 @@ struct ContentView: View {
                                 selection: $tabBarStateManager.tabSelection)
             }
             .onChange(of: tabBarStateManager.tabSelection) { _, newTab in
-                feedbackManager.generateSpeechFeedback(with: newTab.title)
+                if newTab != .camera {
+                    feedbackManager.generateSpeechFeedback(with: newTab.title)
+                }
             }
             .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
                 voiceRequestor.getVoiceRequest(from: newTranscript)

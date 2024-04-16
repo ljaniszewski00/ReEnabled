@@ -34,6 +34,12 @@ struct SettingsView: View {
                 settingsViewModel.getSettings(from: updatedSettingsObjects)
             }
         }
+        .onAppear {
+            if tabBarStateManager.tabSelection == .settings {
+                feedbackManager.generateSpeechFeedback(with: .other(.currentTab),
+                                                       and: TabBarItem.settings.title)
+            }
+        }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onSwipeFromLeftToRightAfterLongPress: {

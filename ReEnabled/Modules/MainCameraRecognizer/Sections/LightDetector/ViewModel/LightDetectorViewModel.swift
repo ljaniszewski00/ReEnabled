@@ -6,6 +6,8 @@ final class LightDetectorViewModel: ObservableObject {
     @Published var luminosity: Double?
     @Published var canDisplayCamera: Bool = false
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     var soundIsPlaying: Bool = false
     
     var detectedLuminosity: String? {
@@ -21,8 +23,10 @@ final class LightDetectorViewModel: ObservableObject {
             return
         }
         
-        soundIsPlaying = true
-        audioPlayerManager.playWithIntensity(luminosity)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.soundIsPlaying = true
+            self?.audioPlayerManager.playWithIntensity(luminosity)
+        }
     }
     
     func stopSound() {

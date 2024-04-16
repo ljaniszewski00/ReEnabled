@@ -25,6 +25,11 @@ struct ColorDetectorView: View {
                 }
             }
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                feedbackManager.generateSpeechFeedback(with: .camera(.colorDetector(.tapToHearTheColor)))
+            }
+        }
         .addGesturesActions(toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
