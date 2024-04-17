@@ -92,7 +92,7 @@ class MainRecognizerViewController: UIViewController {
                                                  desiredFrameRate: 20) {
             self.setupSessionPreviewLayer()
             
-            self.setupObjectsBoundingBoxes()
+//            self.setupObjectsBoundingBoxes()
             self.setupRoadLightsBoundingBoxes()
             self.setupPedestrianCrossingRecognitionLayer()
             self.updatePedestrianCrossingRecognitionLayerGeometry()

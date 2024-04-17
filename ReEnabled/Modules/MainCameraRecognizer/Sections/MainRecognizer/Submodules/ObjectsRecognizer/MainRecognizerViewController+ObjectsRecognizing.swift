@@ -96,7 +96,8 @@ extension MainRecognizerViewController: ObjectsRecognizing {
             boundingBoxes = nonMaxSuppression(boxes: boundingBoxes,
                                               limit: ObjectModel.maxBoundingBoxes,
                                               threshold: 0.4)
-            self.showObjectsRecognitionResultsWith(predictions: boundingBoxes)
+//            self.showObjectsRecognitionResultsWith(predictions: boundingBoxes)
+            self.saveObjectsRecognitionResultsWith(predictions: boundingBoxes)
         }
         
         self.objectsRecognizerSemaphore.signal()
@@ -143,6 +144,26 @@ extension MainRecognizerViewController: ObjectsRecognizing {
             
             for box in self.objectsBoundingBoxes {
                 box.addToLayer(self.previewLayer)
+            }
+        }
+    }
+    
+    func saveObjectsRecognitionResultsWith(predictions: [Prediction]) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            objectsRecognizerViewModel?.recognizedObjectsNames.removeAll()
+            
+            for i in 0..<ObjectModel.maxBoundingBoxes {
+                if i < predictions.count && predictions.indices.contains(i) {
+                    let prediction = predictions[i]
+                    if objectModel.labels.indices.contains(prediction.classIndex) {
+                        let predictedObjectLabel: String = objectModel.labels[prediction.classIndex]
+                        objectsRecognizerViewModel?.recognizedObjectsNames.insert(predictedObjectLabel)
+                    }
+                }
             }
         }
     }

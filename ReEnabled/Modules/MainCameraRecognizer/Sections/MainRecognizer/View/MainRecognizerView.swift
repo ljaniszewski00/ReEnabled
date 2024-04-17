@@ -42,6 +42,15 @@ struct MainRecognizerView: View {
             }
             .padding(.bottom, Views.Constants.recognitionsBottomPadding)
         }
+        .onChange(of: roadLightsRecognizerViewModel.roadLightType) { _, roadLight in
+            
+        }
+        .onChange(of: pedestrianCrossingRecognizerViewModel.personMovementInstruction) { _, personMovementInstruction in
+            
+        }
+        .onChange(of: pedestrianCrossingRecognizerViewModel.deviceMovementInstruction) { _, deviceMovementInstruction in
+            
+        }
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
             if isNear {
                 feedbackManager.generateHapticFeedback(.impact(.heavy))
@@ -52,6 +61,7 @@ struct MainRecognizerView: View {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
+            objectsRecognizerViewModel.readRecognizedObjects()
         }, onDoubleTap: {
         }, onTrippleTap: {
             mainCameraRecognizerViewModel.speakCameraModeName()

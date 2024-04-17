@@ -1,6 +1,7 @@
 enum MainRecognizerSpeechFeedback: String {
     case cameraModeHasBeenSetTo = "Camera mode has been set to"
     
+    case noObjectsRecognized = "No objects have been recognized"
     case followingObjectsHaveBeenRecognized = "Following objects have been recognized"
     
     case distanceToDominantObjectInCamera = "Distance to dominant object in camera is"
