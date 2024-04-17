@@ -4,6 +4,8 @@ final class RoadLightsRecognizerViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
     @Published var roadLightTypeRecognized: RoadLightType?
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     var roadLightType: String? {
         guard let roadLightTypeRecognized = roadLightTypeRecognized,
               roadLightTypeRecognized != .none else {
@@ -11,5 +13,20 @@ final class RoadLightsRecognizerViewModel: ObservableObject {
         }
         
         return roadLightTypeRecognized.rawValue
+    }
+    
+    func readRoadLightType() {
+        guard let roadLightTypeRecognized = roadLightTypeRecognized else {
+            return
+        }
+        
+        switch roadLightTypeRecognized {
+        case .red:
+            feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.redLightHasBeenDetected)))
+        case .green:
+            feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.greenLightHasBeenDetected)))
+        case .none:
+            return
+        }
     }
 }

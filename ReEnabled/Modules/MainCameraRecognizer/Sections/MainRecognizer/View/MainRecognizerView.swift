@@ -42,14 +42,14 @@ struct MainRecognizerView: View {
             }
             .padding(.bottom, Views.Constants.recognitionsBottomPadding)
         }
-        .onChange(of: roadLightsRecognizerViewModel.roadLightType) { _, roadLight in
-            
+        .onChange(of: roadLightsRecognizerViewModel.roadLightTypeRecognized) { _, _ in
+            roadLightsRecognizerViewModel.readRoadLightType()
         }
         .onChange(of: pedestrianCrossingRecognizerViewModel.personMovementInstruction) { _, personMovementInstruction in
-            
+            pedestrianCrossingRecognizerViewModel.readPersonMovementInstruction()
         }
         .onChange(of: pedestrianCrossingRecognizerViewModel.deviceMovementInstruction) { _, deviceMovementInstruction in
-            
+            pedestrianCrossingRecognizerViewModel.readDeviceMovementInstruction()
         }
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
             if isNear {

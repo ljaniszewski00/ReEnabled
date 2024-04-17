@@ -17,8 +17,6 @@ final class DistanceMeasurerViewModel: ObservableObject {
             return true
         } else if !distance.isNaN && distance >= 70 && distance < 100 {
             return true
-        } else if distance >= 100 && distance < 120 {
-            return true
         } else {
             return false
         }

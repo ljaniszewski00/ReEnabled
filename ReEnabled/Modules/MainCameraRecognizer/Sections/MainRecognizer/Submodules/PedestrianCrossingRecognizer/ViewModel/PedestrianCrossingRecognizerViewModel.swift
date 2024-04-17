@@ -4,6 +4,8 @@ final class PedestrianCrossingRecognizerViewModel: ObservableObject {
     @Published var pedestrianCrossingPrediction: PedestrianCrossingPrediction?
     @Published var canDisplayCamera: Bool = false
     
+    private var feedbackManager: FeedbackManager = .shared
+    
     var recognizedLightColor: String? {
         if let lightColor = pedestrianCrossingPrediction?.lightColor,
            lightColor != .none {
@@ -21,11 +23,11 @@ final class PedestrianCrossingRecognizerViewModel: ObservableObject {
         
         switch pedestrianCrossingPrediction?.personMovementInstruction {
         case .goodPosition:
-            return "Good Position"
+            return SpeechFeedback.camera(.mainRecognizer(.personGoodPosition)).rawValue
         case .moveLeft:
-            return "Please, move left."
+            return SpeechFeedback.camera(.mainRecognizer(.personMoveLeft)).rawValue
         case .moveRight:
-            return "Please, move right."
+            return SpeechFeedback.camera(.mainRecognizer(.personMoveRight)).rawValue
         case nil:
             return nil
         }
@@ -39,13 +41,29 @@ final class PedestrianCrossingRecognizerViewModel: ObservableObject {
         
         switch pedestrianCrossingPrediction?.deviceMovementInstruction {
         case .goodOrientation:
-            return "Good Camera Orientation"
+            return SpeechFeedback.camera(.mainRecognizer(.deviceGoodOrientation)).rawValue
         case .turnLeft:
-            return "Please, turn camera left"
+            return SpeechFeedback.camera(.mainRecognizer(.deviceTurnLeft)).rawValue
         case .turnRight:
-            return "Please, turn camera right"
+            return SpeechFeedback.camera(.mainRecognizer(.deviceTurnRight)).rawValue
         case nil:
             return nil
         }
+    }
+    
+    func readPersonMovementInstruction() {
+        guard let personMovementInstruction = personMovementInstruction else {
+            return
+        }
+        
+        feedbackManager.generateSpeechFeedback(with: personMovementInstruction)
+    }
+    
+    func readDeviceMovementInstruction() {
+        guard let deviceMovementInstruction = deviceMovementInstruction else {
+            return
+        }
+        
+        feedbackManager.generateSpeechFeedback(with: deviceMovementInstruction)
     }
 }

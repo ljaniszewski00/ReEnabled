@@ -52,6 +52,7 @@ extension MainRecognizerViewController: RoadLightsRecognizing {
             self.roadLightsTypeManager.add(predictions: boundingBoxes)
             
             let lightType = roadLightsTypeManager.determine()
+            roadLightsRecognizerViewModel?.roadLightTypeRecognized = lightType
             self.showRoadLightsRecognitionResultsWith(predictions: boundingBoxes)
         }
     }
