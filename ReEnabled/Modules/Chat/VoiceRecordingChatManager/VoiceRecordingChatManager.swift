@@ -45,10 +45,15 @@ final class VoiceRecordingChatManager: ObservableObject {
     @MainActor
     private func startTranscribing() {
         feedbackManager.generateSpeechFeedback(with: .chat(.whatYouWantToKnow))
-        speechRecognizer?.transcript.removeAll()
-        isRecordingChatMessage = true
-        speechRecognizer?.startTranscribing()
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            speechRecognizer?.transcript.removeAll()
+            isRecordingChatMessage = true
+            speechRecognizer?.startTranscribing()
+        }
     }
     
     @MainActor
