@@ -4,17 +4,21 @@ final class ObjectsRecognizerViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
     @Published var recognizedObjectsNames: Set<String> = []
     
-    private var feedbackManager: FeedbackManager = .shared
+    private let feedbackManager: FeedbackManager = .shared
     
     func readRecognizedObjects() {
-        let recognizedObjectsNames = getRecognizedObjectsFormattedToSpeech()
-        
-        if recognizedObjectsNames.isEmpty {
-            feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.noObjectsRecognized)),
-                                                   and: recognizedObjectsNames)
+        if feedbackManager.speechFeedbackIsBeingGenerated {
+            feedbackManager.stopSpeechFeedback()
         } else {
-            feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.followingObjectsHaveBeenRecognized)),
-                                                   and: recognizedObjectsNames)
+            let recognizedObjectsNames = getRecognizedObjectsFormattedToSpeech()
+            
+            if recognizedObjectsNames.isEmpty {
+                feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.noObjectsRecognized)),
+                                                       and: recognizedObjectsNames)
+            } else {
+                feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.followingObjectsHaveBeenRecognized)),
+                                                       and: recognizedObjectsNames)
+            }
         }
     }
     

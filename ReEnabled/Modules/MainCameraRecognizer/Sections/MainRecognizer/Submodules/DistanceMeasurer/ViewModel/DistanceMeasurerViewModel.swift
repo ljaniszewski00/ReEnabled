@@ -3,7 +3,7 @@ import SwiftUI
 final class DistanceMeasurerViewModel: ObservableObject {
     @Inject var settingsProvider: SettingsProvider
     
-    private var feedbackManager: FeedbackManager = .shared
+    private let feedbackManager: FeedbackManager = .shared
     
     @Published var canDisplayCamera: Bool = false
     @Published var distance: Float?
@@ -37,5 +37,10 @@ final class DistanceMeasurerViewModel: ObservableObject {
             let distanceFormatted: Float = distance * 0.01
             return String(format: "%.2f m", distanceFormatted)
         }
+    }
+    
+    func warnAboutObstacle() {
+        feedbackManager.generateHapticFeedback(.impact(.heavy))
+        feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.distanceWarning)))
     }
 }

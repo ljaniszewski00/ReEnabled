@@ -3,9 +3,11 @@ import VisionKit
 
 @MainActor
 struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable {
-    @StateObject private var tabBarStateManager: TabBarStateManager = .shared
-    @StateObject private var feedbackManager: FeedbackManager = .shared
-    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    private var documentScannerViewModel: DocumentScannerViewModel
+    
+    init(documentScannerViewModel: DocumentScannerViewModel) {
+        self.documentScannerViewModel = documentScannerViewModel
+    }
     
     static let textDataType: DataScannerViewController.RecognizedDataType = .text(
         languages: [
@@ -16,10 +18,10 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
     
     private var scannerViewController: DataScannerViewController = DataScannerViewController(
         recognizedDataTypes: [textDataType, .barcode()],
-        qualityLevel: .balanced,
+        qualityLevel: .accurate,
         recognizesMultipleItems: true,
         isHighFrameRateTrackingEnabled: true,
-        isPinchToZoomEnabled: true,
+        isPinchToZoomEnabled: false,
         isGuidanceEnabled: true,
         isHighlightingEnabled: true
     )
@@ -35,15 +37,19 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
     func updateUIViewController(_ uiViewController: DataScannerViewController, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        return Coordinator(self,
+                           documentScannerViewModel: documentScannerViewModel)
     }
     
     class Coordinator: NSObject, DataScannerViewControllerDelegate {
+        private var documentScannerViewModel: DocumentScannerViewModel
         var parent: DocumentScannerViewControllerRepresentable
         var roundBoxMappings: [UUID: UIView] = [:]
         
-        init(_ parent: DocumentScannerViewControllerRepresentable) {
+        init(_ parent: DocumentScannerViewControllerRepresentable,
+             documentScannerViewModel: DocumentScannerViewModel) {
             self.parent = parent
+            self.documentScannerViewModel = documentScannerViewModel
         }
         
         func dataScanner(_ dataScanner: DataScannerViewController, didAdd addedItems: [RecognizedItem], allItems: [RecognizedItem]) {
@@ -62,24 +68,33 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
             processItem(item: item)
         }
         
-        
         func processAddedItems(items: [RecognizedItem]) {
             for item in items {
                 processItem(item: item)
-                //addRoundBoxToItem(item: item)
             }
         }
         
         func processRemovedItems(items: [RecognizedItem]) {
             for item in items {
-                //processItem(item: item)
                 removeRoundBoxFromItem(item: item)
+                
+                switch item {
+                case .text(let text):
+                    documentScannerViewModel.detectedTexts.remove(text.transcript)
+                case .barcode(let code):
+                    guard let codeStringValue = code.payloadStringValue else {
+                        return
+                    }
+                    
+                    documentScannerViewModel.detectedBarCodesStringValues.remove(codeStringValue)
+                @unknown default:
+                    break
+                }
             }
         }
         
         func processUpdatedItems(items: [RecognizedItem]) {
             for item in items {
-                //processItem(item: item)
                 updateRoundBoxToItem(item: item)
             }
         }
@@ -124,8 +139,13 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
             case .text(let text):
                 let frame = getRoundBoxFrame(item: item)
                 addRoundBoxToItem(frame: frame, text: text.transcript, item: item)
-            case .barcode:
-                break
+                documentScannerViewModel.detectedTexts.insert(text.transcript)
+            case .barcode(let code):
+                guard let codeStringValue = code.payloadStringValue else {
+                    return
+                }
+                
+                documentScannerViewModel.detectedBarCodesStringValues.insert(codeStringValue)
             @unknown default:
                 break
             }

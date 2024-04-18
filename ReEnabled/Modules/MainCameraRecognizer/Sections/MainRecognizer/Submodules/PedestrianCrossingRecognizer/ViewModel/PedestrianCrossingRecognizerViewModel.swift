@@ -4,7 +4,7 @@ final class PedestrianCrossingRecognizerViewModel: ObservableObject {
     @Published var pedestrianCrossingPrediction: PedestrianCrossingPrediction?
     @Published var canDisplayCamera: Bool = false
     
-    private var feedbackManager: FeedbackManager = .shared
+    private let feedbackManager: FeedbackManager = .shared
     
     var recognizedLightColor: String? {
         if let lightColor = pedestrianCrossingPrediction?.lightColor,

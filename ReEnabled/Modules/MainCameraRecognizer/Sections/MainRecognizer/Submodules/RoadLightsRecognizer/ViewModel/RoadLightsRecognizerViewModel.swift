@@ -4,7 +4,7 @@ final class RoadLightsRecognizerViewModel: ObservableObject {
     @Published var canDisplayCamera: Bool = false
     @Published var roadLightTypeRecognized: RoadLightType?
     
-    private var feedbackManager: FeedbackManager = .shared
+    private let feedbackManager: FeedbackManager = .shared
     
     var roadLightType: String? {
         guard let roadLightTypeRecognized = roadLightTypeRecognized,

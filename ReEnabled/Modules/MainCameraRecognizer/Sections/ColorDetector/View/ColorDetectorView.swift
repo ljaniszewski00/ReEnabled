@@ -33,13 +33,7 @@ struct ColorDetectorView: View {
         .addGesturesActions(toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
-            if feedbackManager.speechFeedbackIsBeingGenerated {
-                feedbackManager.stopSpeechFeedback()
-            } else {
-                if let colorName = colorDetectorViewModel.detectedColorName {
-                    feedbackManager.generateSpeechFeedback(with: colorName)
-                }
-            }
+            colorDetectorViewModel.readDetectedColor()
         }, onTrippleTap: {
             mainCameraRecognizerViewModel.speakCameraModeName()
         }, onLongPress: {

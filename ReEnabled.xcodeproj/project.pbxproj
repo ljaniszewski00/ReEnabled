@@ -119,6 +119,7 @@
 		1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */; };
 		1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */; };
 		1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F19E2B9A1E8700928103 /* RoadLightType.swift */; };
+		169DC5F72BD01EC500E53F59 /* DocumentScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169DC5F62BD01EC500E53F59 /* DocumentScannerViewModel.swift */; };
 		16B4468E2B9FA21B002504F5 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4468D2B9FA21B002504F5 /* ChatViewModel.swift */; };
 		16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */; };
 		16B898A32BA3839200735D93 /* String+DeletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */; };
@@ -308,6 +309,7 @@
 		1694F19A2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRecognizerViewController+PedestrianCrossingRecognizing.swift"; sourceTree = "<group>"; };
 		1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingRecognizing.swift; sourceTree = "<group>"; };
 		1694F19E2B9A1E8700928103 /* RoadLightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightType.swift; sourceTree = "<group>"; };
+		169DC5F62BD01EC500E53F59 /* DocumentScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewModel.swift; sourceTree = "<group>"; };
 		16B4468D2B9FA21B002504F5 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		16B446962B9FAAFB002504F5 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		16B898A22BA3839200735D93 /* String+DeletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletingPrefix.swift"; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 		164669012B6855FA0049AB03 /* DocumentScanner */ = {
 			isa = PBXGroup;
 			children = (
+				169DC5F52BD01EBB00E53F59 /* ViewModel */,
 				16C107382BB9D5CD00797394 /* ViewController */,
 				164669052B68565D0049AB03 /* View */,
 			);
@@ -1187,6 +1190,14 @@
 				1694F19C2B98FD7400928103 /* PedestrianCrossingRecognizing.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		169DC5F52BD01EBB00E53F59 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				169DC5F62BD01EC500E53F59 /* DocumentScannerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		16B898B12BA3B15700735D93 /* OpenAIManager */ = {
@@ -1698,6 +1709,7 @@
 				163311D42B939F9C00896058 /* Prediction.swift in Sources */,
 				164E11192B45E167008EF153 /* ContentView.swift in Sources */,
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
+				169DC5F72BD01EC500E53F59 /* DocumentScannerViewModel.swift in Sources */,
 				16E5141B2BB62B380035B586 /* SubscriptionPlan.swift in Sources */,
 				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
 				16C107692BBC834000797394 /* LightDetectorVoiceRequest.swift in Sources */,
