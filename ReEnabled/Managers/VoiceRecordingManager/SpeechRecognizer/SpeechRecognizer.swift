@@ -135,7 +135,7 @@ actor SpeechRecognizer: ObservableObject {
             try audioSession.setCategory(.playAndRecord, mode: .voicePrompt, options: .defaultToSpeaker)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
-            print("here: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
         
         let inputNode = audioEngine.inputNode

@@ -33,7 +33,6 @@ struct ContentView: View {
             tabBarStateManager.shouldAnimateChatTabIcon = isRecording
         }
         .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-            print("here new transcript: \(newTranscript)")
             voiceRequestor.getVoiceRequest(from: newTranscript)
         }
         .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
