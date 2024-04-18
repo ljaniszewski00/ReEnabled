@@ -132,7 +132,7 @@ actor SpeechRecognizer: ObservableObject {
         let audioSession = AVAudioSession.sharedInstance()
         
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .voicePrompt, options: .defaultToSpeaker)
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print(error.localizedDescription)
