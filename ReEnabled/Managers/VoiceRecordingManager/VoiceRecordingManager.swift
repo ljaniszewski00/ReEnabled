@@ -3,13 +3,13 @@ import Foundation
 import SwiftUI
 import UIKit
 
-final class VoiceRecordingManager: ObservableObject {
+class VoiceRecordingManager: ObservableObject {
     @Inject private var settingsProvider: SettingsProvider
     
-    @Published var isRecording: Bool = false
-    @Published var shouldDisplayVoiceCommandPreviewView: Bool = false
-    
     private var speechRecognizer: SpeechRecognizer?
+    @Published var isRecording: Bool = false
+    
+    private var feedbackManager: FeedbackManager = .shared
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
@@ -37,18 +37,6 @@ final class VoiceRecordingManager: ObservableObject {
         VoiceRecordingManager()
     }()
     
-    func enableVoiceCommandPreviewView() {
-        withAnimation {
-            shouldDisplayVoiceCommandPreviewView = true
-        }
-    }
-    
-    func disableVoiceCommandPreviewView() {
-        withAnimation {
-            shouldDisplayVoiceCommandPreviewView = false
-        }
-    }
-    
     @MainActor
     var transcript: String {
         speechRecognizer?.transcript ?? ""
@@ -61,6 +49,7 @@ final class VoiceRecordingManager: ObservableObject {
     
     @MainActor 
     private func startTranscribing() {
+        feedbackManager.generateSpeechFeedback(with: .other(.whatYouWantMeToDo))
         speechRecognizer?.transcript.removeAll()
         isRecording = true
         speechRecognizer?.startTranscribing()

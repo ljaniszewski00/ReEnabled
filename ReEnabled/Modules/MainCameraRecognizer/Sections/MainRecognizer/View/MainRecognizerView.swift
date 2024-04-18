@@ -58,7 +58,7 @@ struct MainRecognizerView: View {
 //            pedestrianCrossingRecognizerViewModel.readDeviceMovementInstruction()
 //        }
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
-            if tabBarStateManager.tabSelection == .camera && 
+            if tabBarStateManager.tabSelection == .camera &&
                 mainCameraRecognizerViewModel.cameraMode == .mainRecognizer &&
                 isNear {
                 distanceMeasurerViewModel.warnAboutObstacle()

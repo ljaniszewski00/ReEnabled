@@ -34,6 +34,7 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         do {
             let audioSession = AVAudioSession.sharedInstance()
             try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             return
         }
