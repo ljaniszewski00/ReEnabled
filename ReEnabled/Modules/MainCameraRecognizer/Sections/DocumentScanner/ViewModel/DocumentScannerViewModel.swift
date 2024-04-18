@@ -6,13 +6,6 @@ final class DocumentScannerViewModel: ObservableObject {
     
     private var feedbackManager: FeedbackManager = .shared
     
-    init() {
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
-            self?.detectedTexts.removeAll()
-            self?.detectedBarCodesStringValues.removeAll()
-        }
-    }
-    
     func readDetectedTexts() {
         if feedbackManager.speechFeedbackIsBeingGenerated {
             feedbackManager.stopSpeechFeedback()

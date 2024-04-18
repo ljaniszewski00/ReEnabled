@@ -54,14 +54,17 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
         
         func dataScanner(_ dataScanner: DataScannerViewController, didAdd addedItems: [RecognizedItem], allItems: [RecognizedItem]) {
             processAddedItems(items: addedItems)
+            removeExpiredObservations()
         }
         
         func dataScanner(_ dataScanner: DataScannerViewController, didRemove removedItems: [RecognizedItem], allItems: [RecognizedItem]) {
             processRemovedItems(items: removedItems)
+            removeExpiredObservations()
         }
         
         func dataScanner(_ dataScanner: DataScannerViewController, didUpdate updatedItems: [RecognizedItem], allItems: [RecognizedItem]) {
             processUpdatedItems(items: updatedItems)
+            removeExpiredObservations()
         }
         
         func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
@@ -71,6 +74,14 @@ struct DocumentScannerViewControllerRepresentable: UIViewControllerRepresentable
         func processAddedItems(items: [RecognizedItem]) {
             for item in items {
                 processItem(item: item)
+            }
+        }
+        
+        func removeExpiredObservations() {
+            let observationsCount: Int = documentScannerViewModel.detectedTexts.count + documentScannerViewModel.detectedBarCodesStringValues.count
+            if roundBoxMappings.keys.count < observationsCount {
+                documentScannerViewModel.detectedTexts.removeAll()
+                documentScannerViewModel.detectedBarCodesStringValues.removeAll()
             }
         }
         
