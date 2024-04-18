@@ -5,9 +5,10 @@ import UIKit
 final class VoiceRecordingChatManager: ObservableObject {
     @Inject private var settingsProvider: SettingsProvider
     
+    private var speechRecognizer: SpeechRecognizer?
     @Published var isRecordingChatMessage: Bool = false
     
-    private var speechRecognizer: SpeechRecognizer?
+    private var feedbackManager: FeedbackManager = .shared
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
@@ -38,15 +39,12 @@ final class VoiceRecordingChatManager: ObservableObject {
     
     @MainActor
     func manageTalking() {
-        if isRecordingChatMessage {
-            stopTranscribing()
-        } else {
-            startTranscribing()
-        }
+        isRecordingChatMessage ? stopTranscribing() : startTranscribing()
     }
     
     @MainActor
     private func startTranscribing() {
+        feedbackManager.generateSpeechFeedback(with: .chat(.whatYouWantToKnow))
         speechRecognizer?.transcript.removeAll()
         isRecordingChatMessage = true
         speechRecognizer?.startTranscribing()

@@ -4,4 +4,5 @@ enum OtherSpeechFeedback: String {
     case hereAreAvailableVoiceCommands = "Here are available voice commands"
     case youCanUseFollowingGestures = "You can use following gestures"
     case voiceCommandWasNotRecognized = "Voice command was not recognized"
+    case whatYouWantMeToDo = "What you want me to do"
 }

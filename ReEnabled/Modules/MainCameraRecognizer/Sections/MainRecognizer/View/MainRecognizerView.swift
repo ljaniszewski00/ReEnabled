@@ -6,6 +6,7 @@ struct MainRecognizerView: View {
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     @StateObject private var objectsRecognizerViewModel: ObjectsRecognizerViewModel = ObjectsRecognizerViewModel()
     @StateObject private var distanceMeasurerViewModel: DistanceMeasurerViewModel = DistanceMeasurerViewModel()
@@ -57,7 +58,9 @@ struct MainRecognizerView: View {
 //            pedestrianCrossingRecognizerViewModel.readDeviceMovementInstruction()
 //        }
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
-            if isNear {
+            if tabBarStateManager.tabSelection == .camera && 
+                mainCameraRecognizerViewModel.cameraMode == .mainRecognizer &&
+                isNear {
                 distanceMeasurerViewModel.warnAboutObstacle()
             }
         }
