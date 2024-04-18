@@ -55,7 +55,7 @@ struct LightDetectorView: View {
         }, onTrippleTap: {
             mainCameraRecognizerViewModel.speakCameraModeName()
         }, onLongPress: {
-//            voiceRecordingManager.manageTalking()
+            voiceRecordingManager.manageTalking()
         }, onSwipeFromLeftToRight: {
             mainCameraRecognizerViewModel.changeToNextCameraMode()
         }, onSwipeFromRightToLeft: {
