@@ -50,13 +50,6 @@ class VoiceRecordingManager: ObservableObject {
     @MainActor 
     private func startTranscribing() {
         feedbackManager.generateSpeechFeedback(with: .other(.whatYouWantMeToDo))
-//        Task {
-//            try await Task.sleep(nanoseconds: 2_000_000_000)
-//            speechRecognizer?.transcript.removeAll()
-//            isRecording = true
-//            speechRecognizer?.startTranscribing()
-//        }
-        
         speechRecognizer?.transcript.removeAll()
         isRecording = true
         speechRecognizer?.startTranscribing()

@@ -45,13 +45,6 @@ final class VoiceRecordingChatManager: ObservableObject {
     @MainActor
     private func startTranscribing() {
         feedbackManager.generateSpeechFeedback(with: .chat(.whatYouWantToKnow))
-//        Task {
-//            try await Task.sleep(nanoseconds: 2_000_000_000)
-//            speechRecognizer?.transcript.removeAll()
-//            isRecordingChatMessage = true
-//            speechRecognizer?.startTranscribing()
-//        }
-        
         speechRecognizer?.transcript.removeAll()
         isRecordingChatMessage = true
         speechRecognizer?.startTranscribing()
