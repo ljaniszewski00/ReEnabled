@@ -50,15 +50,16 @@ class VoiceRecordingManager: ObservableObject {
     @MainActor 
     private func startTranscribing() {
         feedbackManager.generateSpeechFeedback(with: .other(.whatYouWantMeToDo))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            guard let self = self else {
-                return
-            }
-            
-            speechRecognizer?.transcript.removeAll()
-            isRecording = true
-            speechRecognizer?.startTranscribing()
-        }
+//        Task {
+//            try await Task.sleep(nanoseconds: 2_000_000_000)
+//            speechRecognizer?.transcript.removeAll()
+//            isRecording = true
+//            speechRecognizer?.startTranscribing()
+//        }
+        
+        speechRecognizer?.transcript.removeAll()
+        isRecording = true
+        speechRecognizer?.startTranscribing()
     }
     
     @MainActor 
