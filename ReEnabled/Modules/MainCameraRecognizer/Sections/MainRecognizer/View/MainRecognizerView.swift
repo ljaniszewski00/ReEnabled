@@ -23,15 +23,20 @@ struct MainRecognizerView: View {
                 Spacer()
                 
                 Group {
-                    if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType,
-                       let personMovementInstruction = pedestrianCrossingRecognizerViewModel.personMovementInstruction,
-                       let deviceMovementInstruction = pedestrianCrossingRecognizerViewModel.deviceMovementInstruction {
+                    if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType {
                         Text(recognizedLightColor)
                             .padding(.bottom)
-                        Text(personMovementInstruction)
-                        Text(deviceMovementInstruction)
-                            .padding(.bottom)
                     }
+                    
+//                    if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType,
+//                       let personMovementInstruction = pedestrianCrossingRecognizerViewModel.personMovementInstruction,
+//                       let deviceMovementInstruction = pedestrianCrossingRecognizerViewModel.deviceMovementInstruction {
+//                        Text(recognizedLightColor)
+//                            .padding(.bottom)
+//                        Text(personMovementInstruction)
+//                        Text(deviceMovementInstruction)
+//                            .padding(.bottom)
+//                    }
                     
                     if let distanceString = distanceMeasurerViewModel.distanceString {
                         Text(distanceString)
@@ -45,12 +50,12 @@ struct MainRecognizerView: View {
         .onChange(of: roadLightsRecognizerViewModel.roadLightTypeRecognized) { _, _ in
             roadLightsRecognizerViewModel.readRoadLightType()
         }
-        .onChange(of: pedestrianCrossingRecognizerViewModel.personMovementInstruction) { _, personMovementInstruction in
-            pedestrianCrossingRecognizerViewModel.readPersonMovementInstruction()
-        }
-        .onChange(of: pedestrianCrossingRecognizerViewModel.deviceMovementInstruction) { _, deviceMovementInstruction in
-            pedestrianCrossingRecognizerViewModel.readDeviceMovementInstruction()
-        }
+//        .onChange(of: pedestrianCrossingRecognizerViewModel.personMovementInstruction) { _, personMovementInstruction in
+//            pedestrianCrossingRecognizerViewModel.readPersonMovementInstruction()
+//        }
+//        .onChange(of: pedestrianCrossingRecognizerViewModel.deviceMovementInstruction) { _, deviceMovementInstruction in
+//            pedestrianCrossingRecognizerViewModel.readDeviceMovementInstruction()
+//        }
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
             if isNear {
                 feedbackManager.generateHapticFeedback(.impact(.heavy))

@@ -101,9 +101,9 @@ extension MainRecognizerViewController: PedestrianCrossingRecognizing {
             self.pedestrianCrossingRecognizerViewModel?.pedestrianCrossingPrediction = self.pedestrianCrossingModel.pedestrianCrossingPrediction
             self.managePedestrianCrossingRecognitionLayerVisibility()
             
-            DispatchQueue.main.async {
-                self.showPedestrianCrossingRecognitionResults()
-            }
+//            DispatchQueue.main.async {
+//                self.showPedestrianCrossingRecognitionResults()
+//            }
         }
     }
     
