@@ -1,8 +1,9 @@
 extension VoiceRequest: CaseIterable {
     static var allCases: [VoiceRequest] = [
         .camera(.mainRecognizer(.readObjects)),
-        .camera(.documentScanner(.readScannedDocument)),
-        .camera(.colorDetector(.readDetectedColor)),
+        .camera(.documentScanner(.readText)),
+        .camera(.documentScanner(.readBarCodes)),
+        .camera(.colorDetector(.readColor)),
         .camera(.lightDetector(.startLightDetection)),
         .camera(.lightDetector(.stopLightDetection)),
         .chat(.sendMessage),

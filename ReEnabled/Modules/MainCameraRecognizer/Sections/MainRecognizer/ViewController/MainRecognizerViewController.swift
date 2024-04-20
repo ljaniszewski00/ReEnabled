@@ -96,12 +96,6 @@ class MainRecognizerViewController: UIViewController {
             self.setupRoadLightsBoundingBoxes()
             self.setupPedestrianCrossingRecognitionLayer()
             self.updatePedestrianCrossingRecognitionLayerGeometry()
-            
-            DispatchQueue.main.async {
-                self.objectsRecognizerViewModel?.canDisplayCamera = true
-                self.roadLightsRecognizerViewModel?.canDisplayCamera = true
-                self.pedestrianCrossingRecognizerViewModel?.canDisplayCamera = true
-            }
         }
     }
     

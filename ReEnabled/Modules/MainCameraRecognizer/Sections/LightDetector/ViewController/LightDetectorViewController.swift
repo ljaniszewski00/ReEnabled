@@ -25,9 +25,6 @@ class LightDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
                                     cameraPosition: .back,
                                     desiredFrameRate: 30) {
             self.setupUI()
-            DispatchQueue.main.async {
-                self.lightDetectorViewModel?.canDisplayCamera = true
-            }
         }
     }
     

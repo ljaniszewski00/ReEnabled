@@ -29,9 +29,6 @@ class ColorDetectorViewController: UIViewController, AVCaptureVideoDataOutputSam
                                     cameraPosition: .back,
                                     desiredFrameRate: 30) {
             self.setupUI()
-            DispatchQueue.main.async {
-                self.colorDetectorViewModel?.canDisplayCamera = true
-            }
         }
     }
     
