@@ -4,7 +4,6 @@ final class LightDetectorViewModel: ObservableObject {
     @Inject private var audioPlayerManager: AudioPlayerManaging
     
     @Published var luminosity: Double?
-    @Published var canDisplayCamera: Bool = false
     
     private var feedbackManager: FeedbackManager = .shared
     

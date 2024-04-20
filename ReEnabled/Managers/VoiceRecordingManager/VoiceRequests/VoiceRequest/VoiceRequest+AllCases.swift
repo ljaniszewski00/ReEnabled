@@ -1,6 +1,6 @@
 extension VoiceRequest: CaseIterable {
     static var allCases: [VoiceRequest] = [
-        .camera(.mainRecognizer(.readRecognizedObjects)),
+        .camera(.mainRecognizer(.readObjects)),
         .camera(.documentScanner(.readScannedDocument)),
         .camera(.colorDetector(.readDetectedColor)),
         .camera(.lightDetector(.startLightDetection)),

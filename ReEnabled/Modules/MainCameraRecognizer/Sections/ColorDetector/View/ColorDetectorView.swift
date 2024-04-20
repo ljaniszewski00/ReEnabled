@@ -3,16 +3,16 @@ import SwiftUI
 struct ColorDetectorView: View {
     @EnvironmentObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel
     
+    @StateObject private var colorDetectorViewModel: ColorDetectorViewModel = ColorDetectorViewModel()
+    
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
-    
-    @StateObject private var colorDetectorViewModel: ColorDetectorViewModel = ColorDetectorViewModel()
+    @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     var body: some View {
         ZStack {
             ColorDetectorViewControllerRepresentable(colorDetectorViewModel: colorDetectorViewModel)
-                .opacity(colorDetectorViewModel.canDisplayCamera ? 1 : 0)
             
             VStack {
                 Spacer()
@@ -28,6 +28,18 @@ struct ColorDetectorView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 feedbackManager.generateSpeechFeedback(with: .camera(.colorDetector(.tapToHearTheColor)))
+            }
+        }
+        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+            guard voiceRequest != VoiceRequest.empty else {
+                return
+            }
+            
+            switch voiceRequest {
+            case .camera(.colorDetector(.readColor)):
+                colorDetectorViewModel.readDetectedColor()
+            default:
+                return
             }
         }
         .addGesturesActions(toExecuteAfterEveryAction: {

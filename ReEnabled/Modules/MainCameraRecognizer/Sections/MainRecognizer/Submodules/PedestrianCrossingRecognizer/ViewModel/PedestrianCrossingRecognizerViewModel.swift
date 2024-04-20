@@ -2,7 +2,6 @@ import SwiftUI
 
 final class PedestrianCrossingRecognizerViewModel: ObservableObject {
     @Published var pedestrianCrossingPrediction: PedestrianCrossingPrediction?
-    @Published var canDisplayCamera: Bool = false
     
     private let feedbackManager: FeedbackManager = .shared
     

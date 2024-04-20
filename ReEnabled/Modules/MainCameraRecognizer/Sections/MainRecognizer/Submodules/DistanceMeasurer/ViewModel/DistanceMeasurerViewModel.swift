@@ -5,7 +5,6 @@ final class DistanceMeasurerViewModel: ObservableObject {
     
     private let feedbackManager: FeedbackManager = .shared
     
-    @Published var canDisplayCamera: Bool = false
     @Published var distance: Float?
     
     var obstacleIsNear: Bool {

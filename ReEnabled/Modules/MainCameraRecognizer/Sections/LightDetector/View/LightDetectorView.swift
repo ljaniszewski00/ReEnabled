@@ -3,16 +3,16 @@ import SwiftUI
 struct LightDetectorView: View {
     @EnvironmentObject private var mainCameraRecognizerViewModel: MainCameraRecognizerViewModel
     
+    @StateObject private var lightDetectorViewModel: LightDetectorViewModel = LightDetectorViewModel()
+    
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
-    
-    @StateObject private var lightDetectorViewModel: LightDetectorViewModel = LightDetectorViewModel()
+    @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     var body: some View {
         ZStack {
             LightDetectorViewControllerRepresentable(lightDetectorViewModel: lightDetectorViewModel)
-                .opacity(lightDetectorViewModel.canDisplayCamera ? 1 : 0)
             
             VStack {
                 Spacer()
@@ -34,7 +34,7 @@ struct LightDetectorView: View {
             lightDetectorViewModel.stopSound()
         }
         .onChange(of: lightDetectorViewModel.luminosity) { _, newValue in
-            if tabBarStateManager.tabSelection == .camera {
+            if tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .lightDetector {
                 lightDetectorViewModel.playSound()
             }
         }
@@ -45,6 +45,20 @@ struct LightDetectorView: View {
             
             if newTab == .camera {
                 lightDetectorViewModel.playSound()
+            }
+        }
+        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+            guard voiceRequest != VoiceRequest.empty else {
+                return
+            }
+            
+            switch voiceRequest {
+            case .camera(.lightDetector(.startLightDetection)):
+                lightDetectorViewModel.playSound()
+            case .camera(.lightDetector(.stopLightDetection)):
+                lightDetectorViewModel.stopSound()
+            default:
+                return
             }
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {

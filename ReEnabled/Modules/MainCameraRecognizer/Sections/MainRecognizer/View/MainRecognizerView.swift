@@ -64,6 +64,18 @@ struct MainRecognizerView: View {
                 distanceMeasurerViewModel.warnAboutObstacle()
             }
         }
+        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+            guard voiceRequest != VoiceRequest.empty else {
+                return
+            }
+            
+            switch voiceRequest {
+            case .camera(.mainRecognizer(.readObjects)):
+                objectsRecognizerViewModel.readRecognizedObjects()
+            default:
+                return
+            }
+        }
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

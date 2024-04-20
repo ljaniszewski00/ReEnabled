@@ -1,3 +1,4 @@
 enum DocumentScannerVoiceRequest: String {
-    case readScannedDocument = "Read scanned document"
+    case readText = "Read text"
+    case readBarCodes = "Read bar codes"
 }

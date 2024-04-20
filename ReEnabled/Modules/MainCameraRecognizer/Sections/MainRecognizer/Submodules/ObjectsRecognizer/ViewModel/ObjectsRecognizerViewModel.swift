@@ -1,7 +1,6 @@
 import SwiftUI
 
 final class ObjectsRecognizerViewModel: ObservableObject {
-    @Published var canDisplayCamera: Bool = false
     @Published var recognizedObjectsNames: Set<String> = []
     
     private let feedbackManager: FeedbackManager = .shared
