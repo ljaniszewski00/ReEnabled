@@ -41,14 +41,15 @@ final class SettingsViewModel: ObservableObject {
         switch newFlashlightTriggerMode {
         case .automatic:
             currentSettings?.flashlightTriggerLightValue = nil
-            
+            feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
+                                                   and: newFlashlightTriggerMode.rawValue)
         case .specificLightValue(let lightValue):
             currentSettings?.flashlightTriggerLightValue = lightValue.flashlightTriggerValue
+            feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
+                                                   and: lightValue.rawValue)
         }
         
         saveSettings()
-        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
-                                               and: newFlashlightTriggerMode.rawValue)
     }
     
     func changeSpeechSpeed(to newSpeed: SpeechSpeed) {

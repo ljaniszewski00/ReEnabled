@@ -25,8 +25,8 @@ class VoiceRequestor: ObservableObject {
             }
         }
         
-        print("here transcript: \(transcript)")
-        print("here: \(voiceRequestChoosen)")
+//        print("here transcript: \(transcript)")
+//        print("here: \(voiceRequestChoosen)")
         
         guard voiceRequestChoosen != .empty else {
             feedbackManager.generateSpeechFeedback(with: .other(.voiceCommandWasNotRecognized))
