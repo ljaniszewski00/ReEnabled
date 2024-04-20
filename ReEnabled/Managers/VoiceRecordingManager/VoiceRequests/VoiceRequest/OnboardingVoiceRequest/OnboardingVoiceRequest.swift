@@ -4,3 +4,12 @@ enum OnboardingVoiceRequest: String {
     case previousPage = "Previous page"
     case nextPage = "Next page"
 }
+
+extension OnboardingVoiceRequest {
+    static let allCases: [VoiceRequest] = [
+        .onboarding(.skip),
+        .onboarding(.readPage),
+        .onboarding(.previousPage),
+        .onboarding(.nextPage)
+    ]
+}

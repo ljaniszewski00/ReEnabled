@@ -13,3 +13,18 @@ enum OtherVoiceRequest: String {
     case remindOtherVoiceCommands = "Remind other voice commands"
     case remindGestures = "Remind gestures"
 }
+
+extension OtherVoiceRequest: CaseIterable {
+    static let allCases: [VoiceRequest] = [
+        .other(.changeTabToCamera),
+        .other(.recognizeObjects),
+        .other(.scanDocument),
+        .other(.detectColor),
+        .other(.detectLight),
+        .other(.changeTabToChat),
+        .other(.sendNewMessage),
+        .other(.changeTabToSettings),
+        .other(.remindOtherVoiceCommands),
+        .other(.remindGestures)
+    ]
+}

@@ -30,3 +30,29 @@ enum SettingsVoiceRequest: String {
     case deleteAllConversations = "Delete all conversations"
     case restoreDefaultSettings = "Restore default settings"
 }
+
+extension SettingsVoiceRequest {
+    static let allCases: [VoiceRequest] = [
+        .settings(.changeDefaultCameraModeToMainRecognizer),
+        .settings(.changeDefaultCameraModeToDocumentScanner),
+        .settings(.changeDefaultCameraModeToColorDetector),
+        .settings(.changeDefaultCameraModeToLightDetector),
+        .settings(.changeDefaultDistanceMeasureUnitToCentimeters),
+        .settings(.changeDefaultDistanceMeasureUnitToMeters),
+        .settings(.changeFlashlightTriggerModeToAutomatic),
+        .settings(.changeFlashlightTriggerModeToManualWithHighTolerance),
+        .settings(.changeFlashlightTriggerModeToManualWithMediumTolerance),
+        .settings(.changeFlashlightTriggerModeToManualWithLowTolerance),
+        .settings(.changeSpeechSpeedToFastest),
+        .settings(.changeSpeechSpeedToFaster),
+        .settings(.changeSpeechSpeedToNormal),
+        .settings(.changeSpeechSpeedToSlower),
+        .settings(.changeSpeechSpeedToSlowest),
+        .settings(.changeSpeechLanguageToEnglish),
+        .settings(.changeSpeechLanguageToPolish),
+        .settings(.changeVoiceRecordingLanguageToEnglish),
+        .settings(.changeVoiceRecordingLanguageToPolish),
+        .settings(.deleteAllConversations),
+        .settings(.restoreDefaultSettings)
+    ]
+}
