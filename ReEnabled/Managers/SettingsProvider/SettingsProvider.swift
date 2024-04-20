@@ -24,11 +24,12 @@ final class SettingsProvider: ObservableObject {
     }
     
     var flashlightTriggerMode: FlashlightTriggerMode {
-        guard let flashlightTriggerLightValue = currentSettings.flashlightTriggerLightValue else {
+        guard let flashlightTriggerLightValue = currentSettings.flashlightTriggerLightValue,
+              let flashlightTriggerLightValueKey = ManualFlashlightTriggerValue.getFlashlighTriggerLightValueFrom(flashlightTriggerLightValue) else {
             return .automatic
         }
         
-        return .specificLightValue(flashlightTriggerLightValue)
+        return .specificLightValue(flashlightTriggerLightValueKey)
     }
     
     var speechSpeed: Float {

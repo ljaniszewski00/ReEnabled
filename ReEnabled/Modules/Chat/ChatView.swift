@@ -58,39 +58,6 @@ struct ChatView: View {
                                                        and: TabBarItem.chat.title)
             }
         }
-        .addGesturesActions(toExecuteBeforeEveryAction: {
-            feedbackManager.generateHapticFeedbackForSwipeAction()
-        }, toExecuteAfterEveryAction: {
-            feedbackManager.generateHapticFeedbackForSwipeAction()
-        }, onTap: {
-            if feedbackManager.speechFeedbackIsBeingGenerated {
-                feedbackManager.stopSpeechFeedback()
-            } else {
-                chatViewModel.readConversation()
-            }
-        }, onDoubleTap: {
-            if !chatViewModel.speechRecordingBlocked {
-                voiceRecordingChatManager.manageTalking()
-            }
-        }, onTrippleTap: {
-            
-        }, onLongPress: {
-            if !voiceRecordingChatManager.isRecordingChatMessage {
-                voiceRecordingManager.manageTalking()
-            }
-        }, onSwipeFromLeftToRight: {
-            chatViewModel.changeCurrentConversationToNext()
-        }, onSwipeFromRightToLeft: {
-            chatViewModel.changeCurrentConversationToPrevious()
-        }, onSwipeFromLeftToRightAfterLongPress: {
-            tabBarStateManager.changeTabSelectionTo(.settings)
-        }, onSwipeFromRightToLeftAfterLongPress: {
-            tabBarStateManager.changeTabSelectionTo(.camera)
-        }, onSwipeFromUpToDownAfterLongPress: {
-            chatViewModel.deleteCurrentConversation()
-        }, onSwipeFromDownToUpAfterLongPress: {
-            chatViewModel.selectPhoto()
-        })
         .onChange(of: conversationsObjects) { _, updatedConversationsObjects in
             chatViewModel.getConversations(from: updatedConversationsObjects)
         }
@@ -132,6 +99,39 @@ struct ChatView: View {
                 return
             }
         }
+        .addGesturesActions(toExecuteBeforeEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, toExecuteAfterEveryAction: {
+            feedbackManager.generateHapticFeedbackForSwipeAction()
+        }, onTap: {
+            if feedbackManager.speechFeedbackIsBeingGenerated {
+                feedbackManager.stopSpeechFeedback()
+            } else {
+                chatViewModel.readConversation()
+            }
+        }, onDoubleTap: {
+            if !chatViewModel.speechRecordingBlocked {
+                voiceRecordingChatManager.manageTalking()
+            }
+        }, onTrippleTap: {
+            
+        }, onLongPress: {
+            if !voiceRecordingChatManager.isRecordingChatMessage {
+                voiceRecordingManager.manageTalking()
+            }
+        }, onSwipeFromLeftToRight: {
+            chatViewModel.changeCurrentConversationToNext()
+        }, onSwipeFromRightToLeft: {
+            chatViewModel.changeCurrentConversationToPrevious()
+        }, onSwipeFromLeftToRightAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.settings)
+        }, onSwipeFromRightToLeftAfterLongPress: {
+            tabBarStateManager.changeTabSelectionTo(.camera)
+        }, onSwipeFromUpToDownAfterLongPress: {
+            chatViewModel.deleteCurrentConversation()
+        }, onSwipeFromDownToUpAfterLongPress: {
+            chatViewModel.selectPhoto()
+        })
         .fullScreenCover(isPresented: $chatViewModel.showCamera) {
             SingleTakeCameraViewControllerRepresentable(chatViewModel: chatViewModel)
         }

@@ -5,6 +5,7 @@ struct SettingsView: View {
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
     
@@ -38,6 +39,72 @@ struct SettingsView: View {
             if tabBarStateManager.tabSelection == .settings {
                 feedbackManager.generateSpeechFeedback(with: .other(.currentTab),
                                                        and: TabBarItem.settings.title)
+            }
+        }
+        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+            guard voiceRequest != VoiceRequest.empty else {
+                return
+            }
+            
+            switch voiceRequest {
+            case .settings(.changeDefaultCameraModeToMainRecognizer):
+                settingsViewModel.changeDefaultCameraMode(to: .mainRecognizer)
+            case .settings(.changeDefaultCameraModeToDocumentScanner):
+                settingsViewModel.changeDefaultCameraMode(to: .documentScanner)
+            case .settings(.changeDefaultCameraModeToColorDetector):
+                settingsViewModel.changeDefaultCameraMode(to: .colorDetector)
+            case .settings(.changeDefaultCameraModeToLightDetector):
+                settingsViewModel.changeDefaultCameraMode(to: .lightDetector)
+            case .settings(.changeDefaultDistanceMeasureUnitToCentimeters):
+                settingsViewModel.changeDefaultDistanceMeasureUnit(to: .centimeters)
+            case .settings(.changeDefaultDistanceMeasureUnitToMeters):
+                settingsViewModel.changeDefaultDistanceMeasureUnit(to: .meters)
+            case .settings(.changeFlashlightTriggerModeToAutomatic):
+                settingsViewModel.changeFlashlightTriggerMode(to: .automatic)
+            case .settings(.changeFlashlightTriggerModeToManualWithHighTolerance):
+                settingsViewModel.changeFlashlightTriggerMode(to: .specificLightValue(.highestTolerance))
+            case .settings(.changeFlashlightTriggerModeToManualWithMediumTolerance):
+                settingsViewModel.changeFlashlightTriggerMode(to: .specificLightValue(.mediumTolerance))
+            case .settings(.changeFlashlightTriggerModeToManualWithLowTolerance):
+                settingsViewModel.changeFlashlightTriggerMode(to: .specificLightValue(.lowestTolerance))
+            case .settings(.changeSpeechSpeedToFastest):
+                settingsViewModel.changeSpeechSpeed(to: .fastest)
+            case .settings(.changeSpeechSpeedToFaster):
+                settingsViewModel.changeSpeechSpeed(to: .faster)
+            case .settings(.changeSpeechSpeedToNormal):
+                settingsViewModel.changeSpeechSpeed(to: .normal)
+            case .settings(.changeSpeechSpeedToSlower):
+                settingsViewModel.changeSpeechSpeed(to: .slower)
+            case .settings(.changeSpeechSpeedToSlowest):
+                settingsViewModel.changeSpeechSpeed(to: .slowest)
+            case .settings(.changeSpeechVoiceTypeToFemale):
+                settingsViewModel.changeSpeechVoiceType(to: .female)
+            case .settings(.changeSpeechVoiceTypeToMale):
+                settingsViewModel.changeSpeechVoiceType(to: .male)
+            case .settings(.changeSpeechLanguageToEnglish):
+                settingsViewModel.changeSpeechLanguage(to: .english)
+            case .settings(.changeSpeechLanguageToPolish):
+                settingsViewModel.changeSpeechLanguage(to: .polish)
+            case .settings(.changeVoiceRecordingLanguageToEnglish):
+                settingsViewModel.changeVoiceRecordingLanguage(to: .english)
+            case .settings(.changeVoiceRecordingLanguageToPolish):
+                settingsViewModel.changeVoiceRecordingLanguage(to: .polish)
+            case .settings(.deleteAllConversations):
+                settingsViewModel.deleteAllConversations()
+                    .sink(receiveCompletion: { _ in
+                    }, receiveValue: { _ in
+                        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.allConversationsDeleted))
+                    })
+                    .store(in: &settingsViewModel.cancelBag)
+            case .settings(.restoreDefaultSettings):
+                settingsViewModel.restoreDefaultSettings()
+                    .sink(receiveCompletion: { _ in
+                    }, receiveValue: { _ in
+                        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.restoredDefaultSettings))
+                    })
+                    .store(in: &settingsViewModel.cancelBag)
+            default:
+                return
             }
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
@@ -227,8 +294,6 @@ private extension Views {
                             feedbackManager.generateSpeechFeedback(with: speechText)
                         }
                     }, onDoubleTap: {
-                        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
-                                                               and: FlashlightTriggerMode.automatic.rawValue)
                         settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.automatic)
                     }, onTrippleTap: {
                         if feedbackManager.speechFeedbackIsBeingGenerated {
@@ -240,26 +305,14 @@ private extension Views {
                         voiceRecordingManager.manageTalking()
                     })
                     
-                    ForEach(settingsViewModel.availableFlashlightTriggerValuesKeys, id: \.self) { flashlightTriggerValueKey in
-                        var tileDescription: String? {
-                            if settingsViewModel.availableFlashlightTriggerValuesKeys.first == flashlightTriggerValueKey {
-                                return "Highest tolerance towards darkness"
-                            } else if settingsViewModel.availableFlashlightTriggerValuesKeys.last == flashlightTriggerValueKey {
-                                return "Lowest tolerance towards darkness"
-                            } else {
-                                return nil
-                            }
-                        }
-                        
-                        let flashlightTriggerValue: Float = settingsViewModel.availableFlashlightTriggerValues[flashlightTriggerValueKey]!
-                        
+                    ForEach(ManualFlashlightTriggerValue.allCases, id: \.self) { flashlightTriggerValueKey in
                         VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: flashlightTriggerValueKey,
-                                                       description: tileDescription,
-                                                       isSelectedValue: currentSettings.flashlightTriggerLightValue == flashlightTriggerValue)
+                            SettingsSectionDetailsTile(value: flashlightTriggerValueKey.rawValue,
+                                                       description: flashlightTriggerValueKey.settingDescription,
+                                                       isSelectedValue: currentSettings.flashlightTriggerLightValue == flashlightTriggerValueKey.flashlightTriggerValue)
                                 .padding(.vertical)
                             
-                            if settingsViewModel.availableFlashlightTriggerValuesKeys.last != flashlightTriggerValueKey {
+                            if ManualFlashlightTriggerValue.allCases.last != flashlightTriggerValueKey {
                                 Divider()
                             }
                         }
@@ -274,9 +327,7 @@ private extension Views {
                                 feedbackManager.generateSpeechFeedback(with: speechText)
                             }
                         }, onDoubleTap: {
-                            feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
-                                                                   and: flashlightTriggerValueKey)
-                            settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValue))
+                            settingsViewModel.changeFlashlightTriggerMode(to: FlashlightTriggerMode.specificLightValue(flashlightTriggerValueKey))
                         }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()
@@ -305,15 +356,13 @@ private extension Views {
             
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
-                    ForEach(settingsViewModel.availableSpeechSpeedsKeys, id: \.self) { speechSpeedKey in
-                        let speechSpeedValue: Float = settingsViewModel.availableSpeechSpeeds[speechSpeedKey]!
-                        
+                    ForEach(SpeechSpeed.allCases, id: \.self) { speechSpeedKey in
                         VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: speechSpeedKey,
-                                                       isSelectedValue: currentSettings.speechSpeed == speechSpeedValue)
+                            SettingsSectionDetailsTile(value: speechSpeedKey.rawValue,
+                                                       isSelectedValue: currentSettings.speechSpeed == speechSpeedKey.speed)
                                 .padding(.vertical)
                             
-                            if settingsViewModel.availableSpeechSpeedsKeys.last != speechSpeedKey {
+                            if SpeechSpeed.allCases.last != speechSpeedKey {
                                 Divider()
                             }
                         }
@@ -328,7 +377,7 @@ private extension Views {
                                 feedbackManager.generateSpeechFeedback(with: speechText)
                             }
                         }, onDoubleTap: {
-                            settingsViewModel.changeSpeechSpeed(to: speechSpeedValue, labeled: speechSpeedKey)
+                            settingsViewModel.changeSpeechSpeed(to: speechSpeedKey)
                         }, onTrippleTap: {
                             if feedbackManager.speechFeedbackIsBeingGenerated {
                                 feedbackManager.stopSpeechFeedback()

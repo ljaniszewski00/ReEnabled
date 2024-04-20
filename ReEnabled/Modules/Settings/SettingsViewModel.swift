@@ -11,34 +11,6 @@ final class SettingsViewModel: ObservableObject {
     
     @Published var currentSettings: SettingsModel?
     
-    let availableFlashlightTriggerValues: [String: Float] = [
-        "Highest Tolerance": 1.6,
-        "Medium Tolerance": 15.0,
-        "Lowest Tolerance": 50.0
-    ]
-    
-    var availableFlashlightTriggerValuesKeys: [String] = [
-        "Highest Tolerance",
-        "Medium Tolerance",
-        "Lowest Tolerance"
-    ]
-    
-    let availableSpeechSpeeds: [String: Float] = [
-        "Fastest": 0.7,
-        "Faster": 0.6,
-        "Normal": 0.5,
-        "Slower": 0.4,
-        "Slowest": 0.3
-    ]
-    
-    let availableSpeechSpeedsKeys: [String] = [
-        "Fastest",
-        "Faster",
-        "Normal",
-        "Slower",
-        "Slowest"
-    ]
-    
     var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     func getSettings(from settingsObjects: Results<SettingsObject>) {
@@ -71,17 +43,19 @@ final class SettingsViewModel: ObservableObject {
             currentSettings?.flashlightTriggerLightValue = nil
             
         case .specificLightValue(let lightValue):
-            currentSettings?.flashlightTriggerLightValue = lightValue
+            currentSettings?.flashlightTriggerLightValue = lightValue.flashlightTriggerValue
         }
         
         saveSettings()
+        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.flashlightTriggerModeHasBeenSetTo),
+                                               and: newFlashlightTriggerMode.rawValue)
     }
     
-    func changeSpeechSpeed(to newSpeed: Float, labeled: String) {
-        currentSettings?.speechSpeed = newSpeed
+    func changeSpeechSpeed(to newSpeed: SpeechSpeed) {
+        currentSettings?.speechSpeed = newSpeed.speed
         saveSettings()
         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.speechSpeedHasBeenSetTo),
-                                               and: labeled)
+                                               and: newSpeed.rawValue)
     }
     
     func changeSpeechVoiceType(to newSpeechVoiceType: SpeechVoiceType) {

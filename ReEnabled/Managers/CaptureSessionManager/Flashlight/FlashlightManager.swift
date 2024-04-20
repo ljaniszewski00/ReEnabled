@@ -21,8 +21,8 @@ final class FlashlightManager: FlashlightManaging {
         switch settingsProvider.flashlightTriggerMode {
         case .automatic:
             setTorchMode(.auto, for: captureDevice)
-        case .specificLightValue(let lightValue):
-            if Float(luminosity) < lightValue {
+        case .specificLightValue(let lightValueKey):
+            if Float(luminosity) < lightValueKey.flashlightTriggerValue {
                 setTorchMode(.on, for: captureDevice)
             } else {
                 setTorchMode(.off, for: captureDevice)

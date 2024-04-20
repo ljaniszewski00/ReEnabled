@@ -179,6 +179,8 @@
 		16F564B72B98ED0000A831F2 /* RoadLightsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564B62B98ED0000A831F2 /* RoadLightsModel.swift */; };
 		16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564B82B98ED0900A831F2 /* RoadLightsTypeManager.swift */; };
 		16F564BB2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */; };
+		16F9EC8F2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC8E2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift */; };
+		16F9EC912BD3DF3F00C5F997 /* SpeechSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC902BD3DF3F00C5F997 /* SpeechSpeed.swift */; };
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
 		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
@@ -369,6 +371,8 @@
 		16F564B62B98ED0000A831F2 /* RoadLightsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsModel.swift; sourceTree = "<group>"; };
 		16F564B82B98ED0900A831F2 /* RoadLightsTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsTypeManager.swift; sourceTree = "<group>"; };
 		16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizerViewModel.swift; sourceTree = "<group>"; };
+		16F9EC8E2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualFlashlightTriggerValue.swift; sourceTree = "<group>"; };
+		16F9EC902BD3DF3F00C5F997 /* SpeechSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSpeed.swift; sourceTree = "<group>"; };
 		16FC1A782BA1007200BB9B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
@@ -998,6 +1002,7 @@
 		164E11472B47210A008EF153 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				16F9EC8D2BD3DCAC00C5F997 /* SettingsEnums */,
 				16E5140E2BB6020F0035B586 /* DataModel */,
 				164E114C2B472122008EF153 /* SettingsView.swift */,
 				16E514032BB5BDAB0035B586 /* SettingsViewModel.swift */,
@@ -1552,6 +1557,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		16F9EC8D2BD3DCAC00C5F997 /* SettingsEnums */ = {
+			isa = PBXGroup;
+			children = (
+				16F9EC8E2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift */,
+				16F9EC902BD3DF3F00C5F997 /* SpeechSpeed.swift */,
+			);
+			path = SettingsEnums;
+			sourceTree = "<group>";
+		};
 		16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1682,6 +1696,7 @@
 				1629F9E92BAA18CF00B89629 /* OnMultipleTouchSwipe.swift in Sources */,
 				164E11492B472115008EF153 /* MainCameraRecognizerView.swift in Sources */,
 				162784822B9FC2C000C5225F /* CustomNavigationBar.swift in Sources */,
+				16F9EC8F2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift in Sources */,
 				1670C6162B6FAA9B005CF24B /* LightDetectorViewController.swift in Sources */,
 				16C107542BBC7A8C00797394 /* CameraVoiceRequest.swift in Sources */,
 				163311872B8D2A9500896058 /* FlashlightManager.swift in Sources */,
@@ -1690,6 +1705,7 @@
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
 				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
 				16C107592BBC7BCC00797394 /* ChatVoiceRequest.swift in Sources */,
+				16F9EC912BD3DF3F00C5F997 /* SpeechSpeed.swift in Sources */,
 				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				16E514072BB5FCCF0035B586 /* SettingsObject.swift in Sources */,

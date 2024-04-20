@@ -1,6 +1,6 @@
 enum FlashlightTriggerMode {
     case automatic
-    case specificLightValue(Float)
+    case specificLightValue(ManualFlashlightTriggerValue)
 }
 
 extension FlashlightTriggerMode {
