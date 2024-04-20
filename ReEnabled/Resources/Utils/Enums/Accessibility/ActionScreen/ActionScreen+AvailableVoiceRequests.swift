@@ -1,4 +1,4 @@
-extension ActionScreen {
+extension ActionScreenType {
     var availableVoiceRequests: [VoiceRequest] {
         switch self {
         case .mainRecognizer:

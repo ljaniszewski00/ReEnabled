@@ -10,7 +10,7 @@ enum OtherVoiceRequest: String {
     
     case changeTabToSettings = "Change tab to settings"
     
-    case remindOtherVoiceCommands = "Remind other voice commands"
+    case remindVoiceCommands = "Remind voice commands"
     case remindGestures = "Remind gestures"
 }
 
@@ -24,7 +24,7 @@ extension OtherVoiceRequest: CaseIterable {
         .other(.changeTabToChat),
         .other(.sendNewMessage),
         .other(.changeTabToSettings),
-        .other(.remindOtherVoiceCommands),
+        .other(.remindVoiceCommands),
         .other(.remindGestures)
     ]
 }

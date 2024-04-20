@@ -1,4 +1,4 @@
-extension ActionScreen {
+extension ActionScreenType {
     var availableGestures: [GestureType] {
         switch self {
         case .mainRecognizer:

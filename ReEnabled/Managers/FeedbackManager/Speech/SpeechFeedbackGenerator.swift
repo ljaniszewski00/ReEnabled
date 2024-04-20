@@ -46,6 +46,30 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
         self.speechSynthesizer.speak(utterance)
     }
     
+    func generateVoiceRequestsReminder(for actionScreen: ActionScreen) {
+        var text: String = OtherSpeechFeedback.youCanUseFollowingVoiceCommands.rawValue
+        for availableVoiceRequest in actionScreen.screenType.availableVoiceRequests {
+            text += availableVoiceRequest.rawValue
+        }
+        
+        generate(for: text)
+    }
+    
+    func generateGesturesReminder(for actionScreen: ActionScreen) {
+        var text: String = OtherSpeechFeedback.youCanUseFollowingGestures.rawValue
+        for gestureType in actionScreen.screenType.availableGestures {
+            guard let action = actionScreen.gesturesActions[gestureType] else {
+                continue
+            }
+            
+            text += gestureType.name
+            text += " to "
+            text += action
+        }
+        
+        generate(for: text)
+    }
+    
     func generateSample() {
         let sampleText: String = settingsProvider.speechLanguage.getSpeechVoiceSampleText(voiceName: currentSpeechVoiceName)
         generate(for: sampleText)

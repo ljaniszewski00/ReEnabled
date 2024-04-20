@@ -72,6 +72,10 @@ struct MainRecognizerView: View {
             switch voiceRequest {
             case .camera(.mainRecognizer(.readObjects)):
                 objectsRecognizerViewModel.readRecognizedObjects()
+            case .other(.remindVoiceCommands):
+                ActionScreenType.mainRecognizer.availableVoiceRequests
+            case .other(.remindGestures):
+                ActionScreenType.mainRecognizer.availableGestures
             default:
                 return
             }

@@ -181,10 +181,21 @@
 		16F564BB2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */; };
 		16F9EC8F2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC8E2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift */; };
 		16F9EC912BD3DF3F00C5F997 /* SpeechSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC902BD3DF3F00C5F997 /* SpeechSpeed.swift */; };
-		16F9EC932BD434E700C5F997 /* ActionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC922BD434E700C5F997 /* ActionScreen.swift */; };
+		16F9EC932BD434E700C5F997 /* ActionScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC922BD434E700C5F997 /* ActionScreenType.swift */; };
 		16F9EC962BD438C300C5F997 /* GestureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC952BD438C300C5F997 /* GestureType.swift */; };
 		16F9EC992BD4418900C5F997 /* ActionScreen+AvailableGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC982BD4418900C5F997 /* ActionScreen+AvailableGestures.swift */; };
 		16F9EC9B2BD4419300C5F997 /* ActionScreen+AvailableVoiceRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC9A2BD4419300C5F997 /* ActionScreen+AvailableVoiceRequests.swift */; };
+		16F9EC9F2BD4532200C5F997 /* GestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9EC9E2BD4532200C5F997 /* GestureAction.swift */; };
+		16F9ECAC2BD4567100C5F997 /* MainRecognizerGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECAB2BD4567100C5F997 /* MainRecognizerGestureAction.swift */; };
+		16F9ECAE2BD4567800C5F997 /* DocumentScannerGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECAD2BD4567800C5F997 /* DocumentScannerGestureAction.swift */; };
+		16F9ECB02BD4567E00C5F997 /* ColorDetectorGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECAF2BD4567E00C5F997 /* ColorDetectorGestureAction.swift */; };
+		16F9ECB22BD4568500C5F997 /* LightDetectorGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECB12BD4568500C5F997 /* LightDetectorGestureAction.swift */; };
+		16F9ECB42BD4568B00C5F997 /* ChatGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECB32BD4568B00C5F997 /* ChatGestureAction.swift */; };
+		16F9ECB62BD4569100C5F997 /* SettingsGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECB52BD4569100C5F997 /* SettingsGestureAction.swift */; };
+		16F9ECB82BD4569700C5F997 /* OnboardingGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECB72BD4569700C5F997 /* OnboardingGestureAction.swift */; };
+		16F9ECBA2BD4569E00C5F997 /* OtherGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECB92BD4569E00C5F997 /* OtherGestureAction.swift */; };
+		16F9ECBC2BD456C200C5F997 /* CameraGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECBB2BD456C200C5F997 /* CameraGestureAction.swift */; };
+		16F9ECBE2BD457ED00C5F997 /* ActionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECBD2BD457ED00C5F997 /* ActionScreen.swift */; };
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
 		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
@@ -377,10 +388,21 @@
 		16F564BA2B98ED1700A831F2 /* RoadLightsRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadLightsRecognizerViewModel.swift; sourceTree = "<group>"; };
 		16F9EC8E2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualFlashlightTriggerValue.swift; sourceTree = "<group>"; };
 		16F9EC902BD3DF3F00C5F997 /* SpeechSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSpeed.swift; sourceTree = "<group>"; };
-		16F9EC922BD434E700C5F997 /* ActionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionScreen.swift; sourceTree = "<group>"; };
+		16F9EC922BD434E700C5F997 /* ActionScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionScreenType.swift; sourceTree = "<group>"; };
 		16F9EC952BD438C300C5F997 /* GestureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureType.swift; sourceTree = "<group>"; };
 		16F9EC982BD4418900C5F997 /* ActionScreen+AvailableGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionScreen+AvailableGestures.swift"; sourceTree = "<group>"; };
 		16F9EC9A2BD4419300C5F997 /* ActionScreen+AvailableVoiceRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionScreen+AvailableVoiceRequests.swift"; sourceTree = "<group>"; };
+		16F9EC9E2BD4532200C5F997 /* GestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureAction.swift; sourceTree = "<group>"; };
+		16F9ECAB2BD4567100C5F997 /* MainRecognizerGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECAD2BD4567800C5F997 /* DocumentScannerGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECAF2BD4567E00C5F997 /* ColorDetectorGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECB12BD4568500C5F997 /* LightDetectorGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDetectorGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECB32BD4568B00C5F997 /* ChatGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECB52BD4569100C5F997 /* SettingsGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECB72BD4569700C5F997 /* OnboardingGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECB92BD4569E00C5F997 /* OtherGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECBB2BD456C200C5F997 /* CameraGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraGestureAction.swift; sourceTree = "<group>"; };
+		16F9ECBD2BD457ED00C5F997 /* ActionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionScreen.swift; sourceTree = "<group>"; };
 		16FC1A782BA1007200BB9B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
@@ -1578,7 +1600,7 @@
 		16F9EC942BD438B100C5F997 /* Accessibility */ = {
 			isa = PBXGroup;
 			children = (
-				16F9EC9C2BD4421800C5F997 /* GestureType */,
+				16F9EC9C2BD4421800C5F997 /* Gesture */,
 				16F9EC972BD4417300C5F997 /* ActionScreen */,
 			);
 			path = Accessibility;
@@ -1587,19 +1609,110 @@
 		16F9EC972BD4417300C5F997 /* ActionScreen */ = {
 			isa = PBXGroup;
 			children = (
-				16F9EC922BD434E700C5F997 /* ActionScreen.swift */,
+				16F9EC922BD434E700C5F997 /* ActionScreenType.swift */,
 				16F9EC9A2BD4419300C5F997 /* ActionScreen+AvailableVoiceRequests.swift */,
 				16F9EC982BD4418900C5F997 /* ActionScreen+AvailableGestures.swift */,
+				16F9ECBD2BD457ED00C5F997 /* ActionScreen.swift */,
 			);
 			path = ActionScreen;
 			sourceTree = "<group>";
 		};
-		16F9EC9C2BD4421800C5F997 /* GestureType */ = {
+		16F9EC9C2BD4421800C5F997 /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
+				16F9ECA02BD455CA00C5F997 /* GestureAction */,
 				16F9EC952BD438C300C5F997 /* GestureType.swift */,
 			);
-			path = GestureType;
+			path = Gesture;
+			sourceTree = "<group>";
+		};
+		16F9ECA02BD455CA00C5F997 /* GestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECA12BD455DD00C5F997 /* CameraGestureAction */,
+				16F9ECA22BD455E600C5F997 /* ChatGestureAction */,
+				16F9ECA42BD455F300C5F997 /* SettingsGestureAction */,
+				16F9ECA52BD455FC00C5F997 /* OnboardingGestureAction */,
+				16F9ECA62BD4560400C5F997 /* OtherGestureAction */,
+				16F9EC9E2BD4532200C5F997 /* GestureAction.swift */,
+			);
+			path = GestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA12BD455DD00C5F997 /* CameraGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECA72BD4560A00C5F997 /* MainRecognizerGestureAction */,
+				16F9ECA82BD4561C00C5F997 /* DocumentScannerGestureAction */,
+				16F9ECA92BD4563D00C5F997 /* ColorDetectorGestureAction */,
+				16F9ECAA2BD4565000C5F997 /* LightDetectorGestureAction */,
+				16F9ECBB2BD456C200C5F997 /* CameraGestureAction.swift */,
+			);
+			path = CameraGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA22BD455E600C5F997 /* ChatGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECB32BD4568B00C5F997 /* ChatGestureAction.swift */,
+			);
+			path = ChatGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA42BD455F300C5F997 /* SettingsGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECB52BD4569100C5F997 /* SettingsGestureAction.swift */,
+			);
+			path = SettingsGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA52BD455FC00C5F997 /* OnboardingGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECB72BD4569700C5F997 /* OnboardingGestureAction.swift */,
+			);
+			path = OnboardingGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA62BD4560400C5F997 /* OtherGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECB92BD4569E00C5F997 /* OtherGestureAction.swift */,
+			);
+			path = OtherGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA72BD4560A00C5F997 /* MainRecognizerGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECAB2BD4567100C5F997 /* MainRecognizerGestureAction.swift */,
+			);
+			path = MainRecognizerGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA82BD4561C00C5F997 /* DocumentScannerGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECAD2BD4567800C5F997 /* DocumentScannerGestureAction.swift */,
+			);
+			path = DocumentScannerGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECA92BD4563D00C5F997 /* ColorDetectorGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECAF2BD4567E00C5F997 /* ColorDetectorGestureAction.swift */,
+			);
+			path = ColorDetectorGestureAction;
+			sourceTree = "<group>";
+		};
+		16F9ECAA2BD4565000C5F997 /* LightDetectorGestureAction */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECB12BD4568500C5F997 /* LightDetectorGestureAction.swift */,
+			);
+			path = LightDetectorGestureAction;
 			sourceTree = "<group>";
 		};
 		16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */ = {
@@ -1719,6 +1832,7 @@
 				1694F1912B98FC5900928103 /* MainRecognizerViewController+ObjectsRecognizing.swift in Sources */,
 				1682D31F2B8548F10028CE73 /* CameraMLModelFile.swift in Sources */,
 				1629F9F12BACEB9600B89629 /* RealmManager.swift in Sources */,
+				16F9ECB02BD4567E00C5F997 /* ColorDetectorGestureAction.swift in Sources */,
 				1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */,
 				164E11382B47180C008EF153 /* CustomTabBarView.swift in Sources */,
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
@@ -1741,13 +1855,17 @@
 				1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */,
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
 				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
+				16F9ECBA2BD4569E00C5F997 /* OtherGestureAction.swift in Sources */,
 				16C107592BBC7BCC00797394 /* ChatVoiceRequest.swift in Sources */,
+				16F9ECAC2BD4567100C5F997 /* MainRecognizerGestureAction.swift in Sources */,
 				16F9EC912BD3DF3F00C5F997 /* SpeechSpeed.swift in Sources */,
 				1694F19B2B98FD6700928103 /* MainRecognizerViewController+PedestrianCrossingRecognizing.swift in Sources */,
 				1694F18B2B98F37A00928103 /* ObjectsRecognizing.swift in Sources */,
 				16E514072BB5FCCF0035B586 /* SettingsObject.swift in Sources */,
+				16F9ECB22BD4568500C5F997 /* LightDetectorGestureAction.swift in Sources */,
 				1646690F2B6991E00049AB03 /* ColorDetectorViewController.swift in Sources */,
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
+				16F9ECBC2BD456C200C5F997 /* CameraGestureAction.swift in Sources */,
 				16C1077E2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift in Sources */,
 				16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */,
 				16C1074A2BBAEBF300797394 /* AudioResource.swift in Sources */,
@@ -1764,12 +1882,13 @@
 				163311DA2B93BC6B00896058 /* YOLOV3.mlmodel in Sources */,
 				169DC5F72BD01EC500E53F59 /* DocumentScannerViewModel.swift in Sources */,
 				16E5141B2BB62B380035B586 /* SubscriptionPlan.swift in Sources */,
-				16F9EC932BD434E700C5F997 /* ActionScreen.swift in Sources */,
+				16F9EC932BD434E700C5F997 /* ActionScreenType.swift in Sources */,
 				1694F19D2B98FD7400928103 /* PedestrianCrossingRecognizing.swift in Sources */,
 				16C107692BBC834000797394 /* LightDetectorVoiceRequest.swift in Sources */,
 				16C107702BBCA9A200797394 /* VoiceRequest+AllCases.swift in Sources */,
 				16B898B42BA3B5B700735D93 /* ChatAssembly.swift in Sources */,
 				16CF87752B74131900AD5ABC /* LightDetectorViewControllerRepresentable.swift in Sources */,
+				16F9ECB42BD4568B00C5F997 /* ChatGestureAction.swift in Sources */,
 				164E113D2B471C94008EF153 /* MeasureViewSize.swift in Sources */,
 				163311AE2B935D6700896058 /* Array+ArgMax.swift in Sources */,
 				16C107802BBDB62300797394 /* ColorDetectorSpeechFeedback.swift in Sources */,
@@ -1788,6 +1907,7 @@
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
 				1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
+				16F9ECB82BD4569700C5F997 /* OnboardingGestureAction.swift in Sources */,
 				1629FA032BAF4CE700B89629 /* Message.swift in Sources */,
 				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
 				163EB0432BB31FEC0012FC89 /* ContinuousHapticFeedbackGenerator.swift in Sources */,
@@ -1798,6 +1918,7 @@
 				16B898B02BA3B14F00735D93 /* OpenAIManager.swift in Sources */,
 				16C107302BB74E0900797394 /* ApplicationSetting.swift in Sources */,
 				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
+				16F9ECAE2BD4567800C5F997 /* DocumentScannerGestureAction.swift in Sources */,
 				1629FA012BAF4CE100B89629 /* Conversation.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
 				16E514132BB6065B0035B586 /* SettingsRepository.swift in Sources */,
@@ -1829,16 +1950,19 @@
 				16E170082B6FDA4C00F984FB /* ObjectsRecognizerViewModel.swift in Sources */,
 				163311D62B93A86E00896058 /* NonMaxSuppression.swift in Sources */,
 				163311CB2B939E8C00896058 /* IOU.swift in Sources */,
+				16F9ECBE2BD457ED00C5F997 /* ActionScreen.swift in Sources */,
 				1629F9FE2BAF464900B89629 /* Base64String+UIImage.swift in Sources */,
 				1629F9F72BACED1700B89629 /* MessageObject.swift in Sources */,
 				164E113A2B47180C008EF153 /* TabBarItemsPreferenceKey.swift in Sources */,
 				1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */,
+				16F9ECB62BD4569100C5F997 /* SettingsGestureAction.swift in Sources */,
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* ChatView.swift in Sources */,
 				1629F9F52BACED1100B89629 /* ConversationObject.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
 				1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */,
+				16F9EC9F2BD4532200C5F997 /* GestureAction.swift in Sources */,
 				164E112D2B46183A008EF153 /* SplashScreenViewModel.swift in Sources */,
 				16F5647F2B9655F500A831F2 /* PedestrianCrossingModel.swift in Sources */,
 				1633117D2B8D24DD00896058 /* Assembler.swift in Sources */,
