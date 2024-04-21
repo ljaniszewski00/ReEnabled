@@ -27,7 +27,7 @@ struct ColorDetectorView: View {
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                feedbackManager.generateSpeechFeedback(with: .camera(.colorDetector(.tapToHearTheColor)))
+                feedbackManager.generateSpeechFeedback(with: .camera(.colorDetector(.welcomeHint)))
             }
         }
         .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in

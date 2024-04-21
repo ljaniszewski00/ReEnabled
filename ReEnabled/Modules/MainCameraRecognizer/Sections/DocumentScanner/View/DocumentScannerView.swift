@@ -17,6 +17,11 @@ struct DocumentScannerView: View {
                     .opacity(Views.Constants.documentScannerControllerOverlayOpacity)
             }
             .contentShape(Rectangle())
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    feedbackManager.generateSpeechFeedback(with: .camera(.documentScanner(.welcomeHint)))
+                }
+            }
             .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
                 guard voiceRequest != VoiceRequest.empty else {
                     return

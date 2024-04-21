@@ -1,4 +1,6 @@
 enum SettingsSpeechFeedback: String {
+    case welcomeHint = "Tap to hear the setting, double tap to change it"
+    
     case defaultCameraModeHasBeenSetTo = "Default camera mode has been set to"
     case defaultMeasureUnitHasBeenSetTo = "Default measure unit has been set to"
     case flashlightTriggerModeHasBeenSetTo = "Flashlight trigger mode has been set to"

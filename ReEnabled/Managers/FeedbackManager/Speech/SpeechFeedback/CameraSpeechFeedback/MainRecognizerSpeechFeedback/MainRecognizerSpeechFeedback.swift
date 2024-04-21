@@ -1,4 +1,6 @@
 enum MainRecognizerSpeechFeedback: String {
+    case welcomeHint = "Tap to hear detected objects"
+    
     case cameraModeHasBeenSetTo = "Camera mode has been set to"
     
     case noObjectsRecognized = "No objects have been recognized"

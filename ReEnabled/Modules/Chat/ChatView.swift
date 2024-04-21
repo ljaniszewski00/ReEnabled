@@ -56,6 +56,10 @@ struct ChatView: View {
             if tabBarStateManager.tabSelection == .chat {
                 feedbackManager.generateSpeechFeedback(with: .other(.currentTab),
                                                        and: TabBarItem.chat.title)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    feedbackManager.generateSpeechFeedback(with: .chat(.welcomeHint))
+                }
             }
         }
         .onChange(of: conversationsObjects) { _, updatedConversationsObjects in

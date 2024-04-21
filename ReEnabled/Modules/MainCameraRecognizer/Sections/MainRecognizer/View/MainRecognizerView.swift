@@ -48,6 +48,11 @@ struct MainRecognizerView: View {
             }
             .padding(.bottom, Views.Constants.recognitionsBottomPadding)
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.welcomeHint)))
+            }
+        }
         .onChange(of: roadLightsRecognizerViewModel.roadLightTypeRecognized) { _, _ in
             roadLightsRecognizerViewModel.readRoadLightType()
         }

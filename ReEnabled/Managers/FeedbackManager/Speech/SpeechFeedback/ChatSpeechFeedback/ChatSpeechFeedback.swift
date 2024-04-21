@@ -1,4 +1,6 @@
 enum ChatSpeechFeedback: String {
+    case welcomeHint = "Double tap to record a new message"
+    
     case thisIsTheResponse = "This is the response"
     case conversationDeleted = "Current conversation has been deleted"
     case allConversationsDeleted = "All conversations have been deleted"

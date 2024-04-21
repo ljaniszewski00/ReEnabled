@@ -39,6 +39,10 @@ struct SettingsView: View {
             if tabBarStateManager.tabSelection == .settings {
                 feedbackManager.generateSpeechFeedback(with: .other(.currentTab),
                                                        and: TabBarItem.settings.title)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    feedbackManager.generateSpeechFeedback(with: .settings(.welcomeHint))
+                }
             }
         }
         .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
