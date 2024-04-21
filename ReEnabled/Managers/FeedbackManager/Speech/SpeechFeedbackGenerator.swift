@@ -64,7 +64,7 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
             
             text += gestureType.name
             text += " to "
-            text += action
+            text += action.description
         }
         
         generate(for: text)
@@ -88,6 +88,8 @@ protocol SpeechFeedbackGenerating {
     var isSpeaking: Bool { get }
     
     func generate(for text: String)
+    func generateVoiceRequestsReminder(for actionScreen: ActionScreen)
+    func generateGesturesReminder(for actionScreen: ActionScreen)
     func generateSample()
     func stopGenerating()
 }

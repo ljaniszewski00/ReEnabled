@@ -2,19 +2,19 @@ extension ActionScreenType {
     var availableVoiceRequests: [VoiceRequest] {
         switch self {
         case .mainRecognizer:
-            return MainRecognizerVoiceRequest.allCases
+            MainRecognizerVoiceRequest.allCases + OtherVoiceRequest.casesForOtherTabs
         case .documentScanner:
-            return DocumentScannerVoiceRequest.allCases
+            DocumentScannerVoiceRequest.allCases + OtherVoiceRequest.casesForOtherTabs
         case .colorDetector:
-            return ColorDetectorVoiceRequest.allCases
+            ColorDetectorVoiceRequest.allCases + OtherVoiceRequest.casesForOtherTabs
         case .lightDetector:
-            return LightDetectorVoiceRequest.allCases
+            LightDetectorVoiceRequest.allCases + OtherVoiceRequest.casesForOtherTabs
         case .chat:
-            return ChatVoiceRequest.allCases
+            ChatVoiceRequest.allCases + OtherVoiceRequest.casesForOtherTabs
         case .settings:
-            return SettingsVoiceRequest.allCases
+            SettingsVoiceRequest.allCases + OtherVoiceRequest.casesForOtherTabs
         case .onboarding:
-            return OnboardingVoiceRequest.allCases
+            OnboardingVoiceRequest.allCases
         }
     }
 }

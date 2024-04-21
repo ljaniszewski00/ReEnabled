@@ -38,6 +38,19 @@ struct ColorDetectorView: View {
             switch voiceRequest {
             case .camera(.colorDetector(.readColor)):
                 colorDetectorViewModel.readDetectedColor()
+            case .other(.remindVoiceCommands):
+                guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .colorDetector else {
+                    return
+                }
+                
+                let actionScreen = ActionScreen(screenType: .colorDetector)
+                feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
+            case .other(.remindGestures):
+                guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .colorDetector else {
+                    return
+                }
+                let actionScreen = ActionScreen(screenType: .colorDetector)
+                feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
                 return
             }

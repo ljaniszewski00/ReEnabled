@@ -45,6 +45,14 @@ final class FeedbackManager: ObservableObject {
         speechFeedbackGenerator.generate(for: speechText)
     }
     
+    func generateVoiceRequestsReminder(for actionScreen: ActionScreen) {
+        speechFeedbackGenerator.generateVoiceRequestsReminder(for: actionScreen)
+    }
+    
+    func generateGesturesReminder(for actionScreen: ActionScreen) {
+        speechFeedbackGenerator.generateGesturesReminder(for: actionScreen)
+    }
+    
     func generateSampleSpeechFeedback() {
         speechFeedbackGenerator.generateSample()
     }

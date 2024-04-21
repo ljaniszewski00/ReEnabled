@@ -27,4 +27,12 @@ extension OtherVoiceRequest: CaseIterable {
         .other(.remindVoiceCommands),
         .other(.remindGestures)
     ]
+    
+    static let casesForOtherTabs: [VoiceRequest] = [
+        .other(.changeTabToCamera),
+        .other(.changeTabToChat),
+        .other(.changeTabToSettings),
+        .other(.remindVoiceCommands),
+        .other(.remindGestures)
+    ]
 }

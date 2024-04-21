@@ -103,6 +103,19 @@ struct SettingsView: View {
                         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.restoredDefaultSettings))
                     })
                     .store(in: &settingsViewModel.cancelBag)
+            case .other(.remindVoiceCommands):
+                guard tabBarStateManager.tabSelection == .settings else {
+                    return
+                }
+                
+                let actionScreen = ActionScreen(screenType: .settings)
+                feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
+            case .other(.remindGestures):
+                guard tabBarStateManager.tabSelection == .settings else {
+                    return
+                }
+                let actionScreen = ActionScreen(screenType: .settings)
+                feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
                 return
             }

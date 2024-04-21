@@ -95,6 +95,19 @@ struct ChatView: View {
                         feedbackManager.generateSpeechFeedback(with: .chat(.allConversationsDeleted))
                     }
                     .store(in: &chatViewModel.cancelBag)
+            case .other(.remindVoiceCommands):
+                guard tabBarStateManager.tabSelection == .chat else {
+                    return
+                }
+                
+                let actionScreen = ActionScreen(screenType: .chat)
+                feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
+            case .other(.remindGestures):
+                guard tabBarStateManager.tabSelection == .chat else {
+                    return
+                }
+                let actionScreen = ActionScreen(screenType: .chat)
+                feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
                 return
             }

@@ -27,6 +27,19 @@ struct DocumentScannerView: View {
                     documentScannerViewModel.readDetectedTexts()
                 case .camera(.documentScanner(.readBarCodes)):
                     documentScannerViewModel.readDetectedBarCodesValues()
+                case .other(.remindVoiceCommands):
+                    guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .documentScanner else {
+                        return
+                    }
+                    
+                    let actionScreen = ActionScreen(screenType: .documentScanner)
+                    feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
+                case .other(.remindGestures):
+                    guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .documentScanner else {
+                        return
+                    }
+                    let actionScreen = ActionScreen(screenType: .documentScanner)
+                    feedbackManager.generateGesturesReminder(for: actionScreen)
                 default:
                     return
                 }

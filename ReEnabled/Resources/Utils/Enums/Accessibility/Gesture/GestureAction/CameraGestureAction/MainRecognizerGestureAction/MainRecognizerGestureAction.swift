@@ -12,11 +12,11 @@ extension MainRecognizerGestureAction {
         case .readRecognizedObjects:
             "Read recognized objects"
         case .speakCameraModeName:
-            <#code#>
+            "Speak camera mode name"
         case .changeToNextCameraMode:
-            <#code#>
+            "Change to next camera mode"
         case .changeToPreviousCameraMode:
-            <#code#>
+            "Change to previous camera mode"
         }
     }
 }
