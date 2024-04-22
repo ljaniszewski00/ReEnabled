@@ -12,6 +12,8 @@ enum OtherVoiceRequest: String {
     
     case remindVoiceCommands = "Remind voice commands"
     case remindGestures = "Remind gestures"
+    
+    case displayOnboarding = "Display onboarding"
 }
 
 extension OtherVoiceRequest: CaseIterable {
@@ -25,7 +27,8 @@ extension OtherVoiceRequest: CaseIterable {
         .other(.sendNewMessage),
         .other(.changeTabToSettings),
         .other(.remindVoiceCommands),
-        .other(.remindGestures)
+        .other(.remindGestures),
+        .other(.displayOnboarding)
     ]
     
     static let casesForOtherTabs: [VoiceRequest] = [

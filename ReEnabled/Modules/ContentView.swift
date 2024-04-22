@@ -1,57 +1,73 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage(AppStorageData.shouldDisplayOnboarding.rawValue) var shouldDisplayOnboarding: Bool = true
+    
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     @StateObject private var voiceRequestor: VoiceRequestor = .shared
+    
+    @StateObject private var onboardingViewModel: OnboardingViewModel = OnboardingViewModel()
     
     private var selection: String {
         tabBarStateManager.tabSelection.title
     }
     
     var body: some View {
-        CustomTabBarContainerView(selection: $tabBarStateManager.tabSelection) {
-            MainCameraRecognizerView()
-                .tabBarItem(tab: .camera,
-                            selection: $tabBarStateManager.tabSelection)
-            
-            ChatView()
-                .tabBarItem(tab: .chat,
-                            selection: $tabBarStateManager.tabSelection)
-            
-            SettingsView()
-                .tabBarItem(tab: .settings,
-                            selection: $tabBarStateManager.tabSelection)
-        }
-        .onChange(of: tabBarStateManager.tabSelection) { _, newTab in
-            if newTab != .camera {
-                feedbackManager.generateSpeechFeedback(with: newTab.title)
+        Group {
+            if shouldDisplayOnboarding {
+                OnboardingView()
+                    .environmentObject(onboardingViewModel)
+                    .transition(.move(edge: .bottom))
+                    .animation(.default)
+                    .zIndex(1)
+            } else {
+                CustomTabBarContainerView(selection: $tabBarStateManager.tabSelection) {
+                    MainCameraRecognizerView()
+                        .tabBarItem(tab: .camera,
+                                    selection: $tabBarStateManager.tabSelection)
+                    
+                    ChatView()
+                        .tabBarItem(tab: .chat,
+                                    selection: $tabBarStateManager.tabSelection)
+                    
+                    SettingsView()
+                        .tabBarItem(tab: .settings,
+                                    selection: $tabBarStateManager.tabSelection)
+                }
+                .onChange(of: tabBarStateManager.tabSelection) { _, newTab in
+                    if newTab != .camera {
+                        feedbackManager.generateSpeechFeedback(with: newTab.title)
+                    }
+                }
+                .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
+                    tabBarStateManager.shouldAnimateChatTabIcon = isRecording
+                }
+                .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
+                    voiceRequestor.getVoiceRequest(from: newTranscript)
+                }
+                .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+                    guard voiceRequest != VoiceRequest.empty else {
+                        return
+                    }
+                    
+                    switch voiceRequest {
+                    case .other(.changeTabToCamera):
+                        tabBarStateManager.changeTabSelectionTo(.camera)
+                    case .other(.changeTabToChat):
+                        tabBarStateManager.changeTabSelectionTo(.chat)
+                    case .other(.changeTabToSettings):
+                        tabBarStateManager.changeTabSelectionTo(.settings)
+                    case .other(.displayOnboarding):
+                        shouldDisplayOnboarding = true
+                    default:
+                        return
+                    }
+                }
+                .ignoresSafeArea()
             }
         }
-        .onChange(of: voiceRecordingManager.isRecording) { _, isRecording in
-            tabBarStateManager.shouldAnimateChatTabIcon = isRecording
-        }
-        .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
-            voiceRequestor.getVoiceRequest(from: newTranscript)
-        }
-        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
-            guard voiceRequest != VoiceRequest.empty else {
-                return
-            }
-            
-            switch voiceRequest {
-            case .other(.changeTabToCamera):
-                tabBarStateManager.changeTabSelectionTo(.camera)
-            case .other(.changeTabToChat):
-                tabBarStateManager.changeTabSelectionTo(.chat)
-            case .other(.changeTabToSettings):
-                tabBarStateManager.changeTabSelectionTo(.settings)
-            default:
-                return
-            }
-        }
-        .ignoresSafeArea()
     }
 }
 

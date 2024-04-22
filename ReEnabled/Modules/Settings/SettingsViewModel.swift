@@ -1,8 +1,11 @@
 import Combine
 import Foundation
 import RealmSwift
+import SwiftUI
 
 final class SettingsViewModel: ObservableObject {
+    @AppStorage(AppStorageData.shouldDisplayOnboarding.rawValue) var shouldDisplayOnboarding: Bool = true
+    
     @Inject private var settingsRepository: SettingsRepositoryProtocol
     @Inject private var conversationsRepository: ConversationsRepositoryProtocol
     @Inject private var settingsProvider: SettingsProvider
@@ -90,6 +93,10 @@ final class SettingsViewModel: ObservableObject {
         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.subscriptionPlanHasBeenChangedTo),
                                                and: newSubscriptionPlan.rawValue)
         saveSettings()
+    }
+    
+    func displayOnboarding() {
+        shouldDisplayOnboarding = true
     }
     
     func deleteAllConversations() -> AnyPublisher<Void, Never> {

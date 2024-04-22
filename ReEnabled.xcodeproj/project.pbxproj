@@ -196,6 +196,19 @@
 		16F9ECBA2BD4569E00C5F997 /* OtherGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECB92BD4569E00C5F997 /* OtherGestureAction.swift */; };
 		16F9ECBC2BD456C200C5F997 /* CameraGestureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECBB2BD456C200C5F997 /* CameraGestureAction.swift */; };
 		16F9ECBE2BD457ED00C5F997 /* ActionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECBD2BD457ED00C5F997 /* ActionScreen.swift */; };
+		16F9ECC02BD6F9B700C5F997 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECBF2BD6F9B700C5F997 /* OnboardingView.swift */; };
+		16F9ECC32BD6FB0C00C5F997 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECC22BD6FB0C00C5F997 /* OnboardingViewModel.swift */; };
+		16F9ECC52BD702E700C5F997 /* AppStorageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECC42BD702E700C5F997 /* AppStorageData.swift */; };
+		16F9ECC92BD70C6200C5F997 /* OnboardingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECC82BD70C6200C5F997 /* OnboardingSectionView.swift */; };
+		16F9ECCB2BD7147200C5F997 /* OnboardingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECCA2BD7147200C5F997 /* OnboardingSection.swift */; };
+		16F9ECD22BD7150F00C5F997 /* OnboardingGesturesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECD12BD7150F00C5F997 /* OnboardingGesturesSection.swift */; };
+		16F9ECD42BD7151800C5F997 /* OnboardingFunctionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECD32BD7151800C5F997 /* OnboardingFunctionsSection.swift */; };
+		16F9ECD62BD7152100C5F997 /* OnboardingVoiceCommandsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECD52BD7152100C5F997 /* OnboardingVoiceCommandsSection.swift */; };
+		16F9ECD82BD7152900C5F997 /* OnboardingFeedbackSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECD72BD7152900C5F997 /* OnboardingFeedbackSection.swift */; };
+		16F9ECDA2BD717EA00C5F997 /* OnboardingSection+Previous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECD92BD717EA00C5F997 /* OnboardingSection+Previous.swift */; };
+		16F9ECDC2BD7181100C5F997 /* OnboardingSection+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECDB2BD7181100C5F997 /* OnboardingSection+Next.swift */; };
+		16F9ECDE2BD71AB100C5F997 /* OnboardingSection+Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECDD2BD71AB100C5F997 /* OnboardingSection+Content.swift */; };
+		16F9ECE02BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECDF2BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift */; };
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
 		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
@@ -403,6 +416,19 @@
 		16F9ECB92BD4569E00C5F997 /* OtherGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGestureAction.swift; sourceTree = "<group>"; };
 		16F9ECBB2BD456C200C5F997 /* CameraGestureAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraGestureAction.swift; sourceTree = "<group>"; };
 		16F9ECBD2BD457ED00C5F997 /* ActionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionScreen.swift; sourceTree = "<group>"; };
+		16F9ECBF2BD6F9B700C5F997 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		16F9ECC22BD6FB0C00C5F997 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		16F9ECC42BD702E700C5F997 /* AppStorageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageData.swift; sourceTree = "<group>"; };
+		16F9ECC82BD70C6200C5F997 /* OnboardingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSectionView.swift; sourceTree = "<group>"; };
+		16F9ECCA2BD7147200C5F997 /* OnboardingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSection.swift; sourceTree = "<group>"; };
+		16F9ECD12BD7150F00C5F997 /* OnboardingGesturesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGesturesSection.swift; sourceTree = "<group>"; };
+		16F9ECD32BD7151800C5F997 /* OnboardingFunctionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFunctionsSection.swift; sourceTree = "<group>"; };
+		16F9ECD52BD7152100C5F997 /* OnboardingVoiceCommandsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVoiceCommandsSection.swift; sourceTree = "<group>"; };
+		16F9ECD72BD7152900C5F997 /* OnboardingFeedbackSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeedbackSection.swift; sourceTree = "<group>"; };
+		16F9ECD92BD717EA00C5F997 /* OnboardingSection+Previous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+Previous.swift"; sourceTree = "<group>"; };
+		16F9ECDB2BD7181100C5F997 /* OnboardingSection+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+Next.swift"; sourceTree = "<group>"; };
+		16F9ECDD2BD71AB100C5F997 /* OnboardingSection+Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+Content.swift"; sourceTree = "<group>"; };
+		16F9ECDF2BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+GestureToPass.swift"; sourceTree = "<group>"; };
 		16FC1A782BA1007200BB9B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
@@ -936,6 +962,7 @@
 				16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */,
 				16E5141A2BB62B380035B586 /* SubscriptionPlan.swift */,
 				16C1072F2BB74E0900797394 /* ApplicationSetting.swift */,
+				16F9ECC42BD702E700C5F997 /* AppStorageData.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1715,6 +1742,63 @@
 			path = LightDetectorGestureAction;
 			sourceTree = "<group>";
 		};
+		16F9ECC12BD6F9B900C5F997 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECCC2BD714AC00C5F997 /* OnboardingSection */,
+				16F9ECC82BD70C6200C5F997 /* OnboardingSectionView.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		16F9ECCC2BD714AC00C5F997 /* OnboardingSection */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECCD2BD714B600C5F997 /* OnboardingGesturesSection */,
+				16F9ECCE2BD714CB00C5F997 /* OnboardingFunctionsSection */,
+				16F9ECCF2BD714D200C5F997 /* OnboardingVoiceCommandsSection */,
+				16F9ECD02BD714DC00C5F997 /* OnboardingFeedbackSection */,
+				16F9ECCA2BD7147200C5F997 /* OnboardingSection.swift */,
+				16F9ECD92BD717EA00C5F997 /* OnboardingSection+Previous.swift */,
+				16F9ECDB2BD7181100C5F997 /* OnboardingSection+Next.swift */,
+				16F9ECDD2BD71AB100C5F997 /* OnboardingSection+Content.swift */,
+				16F9ECDF2BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift */,
+			);
+			path = OnboardingSection;
+			sourceTree = "<group>";
+		};
+		16F9ECCD2BD714B600C5F997 /* OnboardingGesturesSection */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECD12BD7150F00C5F997 /* OnboardingGesturesSection.swift */,
+			);
+			path = OnboardingGesturesSection;
+			sourceTree = "<group>";
+		};
+		16F9ECCE2BD714CB00C5F997 /* OnboardingFunctionsSection */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECD32BD7151800C5F997 /* OnboardingFunctionsSection.swift */,
+			);
+			path = OnboardingFunctionsSection;
+			sourceTree = "<group>";
+		};
+		16F9ECCF2BD714D200C5F997 /* OnboardingVoiceCommandsSection */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECD52BD7152100C5F997 /* OnboardingVoiceCommandsSection.swift */,
+			);
+			path = OnboardingVoiceCommandsSection;
+			sourceTree = "<group>";
+		};
+		16F9ECD02BD714DC00C5F997 /* OnboardingFeedbackSection */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ECD72BD7152900C5F997 /* OnboardingFeedbackSection.swift */,
+			);
+			path = OnboardingFeedbackSection;
+			sourceTree = "<group>";
+		};
 		16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1728,6 +1812,9 @@
 		16FC1A842BA24B3700BB9B48 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				16F9ECC12BD6F9B900C5F997 /* Sections */,
+				16F9ECBF2BD6F9B700C5F997 /* OnboardingView.swift */,
+				16F9ECC22BD6FB0C00C5F997 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1838,6 +1925,7 @@
 				1670C60A2B6ED76E005CF24B /* DetectorFrame.swift in Sources */,
 				16C107882BBDB65B00797394 /* SettingsSpeechFeedback.swift in Sources */,
 				164668F52B66D37E0049AB03 /* DistanceMeasurerViewModel.swift in Sources */,
+				16F9ECDC2BD7181100C5F997 /* OnboardingSection+Next.swift in Sources */,
 				16C1075B2BBC7C3300797394 /* SettingsVoiceRequest.swift in Sources */,
 				16F9EC962BD438C300C5F997 /* GestureType.swift in Sources */,
 				164E11372B47180C008EF153 /* TabBarItem.swift in Sources */,
@@ -1845,6 +1933,7 @@
 				16C107352BB9A90A00797394 /* SettingsProvider.swift in Sources */,
 				1670C60F2B6EEA19005CF24B /* ColorDetectorViewControllerRepresentable.swift in Sources */,
 				1629F9E92BAA18CF00B89629 /* OnMultipleTouchSwipe.swift in Sources */,
+				16F9ECC02BD6F9B700C5F997 /* OnboardingView.swift in Sources */,
 				164E11492B472115008EF153 /* MainCameraRecognizerView.swift in Sources */,
 				162784822B9FC2C000C5225F /* CustomNavigationBar.swift in Sources */,
 				16F9EC8F2BD3DCBE00C5F997 /* ManualFlashlightTriggerValue.swift in Sources */,
@@ -1854,7 +1943,9 @@
 				162856D72B8D242500691759 /* Inject.swift in Sources */,
 				1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */,
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
+				16F9ECE02BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift in Sources */,
 				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
+				16F9ECDE2BD71AB100C5F997 /* OnboardingSection+Content.swift in Sources */,
 				16F9ECBA2BD4569E00C5F997 /* OtherGestureAction.swift in Sources */,
 				16C107592BBC7BCC00797394 /* ChatVoiceRequest.swift in Sources */,
 				16F9ECAC2BD4567100C5F997 /* MainRecognizerGestureAction.swift in Sources */,
@@ -1867,6 +1958,7 @@
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				16F9ECBC2BD456C200C5F997 /* CameraGestureAction.swift in Sources */,
 				16C1077E2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift in Sources */,
+				16F9ECCB2BD7147200C5F997 /* OnboardingSection.swift in Sources */,
 				16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */,
 				16C1074A2BBAEBF300797394 /* AudioResource.swift in Sources */,
 				163EB03E2BB1F3240012FC89 /* HapticFeedbackType.swift in Sources */,
@@ -1899,6 +1991,7 @@
 				1629F9C52BA7672E00B89629 /* OpenAIModel.swift in Sources */,
 				1670C6112B6EF853005CF24B /* CALayer+PickColor.swift in Sources */,
 				1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */,
+				16F9ECC92BD70C6200C5F997 /* OnboardingSectionView.swift in Sources */,
 				1629F9B12BA759A400B89629 /* APIEndpoint.swift in Sources */,
 				1629F9C82BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift in Sources */,
 				16C107732BBDB4E700797394 /* SpeechFeedback.swift in Sources */,
@@ -1906,6 +1999,7 @@
 				16C107652BBC832700797394 /* DocumentScannerVoiceRequest.swift in Sources */,
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
 				1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */,
+				16F9ECD42BD7151800C5F997 /* OnboardingFunctionsSection.swift in Sources */,
 				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				16F9ECB82BD4569700C5F997 /* OnboardingGestureAction.swift in Sources */,
 				1629FA032BAF4CE700B89629 /* Message.swift in Sources */,
@@ -1919,9 +2013,11 @@
 				16C107302BB74E0900797394 /* ApplicationSetting.swift in Sources */,
 				1629F9BF2BA764AC00B89629 /* OpenAIMessageContentType.swift in Sources */,
 				16F9ECAE2BD4567800C5F997 /* DocumentScannerGestureAction.swift in Sources */,
+				16F9ECC32BD6FB0C00C5F997 /* OnboardingViewModel.swift in Sources */,
 				1629FA012BAF4CE100B89629 /* Conversation.swift in Sources */,
 				16F564852B9662F300A831F2 /* PersonPositionActionType.swift in Sources */,
 				16E514132BB6065B0035B586 /* SettingsRepository.swift in Sources */,
+				16F9ECC52BD702E700C5F997 /* AppStorageData.swift in Sources */,
 				1629F9CA2BA76CD200B89629 /* OpenAIVisionChatCompletionsInteractor.swift in Sources */,
 				16C107672BBC833400797394 /* ColorDetectorVoiceRequest.swift in Sources */,
 				16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */,
@@ -1940,6 +2036,7 @@
 				1694F1932B98FD0100928103 /* MainRecognizerViewController+DistanceMeasuring.swift in Sources */,
 				16D949EA2BAF4D8100CCBA16 /* ConversationsRepository.swift in Sources */,
 				164669072B6856710049AB03 /* DocumentScannerViewControllerRepresentable.swift in Sources */,
+				16F9ECD62BD7152100C5F997 /* OnboardingVoiceCommandsSection.swift in Sources */,
 				1694F18E2B98FBE300928103 /* RoadLightsRecognizing.swift in Sources */,
 				16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */,
 				16C107902BBDBCE300797394 /* CameraSpeechFeedback.swift in Sources */,
@@ -1960,6 +2057,7 @@
 				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* ChatView.swift in Sources */,
 				1629F9F52BACED1100B89629 /* ConversationObject.swift in Sources */,
+				16F9ECDA2BD717EA00C5F997 /* OnboardingSection+Previous.swift in Sources */,
 				16F564B52B98ECF900A831F2 /* RoadLightsBoundingBox.swift in Sources */,
 				1629F9C32BA766B600B89629 /* OpenAIRole.swift in Sources */,
 				16F9EC9F2BD4532200C5F997 /* GestureAction.swift in Sources */,
@@ -1972,6 +2070,7 @@
 				16D949EC2BAF569C00CCBA16 /* Collection+After+Before.swift in Sources */,
 				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,
 				163EB0462BB320240012FC89 /* ContinuousHapticFeedbackSequence.swift in Sources */,
+				16F9ECD22BD7150F00C5F997 /* OnboardingGesturesSection.swift in Sources */,
 				16E514102BB602160035B586 /* SettingsModel.swift in Sources */,
 				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,
 				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
@@ -1992,6 +2091,7 @@
 				16F564812B965CE300A831F2 /* PedestrianCrossingPrediction.swift in Sources */,
 				16B446972B9FAAFB002504F5 /* DateFormatter+Extension.swift in Sources */,
 				164E11442B471ECB008EF153 /* ConditionalView.swift in Sources */,
+				16F9ECD82BD7152900C5F997 /* OnboardingFeedbackSection.swift in Sources */,
 				1629F9C12BA764C700B89629 /* OpenAIMessageContent.swift in Sources */,
 				16E514042BB5BDAB0035B586 /* SettingsViewModel.swift in Sources */,
 				16F564832B96623500A831F2 /* PedestrianCrossingLightType.swift in Sources */,

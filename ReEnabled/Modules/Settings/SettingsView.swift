@@ -145,6 +145,7 @@ private extension Views {
         static let navigationTitle: String = "Settings"
         static let mainVStackBottomPadding: CGFloat = 100
         
+        static let otherSettingsSectionVStackSpacing: CGFloat = 15
         static let sectionInnerVStackSpacing: CGFloat = 0
         
         static let otherSettingsSectionDividerColorOpacity: CGFloat = 0.8
@@ -163,6 +164,7 @@ private extension Views {
         static let settingsSectionDetailsTileIsSelectedImageName: String = "checkmark"
         static let settingsSectionDetailsTileIsSelectedImageSize: CGFloat = 15
         
+        static let displayOnboardingButtonText: String = "Display Onboarding"
         static let deleteConversationsButtonText: String = "Delete All Conversations"
         static let restoreDefaultSettingsButtonText: String = "Restore Default Settings"
     }
@@ -627,33 +629,47 @@ private extension Views {
             SettingsSectionHeader(title: ApplicationSetting.others.settingName,
                                   description: nil)
             
-            if settingsViewModel.currentSettings != nil {
-                VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                    Views.DeleteConversationsButton()
-                        .padding(.vertical)
-                    
-                    Divider()
-                        .overlay(
-                            Color.white.opacity(
-                                Views.Constants.otherSettingsSectionDividerColorOpacity
+            VStack(spacing: Views.Constants.otherSettingsSectionVStackSpacing) {
+                Views.DisplayOnboardingButton()
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius:
+                                            Views.Constants.otherSettingsSectionBackgroundCornerRadius)
+                            .foregroundStyle(.thinMaterial)
+                            .foregroundColor(
+                                .blue.opacity(
+                                    Views.Constants.otherSettingsSectionBackgroundColorOpacity
+                                )
                             )
-                        )
-                    
-                    Views.RestoreDefaultSettingsButton()
-                        .padding(.vertical)
-                }
-                .padding(.horizontal)
-                .background {
-                    RoundedRectangle(cornerRadius:
-                                        Views.Constants.otherSettingsSectionBackgroundCornerRadius)
-                        .foregroundStyle(
-                            .red.opacity(
-                                Views.Constants.otherSettingsSectionBackgroundColorOpacity
+                            .ignoresSafeArea()
+                    }
+                    .padding(.horizontal)
+                
+                if settingsViewModel.currentSettings != nil {
+                    VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
+                        Views.DeleteConversationsButton()
+                            .padding(.vertical)
+                        
+                        Divider()
+                        
+                        Views.RestoreDefaultSettingsButton()
+                            .padding(.vertical)
+                    }
+                    .padding(.horizontal)
+                    .background {
+                        RoundedRectangle(cornerRadius:
+                                            Views.Constants.otherSettingsSectionBackgroundCornerRadius)
+                            .foregroundStyle(.thinMaterial)
+                            .foregroundColor(
+                                .red.opacity(
+                                    Views.Constants.otherSettingsSectionBackgroundColorOpacity
+                                )
                             )
-                        )
-                        .ignoresSafeArea()
+                            .foregroundStyle(.thinMaterial)
+                            .ignoresSafeArea()
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
             }
         }
     }
@@ -766,6 +782,38 @@ private extension Views {
         }
     }
     
+    struct DisplayOnboardingButton: View {
+        @EnvironmentObject private var settingsViewModel: SettingsViewModel
+        @StateObject private var feedbackManager: FeedbackManager = .shared
+        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+        
+        var body: some View {
+            HStack {
+                Text(Views.Constants.displayOnboardingButtonText)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                
+                Spacer()
+            }
+            .contentShape(Rectangle())
+            .padding()
+            .addGesturesActions(toExecuteBeforeEveryAction: {
+                feedbackManager.generateHapticFeedbackForSwipeAction()
+            }, onTap: {
+                if feedbackManager.speechFeedbackIsBeingGenerated {
+                    feedbackManager.stopSpeechFeedback()
+                } else {
+                    let speechText: String = "Double tap to display onboarding"
+                    feedbackManager.generateSpeechFeedback(with: speechText)
+                }
+            }, onDoubleTap: {
+                settingsViewModel.displayOnboarding()
+            }, onLongPress: {
+                voiceRecordingManager.manageTalking()
+            })
+        }
+    }
+    
     struct DeleteConversationsButton: View {
         @EnvironmentObject private var settingsViewModel: SettingsViewModel
         @StateObject private var feedbackManager: FeedbackManager = .shared
@@ -774,6 +822,7 @@ private extension Views {
         var body: some View {
             HStack {
                 Text(Views.Constants.deleteConversationsButtonText)
+                    .fontWeight(.semibold)
                     .foregroundStyle(.white)
                 
                 Spacer()
@@ -810,6 +859,7 @@ private extension Views {
         var body: some View {
             HStack {
                 Text(Views.Constants.restoreDefaultSettingsButtonText)
+                    .fontWeight(.semibold)
                     .foregroundStyle(.white)
                 
                 Spacer()
