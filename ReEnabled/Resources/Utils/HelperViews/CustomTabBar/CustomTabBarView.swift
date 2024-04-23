@@ -33,7 +33,7 @@ struct CustomTabBarView: View {
                     radius: Views.Constants.tabBarShadowRadius,
                     x: Views.Constants.tabBarShadowX,
                     y: Views.Constants.tabBarShadowY)
-            .onChange(of: selection) { value in
+            .onChange(of: selection) { _ in
                 withAnimation(.easeInOut) {
                     localSelection = selection
                 }

@@ -210,6 +210,7 @@
 		16F9ECDE2BD71AB100C5F997 /* OnboardingSection+Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECDD2BD71AB100C5F997 /* OnboardingSection+Content.swift */; };
 		16F9ECE02BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECDF2BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift */; };
 		16F9ECE22BD82FD200C5F997 /* OnboardingSection+VoiceRequestToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECE12BD82FD200C5F997 /* OnboardingSection+VoiceRequestToPass.swift */; };
+		16F9ECE72BD84F0500C5F997 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ECE62BD84F0500C5F997 /* ProgressIndicator.swift */; };
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
 		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
@@ -431,6 +432,7 @@
 		16F9ECDD2BD71AB100C5F997 /* OnboardingSection+Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+Content.swift"; sourceTree = "<group>"; };
 		16F9ECDF2BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+GestureToPass.swift"; sourceTree = "<group>"; };
 		16F9ECE12BD82FD200C5F997 /* OnboardingSection+VoiceRequestToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingSection+VoiceRequestToPass.swift"; sourceTree = "<group>"; };
+		16F9ECE62BD84F0500C5F997 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		16FC1A782BA1007200BB9B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 				1670C6082B6ED764005CF24B /* DetectorFrame */,
 				164E11322B4717A9008EF153 /* CustomTabBar */,
 				1629F9D92BA8B07100B89629 /* LabelledDivider.swift */,
+				16F9ECE62BD84F0500C5F997 /* ProgressIndicator.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -1961,6 +1964,7 @@
 				163311A12B90AD4600896058 /* AmpelPilot_2812rg.mlmodel in Sources */,
 				16F9ECBC2BD456C200C5F997 /* CameraGestureAction.swift in Sources */,
 				16F9ECE22BD82FD200C5F997 /* OnboardingSection+VoiceRequestToPass.swift in Sources */,
+				16F9ECE72BD84F0500C5F997 /* ProgressIndicator.swift in Sources */,
 				16C1077E2BBDB61A00797394 /* DocumentScannerSpeechFeedback.swift in Sources */,
 				16F9ECCB2BD7147200C5F997 /* OnboardingSection.swift in Sources */,
 				16E514192BB621A50035B586 /* FlashlightTriggerMode.swift in Sources */,

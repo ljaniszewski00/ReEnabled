@@ -39,7 +39,10 @@ extension OnboardingSection {
         case .functions(let onboardingFunctionsSection):
             switch onboardingFunctionsSection {
             case .mainRecognizerTutorial:
-                return "The app consists of three tabs. The first one is the camera tab."
+                return """
+                The app consists of three tabs.
+                The first one is the camera tab.
+                """
             case .documentScannerTutorial:
                 return nil
             case .colorDetectorTutorial:
@@ -76,14 +79,18 @@ extension OnboardingSection {
                 return "Most actions in the application are signaled by vibration and the corresponding voice response."
             }
         case .ending:
-            return "This would be all from the tutorial. Hope you will find the app very useful during your everyday life."
+            return """
+            This would be all from the tutorial.
+            
+            Hope you will find the app very useful during your everyday life.
+            """
         }
     }
     
-    var image: UIImage? {
+    var imageResource: ImageResource? {
         switch self {
         case .welcome:
-            return nil
+            return .appIconNoBackground
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
@@ -178,7 +185,7 @@ extension OnboardingSection {
                 return """
                 Tap once with one finger on the screen.
                 
-                You can use tap once gesture to pause the reading of current onboarding section or to read it again
+                You can use tap once gesture to pause the reading of current onboarding section or to read it again.
                 """
             case .doubleTapGestureTutorial:
                 return """

@@ -14,3 +14,22 @@ enum OnboardingGesturesSection {
     case longPressAndSwipeDownGestureTutorial
     case gesturesSectionEnding
 }
+
+extension OnboardingGesturesSection: CaseIterable {
+    static let allCases: [OnboardingGesturesSection] = [
+        .gesturesSectionWelcome,
+        .tapGestureTutorial,
+        .doubleTapGestureTutorial,
+        .trippleTapGestureTutorial,
+        .longPressGestureTutorial,
+        .swipeLeftGestureTutorial,
+        .swipeRightGestureTutorial,
+        .swipeUpGestureTutorial,
+        .swipeDownGestureTutorial,
+        .longPressAndSwipeLeftGestureTutorial,
+        .longPressAndSwipeRightGestureTutorial,
+        .longPressAndSwipeUpGestureTutorial,
+        .longPressAndSwipeDownGestureTutorial,
+        .gesturesSectionEnding
+    ]
+}
