@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @AppStorage(AppStorageData.shouldDisplayOnboarding.rawValue) var shouldDisplayOnboarding: Bool = true
+    @AppStorage(AppStorageKeys.shouldDisplayOnboarding) var shouldDisplayOnboarding: Bool = true
     @EnvironmentObject private var onboardingViewModel: OnboardingViewModel
     
     @StateObject private var feedbackManager: FeedbackManager = .shared
@@ -15,7 +15,7 @@ struct OnboardingView: View {
             Text(onboardingViewModel.currentSection.description)
         })
         .onAppear {
-            if feedbackManager.speechFeedbackIsBeingGenerated {
+            if onboardingViewModel.currentSection == .welcome && feedbackManager.speechFeedbackIsBeingGenerated {
                 feedbackManager.stopSpeechFeedback()
             }
             
@@ -29,7 +29,10 @@ struct OnboardingView: View {
             onboardingViewModel.readCurrentSection()
         }
         .onChange(of: onboardingViewModel.shouldDismissOnboarding) { _, shouldDismiss in
-            shouldDisplayOnboarding = shouldDismiss
+            shouldDisplayOnboarding = !shouldDismiss
+        }
+        .onChange(of: voiceRecordingManager.transcript) { _, newTranscript in
+            voiceRequestor.getVoiceRequest(from: newTranscript)
         }
         .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
             guard voiceRequest != VoiceRequest.empty else {
@@ -38,17 +41,41 @@ struct OnboardingView: View {
             
             switch voiceRequest {
             case .onboarding(.readSection):
+                guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                    return
+                }
+                
                 onboardingViewModel.readCurrentSection()
-            case .onboarding(.skip):
+            case .onboarding(.skipOnboarding):
+                guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                    return
+                }
+                
                 onboardingViewModel.exitOnboarding()
             case .onboarding(.nextSection):
+                guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                    return
+                }
+                
                 onboardingViewModel.changeToNextSection()
             case .onboarding(.previousSection):
+                guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                    return
+                }
+                
                 onboardingViewModel.changeToPreviousSection()
             case .other(.remindVoiceCommands):
+                guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                    return
+                }
+                
                 let actionScreen = ActionScreen(screenType: .onboarding)
                 feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
             case .other(.remindGestures):
+                if onboardingViewModel.currentVoiceRequestToPass == .other(.remindGestures) {
+                    onboardingViewModel.voiceRequestPromptCompleted()
+                }
+                
                 let actionScreen = ActionScreen(screenType: .onboarding)
                 feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
@@ -83,13 +110,17 @@ struct OnboardingView: View {
                 onboardingViewModel.gesturePromptCompleted()
                 return
             }
+            
+            if onboardingViewModel.currentGestureToPass == nil {
+                voiceRecordingManager.manageTalking()
+            }
         }, onSwipeFromLeftToRight: {
             guard onboardingViewModel.currentGestureToPass != .swipeRight else {
                 onboardingViewModel.gesturePromptCompleted()
                 return
             }
             
-            if onboardingViewModel.currentGestureToPass == nil {
+            if onboardingViewModel.currentGestureToPass == nil && onboardingViewModel.currentVoiceRequestToPass == nil {
                 onboardingViewModel.changeToNextSection()
             }
         }, onSwipeFromRightToLeft: {
@@ -98,7 +129,7 @@ struct OnboardingView: View {
                 return
             }
             
-            if onboardingViewModel.currentGestureToPass == nil {
+            if onboardingViewModel.currentGestureToPass == nil && onboardingViewModel.currentVoiceRequestToPass == nil {
                 onboardingViewModel.changeToPreviousSection()
             }
         }, onSwipeFromUpToDown: {

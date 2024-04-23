@@ -11,6 +11,10 @@ class OnboardingViewModel: ObservableObject {
         currentSection.gestureToPass
     }
     
+    var currentVoiceRequestToPass: VoiceRequest? {
+        currentSection.voiceRequestToPass
+    }
+    
     func readCurrentSection() {
         var text: String = ""
         
@@ -42,6 +46,12 @@ class OnboardingViewModel: ObservableObject {
     
     func gesturePromptCompleted() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.changeToNextSection()
+        }
+    }
+    
+    func voiceRequestPromptCompleted() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
             self?.changeToNextSection()
         }
     }

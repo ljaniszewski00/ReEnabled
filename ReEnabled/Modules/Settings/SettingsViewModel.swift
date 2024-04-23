@@ -4,7 +4,7 @@ import RealmSwift
 import SwiftUI
 
 final class SettingsViewModel: ObservableObject {
-    @AppStorage(AppStorageData.shouldDisplayOnboarding.rawValue) var shouldDisplayOnboarding: Bool = true
+    @AppStorage(AppStorageKeys.shouldDisplayOnboarding) var shouldDisplayOnboarding: Bool = true
     
     @Inject private var settingsRepository: SettingsRepositoryProtocol
     @Inject private var conversationsRepository: ConversationsRepositoryProtocol

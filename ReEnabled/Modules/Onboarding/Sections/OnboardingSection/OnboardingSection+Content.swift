@@ -177,6 +177,8 @@ extension OnboardingSection {
             case .tapGestureTutorial:
                 return """
                 Tap once with one finger on the screen.
+                
+                You can use tap once gesture to pause the reading of current onboarding section or to read it again
                 """
             case .doubleTapGestureTutorial:
                 return """
