@@ -1,4 +1,4 @@
-enum OnboardingSection {
+enum OnboardingSection: Equatable {
     case welcome
     case gestures(OnboardingGesturesSection)
     case functions(OnboardingFunctionsSection)

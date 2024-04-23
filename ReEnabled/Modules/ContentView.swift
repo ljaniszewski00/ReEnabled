@@ -19,7 +19,7 @@ struct ContentView: View {
             if shouldDisplayOnboarding {
                 OnboardingView()
                     .environmentObject(onboardingViewModel)
-                    .transition(.move(edge: .bottom))
+                    .transition(.slide)
                     .animation(.default)
                     .zIndex(1)
             } else {

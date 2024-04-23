@@ -1,3 +1,3 @@
 enum OnboardingSpeechFeedback: String {
-    case onboardingHasBeenSkipped = "Onboarding has been skipped"
+    case onboardingHasBeenCompleted = "Onboarding has been completed"
 }

@@ -16,7 +16,7 @@ extension SpeechFeedback: CaseIterable {
         .settings(.voiceRecordingLanguageHasBeenSetTo),
         .settings(.allConversationsDeleted),
         .settings(.restoredDefaultSettings),
-        .onboarding(.onboardingHasBeenSkipped),
+        .onboarding(.onboardingHasBeenCompleted),
         .other(.voiceCommandWasNotRecognized)
     ]
 }

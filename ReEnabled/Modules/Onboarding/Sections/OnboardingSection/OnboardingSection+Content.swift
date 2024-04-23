@@ -159,85 +159,71 @@ extension OnboardingSection {
         }
     }
     
-    var descriptionContent: some View {
+    var description: String {
         switch self {
         case .welcome:
-            let text: String = """
+            return """
             We will be more than happy to assist you in everyday tasks.
             First, let’s take a quick tour around app’s essential features
             """
-            return Text(text)
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
-                let text: String = """
+                return """
                 A gesture is a movement made by a finger on the screen surface.
                 Most screens of the application have functions that are triggered by specific gestures.
                 Let's try to learn them together.
                 """
-                return Text(text)
             case .tapGestureTutorial:
-                let text: String = """
+                return """
                 Tap once with one finger on the screen.
                 """
-                return Text(text)
             case .doubleTapGestureTutorial:
-                let text: String = """
+                return """
                 Quickly tap twice with one finger on the screen.
                 """
-                return Text(text)
             case .trippleTapGestureTutorial:
-                let text: String = """
+                return """
                 Quickly tap three times with one finger on the screen.
                 """
-                return Text(text)
             case .longPressGestureTutorial:
-                let text: String = """
+                return """
                 Hold your finger in one place on the screen and release after a moment.
                 """
-                return Text(text)
             case .swipeLeftGestureTutorial:
-                let text: String = """
+                return """
                 Swipe your finger from the right side of the screen to the left.
                 """
-                return Text(text)
             case .swipeRightGestureTutorial:
-                let text: String = """
+                return """
                 Swipe your finger from the left side of the screen to the right.
                 """
-                return Text(text)
             case .swipeUpGestureTutorial:
-                let text: String = """
+                return """
                 Swipe your finger from the bottom of the screen upwards.
                 """
-                return Text(text)
             case .swipeDownGestureTutorial:
-                let text: String = """
+                return """
                 Swipe your finger from the top of the screen downwards.
                 """
-                return Text(text)
             case .longPressAndSwipeLeftGestureTutorial:
-                let text: String = """
+                return """
                 Hold your finger in one place on the screen, then swipe left and release.
                 """
-                return Text(text)
             case .longPressAndSwipeRightGestureTutorial:
-                let text: String = """
+                return """
                 Hold your finger in one place on the screen, then swipe right and release.
                 """
-                return Text(text)
             case .longPressAndSwipeUpGestureTutorial:
-                let text: String = """
+                return """
                 Hold your finger in one place on the screen, then swipe up and release.
                 """
-                return Text(text)
             case .longPressAndSwipeDownGestureTutorial:
-                let text: String = """
+                return """
                 Hold your finger in one place on the screen, then swipe down and release.
                 """
-                return Text(text)
             case .gesturesSectionEnding:
-                let text: String = """
+                return """
                 From now on during this tutorial you can always
                 Single tap to hear current guide section once again after speech has ended
                 Swipe Right to get to the next part
@@ -245,115 +231,99 @@ extension OnboardingSection {
 
                 Let's move on to the next part of the guide by swiping right.
                 """
-                return Text(text)
             }
         case .functions(let onboardingFunctionsSection):
             switch onboardingFunctionsSection {
             case .mainRecognizerTutorial:
-                let text: String = """
+                return """
                 It will allow you to explore the world around you by identifying surrounding objects, warning you about approaching obstacles, or signaling red or green lights on the street.
                 """
-                return Text(text)
             case .documentScannerTutorial:
-                let text: String = """
+                return """
                 You can also use it to recognize text from any source and read the contents of barcodes and QR codes.
                 """
-                return Text(text)
             case .colorDetectorTutorial:
-                let text: String = """
+                return """
                 The camera tab will enable you to investigate the dominant color of an object...
                 """
-                return Text(text)
             case .lightDetectorTutorial:
-                let text: String = """
+                return """
                 ...or measure the ambient light level.
                 """
-                return Text(text)
             case .chatMessageTutorial:
-                let text: String = """
+                return """
                 Here, you can get a response to any question using voice messages.
                 """
-                return Text(text)
             case .chatImageTutorial:
-                let text: String = """
+                return """
                 It's also possible to send a photo to get a detailed description of it.
                 """
-                return Text(text)
             case .chatDatabaseTutorial:
-                let text: String = """
+                return """
                 All conversations are always accessible, even after closing the app, unless you decide to delete them.
                 """
-                return Text(text)
             case .settingsFirstTutorial:
-                let text: String = """
+                return """
                 Where you can customize many app options to your preferences.
                 """
-                return Text(text)
             case .settingsSecondTutorial:
-                let text: String = """
+                return """
                 You can change the language and speed of speech, set the flashlight mode, or change the unit of distance to the nearest obstacle on the road.
                 """
-                return Text(text)
             case .settingsThirdTutorial:
-                let text: String = """
+                return """
                 It's also possible to change the default tab activated when the app is launched, delete conversations, and restore all settings to factory defaults.
                 """
-                return Text(text)
             }
         case .voiceCommands(let onboardingVoiceCommandsSection):
             switch onboardingVoiceCommandsSection {
             case .voiceCommandsExplanation:
-                let text: String = """
+                return """
                 The application has a built-in set of voice commands for each screen.
                 Recording a command is activated by performing a long press gesture until you feel a vibration.
                 After finishing speaking, perform the long press gesture again to register and process the command.
                 """
-                return Text(text)
             case .voiceCommandsRemindGestures:
-                let text: String = """
+                return """
                 Hold your finger on the screen for a moment, then release. After feeling the vibration, say:
 
                 "Remind gestures."
 
                 Then, hold your finger again and release after a moment.
                 """
-                return Text(text)
             case .voiceCommandsRemindVoiceCommands:
-                let text: String = """
-                3. This way, you've heard the available gestures on that screen.
+                return """
+                This way, you've heard the available gestures on that screen.
                 Thanks to this, you'll learn all the available gestures on every screen of the application.
                 Moreover, you can learn the remaining available voice commands on the screen by performing the same action but issuing a voice command:
 
                 "Remind voice commands."
                 """
-                return Text(text)
             }
         case .feedback(let onboardingFeedbackSection):
             switch onboardingFeedbackSection {
             case .feedbackFirstTutorial:
-                let text: String = """
+                return """
                 It is automatically activated when you perform any action.
                 Let's take issuing the gesture reminder command as an example.
                 To issue a voice command, you perform a gesture, after which there will be an immediate vibration.
                 After issuing the command, the device will read aloud the available gestures, which serves as the voice response.
                 """
-                return Text(text)
             case .feedbackSecondTutorial:
-                let text: String = """
+                return """
                 Some of them are triggered automatically - for example, in the obstacle warning module.
                 After getting too close to any object, the device will vibrate and issue a relevant message.
                 """
-                return Text(text)
             }
         case .ending:
-            let text: String = """
+            return """
             You can always retake this guide by going to Settings tab and choosing appropriate option or just executing voice command:
 
             „Display Onboarding”
 
             Swipe right to go to the app or Swipe left to go to previous sections of the guide.
             """
-            return Text(text)
         }
     }
+
 }

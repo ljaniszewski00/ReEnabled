@@ -5,40 +5,87 @@ struct OnboardingView: View {
     @EnvironmentObject private var onboardingViewModel: OnboardingViewModel
     
     @StateObject private var feedbackManager: FeedbackManager = .shared
+    @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
+    @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     var body: some View {
         OnboardingSectionView(title: onboardingViewModel.currentSection.title,
-                              image: onboardingViewModel.currentSection.image) {
-            onboardingViewModel.currentSection.descriptionContent
+                              image: onboardingViewModel.currentSection.image,
+                              descriptionContent: {
+            Text(onboardingViewModel.currentSection.description)
+        })
+        .onAppear {
+            if feedbackManager.speechFeedbackIsBeingGenerated {
+                feedbackManager.stopSpeechFeedback()
+            }
+            
+            onboardingViewModel.readCurrentSection()
+        }
+        .onChange(of: onboardingViewModel.currentSection) { _, _ in
+            if feedbackManager.speechFeedbackIsBeingGenerated {
+                feedbackManager.stopSpeechFeedback()
+            }
+            
+            onboardingViewModel.readCurrentSection()
         }
         .onChange(of: onboardingViewModel.shouldDismissOnboarding) { _, shouldDismiss in
             shouldDisplayOnboarding = shouldDismiss
+        }
+        .onChange(of: voiceRequestor.selectedVoiceRequest) { _, voiceRequest in
+            guard voiceRequest != VoiceRequest.empty else {
+                return
+            }
+            
+            switch voiceRequest {
+            case .onboarding(.readSection):
+                onboardingViewModel.readCurrentSection()
+            case .onboarding(.skip):
+                onboardingViewModel.exitOnboarding()
+            case .onboarding(.nextSection):
+                onboardingViewModel.changeToNextSection()
+            case .onboarding(.previousSection):
+                onboardingViewModel.changeToPreviousSection()
+            case .other(.remindVoiceCommands):
+                let actionScreen = ActionScreen(screenType: .onboarding)
+                feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
+            case .other(.remindGestures):
+                let actionScreen = ActionScreen(screenType: .onboarding)
+                feedbackManager.generateGesturesReminder(for: actionScreen)
+            default:
+                return
+            }
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()
         }, onTap: {
             guard onboardingViewModel.currentGestureToPass != .singleTap else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
+            }
+            
+            if feedbackManager.speechFeedbackIsBeingGenerated {
+                feedbackManager.stopSpeechFeedback()
+            } else {
+                onboardingViewModel.readCurrentSection()
             }
         }, onDoubleTap: {
             guard onboardingViewModel.currentGestureToPass != .doubleTap else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onTrippleTap: {
             guard onboardingViewModel.currentGestureToPass != .trippleTap else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onLongPress: {
             guard onboardingViewModel.currentGestureToPass != .longPress else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onSwipeFromLeftToRight: {
             guard onboardingViewModel.currentGestureToPass != .swipeRight else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
             
@@ -47,7 +94,7 @@ struct OnboardingView: View {
             }
         }, onSwipeFromRightToLeft: {
             guard onboardingViewModel.currentGestureToPass != .swipeLeft else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
             
@@ -56,32 +103,32 @@ struct OnboardingView: View {
             }
         }, onSwipeFromUpToDown: {
             guard onboardingViewModel.currentGestureToPass != .swipeDown else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onSwipeFromDownToUp: {
             guard onboardingViewModel.currentGestureToPass != .swipeUp else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onSwipeFromLeftToRightAfterLongPress: {
             guard onboardingViewModel.currentGestureToPass != .longPressAndSwipeRight else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onSwipeFromRightToLeftAfterLongPress: {
             guard onboardingViewModel.currentGestureToPass != .longPressAndSwipeLeft else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onSwipeFromUpToDownAfterLongPress: {
             guard onboardingViewModel.currentGestureToPass != .longPressAndSwipeDown else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         }, onSwipeFromDownToUpAfterLongPress: {
             guard onboardingViewModel.currentGestureToPass != .longPressAndSwipeUp else {
-                onboardingViewModel.changeToNextSection()
+                onboardingViewModel.gesturePromptCompleted()
                 return
             }
         })
