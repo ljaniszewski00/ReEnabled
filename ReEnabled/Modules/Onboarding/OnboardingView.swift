@@ -9,7 +9,8 @@ struct OnboardingView: View {
     @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
     var body: some View {
-        OnboardingSectionView(section: onboardingViewModel.currentSection)
+        OnboardingSectionView(section: onboardingViewModel.currentSection,
+                              canDisplaySwipeToProceed: !feedbackManager.speechFeedbackIsBeingGenerated)
             .onAppear {
                 if onboardingViewModel.currentSection == .welcome && feedbackManager.speechFeedbackIsBeingGenerated {
                     feedbackManager.stopSpeechFeedback()
@@ -23,6 +24,11 @@ struct OnboardingView: View {
                 }
                 
                 onboardingViewModel.readCurrentSection()
+            }
+            .onChange(of: feedbackManager.speechFeedbackIsBeingGenerated) { _, isBeingGenerated in
+                if onboardingViewModel.currentSection == .welcome && !isBeingGenerated {
+                    onboardingViewModel.changeToNextSectionAfterDelay()
+                }
             }
             .onChange(of: onboardingViewModel.shouldDismissOnboarding) { _, shouldDismiss in
                 shouldDisplayOnboarding = !shouldDismiss

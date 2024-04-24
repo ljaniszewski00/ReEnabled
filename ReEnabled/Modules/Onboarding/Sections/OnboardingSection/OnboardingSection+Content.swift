@@ -4,85 +4,100 @@ extension OnboardingSection {
     var title: String? {
         switch self {
         case .welcome:
-            return "Welcome to the ReEnabled family"
+            return "WELCOME TO THE ReEnabled FAMILY"
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
-                return "One of the most important features facilitating the use of the application are gestures."
+                return "GESTURES"
             case .tapGestureTutorial:
-                return "Tap"
+                return "TAP"
             case .doubleTapGestureTutorial:
-                return "Double Tap"
+                return "DOUBLE TAP"
             case .trippleTapGestureTutorial:
-                return "Triple Tap"
+                return "TRIPLE TAP"
             case .longPressGestureTutorial:
-                return "Long Press"
+                return "LONG PRESS"
             case .swipeLeftGestureTutorial:
-                return "Swipe Left"
+                return "SWIPE LEFT"
             case .swipeRightGestureTutorial:
-                return "Swipe Right"
+                return "SWIPE RIGHT"
             case .swipeUpGestureTutorial:
-                return "Swipe Up"
+                return "SWIPE UP"
             case .swipeDownGestureTutorial:
-                return "Swipe Down"
+                return "SWIPE DOWN"
             case .longPressAndSwipeLeftGestureTutorial:
-                return "Long Press and Swipe Left"
+                return "LONG PRESS AND SWIPE LEFT"
             case .longPressAndSwipeRightGestureTutorial:
-                return "Long Press and Swipe Right"
+                return "LONG PRESS AND SWIPE RIGHT"
             case .longPressAndSwipeUpGestureTutorial:
-                return "Long Press and Swipe Up"
+                return "LONG PRESS AND SWIPE UP"
             case .longPressAndSwipeDownGestureTutorial:
-                return "Long Press and Swipe Down"
+                return "LONG PRESS AND SWIPE DOWN"
             case .gesturesSectionEnding:
-                return "Great! You've learned all the gestures supported by the application."
+                return "GREAT!"
             }
         case .functions(let onboardingFunctionsSection):
             switch onboardingFunctionsSection {
             case .mainRecognizerTutorial:
                 return """
-                The app consists of three tabs.
-                The first one is the camera tab.
+                CAMERA TAB
                 """
             case .documentScannerTutorial:
-                return nil
+                return """
+                CAMERA TAB
+                """
             case .colorDetectorTutorial:
-                return nil
+                return """
+                CAMERA TAB
+                """
             case .lightDetectorTutorial:
-                return nil
+                return """
+                CAMERA TAB
+                """
             case .chatMessageTutorial:
-                return "The second one is the chat tab."
+                return """
+                CHAT TAB
+                """
             case .chatImageTutorial:
-                return nil
+                return """
+                CHAT TAB
+                """
             case .chatDatabaseTutorial:
-                return nil
+                return """
+                CHAT TAB
+                """
             case .settingsFirstTutorial:
-                return "Last but not least is the settings tab."
+                return """
+                SETTING TAB
+                """
             case .settingsSecondTutorial:
-                return nil
+                return """
+                SETTING TAB
+                """
             case .settingsThirdTutorial:
-                return nil
+                return """
+                SETTING TAB
+                """
             }
         case .voiceCommands(let onboardingVoiceCommandsSection):
             switch onboardingVoiceCommandsSection {
             case .voiceCommandsExplanation:
-                return "On each screen, you can also issue voice commands."
+                return "VOICE COMMANDS"
             case .voiceCommandsRemindGestures:
-                return "Let's try it now!"
+                return "VOICE COMMANDS"
             case .voiceCommandsRemindVoiceCommands:
-                return nil
+                return "VOICE COMMANDS"
             }
         case .feedback(let onboardingFeedbackSection):
             switch onboardingFeedbackSection {
             case .feedbackFirstTutorial:
-                return "The last major part of the application is the vibration and voice response system."
+                return "FEEDBACK MODULE"
             case .feedbackSecondTutorial:
-                return "Most actions in the application are signaled by vibration and the corresponding voice response."
+                return "FEEDBACK MODULE"
             }
         case .ending:
             return """
-            This would be all from the tutorial.
-            
-            Hope you will find the app very useful during your everyday life.
+            PERFECT!
             """
         }
     }
@@ -177,6 +192,7 @@ extension OnboardingSection {
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
                 return """
+                One of the most important features facilitating the use of the application are gestures.
                 A gesture is a movement made by a finger on the screen surface.
                 Most screens of the application have functions that are triggered by specific gestures.
                 Let's try to learn them together.
@@ -184,8 +200,6 @@ extension OnboardingSection {
             case .tapGestureTutorial:
                 return """
                 Tap once with one finger on the screen.
-                
-                You can use tap once gesture to pause the reading of current onboarding section or to read it again.
                 """
             case .doubleTapGestureTutorial:
                 return """
@@ -233,10 +247,14 @@ extension OnboardingSection {
                 """
             case .gesturesSectionEnding:
                 return """
-                From now on during this tutorial you can always
+                You've learned all the gestures supported by the application.
+                From now on during this tutorial you can always:
+                
                 Single tap to hear current guide section once again after speech has ended
+                
                 Swipe Right to get to the next part
-                or Swipe left to go back to previous one
+                
+                Swipe left to go back to previous one
 
                 Let's move on to the next part of the guide by swiping right.
                 """
@@ -245,6 +263,7 @@ extension OnboardingSection {
             switch onboardingFunctionsSection {
             case .mainRecognizerTutorial:
                 return """
+                The app consists of three tabs. The first one is the camera tab.
                 It will allow you to explore the world around you by identifying surrounding objects, warning you about approaching obstacles, or signaling red or green lights on the street.
                 """
             case .documentScannerTutorial:
@@ -261,6 +280,7 @@ extension OnboardingSection {
                 """
             case .chatMessageTutorial:
                 return """
+                The second one is the chat tab.
                 Here, you can get a response to any question using voice messages.
                 """
             case .chatImageTutorial:
@@ -273,7 +293,8 @@ extension OnboardingSection {
                 """
             case .settingsFirstTutorial:
                 return """
-                Where you can customize many app options to your preferences.
+                Last but not least is the settings tab.
+                Here, you can customize many app options to your preferences.
                 """
             case .settingsSecondTutorial:
                 return """
@@ -288,6 +309,7 @@ extension OnboardingSection {
             switch onboardingVoiceCommandsSection {
             case .voiceCommandsExplanation:
                 return """
+                Another big module of application are voice commands.
                 The application has a built-in set of voice commands for each screen.
                 Recording a command is activated by performing a long press gesture until you feel a vibration.
                 After finishing speaking, perform the long press gesture again to register and process the command.
@@ -313,6 +335,7 @@ extension OnboardingSection {
             switch onboardingFeedbackSection {
             case .feedbackFirstTutorial:
                 return """
+                The last major part of the application is vibrations and voice responses system.
                 It is automatically activated when you perform any action.
                 Let's take issuing the gesture reminder command as an example.
                 To issue a voice command, you perform a gesture, after which there will be an immediate vibration.
@@ -320,17 +343,22 @@ extension OnboardingSection {
                 """
             case .feedbackSecondTutorial:
                 return """
+                Most actions in the application are signaled by vibration and the corresponding voice response.
                 Some of them are triggered automatically - for example, in the obstacle warning module.
                 After getting too close to any object, the device will vibrate and issue a relevant message.
                 """
             }
         case .ending:
             return """
+            This would be all from the tutorial.
+            Hope you will find the app very useful during your everyday life.
+            
             You can always retake this guide by going to Settings tab and choosing appropriate option or just executing voice command:
 
             „Display Onboarding”
 
-            Swipe right to go to the app or Swipe left to go to previous sections of the guide.
+            Swipe right to go to the app or
+            Swipe left to go to previous sections of the guide.
             """
         }
     }

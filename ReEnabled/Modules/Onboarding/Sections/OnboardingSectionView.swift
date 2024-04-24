@@ -2,35 +2,30 @@ import SwiftUI
 
 struct OnboardingSectionView: View {
     let section: OnboardingSection
+    let canDisplaySwipeToProceed: Bool
     
     var body: some View {
         VStack {
             ProgressIndicator(stepsNumber: OnboardingSection.allCases.count, activeStep: sectionNumber)
                 .padding(.vertical)
+                .padding(.bottom)
             
-            Group {
+            VStack {
                 if let title = section.title {
                     Text(title)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        
-                } else {
-                    Text(section.description)
-                        .multilineTextAlignment(.leading)
                 }
-            }
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(.vertical)
-            
-            if section.title != nil {
+                
                 Text(section.description)
                     .font(.title2)
-                    .multilineTextAlignment(.center)
+                    .fontWeight(.semibold)
                     .opacity(Views.Constants.sectionDescriptionOpacity)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.vertical)
             }
+            .multilineTextAlignment(.leading)
+            .fixedSize(horizontal: false, vertical: true)
             
             if let imageResource = section.imageResource {
                 Image(imageResource)
@@ -50,6 +45,7 @@ struct OnboardingSectionView: View {
                                height: Views.Constants.swipeToProceedImageSize)
                     
                     Text(Views.Constants.swipeToProceedLabel)
+                        .font(.headline)
                     
                     Spacer()
                 }
@@ -78,6 +74,10 @@ struct OnboardingSectionView: View {
     }
     
     private var swipeToProceedHidden: Bool {
+        if !canDisplaySwipeToProceed {
+            return true
+        }
+        
         switch section {
         case .welcome:
             return false
@@ -110,14 +110,15 @@ struct OnboardingSectionView: View {
 }
 
 #Preview {
-    OnboardingSectionView(section: .welcome)
+    OnboardingSectionView(section: .functions(.chatDatabaseTutorial),
+                          canDisplaySwipeToProceed: true)
 }
 
 private extension Views {
     struct Constants {
         static let mainVStackSpacing: CGFloat = 20
         static let titleTopPadding: CGFloat = 30
-        static let imageSize: CGFloat = 300
+        static let imageSize: CGFloat = 250
         static let sectionDescriptionOpacity: CGFloat = 0.5
         static let swipeToProceedHStackSpacing: CGFloat = 20
         static let swipeToProceedImageName: String = "arrowshape.right.circle"

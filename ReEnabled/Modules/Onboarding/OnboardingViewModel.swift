@@ -18,7 +18,8 @@ class OnboardingViewModel: ObservableObject {
     func readCurrentSection() {
         var text: String = ""
         
-        if let title = currentSection.title {
+        if currentSection == .welcome,
+           let title = currentSection.title {
             text += title
         }
         
@@ -44,16 +45,18 @@ class OnboardingViewModel: ObservableObject {
         currentSection = nextSection
     }
     
-    func gesturePromptCompleted() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+    func changeToNextSectionAfterDelay(time: DispatchTime = .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: time) { [weak self] in
             self?.changeToNextSection()
         }
     }
     
+    func gesturePromptCompleted() {
+        changeToNextSectionAfterDelay()
+    }
+    
     func voiceRequestPromptCompleted() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-            self?.changeToNextSection()
-        }
+        changeToNextSectionAfterDelay(time: .now() + 5)
     }
     
     func exitOnboarding() {
