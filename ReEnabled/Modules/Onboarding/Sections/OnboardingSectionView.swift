@@ -3,6 +3,7 @@ import SwiftUI
 struct OnboardingSectionView: View {
     let section: OnboardingSection
     let canDisplaySwipeToProceed: Bool
+    let canDisplayActionCompletedAnimation: Bool
     
     var body: some View {
         VStack {
@@ -15,11 +16,13 @@ struct OnboardingSectionView: View {
                     Text(title)
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .foregroundStyle(.white)
                 }
                 
                 Text(section.description)
                     .font(.title2)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.white)
                     .opacity(Views.Constants.sectionDescriptionOpacity)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.vertical)
@@ -33,6 +36,16 @@ struct OnboardingSectionView: View {
                     .frame(width: Views.Constants.imageSize,
                            height: Views.Constants.imageSize)
                     .padding(.vertical)
+            } else {
+                if canDisplayActionCompletedAnimation {
+                    LottieView(name: LottieAssetName.actionCompletedWhite,
+                               loopMode: .playOnce)
+                } else {
+                    if let lottieView = section.lottieView {
+                        lottieView
+                    }
+                }
+                
             }
             
             Spacer()
@@ -54,6 +67,10 @@ struct OnboardingSectionView: View {
         }
         .padding()
         .contentShape(Rectangle())
+        .background {
+            Color.black
+                .ignoresSafeArea()
+        }
     }
     
     private var sectionNumber: Int {
@@ -90,7 +107,7 @@ struct OnboardingSectionView: View {
             default:
                 return true
             }
-        case .functions(let onboardingFunctionsSection):
+        case .functions(_):
             return false
         case .voiceCommands(let onboardingVoiceCommandsSection):
             switch onboardingVoiceCommandsSection {
@@ -101,7 +118,7 @@ struct OnboardingSectionView: View {
             case .voiceCommandsRemindVoiceCommands:
                 return false
             }
-        case .feedback(let onboardingFeedbackSection):
+        case .feedback(_):
             return false
         case .ending:
             return false
@@ -110,8 +127,9 @@ struct OnboardingSectionView: View {
 }
 
 #Preview {
-    OnboardingSectionView(section: .functions(.chatDatabaseTutorial),
-                          canDisplaySwipeToProceed: true)
+    OnboardingSectionView(section: .gestures(.swipeDownGestureTutorial),
+                          canDisplaySwipeToProceed: true,
+                          canDisplayActionCompletedAnimation: false)
 }
 
 private extension Views {

@@ -1,6 +1,15 @@
 {
-  "originHash" : "13365e5bc3ef46d8bcca1a1377cd0b51c4a80fdc631e66b5918de01090e2386d",
+  "originHash" : "ef8a0b725b5232dbb2f9b410daa0eee8f35d2f19f863f5ce5ee586678e03c04f",
   "pins" : [
+    {
+      "identity" : "lottie-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-spm.git",
+      "state" : {
+        "revision" : "1d29eccc24cc8b75bff9f6804155112c0ffc9605",
+        "version" : "4.4.3"
+      }
+    },
     {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",

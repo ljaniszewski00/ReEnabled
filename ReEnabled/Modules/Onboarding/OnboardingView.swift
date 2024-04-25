@@ -10,7 +10,7 @@ struct OnboardingView: View {
     
     var body: some View {
         OnboardingSectionView(section: onboardingViewModel.currentSection,
-                              canDisplaySwipeToProceed: !feedbackManager.speechFeedbackIsBeingGenerated)
+                              canDisplaySwipeToProceed: !feedbackManager.speechFeedbackIsBeingGenerated, canDisplayActionCompletedAnimation: onboardingViewModel.canDisplayActionCompletedAnimation)
             .onAppear {
                 if onboardingViewModel.currentSection == .welcome && feedbackManager.speechFeedbackIsBeingGenerated {
                     feedbackManager.stopSpeechFeedback()
@@ -23,6 +23,7 @@ struct OnboardingView: View {
                     feedbackManager.stopSpeechFeedback()
                 }
                 
+                onboardingViewModel.canDisplayActionCompletedAnimation = false
                 onboardingViewModel.readCurrentSection()
             }
             .onChange(of: feedbackManager.speechFeedbackIsBeingGenerated) { _, isBeingGenerated in

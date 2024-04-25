@@ -3,6 +3,7 @@ import SwiftUI
 
 class OnboardingViewModel: ObservableObject {
     @Published var currentSection: OnboardingSection = .welcome
+    @Published var canDisplayActionCompletedAnimation: Bool = false
     @Published var shouldDismissOnboarding: Bool = false
     
     private var feedbackManager: FeedbackManager = .shared
@@ -18,7 +19,7 @@ class OnboardingViewModel: ObservableObject {
     func readCurrentSection() {
         var text: String = ""
         
-        if currentSection == .welcome,
+        if currentSection.shouldReadTitle,
            let title = currentSection.title {
             text += title
         }
@@ -52,10 +53,12 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func gesturePromptCompleted() {
+        canDisplayActionCompletedAnimation = true
         changeToNextSectionAfterDelay()
     }
     
     func voiceRequestPromptCompleted() {
+        canDisplayActionCompletedAnimation = true
         changeToNextSectionAfterDelay(time: .now() + 5)
     }
     
