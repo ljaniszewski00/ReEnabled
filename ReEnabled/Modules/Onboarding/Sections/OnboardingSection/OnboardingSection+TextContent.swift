@@ -8,7 +8,7 @@ extension OnboardingSection {
             case .gesturesSectionWelcome:
                 return "GESTURES"
             case .tapGestureTutorial:
-                return "TAP"
+                return "SINGLE TAP"
             case .doubleTapGestureTutorial:
                 return "DOUBLE TAP"
             case .trippleTapGestureTutorial:
@@ -173,7 +173,7 @@ extension OnboardingSection {
                 
                 Swipe Right to get to the next part
                 
-                Swipe left to go back to previous one
+                Swipe Left to go back to previous one
 
                 Let's move on to the next part of the guide by swiping right.
                 """

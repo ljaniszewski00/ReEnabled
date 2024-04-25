@@ -26,6 +26,10 @@ class OnboardingViewModel: ObservableObject {
         
         text += currentSection.description
         
+        if currentSection == .welcome || currentSection == .gestures(.gesturesSectionWelcome) {
+            text += OnboardingSpeechFeedback.swipeRightToProceed.rawValue
+        }
+        
         feedbackManager.generateSpeechFeedback(with: text)
     }
     
@@ -38,11 +42,16 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func changeToNextSection() {
+        if feedbackManager.speechFeedbackIsBeingGenerated {
+            feedbackManager.stopSpeechFeedback()
+        }
+        
         guard let nextSection: OnboardingSection = currentSection.nextSection() else {
             exitOnboarding()
             return
         }
         
+        canDisplayActionCompletedAnimation = false
         currentSection = nextSection
     }
     

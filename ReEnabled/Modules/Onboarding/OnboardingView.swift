@@ -12,18 +12,13 @@ struct OnboardingView: View {
         OnboardingSectionView(section: onboardingViewModel.currentSection,
                               canDisplaySwipeToProceed: !feedbackManager.speechFeedbackIsBeingGenerated, canDisplayActionCompletedAnimation: onboardingViewModel.canDisplayActionCompletedAnimation)
             .onAppear {
-                if onboardingViewModel.currentSection == .welcome && feedbackManager.speechFeedbackIsBeingGenerated {
+                if onboardingViewModel.currentSection == .welcome {
                     feedbackManager.stopSpeechFeedback()
                 }
                 
                 onboardingViewModel.readCurrentSection()
             }
             .onChange(of: onboardingViewModel.currentSection) { _, _ in
-                if feedbackManager.speechFeedbackIsBeingGenerated {
-                    feedbackManager.stopSpeechFeedback()
-                }
-                
-                onboardingViewModel.canDisplayActionCompletedAnimation = false
                 onboardingViewModel.readCurrentSection()
             }
             .onChange(of: feedbackManager.speechFeedbackIsBeingGenerated) { _, isBeingGenerated in

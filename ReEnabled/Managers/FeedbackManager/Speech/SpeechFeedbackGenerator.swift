@@ -80,7 +80,7 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
             return
         }
         
-        speechSynthesizer.stopSpeaking(at: .word)
+        speechSynthesizer.stopSpeaking(at: .immediate)
     }
 }
 
