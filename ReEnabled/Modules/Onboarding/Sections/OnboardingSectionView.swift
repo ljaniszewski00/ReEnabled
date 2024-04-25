@@ -3,6 +3,7 @@ import SwiftUI
 struct OnboardingSectionView: View {
     let section: OnboardingSection
     let canDisplaySwipeToProceed: Bool
+    let swipeToProceedOffset: CGSize
     let canDisplayActionCompletedAnimation: Bool
     
     var body: some View {
@@ -30,39 +31,67 @@ struct OnboardingSectionView: View {
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)
             
-            if let imageResource = section.imageResource {
-                Image(imageResource)
-                    .resizable()
-                    .frame(width: Views.Constants.imageSize,
-                           height: Views.Constants.imageSize)
-                    .padding(.vertical)
-            } else {
-                if canDisplayActionCompletedAnimation {
-                    LottieView(name: LottieAssetName.actionCompletedWhite,
-                               loopMode: .playOnce)
-                } else {
-                    if let lottieView = section.lottieView {
-                        lottieView
-                    }
-                }
-                
-            }
-            
             Spacer()
             
-            if !swipeToProceedHidden {
-                HStack(spacing: Views.Constants.swipeToProceedHStackSpacing) {
-                    Image(systemName: Views.Constants.swipeToProceedImageName)
-                        .resizable()
-                        .frame(width: Views.Constants.swipeToProceedImageSize,
-                               height: Views.Constants.swipeToProceedImageSize)
+            ZStack(alignment: .bottomLeading) {
+                HStack {
+                    Spacer()
                     
-                    Text(Views.Constants.swipeToProceedLabel)
-                        .font(.headline)
+                    if let imageResource = section.imageResource {
+                        Image(imageResource.imageResource)
+                            .resizable()
+                            .scaledToFill()
+                            .if(imageResource.applyBottomMask) {
+                                $0
+                                    .mask(LinearGradient(gradient: Gradient(stops: [
+                                        .init(color: .black, location: 0),
+                                        .init(color: .clear, location: 1),
+                                        .init(color: .black, location: 1),
+                                        .init(color: .clear, location: 1)
+                                    ]), startPoint: .top, endPoint: .bottom))
+                            }
+                            .frame(width: imageResource.width,
+                                   height: imageResource.height)
+                    } else {
+                        if canDisplayActionCompletedAnimation {
+                            LottieView(name: LottieAssetName.actionCompletedWhite,
+                                       loopMode: .playOnce)
+                        } else {
+                            if let lottieView = section.lottieView {
+                                lottieView
+                            }
+                        }
+                        
+                    }
                     
                     Spacer()
                 }
-                .padding(.leading)
+                .padding(.bottom, Views.Constants.imageBottomPadding)
+                
+                if !swipeToProceedHidden {
+                    HStack(spacing: Views.Constants.swipeToProceedHStackSpacing) {
+                        Image(systemName: Views.Constants.swipeToProceedImageName)
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: Views.Constants.swipeToProceedImageSize,
+                                   height: Views.Constants.swipeToProceedImageSize)
+                            .offset(x: swipeToProceedImageXOffset)
+                        
+                        Text(Views.Constants.swipeToProceedLabel)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .opacity(swipeToProceedLabelOpacityValue)
+                        
+                        Spacer()
+                    }
+                    .padding(Views.Constants.swipeToProceedHStackPadding)
+                    .padding(.horizontal, Views.Constants.swipeToProceedHStackHorizontalPadding)
+                    .background(
+                        .ultraThinMaterial,
+                        in: Capsule()
+                    )
+                }
             }
         }
         .padding()
@@ -71,6 +100,14 @@ struct OnboardingSectionView: View {
             Color.black
                 .ignoresSafeArea()
         }
+    }
+    
+    private var swipeToProceedImageXOffset: CGFloat {
+        swipeToProceedOffset.width > 0 ? swipeToProceedOffset.width : 0
+    }
+    
+    private var swipeToProceedLabelOpacityValue: CGFloat {
+        1 - (swipeToProceedOffset.width / 100)
     }
     
     private var sectionNumber: Int {
@@ -127,8 +164,9 @@ struct OnboardingSectionView: View {
 }
 
 #Preview {
-    OnboardingSectionView(section: .gestures(.swipeDownGestureTutorial),
+    OnboardingSectionView(section: .functions(.chatDatabaseTutorial),
                           canDisplaySwipeToProceed: true,
+                          swipeToProceedOffset: .zero,
                           canDisplayActionCompletedAnimation: false)
 }
 
@@ -136,11 +174,13 @@ private extension Views {
     struct Constants {
         static let mainVStackSpacing: CGFloat = 20
         static let titleTopPadding: CGFloat = 30
-        static let imageSize: CGFloat = 250
         static let sectionDescriptionOpacity: CGFloat = 0.5
+        static let imageBottomPadding: CGFloat = 30
         static let swipeToProceedHStackSpacing: CGFloat = 20
         static let swipeToProceedImageName: String = "arrowshape.right.circle"
         static let swipeToProceedImageSize: CGFloat = 40
         static let swipeToProceedLabel: String = "Swipe to Proceed"
+        static let swipeToProceedHStackPadding: CGFloat = 10
+        static let swipeToProceedHStackHorizontalPadding: CGFloat = 10
     }
 }

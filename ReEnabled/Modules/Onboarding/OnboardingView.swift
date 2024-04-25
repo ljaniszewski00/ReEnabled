@@ -8,9 +8,13 @@ struct OnboardingView: View {
     @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
     @StateObject private var voiceRequestor: VoiceRequestor = .shared
     
+    @State private var swipeToProceedOffset: CGSize = .zero
+    
     var body: some View {
         OnboardingSectionView(section: onboardingViewModel.currentSection,
-                              canDisplaySwipeToProceed: !feedbackManager.speechFeedbackIsBeingGenerated, canDisplayActionCompletedAnimation: onboardingViewModel.canDisplayActionCompletedAnimation)
+                              canDisplaySwipeToProceed: true,
+                              swipeToProceedOffset: swipeToProceedOffset,
+                              canDisplayActionCompletedAnimation: onboardingViewModel.canDisplayActionCompletedAnimation)
             .onAppear {
                 if onboardingViewModel.currentSection == .welcome {
                     feedbackManager.stopSpeechFeedback()
@@ -19,6 +23,7 @@ struct OnboardingView: View {
                 onboardingViewModel.readCurrentSection()
             }
             .onChange(of: onboardingViewModel.currentSection) { _, _ in
+                swipeToProceedOffset = .zero
                 onboardingViewModel.readCurrentSection()
             }
             .onChange(of: feedbackManager.speechFeedbackIsBeingGenerated) { _, isBeingGenerated in
@@ -80,7 +85,8 @@ struct OnboardingView: View {
                     return
                 }
             }
-            .addGesturesActions(toExecuteBeforeEveryAction: {
+            .addGesturesActions(swipeTranslationValue: $swipeToProceedOffset,
+                                toExecuteBeforeEveryAction: {
                 feedbackManager.generateHapticFeedbackForSwipeAction()
             }, onTap: {
                 guard onboardingViewModel.currentGestureToPass != .singleTap else {

@@ -1,7 +1,8 @@
 import SwiftUI
 
 extension View {
-    func addGesturesActions(toExecuteBeforeEveryAction: (() -> ())? = nil,
+    func addGesturesActions(swipeTranslationValue: Binding<CGSize>? = nil,
+                            toExecuteBeforeEveryAction: (() -> ())? = nil,
                             toExecuteAfterEveryAction: (() -> ())? = nil,
                             onTap: (() -> ())? = nil,
                             onDoubleTap: (() -> ())? = nil,
@@ -15,7 +16,8 @@ extension View {
                             onSwipeFromRightToLeftAfterLongPress: (() -> ())? = nil,
                             onSwipeFromUpToDownAfterLongPress: (() -> ())? = nil,
                             onSwipeFromDownToUpAfterLongPress: (() -> ())? = nil) -> some View {
-        modifier(GestureActionView(toExecuteBeforeEveryAction: toExecuteBeforeEveryAction,
+        modifier(GestureActionView(swipeTranslationValue: swipeTranslationValue ?? .constant(.zero),
+                                   toExecuteBeforeEveryAction: toExecuteBeforeEveryAction,
                                    toExecuteAfterEveryAction: toExecuteAfterEveryAction,
                                    onTap: onTap,
                                    onDoubleTap: onDoubleTap,
@@ -33,6 +35,7 @@ extension View {
 }
 
 private struct GestureActionView: ViewModifier {
+    @Binding var swipeTranslationValue: CGSize
     let toExecuteBeforeEveryAction: (() -> ())?
     let toExecuteAfterEveryAction: (() -> ())?
     let onTap: (() -> ())?
@@ -89,6 +92,9 @@ private struct GestureActionView: ViewModifier {
             }
         
         let swipeGesture = DragGesture(minimumDistance: 20, coordinateSpace: .global)
+            .onChanged { gesture in
+                swipeTranslationValue = gesture.translation
+            }
             .onEnded { value in
                 let horizontalAmount = value.translation.width
                 let verticalAmount = value.translation.height
@@ -130,7 +136,11 @@ private struct GestureActionView: ViewModifier {
         
         let longPressGestureToDrag = LongPressGesture()
         let swipeAfterLongPressGesture = DragGesture(minimumDistance: 20, coordinateSpace: .global)
+            .onChanged { value in
+                swipeTranslationValue = value.translation
+            }
             .onEnded { value in
+                swipeTranslationValue = .zero
                 let horizontalAmount = value.translation.width
                 let verticalAmount = value.translation.height
                 

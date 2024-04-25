@@ -2,10 +2,10 @@ import Lottie
 import SwiftUI
 
 extension OnboardingSection {
-    var imageResource: ImageResource? {
+    var imageResource: (imageResource: ImageResource, width: CGFloat, height: CGFloat, applyBottomMask: Bool)? {
         switch self {
         case .welcome:
-            return .appIconNoBackground
+            return (.appIconNoBackground, 250, 250, false)
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
@@ -52,7 +52,7 @@ extension OnboardingSection {
             case .chatImageTutorial:
                 return nil
             case .chatDatabaseTutorial:
-                return nil
+                return (.enChatViewEmptyChats, 250, 350, true)
             case .settingsFirstTutorial:
                 return nil
             case .settingsSecondTutorial:
