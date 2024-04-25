@@ -20,8 +20,16 @@ struct LightDetectorView: View {
                 if let luminosity = lightDetectorViewModel.detectedLuminosity {
                     Text(luminosity)
                         .foregroundColor(.white)
-                        .font(.headline)
-                        .padding(.bottom, Views.Constants.luminocityToDisplayBottomPadding)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(.vertical, Views.Constants.luminosityLabelVerticalPadding)
+                        .padding(.horizontal)
+                        .background (
+                            .ultraThinMaterial,
+                            in: RoundedRectangle(cornerRadius: Views.Constants.luminosityLabelBackgroundCornerRadius,
+                                                 style: .continuous)
+                        )
+                        .padding(.bottom, Views.Constants.luminosityToDisplayBottomPadding)
                 }
             }
         }
@@ -105,6 +113,8 @@ struct LightDetectorView: View {
 
 private extension Views {
     struct Constants {
-        static let luminocityToDisplayBottomPadding: CGFloat = 100
+        static let luminosityLabelVerticalPadding: CGFloat = 15
+        static let luminosityLabelBackgroundCornerRadius: CGFloat = 10
+        static let luminosityToDisplayBottomPadding: CGFloat = 100
     }
 }

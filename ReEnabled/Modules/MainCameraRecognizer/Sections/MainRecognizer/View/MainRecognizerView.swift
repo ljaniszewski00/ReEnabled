@@ -26,6 +26,16 @@ struct MainRecognizerView: View {
                 Group {
                     if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType {
                         Text(recognizedLightColor)
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .padding(.vertical, Views.Constants.recognitionsLabelsVerticalPadding)
+                            .padding(.horizontal)
+                            .background (
+                                .ultraThinMaterial,
+                                in: RoundedRectangle(cornerRadius: Views.Constants.recognitionsLabelsBackgroundCornerRadius,
+                                                     style: .continuous)
+                            )
                             .padding(.bottom)
                     }
                     
@@ -41,6 +51,16 @@ struct MainRecognizerView: View {
                     
                     if let distanceString = distanceMeasurerViewModel.distanceString {
                         Text(distanceString)
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .padding(.vertical, Views.Constants.recognitionsLabelsVerticalPadding)
+                            .padding(.horizontal)
+                            .background (
+                                .ultraThinMaterial,
+                                in: RoundedRectangle(cornerRadius: Views.Constants.recognitionsLabelsBackgroundCornerRadius,
+                                                     style: .continuous)
+                            )
                     }
                 }
                 .foregroundColor(.white)
@@ -126,6 +146,8 @@ struct MainRecognizerView: View {
 
 private extension Views {
     struct Constants {
+        static let recognitionsLabelsVerticalPadding: CGFloat = 15
+        static let recognitionsLabelsBackgroundCornerRadius: CGFloat = 10
         static let recognitionsBottomPadding: CGFloat = 120
     }
 }

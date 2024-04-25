@@ -1,12 +1,12 @@
 import SwiftUI
 
 final class ColorDetectorViewModel: ObservableObject {
-    @Published var detectedColor: UIColor?
+    @Published var detectedColor: UIColor? = .black
     
     private let feedbackManager: FeedbackManager = .shared
     
     var detectedColorName: String? {
-        detectedColor?.accessibilityName
+        detectedColor?.accessibilityName.capitalized
     }
     
     func readDetectedColor() {

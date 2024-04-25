@@ -20,7 +20,15 @@ struct ColorDetectorView: View {
                 if let colorName = colorDetectorViewModel.detectedColorName {
                     Text(colorName)
                         .foregroundColor(.white)
-                        .font(.headline)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(.vertical, Views.Constants.colorLabelVerticalPadding)
+                        .padding(.horizontal)
+                        .background (
+                            .ultraThinMaterial,
+                            in: RoundedRectangle(cornerRadius: Views.Constants.colorLabelBackgroundCornerRadius,
+                                                 style: .continuous)
+                        )
                         .padding(.bottom, Views.Constants.colorToDisplayBottomPadding)
                 }
             }
@@ -81,6 +89,8 @@ struct ColorDetectorView: View {
 
 private extension Views {
     struct Constants {
+        static let colorLabelVerticalPadding: CGFloat = 15
+        static let colorLabelBackgroundCornerRadius: CGFloat = 10
         static let colorToDisplayBottomPadding: CGFloat = 100
     }
 }

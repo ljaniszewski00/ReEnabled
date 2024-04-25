@@ -96,7 +96,7 @@ extension OnboardingSection {
             case .trippleTapGestureTutorial:
                 return nil
             case .longPressGestureTutorial:
-                return nil
+                return LottieView(name: LottieAssetName.longPressGesture)
             case .swipeLeftGestureTutorial:
                 return LottieView(name: LottieAssetName.swipeLeftGesture)
             case .swipeRightGestureTutorial:
