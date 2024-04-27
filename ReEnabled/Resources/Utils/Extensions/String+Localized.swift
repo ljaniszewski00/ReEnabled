@@ -5,7 +5,7 @@ extension String {
         let fileType: String = "lproj"
         let tableName: String = "Localizable"
         
-        if let appLanguage = LocalizationManager.shared.getAppLanguage() {
+        if let appLanguage = getAppLanguage() {
             switch appLanguage {
             case .polish:
                 guard let path = Bundle.main.path(forResource: SupportedLanguage.polish.identifier,
