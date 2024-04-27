@@ -26,7 +26,14 @@
 
 // MARK: - Onboarding
 
+"titleWelcomeSectionWelcomeText" = "WELCOME TO THE ReEnabled FAMILY";
+"titleGesturesSectionWelcomeText" = "GESTURES";
 
+
+"descriptionWelcomeSectionWelcomeText" = "
+We will be more than happy to assist you in everyday tasks.
+First, let’s take a quick tour around app’s essential features.
+";
 
 // MARK: - Speech Feedback
 

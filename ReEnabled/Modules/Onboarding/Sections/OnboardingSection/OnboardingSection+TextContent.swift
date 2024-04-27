@@ -2,11 +2,11 @@ extension OnboardingSection {
     var title: String? {
         switch self {
         case .welcome:
-            return "WELCOME TO THE ReEnabled FAMILY"
+            return OnboardingText.titleWelcomeSectionWelcomeText.rawValue.localized()
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
-                return "GESTURES"
+                return OnboardingText.titleGesturesSectionWelcomeText.rawValue.localized()
             case .tapGestureTutorial:
                 return "SINGLE TAP"
             case .doubleTapGestureTutorial:
@@ -103,10 +103,7 @@ extension OnboardingSection {
     var description: String {
         switch self {
         case .welcome:
-            return """
-            We will be more than happy to assist you in everyday tasks.
-            First, let’s take a quick tour around app’s essential features
-            """
+            return OnboardingText.descriptionWelcomeSectionWelcomeText.rawValue.localized()
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:

@@ -11,7 +11,7 @@ class LocalizationManager {
     
     func setAppLanguage(_ language: SupportedLanguage) {
         userDefaults.set(language.languageLabelForManager,
-                                  forKey: UserDefaultsKeys.KEY_AppLanguage)
+                         forKey: UserDefaultsKeys.KEY_AppLanguage)
         userDefaults.synchronize()
     }
     
@@ -20,11 +20,23 @@ class LocalizationManager {
             return nil
         }
         
+        
+    
+        print()
+        print(SupportedLanguage.getSupportedLanguageFrom(labelForManager: languageLabel))
+        print()
+        
         return SupportedLanguage.getSupportedLanguageFrom(labelForManager: languageLabel)
     }
     
     func removeAppLanguage() {
         userDefaults.removeObject(forKey: UserDefaultsKeys.KEY_AppLanguage)
         userDefaults.synchronize()
+    }
+}
+
+extension LocalizationManager {
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
     }
 }

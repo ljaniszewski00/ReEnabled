@@ -135,7 +135,7 @@ struct OnboardingSectionView: View {
 }
 
 #Preview {
-    OnboardingSectionView(section: .functions(.chatDatabaseTutorial),
+    OnboardingSectionView(section: .welcome,
                           canDisplaySwipeToProceed: true,
                           swipeToProceedOffset: .zero,
                           canDisplayActionCompletedAnimation: false)

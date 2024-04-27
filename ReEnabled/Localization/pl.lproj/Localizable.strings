@@ -1,7 +1,51 @@
-/* 
-  Localizable.strings
-  ReEnabled
+// MARK: - Camera Tab
 
-  Created by Łukasz Janiszewski on 26/04/2024.
-  
-*/
+// MARK: - Main Recognizer
+
+
+
+// MARK: - Document Scanner
+
+
+
+// MARK: - Color Detector
+
+
+
+// MARK: - Light Detector
+
+
+
+// MARK: - Chat Tab
+
+
+
+// MARK: - Settings Tab
+
+
+
+// MARK: - Onboarding
+
+"titleWelcomeSectionWelcomeText" = "WITAJ W APLIKACJI ReEnabled";
+"titleGesturesSectionWelcomeText" = "GESTY";
+
+
+"descriptionWelcomeSectionWelcomeText" = "
+Z wielką chęcią pomożemy ci w codziennych czynnościach.
+Pozwól, że najpierw zaprezentujemy ci podstawowe funkcje aplikacji.
+";
+
+// MARK: - Speech Feedback
+
+
+
+// MARK: - Voice Request
+
+
+
+// MARK: - ML Model Label
+
+
+
+// MARK: - Other
+

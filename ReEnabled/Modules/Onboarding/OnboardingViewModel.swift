@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 class OnboardingViewModel: ObservableObject {
-    @Published var currentSection: OnboardingSection = .functions(.chatDatabaseTutorial)
+    @Published var currentSection: OnboardingSection = .welcome
     @Published var canDisplayActionCompletedAnimation: Bool = false
     @Published var shouldDismissOnboarding: Bool = false
     

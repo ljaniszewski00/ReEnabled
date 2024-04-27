@@ -2,33 +2,48 @@ import Foundation
 
 extension String {
     func localized() -> String {
+        let fileType: String = "lproj"
+        let tableName: String = "Localizable"
+        
         if let appLanguage = LocalizationManager.shared.getAppLanguage() {
             switch appLanguage {
-            case .english:
-                guard let path = Bundle.main.path(forResource: "en", ofType: "lproj"),
+            case .polish:
+                guard let path = Bundle.main.path(forResource: SupportedLanguage.polish.identifier,
+                                                  ofType: fileType),
                       let bundle = Bundle(path: path) else {
                     return ""
                 }
                 
                 return NSLocalizedString(self,
-                                         tableName: "Localizable",
+                                         tableName: tableName,
                                          bundle: bundle,
                                          value: self,
                                          comment: self)
-            case .polish:
-                guard let path = Bundle.main.path(forResource: "pl", ofType: "lproj"),
+            default:
+                guard let path = Bundle.main.path(forResource: SupportedLanguage.english.identifier,
+                                                  ofType: fileType),
                       let bundle = Bundle(path: path) else {
                     return ""
                 }
                 
                 return NSLocalizedString(self,
-                                         tableName: "Localizable",
+                                         tableName: tableName,
                                          bundle: bundle,
                                          value: self,
                                          comment: self)
             }
         } else {
-            return ""
+            guard let path = Bundle.main.path(forResource: SupportedLanguage.english.identifier,
+                                              ofType: fileType),
+                  let bundle = Bundle(path: path) else {
+                return ""
+            }
+            
+            return NSLocalizedString(self,
+                                     tableName: tableName,
+                                     bundle: bundle,
+                                     value: self,
+                                     comment: self)
         }
     }
 }
