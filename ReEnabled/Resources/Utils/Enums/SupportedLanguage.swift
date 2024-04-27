@@ -71,6 +71,21 @@ extension SupportedLanguage: CaseIterable {
             .polish
         ]
     }
+}
+
+extension SupportedLanguage {
+    var languageLabelForManager: Int {
+        switch self {
+        case .english:
+            return 0
+        case .polish:
+            return 1
+        }
+    }
+    
+    static func getSupportedLanguageFrom(labelForManager: Int) -> Self? {
+        allCases.first(where: { $0.languageLabelForManager == labelForManager })
+    }
     
     static func getSupportedLanguageFrom(languageIdentifier: String?) -> Self? {
         allCases.first(where: { $0.identifier == languageIdentifier })

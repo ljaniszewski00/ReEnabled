@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @AppStorage(AppStorageKeys.shouldDisplayOnboarding) var shouldDisplayOnboarding: Bool = true
+    @AppStorage(UserDefaultsKeys.shouldDisplayOnboarding) var shouldDisplayOnboarding: Bool = true
     @EnvironmentObject private var onboardingViewModel: OnboardingViewModel
     
     @StateObject private var feedbackManager: FeedbackManager = .shared

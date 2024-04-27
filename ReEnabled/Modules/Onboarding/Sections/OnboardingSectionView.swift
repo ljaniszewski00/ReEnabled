@@ -69,28 +69,7 @@ struct OnboardingSectionView: View {
                 .padding(.bottom, Views.Constants.imageBottomPadding)
                 
                 if !swipeToProceedHidden {
-                    HStack(spacing: Views.Constants.swipeToProceedHStackSpacing) {
-                        Image(systemName: Views.Constants.swipeToProceedImageName)
-                            .resizable()
-                            .foregroundStyle(.white)
-                            .frame(width: Views.Constants.swipeToProceedImageSize,
-                                   height: Views.Constants.swipeToProceedImageSize)
-                            .offset(x: swipeToProceedImageXOffset)
-                        
-                        Text(Views.Constants.swipeToProceedLabel)
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .opacity(swipeToProceedLabelOpacityValue)
-                        
-                        Spacer()
-                    }
-                    .padding(Views.Constants.swipeToProceedHStackPadding)
-                    .padding(.horizontal, Views.Constants.swipeToProceedHStackHorizontalPadding)
-                    .background(
-                        .ultraThinMaterial,
-                        in: Capsule()
-                    )
+                    Views.swipeToProceed(offset: swipeToProceedOffset)
                 }
             }
         }
@@ -100,14 +79,6 @@ struct OnboardingSectionView: View {
             Color.black
                 .ignoresSafeArea()
         }
-    }
-    
-    private var swipeToProceedImageXOffset: CGFloat {
-        swipeToProceedOffset.width > 0 ? swipeToProceedOffset.width : 0
-    }
-    
-    private var swipeToProceedLabelOpacityValue: CGFloat {
-        1 - (swipeToProceedOffset.width / 100)
     }
     
     private var sectionNumber: Int {
@@ -179,8 +150,49 @@ private extension Views {
         static let swipeToProceedHStackSpacing: CGFloat = 20
         static let swipeToProceedImageName: String = "arrowshape.right.circle"
         static let swipeToProceedImageSize: CGFloat = 40
+        static let swipeToProceedShimmerZoneHeight: CGFloat = 20
         static let swipeToProceedLabel: String = "Swipe to Proceed"
         static let swipeToProceedHStackPadding: CGFloat = 10
         static let swipeToProceedHStackHorizontalPadding: CGFloat = 10
+    }
+    
+    struct swipeToProceed: View {
+        let offset: CGSize
+        
+        var body: some View {
+            HStack(spacing: Views.Constants.swipeToProceedHStackSpacing) {
+                Image(systemName: Views.Constants.swipeToProceedImageName)
+                    .resizable()
+                    .foregroundStyle(.white)
+                    .frame(width: Views.Constants.swipeToProceedImageSize,
+                           height: Views.Constants.swipeToProceedImageSize)
+                    .offset(x: swipeToProceedImageXOffset)
+                
+                ShimmeringViewContent {
+                    Text(Views.Constants.swipeToProceedLabel)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .opacity(swipeToProceedLabelOpacityValue)
+                }
+                .frame(height: Views.Constants.swipeToProceedShimmerZoneHeight)
+                
+                Spacer()
+            }
+            .padding(Views.Constants.swipeToProceedHStackPadding)
+            .padding(.horizontal, Views.Constants.swipeToProceedHStackHorizontalPadding)
+            .background(
+                .ultraThinMaterial,
+                in: Capsule()
+            )
+        }
+        
+        private var swipeToProceedImageXOffset: CGFloat {
+            offset.width > 0 ? offset.width : 0
+        }
+        
+        private var swipeToProceedLabelOpacityValue: CGFloat {
+            1 - (offset.width / 100)
+        }
     }
 }

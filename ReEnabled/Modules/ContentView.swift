@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage(AppStorageKeys.shouldDisplayOnboarding) var shouldDisplayOnboarding: Bool = true
+    @AppStorage(UserDefaultsKeys.shouldDisplayOnboarding) var shouldDisplayOnboarding: Bool = true
     
     @StateObject private var tabBarStateManager: TabBarStateManager = .shared
     @StateObject private var feedbackManager: FeedbackManager = .shared
