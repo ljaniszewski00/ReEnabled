@@ -1,4 +1,15 @@
-enum ColorDetectorSpeechFeedback: String {
-    case cameraModeHasBeenSetTo = "Camera mode has been set to"
-    case welcomeHint = "Tap to hear the color"
+enum ColorDetectorSpeechFeedback {
+    case welcomeHint
+    case cameraModeHasBeenSetTo
+}
+
+extension ColorDetectorSpeechFeedback {
+    var rawValue: String {
+        switch self {
+        case .welcomeHint:
+            return SpeechFeedbackText.colorDetectorSpeechFeedbackWelcomeHint.rawValue.localized()
+        case .cameraModeHasBeenSetTo:
+            return SpeechFeedbackText.colorDetectorSpeechFeedbackCameraModeHasBeenSetTo.rawValue.localized()
+        }
+    }
 }

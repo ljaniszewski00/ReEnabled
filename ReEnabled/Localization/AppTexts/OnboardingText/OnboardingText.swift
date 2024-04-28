@@ -1,7 +1,55 @@
 enum OnboardingText: String {
     case titleWelcomeSectionWelcomeText
     case titleGesturesSectionWelcomeText
-    
-    
+    case titleTapGestureTutorial
+    case titleDoubleTapGestureTutorial
+    case titleTrippleTapGestureTutorial
+    case titleLongPressGestureTutorial
+    case titleSwipeLeftGestureTutorial
+    case titleSwipeRightGestureTutorial
+    case titleSwipeUpGestureTutorial
+    case titleSwipeDownGestureTutorial
+    case titleLongPressAndSwipeLeftGestureTutorial
+    case titleLongPressAndSwipeRightGestureTutorial
+    case titleLongPressAndSwipeUpGestureTutorial
+    case titleLongPressAndSwipeDownGestureTutorial
+    case titleGesturesSectionEnding
+    case titleMainRecognizerTutorial
+    case titleChatMessageTutorial
+    case titleSettingsFirstTutorial
+    case titleVoiceCommandsExplanation
+    case titleFeedbackFirstTutorial
+    case titleEnding
     case descriptionWelcomeSectionWelcomeText
+    case descriptionGesturesSectionWelcomeText
+    case descriptionTapGestureTutorial
+    case descriptionDoubleTapGestureTutorial
+    case descriptionTrippleTapGestureTutorial
+    case descriptionLongPressGestureTutorial
+    case descriptionSwipeLeftGestureTutorial
+    case descriptionSwipeRightGestureTutorial
+    case descriptionSwipeUpGestureTutorial
+    case descriptionSwipeDownGestureTutorial
+    case descriptionLongPressAndSwipeLeftGestureTutorial
+    case descriptionLongPressAndSwipeRightGestureTutorial
+    case descriptionLongPressAndSwipeUpGestureTutorial
+    case descriptionLongPressAndSwipeDownGestureTutorial
+    case descriptionGesturesSectionEnding
+    case descriptionMainRecognizerTutorial
+    case descriptionDocumentScannerTutorial
+    case descriptionColorDetectorTutorial
+    case descriptionLightDetectorTutorial
+    case descriptionChatMessageTutorial
+    case descriptionChatImageTutorial
+    case descriptionChatDatabaseTutorial
+    case descriptionSettingsFirstTutorial
+    case descriptionSettingsSecondTutorial
+    case descriptionSettingsThirdTutorial
+    case descriptionVoiceCommandsExplanation
+    case descriptionVoiceCommandsRemindGestures
+    case descriptionVoiceCommandsRemindVoiceCommands
+    case descriptionFeedbackFirstTutorial
+    case descriptionFeedbackSecondTutorial
+    case descriptionEnding
+    case swipeToProceed
 }

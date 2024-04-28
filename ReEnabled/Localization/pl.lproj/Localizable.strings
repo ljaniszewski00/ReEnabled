@@ -28,15 +28,229 @@
 
 "titleWelcomeSectionWelcomeText" = "WITAJ W APLIKACJI ReEnabled";
 "titleGesturesSectionWelcomeText" = "GESTY";
-
+"titleTapGestureTutorial" = "JEDNOKROTNE DOTKNIECIE";
+"titleDoubleTapGestureTutorial" = "DWUKROTNE DOTKNIECIE";
+"titleTrippleTapGestureTutorial" = "TRZYKROTNE DOTKNIECIE";
+"titleLongPressGestureTutorial" = "PRZYTRZYMANIE";
+"titleSwipeLeftGestureTutorial" = "PRZESUNIĘCIE W LEWO";
+"titleSwipeRightGestureTutorial" = "PRZESUNIĘCIE W PRAWO";
+"titleSwipeUpGestureTutorial" = "PRZESUNIĘCIE W GÓRĘ";
+"titleSwipeDownGestureTutorial" = "PRZESUNIĘCIE W DÓŁ";
+"titleLongPressAndSwipeLeftGestureTutorial" = "PRZYTRZYMANIE I PRZESUNIĘCIE W LEWO";
+"titleLongPressAndSwipeRightGestureTutorial" = "PRZYTRZYMANIE I PRZESUNIĘCIE W PRAWO";
+"titleLongPressAndSwipeUpGestureTutorial" = "PRZYTRZYMANIE I PRZESUNIĘCIE W GÓRĘ";
+"titleLongPressAndSwipeDownGestureTutorial" = "PRZYTRZYMANIE I PRZESUNIĘCIE W DÓŁ";
+"titleGesturesSectionEnding" = "ŚWIETNIE!";
+"titleMainRecognizerTutorial" = "KAMERA";
+"titleChatMessageTutorial" = "CHAT";
+"titleSettingsFirstTutorial" = "USTAWIENIA";
+"titleVoiceCommandsExplanation" = "POLECENIA GŁOSOWE";
+"titleFeedbackFirstTutorial" = "OPINIE";
+"titleEnding" = "DOSKONALE!";
 
 "descriptionWelcomeSectionWelcomeText" = "
 Z wielką chęcią pomożemy ci w codziennych czynnościach.
 Pozwól, że najpierw zaprezentujemy ci podstawowe funkcje aplikacji.
 ";
 
+"descriptionGesturesSectionWelcomeText" = "
+Jedną z najważniejszych funkcji ułatwiających korzystanie z aplikacji są gesty.
+Gest to ruch wykonany przez palec na powierzchni ekranu.
+Większość ekranów aplikacji ma funkcje, które są aktywowane przez konkretne gesty.
+Spróbujmy je nauczyć się razem.
+";
+
+"descriptionTapGestureTutorial" = "Dotknij raz jednym palcem ekranu.";
+
+"descriptionDoubleTapGestureTutorial" = "Szybko dwukrotnie dotknij jednym palcem ekranu.";
+
+"descriptionTrippleTapGestureTutorial" = "Szybko trzykrotnie dotknij jednym palcem ekranu.";
+
+"descriptionLongPressGestureTutorial" = "Przytrzymaj palec w jednym miejscu na ekranie i zwolnij po chwili.";
+
+"descriptionSwipeLeftGestureTutorial" = "Przesuń palec z prawej strony ekranu w lewo.";
+
+"descriptionSwipeRightGestureTutorial" = "Przesuń palec z lewej strony ekranu w prawo.";
+
+"descriptionSwipeUpGestureTutorial" = "Przesuń palec z dolnej części ekranu w górę.";
+
+"descriptionSwipeDownGestureTutorial" = "Przesuń palec z górnej części ekranu w dół.";
+
+"descriptionLongPressAndSwipeLeftGestureTutorial" = "Przytrzymaj palec w jednym miejscu na ekranie, następnie przesuń w lewo i zwolnij.";
+
+"descriptionLongPressAndSwipeRightGestureTutorial" = "Przytrzymaj palec w jednym miejscu na ekranie, następnie przesuń w prawo i zwolnij.";
+
+"descriptionLongPressAndSwipeUpGestureTutorial" = "Przytrzymaj palec w jednym miejscu na ekranie, następnie przesuń w górę i zwolnij.";
+
+"descriptionLongPressAndSwipeDownGestureTutorial" = "Przytrzymaj palec w jednym miejscu na ekranie, następnie przesuń w dół i zwolnij.";
+
+"descriptionGesturesSectionEnding" = "
+Nauczyłeś się wszystkich gestów obsługiwanych przez aplikację.
+Od teraz podczas tego przewodnika zawsze możesz:
+                
+Jednokrotnie dotknąć, aby ponownie usłyszeć aktualną sekcję przewodnika po zakończeniu mowy
+                
+Przesuń palec w prawo, aby przejść do następnej części
+                
+Przesuń palec w lewo, aby wrócić do poprzedniej sekcji
+
+Przejdźmy do kolejnej części przewodnika przesuwając w prawo.
+";
+
+"descriptionMainRecognizerTutorial" = "
+Aplikacja składa się z trzech zakładek. Pierwsza to zakładka kamery.
+Pozwoli Ci ona zrozumieć świat wokół Ciebie poprzez identyfikację otaczających przedmiotów, ostrzeganie Cię o zbliżających się przeszkodach, lub sygnalizowanie czerwonych lub zielonych świateł na ulicy.
+";
+
+"descriptionDocumentScannerTutorial" = "
+Możesz również użyć jej do rozpoznawania tekstu z dowolnego źródła i odczytywania zawartości kodów kreskowych i QR.
+";
+
+"descriptionColorDetectorTutorial" = "
+Zakładka kamery umożliwi Ci zbadanie dominującego koloru przedmiotu...
+";
+
+"descriptionLightDetectorTutorial" = "
+...lub zmierzenie poziomu otaczającego światła.
+";
+
+"descriptionChatMessageTutorial" = "
+Druga to zakładka czatu.
+Tutaj możesz otrzymać odpowiedź na każde pytanie, używając wiadomości dźwiękowych.
+";
+
+"descriptionChatImageTutorial" = "
+Jest również możliwość przesłania zdjęcia, aby otrzymać jego szczegółowy opis.
+";
+
+"descriptionChatDatabaseTutorial" = "
+Wszystkie rozmowy są zawsze dostępne, nawet po zamknięciu aplikacji, chyba że zdecydujesz się je usunąć.
+";
+
+"descriptionSettingsFirstTutorial" = "
+Ostatnia, ale nie mniej ważna, to zakładka ustawień.
+Tutaj możesz dostosować wiele opcji aplikacji do swoich preferencji.
+";
+
+"descriptionSettingsSecondTutorial" = "
+Możesz zmienić język i szybkość mowy, ustawić tryb latarki, lub zmienić jednostkę odległości do najbliższej przeszkody na drodze.
+";
+
+"descriptionSettingsThirdTutorial" = "
+Jest także możliwość zmiany domyślnej zakładki aktywowanej podczas uruchamiania aplikacji, usuwania rozmów oraz przywrócenia wszystkich ustawień do wartości fabrycznych.
+";
+
+"descriptionVoiceCommandsExplanation" = "
+Kolejnym dużym modułem aplikacji są polecenia głosowe.
+Aplikacja ma wbudowany zestaw poleceń głosowych dla każdego ekranu.
+Nagrywanie polecenia jest aktywowane poprzez wykonanie gestu przytrzymania, aż poczujesz wibrację.
+Po zakończeniu mówienia, wykonaj ponownie gest przytrzymania, aby zarejestrować i przetworzyć polecenie.
+";
+
+"descriptionVoiceCommandsRemindGestures" = "
+Przytrzymaj palec na ekranie przez chwilę, a następnie zwolnij. Po poczuciu wibracji powiedz:
+
+„Przypomnij gesty.”
+
+Następnie ponownie przytrzymaj palec i zwolnij po chwili.
+";
+
+"descriptionVoiceCommandsRemindVoiceCommands" = "
+W ten sposób usłyszałeś dostępne gesty na tym ekranie.
+Dzięki temu poznasz wszystkie dostępne gesty na każdym ekranie aplikacji.
+Ponadto, możesz poznać pozostałe dostępne polecenia głosowe na ekranie wykonując tę samą akcję, ale wydając polecenie głosowe:
+
+„Przypomnij polecenia głosowe.”
+";
+
+"descriptionFeedbackFirstTutorial" = "
+Ostatnią ważną częścią aplikacji jest system wibracji i odpowiedzi głosowej.
+Jest on automatycznie aktywowany po wykonaniu jakiejkolwiek akcji.
+Przyjmijmy na przykład wydanie polecenia przypomnienia o geście.
+Aby wydać polecenie głosowe, wykonujesz gest, po którym następuje natychmiastowa wibracja.
+Po wydaniu polecenia urządzenie odczyta na głos dostępne gesty, co stanowi odpowiedź głosową.
+";
+
+"descriptionFeedbackSecondTutorial" = "
+Większość działań w aplikacji jest sygnalizowana wibracją i odpowiedzią głosową.
+Niektóre z nich są uruchamiane automatycznie - na przykład w module ostrzegania o przeszkodach.
+Po zbliżeniu się do jakiegokolwiek obiektu urządzenie zacznie wibrować i wyda odpowiednią wiadomość.
+";
+
+"descriptionEnding" = "
+To byłyby wszystkie informacje z przewodnika.
+Mam nadzieję, że aplikacja okaże się bardzo przydatna w Twoim codziennym życiu.
+            
+Zawsze możesz ponownie przejść przez ten przewodnik, przechodząc do zakładki Ustawienia i wybierając odpowiednią opcję lub wykonując polecenie głosowe:
+
+„Wyświetl przewodnik”
+
+Przesuń w prawo, aby przejść do aplikacji lub
+Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
+";
+
+"swipeToProceed" = "Przesuń aby przejść dalej";
+
 // MARK: - Speech Feedback
 
+"mainRecognizerSpeechFeedbackWelcomeHint" = "Dotknij, aby usłyszeć wykryte obiekty";
+"mainRecognizerSpeechFeedbackCameraModeHasBeenSetTo" = "Tryb kamery został ustawiony na";
+"mainRecognizerSpeechFeedbackNoObjectsRecognized" = "Nie wykryto żadnych obiektów";
+"mainRecognizerSpeechFeedbackFollowingObjectsHaveBeenRecognized" = "Wykryto następujące obiekty";
+"mainRecognizerSpeechFeedbackDistanceToDominantObjectInCamera" = "Odległość do dominującego obiektu w kamerze wynosi";
+"mainRecognizerSpeechFeedbackDistanceWarning" = "Bądź ostrożny. Przeszkoda jest blisko";
+"mainRecognizerSpeechFeedbackRedLightHasBeenDetected" = "Wykryto czerwone światło";
+"mainRecognizerSpeechFeedbackGreenLightHasBeenDetected" = "Wykryto zielone światło";
+"mainRecognizerSpeechFeedbackPedestrianCrossingHasBeenDetectedHereAreTheInstructions" = "Wykryto przejście dla pieszych. Oto instrukcje";
+"mainRecognizerSpeechFeedbackPersonGoodPosition" = "Jesteś w dobrej pozycji, aby przejść przez ulicę";
+"mainRecognizerSpeechFeedbackPersonMoveLeft" = "Przesuń się w lewo";
+"mainRecognizerSpeechFeedbackPersonMoveRight" = "Przesuń się w prawo";
+"mainRecognizerSpeechFeedbackDeviceTurnLeft" = "Obróć urządzenie w lewo";
+"mainRecognizerSpeechFeedbackDeviceTurnRight" = "Obróć urządzenie w prawo";
+
+"documentScannerSpeechFeedbackWelcomeHint" = "Dotknij, aby usłyszeć wykryty tekst";
+"documentScannerSpeechFeedbackCameraModeHasBeenSetTo" = "Tryb kamery został ustawiony na";
+"documentScannerSpeechFeedbackNoTextHasBeenRecognized" = "Nie wykryto tekstu";
+"documentScannerSpeechFeedbackHereIsRecognizedText" = "Oto wykryty tekst";
+"documentScannerSpeechFeedbackNoBarCodesHaveBeenRecognized" = "Nie wykryto żadnych kodów kreskowych";
+"documentScannerSpeechFeedbackHereIsRecognizedBarCodeText" = "Oto wykryty tekst kodu kreskowego";
+
+"colorDetectorSpeechFeedbackCameraModeHasBeenSetTo" = "Tryb kamery został ustawiony na";
+"colorDetectorSpeechFeedbackWelcomeHint" = "Dotknij, aby usłyszeć kolor";
+
+"lightDetectorSpeechFeedbackCameraModeHasBeenSetTo" = "Tryb kamery został ustawiony na";
+"lightDetectorSpeechFeedbackStartedLightDetection" = "Rozpoczęto wykrywanie światła";
+"lightDetectorSpeechFeedbackStoppedLightDetection" = "Zatrzymano wykrywanie światła";
+
+"chatSpeechFeedbackWelcomeHint" = "Podwójne stuknięcie, aby nagrać nową wiadomość";
+"chatSpeechFeedbackThisIsTheResponse" = "Oto odpowiedź";
+"chatSpeechFeedbackConversationDeleted" = "Bieżąca rozmowa została usunięta";
+"chatSpeechFeedbackAllConversationsDeleted" = "Wszystkie rozmowy zostały usunięte";
+"chatSpeechFeedbackPhotoUploadedSayMessage" = "Zdjęcie zostało przesłane. Dodaj wiadomość przed wygenerowaniem odpowiedzi, w przeciwnym razie zostanie użyta domyślna wiadomość opisująca zdjęcie";
+"chatSpeechFeedbackPhotoUploaded" = "Zdjęcie zostało przesłane";
+"chatSpeechFeedbackWhatYouWantToKnow" = "Co chcesz wiedzieć?";
+
+"settingsSpeechFeedbackWelcomeHint" = "Dotknij, aby usłyszeć ustawienie, podwójne stuknięcie, aby je zmienić";
+"settingsSpeechFeedbackDefaultCameraModeHasBeenSetTo" = "Domyślny tryb kamery został ustawiony na";
+"settingsSpeechFeedbackDefaultMeasureUnitHasBeenSetTo" = "Domyślna jednostka miary została ustawiona na";
+"settingsSpeechFeedbackFlashlightTriggerModeHasBeenSetTo" = "Tryb wyzwalania latarki został ustawiony na";
+"settingsSpeechFeedbackSpeechSpeedHasBeenSetTo" = "Prędkość mowy została ustawiona na";
+"settingsSpeechFeedbackSpeechVoiceTypeHasBeenSetTo" = "Typ głosu mowy został ustawiony na";
+"settingsSpeechFeedbackSpeechLanguageHasBeenSetTo" = "Język mowy został ustawiony na";
+"settingsSpeechFeedbackVoiceRecordingLanguageHasBeenSetTo" = "Język nagrywania głosu został ustawiony na";
+"settingsSpeechFeedbackSubscriptionPlanHasBeenChangedTo" = "Plan subskrypcji został zmieniony na";
+"settingsSpeechFeedbackAllConversationsDeleted" = "Wszystkie rozmowy zostały usunięte";
+"settingsSpeechFeedbackRestoredDefaultSettings" = "Ustawienia zostały przywrócone do domyślnych";
+
+"onboardingSpeechFeedbackOnboardingHasBeenCompleted" = "Onboarding został ukończony";
+"onboardingSpeechFeedbackSwipeRightToProceed" = "Przesuń w prawo, aby kontynuować";
+
+"otherSpeechFeedbackCurrentTab" = "Aktualna karta";
+"otherSpeechFeedbackTabChangedTo" = "Karta została zmieniona na";
+"otherSpeechFeedbackYouCanUseFollowingVoiceCommands" = "Możesz używać następujących poleceń głosowych";
+"otherSpeechFeedbackYouCanUseFollowingGestures" = "Możesz używać następujących gestów";
+"otherSpeechFeedbackVoiceCommandWasNotRecognized" = "Polecenie głosowe nie zostało rozpoznane";
+"otherSpeechFeedbackWhatYouWantMeToDo" = "Co chcesz, żebym zrobił?";
 
 
 // MARK: - Voice Request

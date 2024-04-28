@@ -28,15 +28,229 @@
 
 "titleWelcomeSectionWelcomeText" = "WELCOME TO THE ReEnabled FAMILY";
 "titleGesturesSectionWelcomeText" = "GESTURES";
-
+"titleTapGestureTutorial" = "SINGLE TAP";
+"titleDoubleTapGestureTutorial" = "DOUBLE TAP";
+"titleTrippleTapGestureTutorial" = "TRIPLE TAP";
+"titleLongPressGestureTutorial" = "LONG PRESS";
+"titleSwipeLeftGestureTutorial" = "SWIPE LEFT";
+"titleSwipeRightGestureTutorial" = "SWIPE RIGHT";
+"titleSwipeUpGestureTutorial" = "SWIPE UP";
+"titleSwipeDownGestureTutorial" = "SWIPE DOWN";
+"titleLongPressAndSwipeLeftGestureTutorial" = "LONG PRESS AND SWIPE LEFT";
+"titleLongPressAndSwipeRightGestureTutorial" = "LONG PRESS AND SWIPE RIGHT";
+"titleLongPressAndSwipeUpGestureTutorial" = "LONG PRESS AND SWIPE UP";
+"titleLongPressAndSwipeDownGestureTutorial" = "LONG PRESS AND SWIPE DOWN";
+"titleGesturesSectionEnding" = "GREAT!";
+"titleMainRecognizerTutorial" = "CAMERA TAB";
+"titleChatMessageTutorial" = "CHAT TAB";
+"titleSettingsFirstTutorial" = "SETTING TAB";
+"titleVoiceCommandsExplanation" = "VOICE COMMANDS";
+"titleFeedbackFirstTutorial" = "FEEDBACK MODULE";
+"titleEnding" = "PERFECT!";
 
 "descriptionWelcomeSectionWelcomeText" = "
 We will be more than happy to assist you in everyday tasks.
 First, let’s take a quick tour around app’s essential features.
 ";
 
+"descriptionGesturesSectionWelcomeText" = "
+One of the most important features facilitating the use of the application are gestures.
+A gesture is a movement made by a finger on the screen surface.
+Most screens of the application have functions that are triggered by specific gestures.
+Let's try to learn them together.
+";
+
+"descriptionTapGestureTutorial" = "Tap once with one finger on the screen.";
+
+"descriptionDoubleTapGestureTutorial" = "Quickly tap twice with one finger on the screen.";
+
+"descriptionTrippleTapGestureTutorial" = "Quickly tap three times with one finger on the screen.";
+
+"descriptionLongPressGestureTutorial" = "Hold your finger in one place on the screen and release after a moment.";
+
+"descriptionSwipeLeftGestureTutorial" = "Swipe your finger from the right side of the screen to the left.";
+
+"descriptionSwipeRightGestureTutorial" = "Swipe your finger from the left side of the screen to the right.";
+
+"descriptionSwipeUpGestureTutorial" = "Swipe your finger from the bottom of the screen upwards.";
+
+"descriptionSwipeDownGestureTutorial" = "Swipe your finger from the top of the screen downwards.";
+
+"descriptionLongPressAndSwipeLeftGestureTutorial" = "Hold your finger in one place on the screen, then swipe left and release.";
+
+"descriptionLongPressAndSwipeRightGestureTutorial" = "Hold your finger in one place on the screen, then swipe right and release.";
+
+"descriptionLongPressAndSwipeUpGestureTutorial" = "Hold your finger in one place on the screen, then swipe up and release.";
+
+"descriptionLongPressAndSwipeDownGestureTutorial" = "Hold your finger in one place on the screen, then swipe down and release.";
+
+"descriptionGesturesSectionEnding" = "
+You've learned all the gestures supported by the application.
+From now on during this tutorial you can always:
+                
+Single tap to hear current guide section once again after speech has ended
+                
+Swipe Right to get to the next part
+                
+Swipe Left to go back to previous one
+
+Let's move on to the next part of the guide by swiping right.
+";
+
+"descriptionMainRecognizerTutorial" = "
+The app consists of three tabs. The first one is the camera tab.
+It will allow you to explore the world around you by identifying surrounding objects, warning you about approaching obstacles, or signaling red or green lights on the street.
+";
+
+"descriptionDocumentScannerTutorial" = "
+You can also use it to recognize text from any source and read the contents of barcodes and QR codes.
+";
+
+"descriptionColorDetectorTutorial" = "
+The camera tab will enable you to investigate the dominant color of an object...
+";
+
+"descriptionLightDetectorTutorial" = "
+...or measure the ambient light level.
+";
+
+"descriptionChatMessageTutorial" = "
+The second one is the chat tab.
+Here, you can get a response to any question using voice messages.
+";
+
+"descriptionChatImageTutorial" = "
+It's also possible to send a photo to get a detailed description of it.
+";
+
+"descriptionChatDatabaseTutorial" = "
+All conversations are always accessible, even after closing the app, unless you decide to delete them.
+";
+
+"descriptionSettingsFirstTutorial" = "
+Last but not least is the settings tab.
+Here, you can customize many app options to your preferences.
+";
+
+"descriptionSettingsSecondTutorial" = "
+You can change the language and speed of speech, set the flashlight mode, or change the unit of distance to the nearest obstacle on the road.
+";
+
+"descriptionSettingsThirdTutorial" = "
+It's also possible to change the default tab activated when the app is launched, delete conversations, and restore all settings to factory defaults.
+";
+
+"descriptionVoiceCommandsExplanation" = "
+Another big module of application are voice commands.
+The application has a built-in set of voice commands for each screen.
+Recording a command is activated by performing a long press gesture until you feel a vibration.
+After finishing speaking, perform the long press gesture again to register and process the command.
+";
+
+"descriptionVoiceCommandsRemindGestures" = "
+Hold your finger on the screen for a moment, then release. After feeling the vibration, say:
+
+„Remind gestures.”
+
+Then, hold your finger again and release after a moment.
+";
+
+"descriptionVoiceCommandsRemindVoiceCommands" = "
+This way, you've heard the available gestures on that screen.
+Thanks to this, you'll learn all the available gestures on every screen of the application.
+Moreover, you can learn the remaining available voice commands on the screen by performing the same action but issuing a voice command:
+
+„Remind voice commands.”
+";
+
+"descriptionFeedbackFirstTutorial" = "
+The last major part of the application is vibrations and voice responses system.
+It is automatically activated when you perform any action.
+Let's take issuing the gesture reminder command as an example.
+To issue a voice command, you perform a gesture, after which there will be an immediate vibration.
+After issuing the command, the device will read aloud the available gestures, which serves as the voice response.
+";
+
+"descriptionFeedbackSecondTutorial" = "
+Most actions in the application are signaled by vibration and the corresponding voice response.
+Some of them are triggered automatically - for example, in the obstacle warning module.
+After getting too close to any object, the device will vibrate and issue a relevant message.
+";
+
+"descriptionEnding" = "
+This would be all from the tutorial.
+Hope you will find the app very useful during your everyday life.
+            
+You can always retake this guide by going to Settings tab and choosing appropriate option or just executing voice command:
+
+„Display Onboarding”
+
+Swipe right to go to the app or
+Swipe left to go to previous sections of the guide.
+";
+
+"swipeToProceed" = "Swipe to Proceed";
+
 // MARK: - Speech Feedback
 
+"mainRecognizerSpeechFeedbackWelcomeHint" = "Tap to hear detected objects";
+"mainRecognizerSpeechFeedbackCameraModeHasBeenSetTo" = "Camera mode has been set to";
+"mainRecognizerSpeechFeedbackNoObjectsRecognized" = "No objects have been recognized";
+"mainRecognizerSpeechFeedbackFollowingObjectsHaveBeenRecognized" = "Following objects have been recognized";
+"mainRecognizerSpeechFeedbackDistanceToDominantObjectInCamera" = "Distance to dominant object in camera is";
+"mainRecognizerSpeechFeedbackDistanceWarning" = "Be careful. Obstacle is close";
+"mainRecognizerSpeechFeedbackRedLightHasBeenDetected" = "Red light has been detected";
+"mainRecognizerSpeechFeedbackGreenLightHasBeenDetected" = "Green light has been detected";
+"mainRecognizerSpeechFeedbackPedestrianCrossingHasBeenDetectedHereAreTheInstructions" = "Pedestrian crossing has been detected. Here Are the instructions";
+"mainRecognizerSpeechFeedbackPersonGoodPosition" = "You are in good position to cross the street";
+"mainRecognizerSpeechFeedbackPersonMoveLeft" = "Move left";
+"mainRecognizerSpeechFeedbackPersonMoveRight" = "Move right";
+"mainRecognizerSpeechFeedbackDeviceTurnLeft" = "Turn the device left";
+"mainRecognizerSpeechFeedbackDeviceTurnRight" = "Turn the device right";
+
+"documentScannerSpeechFeedbackWelcomeHint" = "Tap to hear detected text";
+"documentScannerSpeechFeedbackCameraModeHasBeenSetTo" = "Camera mode has been set to";
+"documentScannerSpeechFeedbackNoTextHasBeenRecognized" = "No text has been recognized";
+"documentScannerSpeechFeedbackHereIsRecognizedText" = "Here is recognized text";
+"documentScannerSpeechFeedbackNoBarCodesHaveBeenRecognized" = "No bar codes have been recognized";
+"documentScannerSpeechFeedbackHereIsRecognizedBarCodeText" = "Here is recognized bar code text";
+
+"colorDetectorSpeechFeedbackCameraModeHasBeenSetTo" = "Camera mode has been set to";
+"colorDetectorSpeechFeedbackWelcomeHint" = "Tap to hear the color";
+
+"lightDetectorSpeechFeedbackCameraModeHasBeenSetTo" = "Camera mode has been set to";
+"lightDetectorSpeechFeedbackStartedLightDetection" = "Started light detection";
+"lightDetectorSpeechFeedbackStoppedLightDetection" = "Stopped light detection";
+
+"chatSpeechFeedbackWelcomeHint" = "Double tap to record a new message";
+"chatSpeechFeedbackThisIsTheResponse" = "This is the response";
+"chatSpeechFeedbackConversationDeleted" = "Current conversation has been deleted";
+"chatSpeechFeedbackAllConversationsDeleted" = "All conversations have been deleted";
+"chatSpeechFeedbackPhotoUploadedSayMessage" = "Photo has been uploaded. Add a message before generating response or default one will be used which is about describing the photo";
+"chatSpeechFeedbackPhotoUploaded" = "Photo has been uploaded";
+"chatSpeechFeedbackWhatYouWantToKnow" = "What you want to know?";
+
+"settingsSpeechFeedbackWelcomeHint" = "Tap to hear the setting, double tap to change it";
+"settingsSpeechFeedbackDefaultCameraModeHasBeenSetTo" = "Default camera mode has been set to";
+"settingsSpeechFeedbackDefaultMeasureUnitHasBeenSetTo" = "Default measure unit has been set to";
+"settingsSpeechFeedbackFlashlightTriggerModeHasBeenSetTo" = "Flashlight trigger mode has been set to";
+"settingsSpeechFeedbackSpeechSpeedHasBeenSetTo" = "Speech speed has been set to";
+"settingsSpeechFeedbackSpeechVoiceTypeHasBeenSetTo" = "Speech voice type has been set to";
+"settingsSpeechFeedbackSpeechLanguageHasBeenSetTo" = "Speech language has been set to";
+"settingsSpeechFeedbackVoiceRecordingLanguageHasBeenSetTo" = "Voice recording language has been set to";
+"settingsSpeechFeedbackSubscriptionPlanHasBeenChangedTo" = "Subscription plan has been changed to";
+"settingsSpeechFeedbackAllConversationsDeleted" = "All conversations have been deleted";
+"settingsSpeechFeedbackRestoredDefaultSettings" = "Settings have been restored to default";
+
+"onboardingSpeechFeedbackOnboardingHasBeenCompleted" = "Onboarding has been completed";
+"onboardingSpeechFeedbackSwipeRightToProceed" = "Swipe right to proceed";
+
+"otherSpeechFeedbackCurrentTab" = "Current tab";
+"otherSpeechFeedbackTabChangedTo" = "Tab has been changed to";
+"otherSpeechFeedbackYouCanUseFollowingVoiceCommands" = "You can use following voice commands";
+"otherSpeechFeedbackYouCanUseFollowingGestures" = "You can use following gestures";
+"otherSpeechFeedbackVoiceCommandWasNotRecognized" = "Voice command was not recognized";
+"otherSpeechFeedbackWhatYouWantMeToDo" = "What you want me to do";
 
 
 // MARK: - Voice Request

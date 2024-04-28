@@ -151,7 +151,7 @@ private extension Views {
         static let swipeToProceedImageName: String = "arrowshape.right.circle"
         static let swipeToProceedImageSize: CGFloat = 40
         static let swipeToProceedShimmerZoneHeight: CGFloat = 20
-        static let swipeToProceedLabel: String = "Swipe to Proceed"
+        static let swipeToProceedLabel: String = OnboardingText.swipeToProceed.rawValue.localized()
         static let swipeToProceedHStackPadding: CGFloat = 10
         static let swipeToProceedHStackHorizontalPadding: CGFloat = 10
     }

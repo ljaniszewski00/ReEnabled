@@ -1,8 +1,27 @@
-enum OtherSpeechFeedback: String {
-    case currentTab = "Current tab"
-    case tabChangedTo = "Tab has been changed to"
-    case youCanUseFollowingVoiceCommands = "You can use following voice commands"
-    case youCanUseFollowingGestures = "You can use following gestures"
-    case voiceCommandWasNotRecognized = "Voice command was not recognized"
-    case whatYouWantMeToDo = "What you want me to do"
+enum OtherSpeechFeedback {
+    case currentTab
+    case tabChangedTo
+    case youCanUseFollowingVoiceCommands
+    case youCanUseFollowingGestures
+    case voiceCommandWasNotRecognized
+    case whatYouWantMeToDo
+}
+
+extension OtherSpeechFeedback {
+    var rawValue: String {
+        switch self {
+        case .currentTab:
+            return SpeechFeedbackText.otherSpeechFeedbackCurrentTab.rawValue.localized()
+        case .tabChangedTo:
+            return SpeechFeedbackText.otherSpeechFeedbackTabChangedTo.rawValue.localized()
+        case .youCanUseFollowingVoiceCommands:
+            return SpeechFeedbackText.otherSpeechFeedbackYouCanUseFollowingVoiceCommands.rawValue.localized()
+        case .youCanUseFollowingGestures:
+            return SpeechFeedbackText.otherSpeechFeedbackYouCanUseFollowingGestures.rawValue.localized()
+        case .voiceCommandWasNotRecognized:
+            return SpeechFeedbackText.otherSpeechFeedbackVoiceCommandWasNotRecognized.rawValue.localized()
+        case .whatYouWantMeToDo:
+            return SpeechFeedbackText.otherSpeechFeedbackWhatYouWantMeToDo.rawValue.localized()
+        }
+    }
 }

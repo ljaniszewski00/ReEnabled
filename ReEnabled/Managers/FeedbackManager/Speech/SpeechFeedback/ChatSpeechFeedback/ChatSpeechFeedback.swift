@@ -1,10 +1,30 @@
-enum ChatSpeechFeedback: String {
-    case welcomeHint = "Double tap to record a new message"
-    
-    case thisIsTheResponse = "This is the response"
-    case conversationDeleted = "Current conversation has been deleted"
-    case allConversationsDeleted = "All conversations have been deleted"
-    case photoUploadedSayMessage = "Photo has been uploaded. Add a message before generating response or default one will be used which is about describing the photo"
-    case photoUploaded = "Photo has been uploaded"
-    case whatYouWantToKnow = "What you want to know?"
+enum ChatSpeechFeedback {
+    case welcomeHint
+    case thisIsTheResponse
+    case conversationDeleted
+    case allConversationsDeleted
+    case photoUploadedSayMessage
+    case photoUploaded
+    case whatYouWantToKnow
+}
+
+extension ChatSpeechFeedback {
+    var rawValue: String {
+        switch self {
+        case .welcomeHint:
+            return SpeechFeedbackText.chatSpeechFeedbackWelcomeHint.rawValue.localized()
+        case .thisIsTheResponse:
+            return SpeechFeedbackText.chatSpeechFeedbackThisIsTheResponse.rawValue.localized()
+        case .conversationDeleted:
+            return SpeechFeedbackText.chatSpeechFeedbackConversationDeleted.rawValue.localized()
+        case .allConversationsDeleted:
+            return SpeechFeedbackText.chatSpeechFeedbackAllConversationsDeleted.rawValue.localized()
+        case .photoUploadedSayMessage:
+            return SpeechFeedbackText.chatSpeechFeedbackPhotoUploadedSayMessage.rawValue.localized()
+        case .photoUploaded:
+            return SpeechFeedbackText.chatSpeechFeedbackPhotoUploaded.rawValue.localized()
+        case .whatYouWantToKnow:
+            return SpeechFeedbackText.chatSpeechFeedbackWhatYouWantToKnow.rawValue.localized()
+        }
+    }
 }

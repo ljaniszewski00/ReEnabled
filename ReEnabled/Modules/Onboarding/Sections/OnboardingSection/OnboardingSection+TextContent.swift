@@ -8,95 +8,73 @@ extension OnboardingSection {
             case .gesturesSectionWelcome:
                 return OnboardingText.titleGesturesSectionWelcomeText.rawValue.localized()
             case .tapGestureTutorial:
-                return "SINGLE TAP"
+                return OnboardingText.titleTapGestureTutorial.rawValue.localized()
             case .doubleTapGestureTutorial:
-                return "DOUBLE TAP"
+                return OnboardingText.titleDoubleTapGestureTutorial.rawValue.localized()
             case .trippleTapGestureTutorial:
-                return "TRIPLE TAP"
+                return OnboardingText.titleTrippleTapGestureTutorial.rawValue.localized()
             case .longPressGestureTutorial:
-                return "LONG PRESS"
+                return OnboardingText.titleLongPressGestureTutorial.rawValue.localized()
             case .swipeLeftGestureTutorial:
-                return "SWIPE LEFT"
+                return OnboardingText.titleSwipeLeftGestureTutorial.rawValue.localized()
             case .swipeRightGestureTutorial:
-                return "SWIPE RIGHT"
+                return OnboardingText.titleSwipeRightGestureTutorial.rawValue.localized()
             case .swipeUpGestureTutorial:
-                return "SWIPE UP"
+                return OnboardingText.titleSwipeUpGestureTutorial.rawValue.localized()
             case .swipeDownGestureTutorial:
-                return "SWIPE DOWN"
+                return OnboardingText.titleSwipeDownGestureTutorial.rawValue.localized()
             case .longPressAndSwipeLeftGestureTutorial:
-                return "LONG PRESS AND SWIPE LEFT"
+                return OnboardingText.titleLongPressAndSwipeLeftGestureTutorial.rawValue.localized()
             case .longPressAndSwipeRightGestureTutorial:
-                return "LONG PRESS AND SWIPE RIGHT"
+                return OnboardingText.titleLongPressAndSwipeRightGestureTutorial.rawValue.localized()
             case .longPressAndSwipeUpGestureTutorial:
-                return "LONG PRESS AND SWIPE UP"
+                return OnboardingText.titleLongPressAndSwipeUpGestureTutorial.rawValue.localized()
             case .longPressAndSwipeDownGestureTutorial:
-                return "LONG PRESS AND SWIPE DOWN"
+                return OnboardingText.titleLongPressAndSwipeDownGestureTutorial.rawValue.localized()
             case .gesturesSectionEnding:
-                return "GREAT!"
+                return OnboardingText.titleGesturesSectionEnding.rawValue.localized()
             }
         case .functions(let onboardingFunctionsSection):
             switch onboardingFunctionsSection {
             case .mainRecognizerTutorial:
-                return """
-                CAMERA TAB
-                """
+                return OnboardingText.titleMainRecognizerTutorial.rawValue.localized()
             case .documentScannerTutorial:
-                return """
-                CAMERA TAB
-                """
+                return OnboardingText.titleMainRecognizerTutorial.rawValue.localized()
             case .colorDetectorTutorial:
-                return """
-                CAMERA TAB
-                """
+                return OnboardingText.titleMainRecognizerTutorial.rawValue.localized()
             case .lightDetectorTutorial:
-                return """
-                CAMERA TAB
-                """
+                return OnboardingText.titleMainRecognizerTutorial.rawValue.localized()
             case .chatMessageTutorial:
-                return """
-                CHAT TAB
-                """
+                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
             case .chatImageTutorial:
-                return """
-                CHAT TAB
-                """
+                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
             case .chatDatabaseTutorial:
-                return """
-                CHAT TAB
-                """
+                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
             case .settingsFirstTutorial:
-                return """
-                SETTING TAB
-                """
+                return OnboardingText.titleSettingsFirstTutorial.rawValue.localized()
             case .settingsSecondTutorial:
-                return """
-                SETTING TAB
-                """
+                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
             case .settingsThirdTutorial:
-                return """
-                SETTING TAB
-                """
+                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
             }
         case .voiceCommands(let onboardingVoiceCommandsSection):
             switch onboardingVoiceCommandsSection {
             case .voiceCommandsExplanation:
-                return "VOICE COMMANDS"
+                return OnboardingText.titleVoiceCommandsExplanation.rawValue.localized()
             case .voiceCommandsRemindGestures:
-                return "VOICE COMMANDS"
+                return OnboardingText.titleVoiceCommandsExplanation.rawValue.localized()
             case .voiceCommandsRemindVoiceCommands:
-                return "VOICE COMMANDS"
+                return OnboardingText.titleVoiceCommandsExplanation.rawValue.localized()
             }
         case .feedback(let onboardingFeedbackSection):
             switch onboardingFeedbackSection {
             case .feedbackFirstTutorial:
-                return "FEEDBACK MODULE"
+                return OnboardingText.titleFeedbackFirstTutorial.rawValue.localized()
             case .feedbackSecondTutorial:
-                return "FEEDBACK MODULE"
+                return OnboardingText.titleFeedbackFirstTutorial.rawValue.localized()
             }
         case .ending:
-            return """
-            PERFECT!
-            """
+            return OnboardingText.titleEnding.rawValue.localized()
         }
     }
     
@@ -107,176 +85,75 @@ extension OnboardingSection {
         case .gestures(let onboardingGesturesSection):
             switch onboardingGesturesSection {
             case .gesturesSectionWelcome:
-                return """
-                One of the most important features facilitating the use of the application are gestures.
-                A gesture is a movement made by a finger on the screen surface.
-                Most screens of the application have functions that are triggered by specific gestures.
-                Let's try to learn them together.
-                """
+                return OnboardingText.descriptionGesturesSectionWelcomeText.rawValue.localized()
             case .tapGestureTutorial:
-                return """
-                Tap once with one finger on the screen.
-                """
+                return OnboardingText.descriptionTapGestureTutorial.rawValue.localized()
             case .doubleTapGestureTutorial:
-                return """
-                Quickly tap twice with one finger on the screen.
-                """
+                return OnboardingText.descriptionDoubleTapGestureTutorial.rawValue.localized()
             case .trippleTapGestureTutorial:
-                return """
-                Quickly tap three times with one finger on the screen.
-                """
+                return OnboardingText.descriptionTrippleTapGestureTutorial.rawValue.localized()
             case .longPressGestureTutorial:
-                return """
-                Hold your finger in one place on the screen and release after a moment.
-                """
+                return OnboardingText.descriptionLongPressGestureTutorial.rawValue.localized()
             case .swipeLeftGestureTutorial:
-                return """
-                Swipe your finger from the right side of the screen to the left.
-                """
+                return OnboardingText.descriptionSwipeLeftGestureTutorial.rawValue.localized()
             case .swipeRightGestureTutorial:
-                return """
-                Swipe your finger from the left side of the screen to the right.
-                """
+                return OnboardingText.descriptionSwipeRightGestureTutorial.rawValue.localized()
             case .swipeUpGestureTutorial:
-                return """
-                Swipe your finger from the bottom of the screen upwards.
-                """
+                return OnboardingText.descriptionSwipeUpGestureTutorial.rawValue.localized()
             case .swipeDownGestureTutorial:
-                return """
-                Swipe your finger from the top of the screen downwards.
-                """
+                return OnboardingText.descriptionSwipeDownGestureTutorial.rawValue.localized()
             case .longPressAndSwipeLeftGestureTutorial:
-                return """
-                Hold your finger in one place on the screen, then swipe left and release.
-                """
+                return OnboardingText.descriptionLongPressAndSwipeLeftGestureTutorial.rawValue.localized()
             case .longPressAndSwipeRightGestureTutorial:
-                return """
-                Hold your finger in one place on the screen, then swipe right and release.
-                """
+                return OnboardingText.descriptionLongPressAndSwipeRightGestureTutorial.rawValue.localized()
             case .longPressAndSwipeUpGestureTutorial:
-                return """
-                Hold your finger in one place on the screen, then swipe up and release.
-                """
+                return OnboardingText.descriptionLongPressAndSwipeUpGestureTutorial.rawValue.localized()
             case .longPressAndSwipeDownGestureTutorial:
-                return """
-                Hold your finger in one place on the screen, then swipe down and release.
-                """
+                return OnboardingText.descriptionLongPressAndSwipeDownGestureTutorial.rawValue.localized()
             case .gesturesSectionEnding:
-                return """
-                You've learned all the gestures supported by the application.
-                From now on during this tutorial you can always:
-                
-                Single tap to hear current guide section once again after speech has ended
-                
-                Swipe Right to get to the next part
-                
-                Swipe Left to go back to previous one
-
-                Let's move on to the next part of the guide by swiping right.
-                """
+                return OnboardingText.descriptionGesturesSectionEnding.rawValue.localized()
             }
         case .functions(let onboardingFunctionsSection):
             switch onboardingFunctionsSection {
             case .mainRecognizerTutorial:
-                return """
-                The app consists of three tabs. The first one is the camera tab.
-                It will allow you to explore the world around you by identifying surrounding objects, warning you about approaching obstacles, or signaling red or green lights on the street.
-                """
+                return OnboardingText.descriptionMainRecognizerTutorial.rawValue.localized()
             case .documentScannerTutorial:
-                return """
-                You can also use it to recognize text from any source and read the contents of barcodes and QR codes.
-                """
+                return OnboardingText.descriptionDocumentScannerTutorial.rawValue.localized()
             case .colorDetectorTutorial:
-                return """
-                The camera tab will enable you to investigate the dominant color of an object...
-                """
+                return OnboardingText.descriptionColorDetectorTutorial.rawValue.localized()
             case .lightDetectorTutorial:
-                return """
-                ...or measure the ambient light level.
-                """
+                return OnboardingText.descriptionLightDetectorTutorial.rawValue.localized()
             case .chatMessageTutorial:
-                return """
-                The second one is the chat tab.
-                Here, you can get a response to any question using voice messages.
-                """
+                return OnboardingText.descriptionChatMessageTutorial.rawValue.localized()
             case .chatImageTutorial:
-                return """
-                It's also possible to send a photo to get a detailed description of it.
-                """
+                return OnboardingText.descriptionChatImageTutorial.rawValue.localized()
             case .chatDatabaseTutorial:
-                return """
-                All conversations are always accessible, even after closing the app, unless you decide to delete them.
-                """
+                return OnboardingText.descriptionChatDatabaseTutorial.rawValue.localized()
             case .settingsFirstTutorial:
-                return """
-                Last but not least is the settings tab.
-                Here, you can customize many app options to your preferences.
-                """
+                return OnboardingText.descriptionSettingsFirstTutorial.rawValue.localized()
             case .settingsSecondTutorial:
-                return """
-                You can change the language and speed of speech, set the flashlight mode, or change the unit of distance to the nearest obstacle on the road.
-                """
+                return OnboardingText.descriptionSettingsSecondTutorial.rawValue.localized()
             case .settingsThirdTutorial:
-                return """
-                It's also possible to change the default tab activated when the app is launched, delete conversations, and restore all settings to factory defaults.
-                """
+                return OnboardingText.descriptionSettingsThirdTutorial.rawValue.localized()
             }
         case .voiceCommands(let onboardingVoiceCommandsSection):
             switch onboardingVoiceCommandsSection {
             case .voiceCommandsExplanation:
-                return """
-                Another big module of application are voice commands.
-                The application has a built-in set of voice commands for each screen.
-                Recording a command is activated by performing a long press gesture until you feel a vibration.
-                After finishing speaking, perform the long press gesture again to register and process the command.
-                """
+                return OnboardingText.descriptionVoiceCommandsExplanation.rawValue.localized()
             case .voiceCommandsRemindGestures:
-                return """
-                Hold your finger on the screen for a moment, then release. After feeling the vibration, say:
-
-                "Remind gestures."
-
-                Then, hold your finger again and release after a moment.
-                """
+                return OnboardingText.descriptionVoiceCommandsRemindGestures.rawValue.localized()
             case .voiceCommandsRemindVoiceCommands:
-                return """
-                This way, you've heard the available gestures on that screen.
-                Thanks to this, you'll learn all the available gestures on every screen of the application.
-                Moreover, you can learn the remaining available voice commands on the screen by performing the same action but issuing a voice command:
-
-                "Remind voice commands."
-                """
+                return OnboardingText.descriptionVoiceCommandsRemindVoiceCommands.rawValue.localized()
             }
         case .feedback(let onboardingFeedbackSection):
             switch onboardingFeedbackSection {
             case .feedbackFirstTutorial:
-                return """
-                The last major part of the application is vibrations and voice responses system.
-                It is automatically activated when you perform any action.
-                Let's take issuing the gesture reminder command as an example.
-                To issue a voice command, you perform a gesture, after which there will be an immediate vibration.
-                After issuing the command, the device will read aloud the available gestures, which serves as the voice response.
-                """
+                return OnboardingText.descriptionFeedbackFirstTutorial.rawValue.localized()
             case .feedbackSecondTutorial:
-                return """
-                Most actions in the application are signaled by vibration and the corresponding voice response.
-                Some of them are triggered automatically - for example, in the obstacle warning module.
-                After getting too close to any object, the device will vibrate and issue a relevant message.
-                """
+                return OnboardingText.descriptionFeedbackSecondTutorial.rawValue.localized()
             }
         case .ending:
-            return """
-            This would be all from the tutorial.
-            Hope you will find the app very useful during your everyday life.
-            
-            You can always retake this guide by going to Settings tab and choosing appropriate option or just executing voice command:
-
-            „Display Onboarding”
-
-            Swipe right to go to the app or
-            Swipe left to go to previous sections of the guide.
-            """
+            return OnboardingText.descriptionEnding.rawValue.localized()
         }
     }
-
 }

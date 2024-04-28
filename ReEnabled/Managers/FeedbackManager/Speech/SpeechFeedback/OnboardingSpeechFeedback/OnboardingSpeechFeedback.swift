@@ -1,4 +1,15 @@
-enum OnboardingSpeechFeedback: String {
-    case onboardingHasBeenCompleted = "Onboarding has been completed"
-    case swipeRightToProceed = "Swipe right to proceed"
+enum OnboardingSpeechFeedback {
+    case onboardingHasBeenCompleted
+    case swipeRightToProceed
+}
+
+extension OnboardingSpeechFeedback {
+    var rawValue: String {
+        switch self {
+        case .onboardingHasBeenCompleted:
+            return SpeechFeedbackText.onboardingSpeechFeedbackOnboardingHasBeenCompleted.rawValue.localized()
+        case .swipeRightToProceed:
+            return SpeechFeedbackText.onboardingSpeechFeedbackSwipeRightToProceed.rawValue.localized()
+        }
+    }
 }
