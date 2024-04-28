@@ -5,8 +5,6 @@ enum ApplicationSetting {
     case flashlightTriggerMode
     case speechSpeed
     case speechVoiceType
-    case speechLanguage
-    case voiceRecordingLanguage
     case subscriptionPlan
     case others
 }
@@ -15,50 +13,42 @@ extension ApplicationSetting {
     var settingName: String {
         switch self {
         case .defaultCameraMode:
-            return "Default Camera Mode"
+            return OtherText.applicationSettingDefaultCameraMode.rawValue.localized()
         case .defaultDistanceMeasureUnit:
-            return "Default Distance Measure Unit"
+            return OtherText.applicationSettingDefaultDistanceMeasureUnit.rawValue.localized()
         case .documentScannerLanguage:
-            return "Document Scanner Language"
+            return OtherText.applicationSettingDocumentScannerLanguage.rawValue.localized()
         case .flashlightTriggerMode:
-            return "Flashlight Trigger Mode"
+            return OtherText.applicationSettingFlashlightTriggerMode.rawValue.localized()
         case .speechSpeed:
-            return "Speech Speed"
+            return OtherText.applicationSettingSpeechSpeed.rawValue.localized()
         case .speechVoiceType:
-            return "Speech Voice Type"
-        case .speechLanguage:
-            return "Speech Language"
-        case .voiceRecordingLanguage:
-            return "Voice Recording Language"
+            return OtherText.applicationSettingSpeechVoiceType.rawValue.localized()
         case .subscriptionPlan:
-            return "Subscription Plan"
+            return OtherText.applicationSettingSubscriptionPlan.rawValue.localized()
         case .others:
-            return "Others"
+            return OtherText.applicationSettingOthers.rawValue.localized()
         }
     }
     
     var settingDescription: String {
         switch self {
         case .defaultCameraMode:
-            return "Set default camera mode that shows after Camera Tab select"
+            return OtherText.applicationSettingDefaultCameraModeDescription.rawValue.localized()
         case .defaultDistanceMeasureUnit:
-            return "Choose unit for which distance can be measured to avoid obstacles"
+            return OtherText.applicationSettingDefaultDistanceMeasureUnitDescription.rawValue.localized()
         case .documentScannerLanguage:
-            return "Choose language in which documents you scan are written"
+            return OtherText.applicationSettingDocumentScannerLanguageDescription.rawValue.localized()
         case .flashlightTriggerMode:
-            return "Select value for which the flashlight will be triggered. When set to automatic, device will decide for itself, whereas all other values represent tolerance towards darkness - the higher tolerance, the more dark is needed to turn the flashlight on"
+            return OtherText.applicationSettingFlashlightTriggerModeDescription.rawValue.localized()
         case .speechSpeed:
-            return "Select speed that should be applied for speech feedback"
+            return OtherText.applicationSettingSpeechSpeedDescription.rawValue.localized()
         case .speechVoiceType:
-            return "Choose voice type the device should use for speech feedback"
-        case .speechLanguage:
-            return "Choose language the device should use for speech feedback"
-        case .voiceRecordingLanguage:
-            return "Choose language you will speak while giving voice commands"
+            return OtherText.applicationSettingSpeechVoiceTypeDescription.rawValue.localized()
         case .subscriptionPlan:
-            return "Select subscription plan that suits your needs the most"
+            return OtherText.applicationSettingSubscriptionPlanDescription.rawValue.localized()
         case .others:
-            return "Execute some other actions"
+            return OtherText.applicationSettingOthersDescription.rawValue.localized()
         }
     }
 }

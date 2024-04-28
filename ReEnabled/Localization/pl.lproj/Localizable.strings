@@ -321,3 +321,38 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "supportedLanguagePolish" = "Polski";
 "supportedLanguageHiMyNameIs" = "Cześć! Mam na imię";
 "supportedLanguageWhatCanIDoForYou" = "Co mogę dla ciebie zrobić?";
+
+"subscriptionPlanStandard" = "Standardowy";
+"subscriptionPlanPremium" = "Premium";
+"subscriptionPlanStandardDescription" = "
+- Darmowy
+- Maksymalna liczba wiadomości tekstowych do czatu w ciągu 1 godziny: 30
+- Maksymalna liczba wiadomości graficznych do czatu w ciągu 1 godziny: 10
+- Limit znaków odpowiedzi z czatu: 150
+";
+"subscriptionPlanPremiumDescription" = "
+- Płatny: $2.99 miesięcznie
+- Maksymalna liczba wiadomości tekstowych do czatu w ciągu 1 godziny: unlimited
+- Maksymalna liczba wiadomości graficznych do czatu w ciągu 1 godziny: unlimited
+- Limit znaków odpowiedzi z czatu: unlimited
+";
+
+"applicationSettingDefaultCameraMode" = "Domyślny tryb aparatu";
+"applicationSettingDefaultDistanceMeasureUnit" = "Domyślna jednostka miary odległości";
+"applicationSettingDocumentScannerLanguage" = "Język skanera dokumentów";
+"applicationSettingFlashlightTriggerMode" = "Tryb wyzwalania latarki";
+"applicationSettingSpeechSpeed" = "Prędkość mowy";
+"applicationSettingSpeechVoiceType" = "Typ głosu mowy";
+"applicationSettingSubscriptionPlan" = "Plan subskrypcji";
+"applicationSettingOthers" = "Inne";
+"applicationSettingDefaultCameraModeDescription" = "Ustaw domyślny tryb aparatu, który zostanie włączony po uruchomieniu aplikacji";
+"applicationSettingDefaultDistanceMeasureUnitDescription" = "Wybierz jednostkę, w której można mierzyć odległość, aby uniknąć przeszkód";
+"applicationSettingDocumentScannerLanguageDescription" = "Wybierz język, w którym napisane są skanowane dokumenty";
+"applicationSettingFlashlightTriggerModeDescription" = "Wybierz wartość, dla której latarka zostanie włączona. W trybie automatycznym urządzenie samo podejmie decyzję, podczas gdy wszystkie inne wartości reprezentują tolerancję na ciemność - im większa tolerancja, tym większe ciemności są potrzebne do włączenia latarki";
+"applicationSettingSpeechSpeedDescription" = "Wybierz prędkość, która ma być stosowana w informacjach zwrotnych mówionych";
+"applicationSettingSpeechVoiceTypeDescription" = "Wybierz typ głosu, który urządzenie powinno używać do informacji zwrotnych mówionych";
+"applicationSettingSubscriptionPlanDescription" = "Wybierz plan subskrypcji, który najlepiej odpowiada Twoim potrzebom";
+"applicationSettingOthersDescription" = "Wykonaj inne działania";
+
+"speechVoiceTypeFemale" = "Kobieta"
+"speechVoiceTypeMale" = "Mężczyzna"

@@ -322,3 +322,38 @@ Swipe left to go to previous sections of the guide.
 "supportedLanguagePolish" = "Polish";
 "supportedLanguageHiMyNameIs" = "Hi! My name is";
 "supportedLanguageWhatCanIDoForYou" = "What can I do for you?";
+
+"subscriptionPlanStandard" = "Standard";
+"subscriptionPlanPremium" = "Premium";
+"subscriptionPlanStandardDescription" = "
+- Free
+- Chat text requests per hour: 30
+- Chat image requests per hour: 10
+- Every response signs limit: 150
+";
+"subscriptionPlanPremiumDescription" = "
+- Paid: $2.99 per month
+- Chat text requests per hour: unlimited
+- Chat image requests per hour: unlimited
+- Every response signs limit: unlimited
+";
+
+"applicationSettingDefaultCameraMode" = "Default Camera Mode";
+"applicationSettingDefaultDistanceMeasureUnit" = "Default Distance Measure Unit";
+"applicationSettingDocumentScannerLanguage" = "Document Scanner Language";
+"applicationSettingFlashlightTriggerMode" = "Flashlight Trigger Mode";
+"applicationSettingSpeechSpeed" = "Speech Speed";
+"applicationSettingSpeechVoiceType" = "Speech Voice Type";
+"applicationSettingSubscriptionPlan" = "Subscription Plan";
+"applicationSettingOthers" = "Others";
+"applicationSettingDefaultCameraModeDescription" = "Set default camera mode that turns on after app launch";
+"applicationSettingDefaultDistanceMeasureUnitDescription" = "Choose unit for which distance can be measured to avoid obstacles";
+"applicationSettingDocumentScannerLanguageDescription" = "Choose language in which documents you scan are written";
+"applicationSettingFlashlightTriggerModeDescription" = "Select value for which the flashlight will be triggered. When set to automatic, device will decide for itself, whereas all other values represent tolerance towards darkness - the higher tolerance, the more dark is needed to turn the flashlight on";
+"applicationSettingSpeechSpeedDescription" = "Select speed that should be applied for speech feedback";
+"applicationSettingSpeechVoiceTypeDescription" = "Choose voice type the device should use for speech feedback";
+"applicationSettingSubscriptionPlanDescription" = "Select subscription plan that suits your needs the most";
+"applicationSettingOthersDescription" = "Execute some other actions";
+
+"speechVoiceTypeFemale" = "Female"
+"speechVoiceTypeMale" = "Male"

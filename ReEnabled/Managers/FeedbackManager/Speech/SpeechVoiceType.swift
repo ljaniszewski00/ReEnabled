@@ -1,16 +1,28 @@
 import RealmSwift
 
-enum SpeechVoiceType: String, PersistableEnum {
-    case female = "Female"
-    case male = "Male"    
+enum SpeechVoiceType: PersistableEnum {
+    case female
+    case male
+    
+    typealias RawValue = String
+    
+    init?(rawValue: String) {
+        switch rawValue {
+        case OtherText.speechVoiceTypeFemale.rawValue.localized() : self = .female
+        case OtherText.speechVoiceTypeMale.rawValue.localized() : self = .male
+        default: return nil
+        }
+    }
 }
 
-extension SpeechVoiceType: CaseIterable {
-    static var allCases: [SpeechVoiceType] {
-        [
-            .female,
-            .male
-        ]
+extension SpeechVoiceType {
+    var rawValue: String {
+        switch self {
+        case .female:
+            OtherText.speechVoiceTypeFemale.rawValue.localized()
+        case .male:
+            OtherText.speechVoiceTypeMale.rawValue.localized()
+        }
     }
     
     func getVoiceName(for language: SupportedLanguage) -> String {
@@ -39,5 +51,14 @@ extension SpeechVoiceType: CaseIterable {
         case .polish:
             return "Zosia"
         }
+    }
+}
+
+extension SpeechVoiceType: CaseIterable {
+    static var allCases: [SpeechVoiceType] {
+        [
+            .female,
+            .male
+        ]
     }
 }
