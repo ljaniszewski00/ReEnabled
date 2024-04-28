@@ -133,7 +133,7 @@ Here, you can customize many app options to your preferences.
 ";
 
 "descriptionSettingsSecondTutorial" = "
-You can change the language and speed of speech, set the flashlight mode, or change the unit of distance to the nearest obstacle on the road.
+You can change speed of speech, set the flashlight mode or change the unit of distance to the nearest obstacle on the road.
 ";
 
 "descriptionSettingsThirdTutorial" = "
@@ -236,8 +236,6 @@ Swipe left to go to previous sections of the guide.
 "settingsSpeechFeedbackFlashlightTriggerModeHasBeenSetTo" = "Flashlight trigger mode has been set to";
 "settingsSpeechFeedbackSpeechSpeedHasBeenSetTo" = "Speech speed has been set to";
 "settingsSpeechFeedbackSpeechVoiceTypeHasBeenSetTo" = "Speech voice type has been set to";
-"settingsSpeechFeedbackSpeechLanguageHasBeenSetTo" = "Speech language has been set to";
-"settingsSpeechFeedbackVoiceRecordingLanguageHasBeenSetTo" = "Voice recording language has been set to";
 "settingsSpeechFeedbackSubscriptionPlanHasBeenChangedTo" = "Subscription plan has been changed to";
 "settingsSpeechFeedbackAllConversationsDeleted" = "All conversations have been deleted";
 "settingsSpeechFeedbackRestoredDefaultSettings" = "Settings have been restored to default";
@@ -283,10 +281,6 @@ Swipe left to go to previous sections of the guide.
 "settingsVoiceRequestChangeSpeechSpeedToSlowest" = "Change speech speed to slowest";
 "settingsVoiceRequestChangeSpeechVoiceTypeToFemale" = "Change speech voice type to female";
 "settingsVoiceRequestChangeSpeechVoiceTypeToMale" = "Change speech voice type to male";
-"settingsVoiceRequestChangeSpeechLanguageToEnglish" = "Change speech language to english";
-"settingsVoiceRequestChangeSpeechLanguageToPolish" = "Change speech language to polish";
-"settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish" = "Change voice recording language to english";
-"settingsVoiceRequestChangeVoiceRecordingLanguageToPolish" = "Change voice recording language to polish";
 "settingsVoiceRequestDeleteAllConversations" = "Delete all conversations";
 "settingsVoiceRequestRestoreDefaultSettings" = "Restore default settings";
 "onboardingVoiceRequestSkipOnboarding" = "Skip onboarding";

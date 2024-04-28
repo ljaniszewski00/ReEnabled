@@ -133,7 +133,7 @@ Tutaj możesz dostosować wiele opcji aplikacji do swoich preferencji.
 ";
 
 "descriptionSettingsSecondTutorial" = "
-Możesz zmienić język i szybkość mowy, ustawić tryb latarki, lub zmienić jednostkę odległości do najbliższej przeszkody na drodze.
+Możesz zmienić szybkość mowy, ustawić tryb latarki, lub zmienić jednostkę odległości do najbliższej przeszkody na drodze.
 ";
 
 "descriptionSettingsThirdTutorial" = "
@@ -236,8 +236,6 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "settingsSpeechFeedbackFlashlightTriggerModeHasBeenSetTo" = "Tryb wyzwalania latarki został ustawiony na";
 "settingsSpeechFeedbackSpeechSpeedHasBeenSetTo" = "Prędkość mowy została ustawiona na";
 "settingsSpeechFeedbackSpeechVoiceTypeHasBeenSetTo" = "Typ głosu mowy został ustawiony na";
-"settingsSpeechFeedbackSpeechLanguageHasBeenSetTo" = "Język mowy został ustawiony na";
-"settingsSpeechFeedbackVoiceRecordingLanguageHasBeenSetTo" = "Język nagrywania głosu został ustawiony na";
 "settingsSpeechFeedbackSubscriptionPlanHasBeenChangedTo" = "Plan subskrypcji został zmieniony na";
 "settingsSpeechFeedbackAllConversationsDeleted" = "Wszystkie rozmowy zostały usunięte";
 "settingsSpeechFeedbackRestoredDefaultSettings" = "Ustawienia zostały przywrócone do domyślnych";
@@ -283,10 +281,6 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "settingsVoiceRequestChangeSpeechSpeedToSlowest" = "Zmień prędkość mowy na najwolniejszą";
 "settingsVoiceRequestChangeSpeechVoiceTypeToFemale" = "Zmień typ głosu mowy na żeński";
 "settingsVoiceRequestChangeSpeechVoiceTypeToMale" = "Zmień typ głosu mowy na męski";
-"settingsVoiceRequestChangeSpeechLanguageToEnglish" = "Zmień język mowy na angielski";
-"settingsVoiceRequestChangeSpeechLanguageToPolish" = "Zmień język mowy na polski";
-"settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish" = "Zmień język nagrywania głosu na angielski";
-"settingsVoiceRequestChangeVoiceRecordingLanguageToPolish" = "Zmień język nagrywania głosu na polski";
 "settingsVoiceRequestDeleteAllConversations" = "Usuń wszystkie rozmowy";
 "settingsVoiceRequestRestoreDefaultSettings" = "Przywróć domyślne ustawienia";
 "onboardingVoiceRequestSkipOnboarding" = "Pomiń wprowadzenie";

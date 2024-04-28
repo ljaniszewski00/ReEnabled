@@ -16,10 +16,6 @@ enum SettingsVoiceRequest {
     case changeSpeechSpeedToSlowest
     case changeSpeechVoiceTypeToFemale
     case changeSpeechVoiceTypeToMale
-    case changeSpeechLanguageToEnglish
-    case changeSpeechLanguageToPolish
-    case changeVoiceRecordingLanguageToEnglish
-    case changeVoiceRecordingLanguageToPolish
     case deleteAllConversations
     case restoreDefaultSettings
 }
