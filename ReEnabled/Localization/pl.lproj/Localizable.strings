@@ -257,6 +257,8 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "otherSpeechFeedbackVoiceCommandWasNotRecognized" = "Polecenie głosowe nie zostało rozpoznane";
 "otherSpeechFeedbackWhatYouWantMeToDo" = "Co należy zrobić?";
 
+"speechFeedbackGesturesReminderTo" = "aby";
+
 // MARK: - Voice Request
 
 "mainRecognizerVoiceRequestReadObjects" = "Przeczytaj obiekty";
@@ -308,7 +310,86 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 
 // MARK: - ML Model Label
 
-
+"ObjectMLModelPerson" = "osoba";
+"ObjectMLModelBicycle" = "rower";
+"ObjectMLModelCar" = "samochód";
+"ObjectMLModelMotorbike" = "motocykl";
+"ObjectMLModelAeroplane" = "samolot";
+"ObjectMLModelBus" = "autobus";
+"ObjectMLModelTrain" = "pociąg";
+"ObjectMLModelTruck" = "ciężarówka";
+"ObjectMLModelBoat" = "łódź";
+"ObjectMLModelTrafficLight" = "sygnalizacja świetlna";
+"ObjectMLModelFireHydrant" = "hydrant przeciwpożarowy";
+"ObjectMLModelStopSign" = "znak stop";
+"ObjectMLModelParkingMeter" = "parkomat";
+"ObjectMLModelBench" = "ławka";
+"ObjectMLModelBird" = "ptak";
+"ObjectMLModelCat" = "kot";
+"ObjectMLModelDog" = "pies";
+"ObjectMLModelHorse" = "koń";
+"ObjectMLModelSheep" = "owca";
+"ObjectMLModelCow" = "krowa";
+"ObjectMLModelElephant" = "słoń";
+"ObjectMLModelBear" = "niedźwiedź";
+"ObjectMLModelZebra" = "zebra";
+"ObjectMLModelGiraffe" = "żyrafa";
+"ObjectMLModelBackpack" = "plecak";
+"ObjectMLModelUmbrella" = "parasolka";
+"ObjectMLModelHandbag" = "torebka";
+"ObjectMLModelTie" = "krawat";
+"ObjectMLModelSuitcase" = "walizka";
+"ObjectMLModelFrisbee" = "frisbee";
+"ObjectMLModelSkis" = "narty";
+"ObjectMLModelSnowboard" = "snowboard";
+"ObjectMLModelSportsBall" = "piłka sportowa";
+"ObjectMLModelKite" = "latawiec";
+"ObjectMLModelBaseballBat" = "kij baseballowy";
+"ObjectMLModelBaseballGlove" = "rękawica baseballowa";
+"ObjectMLModelSkateboard" = "deskorolka";
+"ObjectMLModelSurfboard" = "deska surfingowa";
+"ObjectMLModelTennisRacket" = "rakieta tenisowa";
+"ObjectMLModelBottle" = "butelka";
+"ObjectMLModelWineGlass" = "szklanka do wina";
+"ObjectMLModelCup" = "filiżanka";
+"ObjectMLModelFork" = "widelec";
+"ObjectMLModelKnife" = "nóż";
+"ObjectMLModelSpoon" = "łyżka";
+"ObjectMLModelBowl" = "miska";
+"ObjectMLModelBanana" = "banan";
+"ObjectMLModelApple" = "jabłko";
+"ObjectMLModelSandwich" = "kanapka";
+"ObjectMLModelOrange" = "pomarańcza";
+"ObjectMLModelBroccoli" = "brokuły";
+"ObjectMLModelCarrot" = "marchew";
+"ObjectMLModelHotDog" = "hot dog";
+"ObjectMLModelPizza" = "pizza";
+"ObjectMLModelDonut" = "pączek";
+"ObjectMLModelCake" = "ciasto";
+"ObjectMLModelChair" = "krzesło";
+"ObjectMLModelSofa" = "kanapa";
+"ObjectMLModelPottedPlant" = "roślina doniczkowa";
+"ObjectMLModelBed" = "łóżko";
+"ObjectMLModelDiningTable" = "stół jadalny";
+"ObjectMLModelToilet" = "toaleta";
+"ObjectMLModelTVMonitor" = "monitor telewizyjny";
+"ObjectMLModelLaptop" = "laptop";
+"ObjectMLModelMouse" = "mysz komputerowa";
+"ObjectMLModelRemote" = "pilot";
+"ObjectMLModelKeyboard" = "klawiatura";
+"ObjectMLModelCellPhone" = "telefon komórkowy";
+"ObjectMLModelMicrowave" = "mikrofalówka";
+"ObjectMLModelOven" = "piekarnik";
+"ObjectMLModelToaster" = "toster";
+"ObjectMLModelSink" = "zlew";
+"ObjectMLModelRefrigerator" = "lodówka";
+"ObjectMLModelBook" = "książka";
+"ObjectMLModelClock" = "zegar";
+"ObjectMLModelVase" = "wazon";
+"ObjectMLModelScissors" = "nożyczki";
+"ObjectMLModelTeddyBear" = "pluszowy miś";
+"ObjectMLModelHairDrier" = "suszarka do włosów";
+"ObjectMLModelToothbrush" = "szczoteczka do zębów";
 
 // MARK: - Other
 
@@ -354,5 +435,8 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "applicationSettingSubscriptionPlanDescription" = "Wybierz plan subskrypcji, który najlepiej odpowiada Twoim potrzebom";
 "applicationSettingOthersDescription" = "Wykonaj inne działania";
 
-"speechVoiceTypeFemale" = "Kobieta"
-"speechVoiceTypeMale" = "Mężczyzna"
+"speechVoiceTypeFemale" = "Kobieta";
+"speechVoiceTypeMale" = "Mężczyzna";
+
+"flashlightTriggerModeAutomatic" = "Automatyczny";
+"flashlightTriggerModeSpecificValue" = "Konkretna Wartość";

@@ -33,4 +33,7 @@ enum OtherText: String {
     
     case speechVoiceTypeFemale
     case speechVoiceTypeMale
+    
+    case flashlightTriggerModeAutomatic
+    case flashlightTriggerModeSpecificValue
 }

@@ -7,9 +7,9 @@ extension FlashlightTriggerMode {
     var rawValue: String {
         switch self {
         case .automatic:
-            return "Automatic"
+            return OtherText.flashlightTriggerModeAutomatic.rawValue.localized()
         case .specificLightValue(_):
-            return "Specific Value"
+            return OtherText.flashlightTriggerModeSpecificValue.rawValue.localized()
         }
     }
 }

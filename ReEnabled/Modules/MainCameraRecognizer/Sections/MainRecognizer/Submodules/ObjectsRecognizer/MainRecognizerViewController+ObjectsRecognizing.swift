@@ -133,7 +133,7 @@ extension MainRecognizerViewController: ObjectsRecognizing {
                     rect.size.height *= scaleY
                     
                     // Show the bounding box.
-                    let classLabel = objectModel.labels[prediction.classIndex]
+                    let classLabel = ObjectLabel.allCases[prediction.classIndex].rawValue
                     let label = String(format: "%@ %.1f", classLabel, prediction.score * 100)
                     let color = objectsBoundingBoxesColors[prediction.classIndex]
                     objectsBoundingBoxes[i].show(frame: rect, label: label, color: color)
@@ -159,9 +159,9 @@ extension MainRecognizerViewController: ObjectsRecognizing {
             for i in 0..<ObjectModel.maxBoundingBoxes {
                 if i < predictions.count && predictions.indices.contains(i) {
                     let prediction = predictions[i]
-                    if objectModel.labels.indices.contains(prediction.classIndex) {
-                        let predictedObjectLabel: String = objectModel.labels[prediction.classIndex]
-                        objectsRecognizerViewModel?.recognizedObjectsNames.insert(predictedObjectLabel)
+                    if ObjectLabel.allCases.indices.contains(prediction.classIndex) {
+                        let predictedObjectLabel: String = ObjectLabel.allCases[prediction.classIndex].rawValue
+                        objectsRecognizerViewModel?.recognizedObjectsNames.insert(predictedObjectLabel.capitalized)
                     }
                 }
             }

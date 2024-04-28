@@ -54,4 +54,6 @@ enum SpeechFeedbackText: String {
     case otherSpeechFeedbackYouCanUseFollowingGestures
     case otherSpeechFeedbackVoiceCommandWasNotRecognized
     case otherSpeechFeedbackWhatYouWantMeToDo
+    
+    case speechFeedbackGesturesReminderTo
 }

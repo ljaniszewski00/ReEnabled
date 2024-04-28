@@ -257,6 +257,8 @@ Swipe left to go to previous sections of the guide.
 "otherSpeechFeedbackVoiceCommandWasNotRecognized" = "Voice command was not recognized";
 "otherSpeechFeedbackWhatYouWantMeToDo" = "What you want me to do";
 
+"speechFeedbackGesturesReminderTo" = "to";
+
 // MARK: - Voice Request
 
 "mainRecognizerVoiceRequestReadObjects" = "Read objects";
@@ -306,10 +308,88 @@ Swipe left to go to previous sections of the guide.
 "otherVoiceRequestRemindGestures" = "Remind gestures";
 "otherVoiceRequestDisplayOnboarding" = "Display onboarding";
 
-
 // MARK: - ML Model Label
 
-
+"ObjectMLModelPerson" = "person";
+"ObjectMLModelBicycle" = "bicycle";
+"ObjectMLModelCar" = "car";
+"ObjectMLModelMotorbike" = "motorbike";
+"ObjectMLModelAeroplane" = "aeroplane";
+"ObjectMLModelBus" = "bus";
+"ObjectMLModelTrain" = "train";
+"ObjectMLModelTruck" = "truck";
+"ObjectMLModelBoat" = "boat";
+"ObjectMLModelTrafficLight" = "traffic light";
+"ObjectMLModelFireHydrant" = "fire hydrant";
+"ObjectMLModelStopSign" = "stop sign";
+"ObjectMLModelParkingMeter" = "parking meter";
+"ObjectMLModelBench" = "bench";
+"ObjectMLModelBird" = "bird";
+"ObjectMLModelCat" = "cat";
+"ObjectMLModelDog" = "dog";
+"ObjectMLModelHorse" = "horse";
+"ObjectMLModelSheep" = "sheep";
+"ObjectMLModelCow" = "cow";
+"ObjectMLModelElephant" = "elephant";
+"ObjectMLModelBear" = "bear";
+"ObjectMLModelZebra" = "zebra";
+"ObjectMLModelGiraffe" = "giraffe";
+"ObjectMLModelBackpack" = "backpack";
+"ObjectMLModelUmbrella" = "umbrella";
+"ObjectMLModelHandbag" = "handbag";
+"ObjectMLModelTie" = "tie";
+"ObjectMLModelSuitcase" = "suitcase";
+"ObjectMLModelFrisbee" = "frisbee";
+"ObjectMLModelSkis" = "skis";
+"ObjectMLModelSnowboard" = "snowboard";
+"ObjectMLModelSportsBall" = "sports ball";
+"ObjectMLModelKite" = "kite";
+"ObjectMLModelBaseballBat" = "baseball bat";
+"ObjectMLModelBaseballGlove" = "baseball glove";
+"ObjectMLModelSkateboard" = "skateboard";
+"ObjectMLModelSurfboard" = "surfboard";
+"ObjectMLModelTennisRacket" = "tennis racket";
+"ObjectMLModelBottle" = "bottle";
+"ObjectMLModelWineGlass" = "wine glass";
+"ObjectMLModelCup" = "cup";
+"ObjectMLModelFork" = "fork";
+"ObjectMLModelKnife" = "knife";
+"ObjectMLModelSpoon" = "spoon";
+"ObjectMLModelBowl" = "bowl";
+"ObjectMLModelBanana" = "banana";
+"ObjectMLModelApple" = "apple";
+"ObjectMLModelSandwich" = "sandwich";
+"ObjectMLModelOrange" = "orange";
+"ObjectMLModelBroccoli" = "broccoli";
+"ObjectMLModelCarrot" = "carrot";
+"ObjectMLModelHotDog" = "hot dog";
+"ObjectMLModelPizza" = "pizza";
+"ObjectMLModelDonut" = "donut";
+"ObjectMLModelCake" = "cake";
+"ObjectMLModelChair" = "chair";
+"ObjectMLModelSofa" = "sofa";
+"ObjectMLModelPottedPlant" = "pottedplant";
+"ObjectMLModelBed" = "bed";
+"ObjectMLModelDiningTable" = "diningtable";
+"ObjectMLModelToilet" = "toilet";
+"ObjectMLModelTVMonitor" = "tvmonitor";
+"ObjectMLModelLaptop" = "laptop";
+"ObjectMLModelMouse" = "mouse";
+"ObjectMLModelRemote" = "remote";
+"ObjectMLModelKeyboard" = "keyboard";
+"ObjectMLModelCellPhone" = "cell phone";
+"ObjectMLModelMicrowave" = "microwave";
+"ObjectMLModelOven" = "oven";
+"ObjectMLModelToaster" = "toaster";
+"ObjectMLModelSink" = "sink";
+"ObjectMLModelRefrigerator" = "refrigerator";
+"ObjectMLModelBook" = "book";
+"ObjectMLModelClock" = "clock";
+"ObjectMLModelVase" = "vase";
+"ObjectMLModelScissors" = "scissors";
+"ObjectMLModelTeddyBear" = "teddy bear";
+"ObjectMLModelHairDrier" = "hair drier";
+"ObjectMLModelToothbrush" = "toothbrush";
 
 // MARK: - Other
 
@@ -355,5 +435,8 @@ Swipe left to go to previous sections of the guide.
 "applicationSettingSubscriptionPlanDescription" = "Select subscription plan that suits your needs the most";
 "applicationSettingOthersDescription" = "Execute some other actions";
 
-"speechVoiceTypeFemale" = "Female"
-"speechVoiceTypeMale" = "Male"
+"speechVoiceTypeFemale" = "Female";
+"speechVoiceTypeMale" = "Male";
+
+"flashlightTriggerModeAutomatic" = "Automatic";
+"flashlightTriggerModeSpecificValue" = "Specific Value";

@@ -69,7 +69,7 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
             }
             
             text += gestureType.name
-            text += " to "
+            text += " \(SpeechFeedbackText.speechFeedbackGesturesReminderTo.rawValue.localized()) "
             text += action.description
         }
         
