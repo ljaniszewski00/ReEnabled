@@ -52,14 +52,6 @@ actor SpeechRecognizer: ObservableObject {
         }
     }
     
-    func changeLanguage(to newLanguage: SupportedLanguage) {
-        recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: newLanguage.identifier))
-        guard recognizer != nil else {
-            transcribe(RecognizerError.nilRecognizer)
-            return
-        }
-    }
-    
     @MainActor func startTranscribing() {
         Task {
             await transcribe()

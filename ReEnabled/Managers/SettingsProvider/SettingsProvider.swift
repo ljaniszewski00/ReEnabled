@@ -40,14 +40,6 @@ final class SettingsProvider: ObservableObject {
         currentSettings.speechVoiceType
     }
     
-    var speechLanguage: SupportedLanguage {
-        currentSettings.speechLanguage
-    }
-    
-    var voiceRecordingLanguage: SupportedLanguage {
-        currentSettings.voiceRecordingLanguage
-    }
-    
     var subscriptionPlan: SubscriptionPlan {
         currentSettings.subscriptionPlan
     }

@@ -68,26 +68,6 @@ final class SettingsViewModel: ObservableObject {
         feedbackManager.generateSampleSpeechFeedback()
     }
     
-    func changeSpeechLanguage(to newSpeechLanguage: SupportedLanguage) {
-        currentSettings?.speechLanguage = newSpeechLanguage
-        
-        let speechVoiceTypeCases: [SpeechVoiceType] = newSpeechLanguage.supportedSpeechVoiceTypes
-        if speechVoiceTypeCases.count == 1,
-           let availableSpeechVoiceType = speechVoiceTypeCases.first {
-            currentSettings?.speechVoiceType = availableSpeechVoiceType
-        }
-        
-        saveSettings()
-        feedbackManager.generateSampleSpeechFeedback()
-    }
-    
-    func changeVoiceRecordingLanguage(to newVoiceRecordingLanguage: SupportedLanguage) {
-        currentSettings?.voiceRecordingLanguage = newVoiceRecordingLanguage
-        feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.voiceRecordingLanguageHasBeenSetTo),
-                                               and: newVoiceRecordingLanguage.rawValue)
-        saveSettings()
-    }
-    
     func changeSubscriptionPlan(to newSubscriptionPlan: SubscriptionPlan) {
         currentSettings?.subscriptionPlan = newSubscriptionPlan
         feedbackManager.generateSpeechFeedback(with: SpeechFeedback.settings(.subscriptionPlanHasBeenChangedTo),

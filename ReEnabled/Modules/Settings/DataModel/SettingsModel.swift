@@ -8,8 +8,6 @@ struct SettingsModel: Equatable {
     var flashlightTriggerLightValue: Float?
     var speechSpeed: Float
     var speechVoiceType: SpeechVoiceType
-    var speechLanguage: SupportedLanguage
-    var voiceRecordingLanguage: SupportedLanguage
     var subscriptionPlan: SubscriptionPlan
     
     static func == (lhs: SettingsModel, rhs: SettingsModel) -> Bool {
@@ -27,8 +25,6 @@ extension SettingsModel {
                 SettingsObject.SettingsObjectKeys.flashlightTriggerLightValue.rawValue: flashlightTriggerLightValue,
                 SettingsObject.SettingsObjectKeys.speechSpeed.rawValue: speechSpeed,
                 SettingsObject.SettingsObjectKeys.speechVoiceType.rawValue: speechVoiceType.rawValue,
-                SettingsObject.SettingsObjectKeys.speechLanguage.rawValue: speechLanguage.fullName,
-                SettingsObject.SettingsObjectKeys.voiceRecordingLanguage.rawValue: voiceRecordingLanguage.fullName,
                 SettingsObject.SettingsObjectKeys.subscriptionPlan.rawValue: subscriptionPlan.rawValue
             ]
         )
@@ -43,8 +39,6 @@ extension SettingsModel {
                              flashlightTriggerLightValue: nil,
                              speechSpeed: 0.5,
                              speechVoiceType: .female,
-                             speechLanguage: deviceLanguage ?? .english,
-                             voiceRecordingLanguage: deviceLanguage ?? .english,
                              subscriptionPlan: .standard)
     }
 }

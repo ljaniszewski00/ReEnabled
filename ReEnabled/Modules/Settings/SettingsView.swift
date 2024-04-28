@@ -22,8 +22,6 @@ struct SettingsView: View {
                     Views.FlashlightTriggerModeSettingsSection()
                     Views.SpeechSpeedSettingsSection()
                     Views.SpeechVoiceSettingsSection()
-                    Views.SpeechLanguageSettingsSection()
-                    Views.VoiceRecordingLanguageSettingsSection()
                     Views.SubscriptionPlanSettingsSection()
                     Views.OtherSettingsSection()
                 }
@@ -85,14 +83,6 @@ struct SettingsView: View {
                 settingsViewModel.changeSpeechVoiceType(to: .female)
             case .settings(.changeSpeechVoiceTypeToMale):
                 settingsViewModel.changeSpeechVoiceType(to: .male)
-            case .settings(.changeSpeechLanguageToEnglish):
-                settingsViewModel.changeSpeechLanguage(to: .english)
-            case .settings(.changeSpeechLanguageToPolish):
-                settingsViewModel.changeSpeechLanguage(to: .polish)
-            case .settings(.changeVoiceRecordingLanguageToEnglish):
-                settingsViewModel.changeVoiceRecordingLanguage(to: .english)
-            case .settings(.changeVoiceRecordingLanguageToPolish):
-                settingsViewModel.changeVoiceRecordingLanguage(to: .polish)
             case .settings(.deleteAllConversations):
                 settingsViewModel.deleteAllConversations()
                     .sink(receiveCompletion: { _ in
@@ -424,8 +414,8 @@ private extension Views {
             SettingsSectionHeader(title: ApplicationSetting.speechVoiceType.settingName,
                                   description: ApplicationSetting.speechVoiceType.settingDescription)
             
-            if let currentSettings = settingsViewModel.currentSettings {
-                let currentSpeechLanguage = currentSettings.speechLanguage
+            if let currentSettings = settingsViewModel.currentSettings,
+                let currentSpeechLanguage = getAppLanguage() {
                 let speechVoiceTypeCases: [SpeechVoiceType] = currentSpeechLanguage.supportedSpeechVoiceTypes
                 Views.SettingsSectionDetails {
                     ForEach(speechVoiceTypeCases, id: \.self) { speechVoiceType in
@@ -456,108 +446,6 @@ private extension Views {
                                 feedbackManager.stopSpeechFeedback()
                             } else {
                                 feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechVoiceType.settingDescription)
-                            }
-                        }, onLongPress: {
-                            voiceRecordingManager.manageTalking()
-                        })
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: - Speech Language
-    
-    struct SpeechLanguageSettingsSection: View {
-        @EnvironmentObject private var settingsViewModel: SettingsViewModel
-        @StateObject private var feedbackManager: FeedbackManager = .shared
-        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
-        
-        var body: some View {
-            SettingsSectionHeader(title: ApplicationSetting.speechLanguage.settingName,
-                                  description: ApplicationSetting.speechLanguage.settingDescription)
-            
-            if let currentSettings = settingsViewModel.currentSettings {
-                let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
-                Views.SettingsSectionDetails {
-                    ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: supportedLanguage.fullName,
-                                                       isSelectedValue: currentSettings.speechLanguage == supportedLanguage)
-                                .padding(.vertical)
-                            
-                            if supportedLanguages.last != supportedLanguage {
-                                Divider()
-                            }
-                        }
-                        .contentShape(Rectangle())
-                        .addGesturesActions(toExecuteBeforeEveryAction: {
-                            feedbackManager.generateHapticFeedbackForSwipeAction()
-                        }, onTap: {
-                            if feedbackManager.speechFeedbackIsBeingGenerated {
-                                feedbackManager.stopSpeechFeedback()
-                            } else {
-                                let speechText: String = "\(ApplicationSetting.speechLanguage.settingName) \(supportedLanguage)"
-                                feedbackManager.generateSpeechFeedback(with: speechText)
-                            }
-                        }, onDoubleTap: {
-                            settingsViewModel.changeSpeechLanguage(to: supportedLanguage)
-                        }, onTrippleTap: {
-                            if feedbackManager.speechFeedbackIsBeingGenerated {
-                                feedbackManager.stopSpeechFeedback()
-                            } else {
-                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.speechLanguage.settingDescription)
-                            }
-                        }, onLongPress: {
-                            voiceRecordingManager.manageTalking()
-                        })
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: - Voice Recording Language
-    
-    struct VoiceRecordingLanguageSettingsSection: View {
-        @EnvironmentObject private var settingsViewModel: SettingsViewModel
-        @StateObject private var feedbackManager: FeedbackManager = .shared
-        @StateObject private var voiceRecordingManager: VoiceRecordingManager = .shared
-        
-        var body: some View {
-            SettingsSectionHeader(title: ApplicationSetting.voiceRecordingLanguage.settingName,
-                                  description: ApplicationSetting.voiceRecordingLanguage.settingDescription)
-            
-            if let currentSettings = settingsViewModel.currentSettings {
-                let supportedLanguages: [SupportedLanguage] = SupportedLanguage.allCases
-                Views.SettingsSectionDetails {
-                    ForEach(supportedLanguages, id: \.self) { supportedLanguage in
-                        VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
-                            SettingsSectionDetailsTile(value: supportedLanguage.fullName,
-                                                       isSelectedValue: currentSettings.voiceRecordingLanguage == supportedLanguage)
-                                .padding(.vertical)
-                            
-                            if supportedLanguages.last != supportedLanguage {
-                                Divider()
-                            }
-                        }
-                        .contentShape(Rectangle())
-                        .addGesturesActions(toExecuteBeforeEveryAction: {
-                            feedbackManager.generateHapticFeedbackForSwipeAction()
-                        }, onTap: {
-                            if feedbackManager.speechFeedbackIsBeingGenerated {
-                                feedbackManager.stopSpeechFeedback()
-                            } else {
-                                let speechText: String = "\(ApplicationSetting.voiceRecordingLanguage.settingName) \(supportedLanguage)"
-                                feedbackManager.generateSpeechFeedback(with: speechText)
-                            }
-                        }, onDoubleTap: {
-                            settingsViewModel.changeVoiceRecordingLanguage(to: supportedLanguage)
-                        }, onTrippleTap: {
-                            if feedbackManager.speechFeedbackIsBeingGenerated {
-                                feedbackManager.stopSpeechFeedback()
-                            } else {
-                                feedbackManager.generateSpeechFeedback(with: ApplicationSetting.voiceRecordingLanguage.settingDescription)
                             }
                         }, onLongPress: {
                             voiceRecordingManager.manageTalking()

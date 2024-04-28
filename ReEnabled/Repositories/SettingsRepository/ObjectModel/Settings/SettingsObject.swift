@@ -8,8 +8,6 @@ class SettingsObject: Object, ObjectKeyIdentifiable, RealmObjectProtocol {
     @Persisted var flashlightTriggerLightValue: Float?
     @Persisted var speechSpeed: Float
     @Persisted var speechVoiceType: SpeechVoiceType
-    @Persisted var speechLanguage: SupportedLanguage
-    @Persisted var voiceRecordingLanguage: SupportedLanguage
     @Persisted var subscriptionPlan: SubscriptionPlan
 }
 
@@ -21,8 +19,6 @@ extension SettingsObject {
         case flashlightTriggerLightValue
         case speechSpeed
         case speechVoiceType
-        case speechLanguage
-        case voiceRecordingLanguage
         case subscriptionPlan
     }
 }
@@ -35,8 +31,6 @@ extension SettingsObject {
                       flashlightTriggerLightValue: flashlightTriggerLightValue,
                       speechSpeed: speechSpeed,
                       speechVoiceType: speechVoiceType,
-                      speechLanguage: speechLanguage,
-                      voiceRecordingLanguage: voiceRecordingLanguage,
                       subscriptionPlan: subscriptionPlan)
     }
 }

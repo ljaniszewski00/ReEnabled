@@ -13,24 +13,15 @@ class VoiceRecordingManager: ObservableObject {
     
     private var cancelBag: Set<AnyCancellable> = Set<AnyCancellable>()
     
-    private init() {
-        speechRecognizer = SpeechRecognizer(
-            language: settingsProvider.voiceRecordingLanguage
-        )
+    init() {
+        guard let voiceRecordingLanguage: SupportedLanguage = getAppLanguage() else {
+            return
+            
+        }
         
-        observeVoiceRecordingLanguageChanges()
-    }
-    
-    private func observeVoiceRecordingLanguageChanges() {
-        settingsProvider.$currentSettings
-            .sink { [weak self] newSettings in
-                guard let self = self else { return }
-                
-                Task { [self] in
-                    await self.speechRecognizer?.changeLanguage(to: newSettings.voiceRecordingLanguage)
-                }
-            }
-            .store(in: &cancelBag)
+        speechRecognizer = SpeechRecognizer(
+            language: voiceRecordingLanguage
+        )
     }
     
     static let shared: VoiceRecordingManager = {

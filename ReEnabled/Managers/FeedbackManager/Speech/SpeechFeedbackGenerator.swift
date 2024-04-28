@@ -4,12 +4,18 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
     @Inject private var settingsProvider: SettingsProvider
     
     private var currentSpeechVoiceName: String? {
-        let speechLanguage: SupportedLanguage = settingsProvider.speechLanguage
+        guard let speechLanguage: SupportedLanguage = getAppLanguage() else {
+            return nil
+        }
+        
         return settingsProvider.speechVoiceType.getVoiceName(for: speechLanguage)
     }
     
     private var currentSpeechVoiceIdentifier: String? {
-        let speechLanguage: SupportedLanguage = settingsProvider.speechLanguage
+        guard let speechLanguage: SupportedLanguage = getAppLanguage() else {
+            return nil
+        }
+        
         return settingsProvider.speechVoiceType.getVoiceIdentifier(for: speechLanguage)
     }
     
@@ -71,7 +77,11 @@ final class SpeechFeedbackGenerator: SpeechFeedbackGenerating {
     }
     
     func generateSample() {
-        let sampleText: String = settingsProvider.speechLanguage.getSpeechVoiceSampleText(voiceName: currentSpeechVoiceName)
+        guard let speechLanguage: SupportedLanguage = getAppLanguage() else {
+            return
+        }
+        
+        let sampleText: String = speechLanguage.getSpeechVoiceSampleText(voiceName: currentSpeechVoiceName)
         generate(for: sampleText)
     }
     
