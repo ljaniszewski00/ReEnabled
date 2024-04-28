@@ -22,11 +22,11 @@
 
 // MARK: - Settings Tab
 
-"navigationTitle" = "Settings"
-"displayOnboarding" = "Display Onboarding"
-"deleteAllConversations" = "Delete All Conversations"
-"restoreDefaultSettings" = "Restore Default Settings"
-"letDeviceManageFlashlightForItself" = "Let device manage flashlight for itself"
+"navigationTitle" = "Settings";
+"displayOnboarding" = "Display Onboarding";
+"deleteAllConversations" = "Delete All Conversations";
+"restoreDefaultSettings" = "Restore Default Settings";
+"letDeviceManageFlashlightForItself" = "Let device manage flashlight for itself";
 
 // MARK: - Onboarding
 
@@ -244,8 +244,8 @@ Swipe left to go to previous sections of the guide.
 "settingsSpeechFeedbackAllConversationsDeleted" = "All conversations have been deleted";
 "settingsSpeechFeedbackRestoredDefaultSettings" = "Settings have been restored to default";
 "settingsSpeechFeedbackDoubleTapToDisplayOnboarding" = "Double tap to display onboarding";
-"settingsSpeechFeedbackDoubleTapToDeleteConversations" = "Double tap to delete conversations"
-"settingsSpeechFeedbackDoubleTapToRestoreDefaultSettings" = "Double tap to restore default settings"
+"settingsSpeechFeedbackDoubleTapToDeleteConversations" = "Double tap to delete conversations";
+"settingsSpeechFeedbackDoubleTapToRestoreDefaultSettings" = "Double tap to restore default settings";
 
 "onboardingSpeechFeedbackOnboardingHasBeenCompleted" = "Onboarding has been completed";
 "onboardingSpeechFeedbackSwipeRightToProceed" = "Swipe right to proceed";
@@ -319,6 +319,6 @@ Swipe left to go to previous sections of the guide.
 "cameraModeLightDetector" = "Light Detector";
 
 "supportedLanguageEnglish" = "English";
-"supportedLanguagePolish" = "Polish"
+"supportedLanguagePolish" = "Polish";
 "supportedLanguageHiMyNameIs" = "Hi! My name is";
-"supportedLanguageWhatCanIDoForYou" = "What can I do for you?"
+"supportedLanguageWhatCanIDoForYou" = "What can I do for you?";

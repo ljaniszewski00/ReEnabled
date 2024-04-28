@@ -5,7 +5,7 @@ class VoiceRequestor: ObservableObject {
     
     private var feedbackManager: FeedbackManager = .shared
     
-    private let stringSimilarityLevelRequired: Double = 80.0
+    private let stringSimilarityLevelRequired: Double = 70.0
     
     static let shared: VoiceRequestor = {
        VoiceRequestor()
@@ -24,9 +24,6 @@ class VoiceRequestor: ObservableObject {
                 similarityChoosen = stringSimilarityPercentage
             }
         }
-        
-//        print("here transcript: \(transcript)")
-//        print("here: \(voiceRequestChoosen)")
         
         guard voiceRequestChoosen != .empty else {
             feedbackManager.generateSpeechFeedback(with: .other(.voiceCommandWasNotRecognized))
