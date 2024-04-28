@@ -1,34 +1,80 @@
-enum SettingsVoiceRequest: String {
-    case changeDefaultCameraModeToMainRecognizer = "Change default camera mode to main recognizer"
-    case changeDefaultCameraModeToDocumentScanner = "Change default camera mode to document scanner"
-    case changeDefaultCameraModeToColorDetector = "Change default camera mode to color detector"
-    case changeDefaultCameraModeToLightDetector = "Change default camera mode to light detector"
-    
-    case changeDefaultDistanceMeasureUnitToCentimeters = "Change default measure unit to centimeters"
-    case changeDefaultDistanceMeasureUnitToMeters = "Change default measure unit to meters"
-    
-    case changeFlashlightTriggerModeToAutomatic = "Change flashlight trigger mode to automatic"
-    case changeFlashlightTriggerModeToManualWithHighTolerance = "Change flashlight trigger mode to manual with high tolerance"
-    case changeFlashlightTriggerModeToManualWithMediumTolerance = "Change flashlight trigger mode to manual with medium tolerance"
-    case changeFlashlightTriggerModeToManualWithLowTolerance = "Change flashlight trigger mode to manual with low tolerance"
-    
-    case changeSpeechSpeedToFastest = "Change speech speed to fastest"
-    case changeSpeechSpeedToFaster = "Change speech speed to faster"
-    case changeSpeechSpeedToNormal = "Change speech speed to normal"
-    case changeSpeechSpeedToSlower = "Change speech speed to slower"
-    case changeSpeechSpeedToSlowest = "Change speech speed to slowest"
-    
-    case changeSpeechVoiceTypeToFemale = "Change speech voice type to female"
-    case changeSpeechVoiceTypeToMale = "Change speech voice type to male"
-    
-    case changeSpeechLanguageToEnglish = "Change speech language to english"
-    case changeSpeechLanguageToPolish = "Change speech language to polish"
-    
-    case changeVoiceRecordingLanguageToEnglish = "Change voice recording language to english"
-    case changeVoiceRecordingLanguageToPolish = "Change voice recording language to polish"
-    
-    case deleteAllConversations = "Delete all conversations"
-    case restoreDefaultSettings = "Restore default settings"
+enum SettingsVoiceRequest {
+    case changeDefaultCameraModeToMainRecognizer
+    case changeDefaultCameraModeToDocumentScanner
+    case changeDefaultCameraModeToColorDetector
+    case changeDefaultCameraModeToLightDetector
+    case changeDefaultDistanceMeasureUnitToCentimeters
+    case changeDefaultDistanceMeasureUnitToMeters
+    case changeFlashlightTriggerModeToAutomatic
+    case changeFlashlightTriggerModeToManualWithHighTolerance
+    case changeFlashlightTriggerModeToManualWithMediumTolerance
+    case changeFlashlightTriggerModeToManualWithLowTolerance
+    case changeSpeechSpeedToFastest
+    case changeSpeechSpeedToFaster
+    case changeSpeechSpeedToNormal
+    case changeSpeechSpeedToSlower
+    case changeSpeechSpeedToSlowest
+    case changeSpeechVoiceTypeToFemale
+    case changeSpeechVoiceTypeToMale
+    case changeSpeechLanguageToEnglish
+    case changeSpeechLanguageToPolish
+    case changeVoiceRecordingLanguageToEnglish
+    case changeVoiceRecordingLanguageToPolish
+    case deleteAllConversations
+    case restoreDefaultSettings
+}
+
+extension SettingsVoiceRequest {
+    var rawValue: String {
+        switch self {
+        case .changeDefaultCameraModeToMainRecognizer:
+            return VoiceRequestText.settingsVoiceRequestChangeDefaultCameraModeToMainRecognizer.rawValue.localized()
+        case .changeDefaultCameraModeToDocumentScanner:
+            return VoiceRequestText.settingsVoiceRequestChangeDefaultCameraModeToDocumentScanner.rawValue.localized()
+        case .changeDefaultCameraModeToColorDetector:
+            return VoiceRequestText.settingsVoiceRequestChangeDefaultCameraModeToColorDetector.rawValue.localized()
+        case .changeDefaultCameraModeToLightDetector:
+            return VoiceRequestText.settingsVoiceRequestChangeDefaultCameraModeToLightDetector.rawValue.localized()
+        case .changeDefaultDistanceMeasureUnitToCentimeters:
+            return VoiceRequestText.settingsVoiceRequestChangeDefaultDistanceMeasureUnitToCentimeters.rawValue.localized()
+        case .changeDefaultDistanceMeasureUnitToMeters:
+            return VoiceRequestText.settingsVoiceRequestChangeDefaultDistanceMeasureUnitToMeters.rawValue.localized()
+        case .changeFlashlightTriggerModeToAutomatic:
+            return VoiceRequestText.settingsVoiceRequestChangeFlashlightTriggerModeToAutomatic.rawValue.localized()
+        case .changeFlashlightTriggerModeToManualWithHighTolerance:
+            return VoiceRequestText.settingsVoiceRequestChangeFlashlightTriggerModeToManualWithHighTolerance.rawValue.localized()
+        case .changeFlashlightTriggerModeToManualWithMediumTolerance:
+            return VoiceRequestText.settingsVoiceRequestChangeFlashlightTriggerModeToManualWithMediumTolerance.rawValue.localized()
+        case .changeFlashlightTriggerModeToManualWithLowTolerance:
+            return VoiceRequestText.settingsVoiceRequestChangeFlashlightTriggerModeToManualWithLowTolerance.rawValue.localized()
+        case .changeSpeechSpeedToFastest:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechSpeedToFastest.rawValue.localized()
+        case .changeSpeechSpeedToFaster:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechSpeedToFaster.rawValue.localized()
+        case .changeSpeechSpeedToNormal:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechSpeedToNormal.rawValue.localized()
+        case .changeSpeechSpeedToSlower:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechSpeedToSlower.rawValue.localized()
+        case .changeSpeechSpeedToSlowest:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechSpeedToSlowest.rawValue.localized()
+        case .changeSpeechVoiceTypeToFemale:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechVoiceTypeToFemale.rawValue.localized()
+        case .changeSpeechVoiceTypeToMale:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechVoiceTypeToMale.rawValue.localized()
+        case .changeSpeechLanguageToEnglish:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechLanguageToEnglish.rawValue.localized()
+        case .changeSpeechLanguageToPolish:
+            return VoiceRequestText.settingsVoiceRequestChangeSpeechLanguageToPolish.rawValue.localized()
+        case .changeVoiceRecordingLanguageToEnglish:
+            return VoiceRequestText.settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish.rawValue.localized()
+        case .changeVoiceRecordingLanguageToPolish:
+            return VoiceRequestText.settingsVoiceRequestChangeVoiceRecordingLanguageToPolish.rawValue.localized()
+        case .deleteAllConversations:
+            return VoiceRequestText.settingsVoiceRequestDeleteAllConversations.rawValue.localized()
+        case .restoreDefaultSettings:
+            return VoiceRequestText.settingsVoiceRequestRestoreDefaultSettings.rawValue.localized()
+        }
+    }
 }
 
 extension SettingsVoiceRequest {

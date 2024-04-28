@@ -1,19 +1,44 @@
-enum OtherVoiceRequest: String {
-    case changeTabToCamera = "Change tab to camera"
-    case recognizeObjects = "Recognize cbjects"
-    case scanDocument = "Scan document"
-    case detectColor = "Detect color"
-    case detectLight = "Detect light"
-    
-    case changeTabToChat = "Change tab to chat"
-    case sendNewMessage = "Send new message"
-    
-    case changeTabToSettings = "Change tab to settings"
-    
-    case remindVoiceCommands = "Remind voice commands"
-    case remindGestures = "Remind gestures"
-    
-    case displayOnboarding = "Display onboarding"
+enum OtherVoiceRequest {
+    case changeTabToCamera
+    case recognizeObjects
+    case scanDocument
+    case detectColor
+    case detectLight
+    case changeTabToChat
+    case sendNewMessage
+    case changeTabToSettings
+    case remindVoiceCommands
+    case remindGestures
+    case displayOnboarding
+}
+
+extension OtherVoiceRequest {
+    var rawValue: String {
+        switch self {
+        case .changeTabToCamera:
+            return VoiceRequestText.otherVoiceRequestChangeTabToCamera.rawValue.localized()
+        case .recognizeObjects:
+            return VoiceRequestText.otherVoiceRequestRecognizeObjects.rawValue.localized()
+        case .scanDocument:
+            return VoiceRequestText.otherVoiceRequestScanDocument.rawValue.localized()
+        case .detectColor:
+            return VoiceRequestText.otherVoiceRequestDetectColor.rawValue.localized()
+        case .detectLight:
+            return VoiceRequestText.otherVoiceRequestDetectLight.rawValue.localized()
+        case .changeTabToChat:
+            return VoiceRequestText.otherVoiceRequestChangeTabToChat.rawValue.localized()
+        case .sendNewMessage:
+            return VoiceRequestText.otherVoiceRequestSendNewMessage.rawValue.localized()
+        case .changeTabToSettings:
+            return VoiceRequestText.otherVoiceRequestChangeTabToSettings.rawValue.localized()
+        case .remindVoiceCommands:
+            return VoiceRequestText.otherVoiceRequestRemindVoiceCommands.rawValue.localized()
+        case .remindGestures:
+            return VoiceRequestText.otherVoiceRequestRemindGestures.rawValue.localized()
+        case .displayOnboarding:
+            return VoiceRequestText.otherVoiceRequestDisplayOnboarding.rawValue.localized()
+        }
+    }
 }
 
 extension OtherVoiceRequest: CaseIterable {

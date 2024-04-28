@@ -1,6 +1,17 @@
-enum LightDetectorVoiceRequest: String {
-    case startLightDetection = "Start light detection"
-    case stopLightDetection = "Stop light detection"
+enum LightDetectorVoiceRequest {
+    case startLightDetection
+    case stopLightDetection
+}
+
+extension LightDetectorVoiceRequest {
+    var rawValue: String {
+        switch self {
+        case .startLightDetection:
+            return VoiceRequestText.lightDetectorVoiceRequestStartLightDetection.rawValue.localized()
+        case .stopLightDetection:
+            return VoiceRequestText.lightDetectorVoiceRequestStopLightDetection.rawValue.localized()
+        }
+    }
 }
 
 extension LightDetectorVoiceRequest {

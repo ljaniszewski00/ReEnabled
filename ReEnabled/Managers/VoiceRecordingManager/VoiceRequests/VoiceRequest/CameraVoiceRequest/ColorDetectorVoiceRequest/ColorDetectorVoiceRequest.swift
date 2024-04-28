@@ -1,5 +1,14 @@
-enum ColorDetectorVoiceRequest: String {
-    case readColor = "Read color"
+enum ColorDetectorVoiceRequest {
+    case readColor
+}
+
+extension ColorDetectorVoiceRequest {
+    var rawValue: String {
+        switch self {
+        case .readColor:
+            return VoiceRequestText.colorDetectorVoiceRequestReadColor.rawValue.localized()
+        }
+    }
 }
 
 extension ColorDetectorVoiceRequest {

@@ -1,3 +1,53 @@
-enum VoiceRequestText {
-    
+enum VoiceRequestText: String {
+    case mainRecognizerVoiceRequestReadObjects
+    case documentScannerVoiceRequestReadText
+    case documentScannerVoiceRequestReadBarCodes
+    case colorDetectorVoiceRequestReadColor
+    case lightDetectorVoiceRequestStartLightDetection
+    case lightDetectorVoiceRequestStopLightDetection
+    case chatVoiceRequestSendMessage
+    case chatVoiceRequestDescribePhoto
+    case chatVoiceRequestReadConversation
+    case chatVoiceRequestSaveCurrentConversation
+    case chatVoiceRequestDeleteCurrentConversation
+    case chatVoiceRequestDeleteAllConversations
+    case settingsVoiceRequestChangeDefaultCameraModeToMainRecognizer
+    case settingsVoiceRequestChangeDefaultCameraModeToDocumentScanner
+    case settingsVoiceRequestChangeDefaultCameraModeToColorDetector
+    case settingsVoiceRequestChangeDefaultCameraModeToLightDetector
+    case settingsVoiceRequestChangeDefaultDistanceMeasureUnitToCentimeters
+    case settingsVoiceRequestChangeDefaultDistanceMeasureUnitToMeters
+    case settingsVoiceRequestChangeFlashlightTriggerModeToAutomatic
+    case settingsVoiceRequestChangeFlashlightTriggerModeToManualWithHighTolerance
+    case settingsVoiceRequestChangeFlashlightTriggerModeToManualWithMediumTolerance
+    case settingsVoiceRequestChangeFlashlightTriggerModeToManualWithLowTolerance
+    case settingsVoiceRequestChangeSpeechSpeedToFastest
+    case settingsVoiceRequestChangeSpeechSpeedToFaster
+    case settingsVoiceRequestChangeSpeechSpeedToNormal
+    case settingsVoiceRequestChangeSpeechSpeedToSlower
+    case settingsVoiceRequestChangeSpeechSpeedToSlowest
+    case settingsVoiceRequestChangeSpeechVoiceTypeToFemale
+    case settingsVoiceRequestChangeSpeechVoiceTypeToMale
+    case settingsVoiceRequestChangeSpeechLanguageToEnglish
+    case settingsVoiceRequestChangeSpeechLanguageToPolish
+    case settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish
+    case settingsVoiceRequestChangeVoiceRecordingLanguageToPolish
+    case settingsVoiceRequestDeleteAllConversations
+    case settingsVoiceRequestRestoreDefaultSettings
+    case onboardingVoiceRequestSkipOnboarding
+    case onboardingVoiceRequestReadSection
+    case onboardingVoiceRequestPreviousSection
+    case onboardingVoiceRequestNextSection
+    case otherVoiceRequestChangeTabToCamera
+    case otherVoiceRequestRecognizeObjects
+    case otherVoiceRequestScanDocument
+    case otherVoiceRequestDetectColor
+    case otherVoiceRequestDetectLight
+    case otherVoiceRequestChangeTabToChat
+    case otherVoiceRequestSendNewMessage
+    case otherVoiceRequestChangeTabToSettings
+    case otherVoiceRequestRemindVoiceCommands
+    case otherVoiceRequestRemindGestures
+    case otherVoiceRequestDisplayOnboarding
+
 }

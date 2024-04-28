@@ -252,9 +252,58 @@ Swipe left to go to previous sections of the guide.
 "otherSpeechFeedbackVoiceCommandWasNotRecognized" = "Voice command was not recognized";
 "otherSpeechFeedbackWhatYouWantMeToDo" = "What you want me to do";
 
-
 // MARK: - Voice Request
 
+"mainRecognizerVoiceRequestReadObjects" = "Read objects";
+"documentScannerVoiceRequestReadText" = "Read text";
+"documentScannerVoiceRequestReadBarCodes" = "Read bar codes";
+"colorDetectorVoiceRequestReadColor" = "Read color";
+"lightDetectorVoiceRequestStartLightDetection" = "Start light detection";
+"lightDetectorVoiceRequestStopLightDetection" = "Stop light detection";
+"chatVoiceRequestSendMessage" = "Send message";
+"chatVoiceRequestDescribePhoto" = "Describe photo";
+"chatVoiceRequestReadConversation" = "Read conversation";
+"chatVoiceRequestSaveCurrentConversation" = "Save current conversation";
+"chatVoiceRequestDeleteCurrentConversation" = "Delete current conversation";
+"chatVoiceRequestDeleteAllConversations" = "Delete all conversations";
+"settingsVoiceRequestChangeDefaultCameraModeToMainRecognizer" = "Change default camera mode to main recognizer";
+"settingsVoiceRequestChangeDefaultCameraModeToDocumentScanner" = "Change default camera mode to document scanner";
+"settingsVoiceRequestChangeDefaultCameraModeToColorDetector" = "Change default camera mode to color detector";
+"settingsVoiceRequestChangeDefaultCameraModeToLightDetector" = "Change default camera mode to light detector";
+"settingsVoiceRequestChangeDefaultDistanceMeasureUnitToCentimeters" = "Change default measure unit to centimeters";
+"settingsVoiceRequestChangeDefaultDistanceMeasureUnitToMeters" = "Change default measure unit to meters";
+"settingsVoiceRequestChangeFlashlightTriggerModeToAutomatic" = "Change flashlight trigger mode to automatic";
+"settingsVoiceRequestChangeFlashlightTriggerModeToManualWithHighTolerance" = "Change flashlight trigger mode to manual with high tolerance";
+"settingsVoiceRequestChangeFlashlightTriggerModeToManualWithMediumTolerance" = "Change flashlight trigger mode to manual with medium tolerance";
+"settingsVoiceRequestChangeFlashlightTriggerModeToManualWithLowTolerance" = "Change flashlight trigger mode to manual with low tolerance";
+"settingsVoiceRequestChangeSpeechSpeedToFastest" = "Change speech speed to fastest";
+"settingsVoiceRequestChangeSpeechSpeedToFaster" = "Change speech speed to faster";
+"settingsVoiceRequestChangeSpeechSpeedToNormal" = "Change speech speed to normal";
+"settingsVoiceRequestChangeSpeechSpeedToSlower" = "Change speech speed to slower";
+"settingsVoiceRequestChangeSpeechSpeedToSlowest" = "Change speech speed to slowest";
+"settingsVoiceRequestChangeSpeechVoiceTypeToFemale" = "Change speech voice type to female";
+"settingsVoiceRequestChangeSpeechVoiceTypeToMale" = "Change speech voice type to male";
+"settingsVoiceRequestChangeSpeechLanguageToEnglish" = "Change speech language to english";
+"settingsVoiceRequestChangeSpeechLanguageToPolish" = "Change speech language to polish";
+"settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish" = "Change voice recording language to english";
+"settingsVoiceRequestChangeVoiceRecordingLanguageToPolish" = "Change voice recording language to polish";
+"settingsVoiceRequestDeleteAllConversations" = "Delete all conversations";
+"settingsVoiceRequestRestoreDefaultSettings" = "Restore default settings";
+"onboardingVoiceRequestSkipOnboarding" = "Skip onboarding";
+"onboardingVoiceRequestReadSection" = "Read section";
+"onboardingVoiceRequestPreviousSection" = "Previous section";
+"onboardingVoiceRequestNextSection" = "Next section";
+"otherVoiceRequestChangeTabToCamera" = "Change tab to camera";
+"otherVoiceRequestRecognizeObjects" = "Recognize objects";
+"otherVoiceRequestScanDocument" = "Scan document";
+"otherVoiceRequestDetectColor" = "Detect color";
+"otherVoiceRequestDetectLight" = "Detect light";
+"otherVoiceRequestChangeTabToChat" = "Change tab to chat";
+"otherVoiceRequestSendNewMessage" = "Send new message";
+"otherVoiceRequestChangeTabToSettings" = "Change tab to settings";
+"otherVoiceRequestRemindVoiceCommands" = "Remind voice commands";
+"otherVoiceRequestRemindGestures" = "Remind gestures";
+"otherVoiceRequestDisplayOnboarding" = "Display onboarding";
 
 
 // MARK: - ML Model Label

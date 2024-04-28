@@ -1,6 +1,17 @@
-enum DocumentScannerVoiceRequest: String {
-    case readText = "Read text"
-    case readBarCodes = "Read bar codes"
+enum DocumentScannerVoiceRequest {
+    case readText
+    case readBarCodes
+}
+
+extension DocumentScannerVoiceRequest {
+    var rawValue: String {
+        switch self {
+        case .readText:
+            return VoiceRequestText.documentScannerVoiceRequestReadText.rawValue.localized()
+        case .readBarCodes:
+            return VoiceRequestText.documentScannerVoiceRequestReadBarCodes.rawValue.localized()
+        }
+    }
 }
 
 extension DocumentScannerVoiceRequest {

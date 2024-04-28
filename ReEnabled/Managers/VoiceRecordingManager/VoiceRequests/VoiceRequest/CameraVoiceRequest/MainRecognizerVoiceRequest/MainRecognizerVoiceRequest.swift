@@ -1,5 +1,14 @@
-enum MainRecognizerVoiceRequest: String {
-    case readObjects = "Read objects"
+enum MainRecognizerVoiceRequest {
+    case readObjects
+}
+
+extension MainRecognizerVoiceRequest {
+    var rawValue: String {
+        switch self {
+        case .readObjects:
+            VoiceRequestText.mainRecognizerVoiceRequestReadObjects.rawValue.localized()
+        }
+    }
 }
 
 extension MainRecognizerVoiceRequest {

@@ -250,12 +250,60 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "otherSpeechFeedbackYouCanUseFollowingVoiceCommands" = "Możesz używać następujących poleceń głosowych";
 "otherSpeechFeedbackYouCanUseFollowingGestures" = "Możesz używać następujących gestów";
 "otherSpeechFeedbackVoiceCommandWasNotRecognized" = "Polecenie głosowe nie zostało rozpoznane";
-"otherSpeechFeedbackWhatYouWantMeToDo" = "Co chcesz, żebym zrobił?";
-
+"otherSpeechFeedbackWhatYouWantMeToDo" = "Co należy zrobić?";
 
 // MARK: - Voice Request
 
-
+"mainRecognizerVoiceRequestReadObjects" = "Przeczytaj obiekty";
+"documentScannerVoiceRequestReadText" = "Przeczytaj tekst";
+"documentScannerVoiceRequestReadBarCodes" = "Przeczytaj kody kreskowe";
+"colorDetectorVoiceRequestReadColor" = "Przeczytaj kolor";
+"lightDetectorVoiceRequestStartLightDetection" = "Rozpocznij wykrywanie światła";
+"lightDetectorVoiceRequestStopLightDetection" = "Zatrzymaj wykrywanie światła";
+"chatVoiceRequestSendMessage" = "Wyślij wiadomość";
+"chatVoiceRequestDescribePhoto" = "Opisz zdjęcie";
+"chatVoiceRequestReadConversation" = "Przeczytaj rozmowę";
+"chatVoiceRequestSaveCurrentConversation" = "Zapisz bieżącą rozmowę";
+"chatVoiceRequestDeleteCurrentConversation" = "Usuń bieżącą rozmowę";
+"chatVoiceRequestDeleteAllConversations" = "Usuń wszystkie rozmowy";
+"settingsVoiceRequestChangeDefaultCameraModeToMainRecognizer" = "Zmień domyślny tryb kamery na główny rozpoznawacz";
+"settingsVoiceRequestChangeDefaultCameraModeToDocumentScanner" = "Zmień domyślny tryb kamery na skaner dokumentów";
+"settingsVoiceRequestChangeDefaultCameraModeToColorDetector" = "Zmień domyślny tryb kamery na detektor kolorów";
+"settingsVoiceRequestChangeDefaultCameraModeToLightDetector" = "Zmień domyślny tryb kamery na detektor światła";
+"settingsVoiceRequestChangeDefaultDistanceMeasureUnitToCentimeters" = "Zmień domyślną jednostkę miary na centymetry";
+"settingsVoiceRequestChangeDefaultDistanceMeasureUnitToMeters" = "Zmień domyślną jednostkę miary na metry";
+"settingsVoiceRequestChangeFlashlightTriggerModeToAutomatic" = "Zmień tryb wyzwalania latarki na automatyczny";
+"settingsVoiceRequestChangeFlashlightTriggerModeToManualWithHighTolerance" = "Zmień tryb wyzwalania latarki na ręczny z dużym tolerancją";
+"settingsVoiceRequestChangeFlashlightTriggerModeToManualWithMediumTolerance" = "Zmień tryb wyzwalania latarki na ręczny z średnią tolerancją";
+"settingsVoiceRequestChangeFlashlightTriggerModeToManualWithLowTolerance" = "Zmień tryb wyzwalania latarki na ręczny z niską tolerancją";
+"settingsVoiceRequestChangeSpeechSpeedToFastest" = "Zmień prędkość mowy na najszybszą";
+"settingsVoiceRequestChangeSpeechSpeedToFaster" = "Zmień prędkość mowy na szybszą";
+"settingsVoiceRequestChangeSpeechSpeedToNormal" = "Zmień prędkość mowy na normalną";
+"settingsVoiceRequestChangeSpeechSpeedToSlower" = "Zmień prędkość mowy na wolniejszą";
+"settingsVoiceRequestChangeSpeechSpeedToSlowest" = "Zmień prędkość mowy na najwolniejszą";
+"settingsVoiceRequestChangeSpeechVoiceTypeToFemale" = "Zmień typ głosu mowy na żeński";
+"settingsVoiceRequestChangeSpeechVoiceTypeToMale" = "Zmień typ głosu mowy na męski";
+"settingsVoiceRequestChangeSpeechLanguageToEnglish" = "Zmień język mowy na angielski";
+"settingsVoiceRequestChangeSpeechLanguageToPolish" = "Zmień język mowy na polski";
+"settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish" = "Zmień język nagrywania głosu na angielski";
+"settingsVoiceRequestChangeVoiceRecordingLanguageToPolish" = "Zmień język nagrywania głosu na polski";
+"settingsVoiceRequestDeleteAllConversations" = "Usuń wszystkie rozmowy";
+"settingsVoiceRequestRestoreDefaultSettings" = "Przywróć domyślne ustawienia";
+"onboardingVoiceRequestSkipOnboarding" = "Pomiń wprowadzenie";
+"onboardingVoiceRequestReadSection" = "Przeczytaj sekcję";
+"onboardingVoiceRequestPreviousSection" = "Poprzednia sekcja";
+"onboardingVoiceRequestNextSection" = "Następna sekcja";
+"otherVoiceRequestChangeTabToCamera" = "Zmień kartę na aparat";
+"otherVoiceRequestRecognizeObjects" = "Rozpoznaj obiekty";
+"otherVoiceRequestScanDocument" = "Skanuj dokument";
+"otherVoiceRequestDetectColor" = "Wykryj kolor";
+"otherVoiceRequestDetectLight" = "Wykryj światło";
+"otherVoiceRequestChangeTabToChat" = "Zmień kartę na czat";
+"otherVoiceRequestSendNewMessage" = "Wyślij nową wiadomość";
+"otherVoiceRequestChangeTabToSettings" = "Zmień kartę na ustawienia";
+"otherVoiceRequestRemindVoiceCommands" = "Przypomnij polecenia głosowe";
+"otherVoiceRequestRemindGestures" = "Przypomnij gesty";
+"otherVoiceRequestDisplayOnboarding" = "Wyświetl wprowadzenie";
 
 // MARK: - ML Model Label
 
