@@ -57,14 +57,6 @@ extension SettingsVoiceRequest {
             return VoiceRequestText.settingsVoiceRequestChangeSpeechVoiceTypeToFemale.rawValue.localized()
         case .changeSpeechVoiceTypeToMale:
             return VoiceRequestText.settingsVoiceRequestChangeSpeechVoiceTypeToMale.rawValue.localized()
-        case .changeSpeechLanguageToEnglish:
-            return VoiceRequestText.settingsVoiceRequestChangeSpeechLanguageToEnglish.rawValue.localized()
-        case .changeSpeechLanguageToPolish:
-            return VoiceRequestText.settingsVoiceRequestChangeSpeechLanguageToPolish.rawValue.localized()
-        case .changeVoiceRecordingLanguageToEnglish:
-            return VoiceRequestText.settingsVoiceRequestChangeVoiceRecordingLanguageToEnglish.rawValue.localized()
-        case .changeVoiceRecordingLanguageToPolish:
-            return VoiceRequestText.settingsVoiceRequestChangeVoiceRecordingLanguageToPolish.rawValue.localized()
         case .deleteAllConversations:
             return VoiceRequestText.settingsVoiceRequestDeleteAllConversations.rawValue.localized()
         case .restoreDefaultSettings:
@@ -90,10 +82,6 @@ extension SettingsVoiceRequest {
         .settings(.changeSpeechSpeedToNormal),
         .settings(.changeSpeechSpeedToSlower),
         .settings(.changeSpeechSpeedToSlowest),
-        .settings(.changeSpeechLanguageToEnglish),
-        .settings(.changeSpeechLanguageToPolish),
-        .settings(.changeVoiceRecordingLanguageToEnglish),
-        .settings(.changeVoiceRecordingLanguageToPolish),
         .settings(.deleteAllConversations),
         .settings(.restoreDefaultSettings)
     ]
