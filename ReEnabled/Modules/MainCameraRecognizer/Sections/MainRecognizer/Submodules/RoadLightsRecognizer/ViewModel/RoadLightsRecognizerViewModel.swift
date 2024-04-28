@@ -24,7 +24,7 @@ final class RoadLightsRecognizerViewModel: ObservableObject {
             feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.redLightHasBeenDetected)))
         case .green:
             feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.greenLightHasBeenDetected)))
-        case .none:
+        default:
             return
         }
     }

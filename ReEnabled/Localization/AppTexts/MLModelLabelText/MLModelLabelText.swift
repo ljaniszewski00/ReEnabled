@@ -79,4 +79,8 @@ enum MLModelLabelText: String {
     case objectMLModelTeddyBear
     case objectMLModelHairDrier
     case objectMLModelToothbrush
+    
+    case roadLightMLModelRed
+    case roadLightMLModelGreen
+    case roadLightMLModelYellow
 }

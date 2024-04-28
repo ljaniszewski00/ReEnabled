@@ -23,8 +23,6 @@ class RoadLightsModel {
     
     let model = Bundle.main.url(forResource: CameraMLModelFile.roadLightsRecognizer.fileName,
                                 withExtension: "mlmodelc")
-    
-    let labels = ["red", "green"]
 
     let anchors: [Float] = [1.08, 1.19, 3.42, 4.41, 6.63, 11.38, 9.42, 5.11, 16.62, 10.52]
     

@@ -36,4 +36,7 @@ enum OtherText: String {
     
     case flashlightTriggerModeAutomatic
     case flashlightTriggerModeSpecificValue
+    
+    case distanceMeasureUnitCentimeters
+    case distanceMeasureUnitMeters
 }

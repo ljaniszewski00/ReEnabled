@@ -81,10 +81,14 @@ extension MainRecognizerViewController: RoadLightsRecognizing {
                 rect.size.width *= scaleX
                 rect.size.height *= scaleY
                 
-                // Show the bounding box.
-                let label = String(format: "%@ %.1f", roadLightsModel.labels[prediction.classIndex], prediction.score * 100)
-                let color = roadLightsBoundingBoxesColors[prediction.classIndex]
-                roadLightsBoundingBoxes[i].show(frame: rect, label: label, color: color)
+                if RoadLightType.allCases.indices.contains(prediction.classIndex) {
+                    // Show the bounding box.
+                    let label = String(format: "%@ %.1f",
+                                       RoadLightType.allCases[prediction.classIndex].rawValue,
+                                       prediction.score * 100)
+                    let color = roadLightsBoundingBoxesColors[prediction.classIndex]
+                    roadLightsBoundingBoxes[i].show(frame: rect, label: label, color: color)
+                }
             } else {
                 roadLightsBoundingBoxes[i].hide()
             }

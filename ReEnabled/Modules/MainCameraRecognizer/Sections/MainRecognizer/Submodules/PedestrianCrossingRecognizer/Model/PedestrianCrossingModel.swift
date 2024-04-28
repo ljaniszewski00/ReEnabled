@@ -4,10 +4,9 @@ import UIKit
 import Vision
 
 class PedestrianCrossingModel {
-    let class_labels: [String] = ["red", "green", "yellow", "none"]
-    let class_colors: [UIColor] = [UIColor.red, UIColor.green, UIColor.yellow, UIColor.lightGray]
+    let classColors: [UIColor] = [UIColor.red, UIColor.green, UIColor.yellow, UIColor.lightGray]
     
-    var translate_matrix = simd_double3x3(
+    var translateMatrix = simd_double3x3(
         [
             simd_double3(x: -1.17079727*pow(10,-1),
                          y: -9.02276490*pow(10, -16),
@@ -21,7 +20,7 @@ class PedestrianCrossingModel {
         ]
     )
 
-    var prob_store: [[Double]] = [
+    var probStore: [[Double]] = [
         [0,0,0,0],
         [0,0,0,0],
         [0,0,0,0],
@@ -61,13 +60,13 @@ class PedestrianCrossingModel {
             direction![3].doubleValue
         ]
         
-        let point1_ = self.translate_matrix*simd_double3(
+        let point1_ = self.translateMatrix*simd_double3(
             x:self.direcStoreAvg[0]*4032,
             y:self.direcStoreAvg[1]*3024,
             z:1
         )
         
-        let point2_ = self.translate_matrix*simd_double3(
+        let point2_ = self.translateMatrix*simd_double3(
             x:self.direcStoreAvg[2]*4032,
             y:self.direcStoreAvg[3]*3024,
             z:1
@@ -96,7 +95,7 @@ class PedestrianCrossingModel {
             point2__[1]/3024
         ]
 
-        self.prob_store[self.counter%5] = classesSimplified
+        self.probStore[self.counter%5] = classesSimplified
         self.direcStore[self.counter%5] = coords
 
         var personPositionActionType: PersonPositionActionType = .goodPosition
@@ -125,8 +124,12 @@ class PedestrianCrossingModel {
             }
         }
         
-        let outputClass = self.class_labels[index]
-        let color = self.class_colors[index]
+        guard RoadLightType.allCases.indices.contains(index) else {
+            return
+        }
+        
+        let outputClass = RoadLightType.allCases[index].rawValue
+        let color = self.classColors[index]
         
         if self.counter%5==4{
             self.probStoreAvg = [0,0,0,0]
@@ -134,7 +137,7 @@ class PedestrianCrossingModel {
             
             for i in 0...4{
                 for j in 0...3{
-                    self.probStoreAvg[j] += self.prob_store[i][j]
+                    self.probStoreAvg[j] += self.probStore[i][j]
                 }
             }
             
@@ -154,8 +157,8 @@ class PedestrianCrossingModel {
             }
         }
         
-        var outputClassAvg = self.class_labels[indexAvg]
-        var colorAvg = self.class_colors[indexAvg]
+        var outputClassAvg = RoadLightType.allCases[indexAvg].rawValue
+        var colorAvg = self.classColors[indexAvg]
         
         if self.probStoreAvg[indexAvg] < 0.8{
             outputClassAvg = "No Decision"
