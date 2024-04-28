@@ -10,6 +10,9 @@ enum SettingsSpeechFeedback {
     case subscriptionPlanHasBeenChangedTo
     case allConversationsDeleted
     case restoredDefaultSettings
+    case doubleTapToDisplayOnboarding
+    case doubleTapToDeleteConversations
+    case doubleTapToRestoreDefaultSettings
 }
 
 extension SettingsSpeechFeedback {
@@ -37,6 +40,12 @@ extension SettingsSpeechFeedback {
             return SpeechFeedbackText.settingsSpeechFeedbackAllConversationsDeleted.rawValue.localized()
         case .restoredDefaultSettings:
             return SpeechFeedbackText.settingsSpeechFeedbackRestoredDefaultSettings.rawValue.localized()
+        case .doubleTapToDisplayOnboarding:
+            return SpeechFeedbackText.settingsSpeechFeedbackDoubleTapToDisplayOnboarding.rawValue.localized()
+        case .doubleTapToDeleteConversations:
+            return SpeechFeedbackText.settingsSpeechFeedbackDoubleTapToDeleteConversations.rawValue.localized()
+        case .doubleTapToRestoreDefaultSettings:
+            return SpeechFeedbackText.settingsSpeechFeedbackDoubleTapToRestoreDefaultSettings.rawValue.localized()
         }
     }
 }

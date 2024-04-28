@@ -132,7 +132,7 @@ private extension Views {
     struct Constants {
         static let mainVStackSpacing: CGFloat = 0
         static let sectionsVStackSpacing: CGFloat = 10
-        static let navigationTitle: String = "Settings"
+        static let navigationTitle: String = SettingsTabText.navigationTitle.rawValue.localized()
         static let mainVStackBottomPadding: CGFloat = 100
         
         static let otherSettingsSectionVStackSpacing: CGFloat = 15
@@ -154,9 +154,9 @@ private extension Views {
         static let settingsSectionDetailsTileIsSelectedImageName: String = "checkmark"
         static let settingsSectionDetailsTileIsSelectedImageSize: CGFloat = 15
         
-        static let displayOnboardingButtonText: String = "Display Onboarding"
-        static let deleteConversationsButtonText: String = "Delete All Conversations"
-        static let restoreDefaultSettingsButtonText: String = "Restore Default Settings"
+        static let displayOnboardingButtonText: String = SettingsTabText.displayOnboarding.rawValue.localized()
+        static let deleteConversationsButtonText: String = SettingsTabText.deleteAllConversations.rawValue.localized()
+        static let restoreDefaultSettingsButtonText: String = SettingsTabText.restoreDefaultSettings.rawValue.localized()
     }
     
     static var navigationBar: some View {
@@ -283,7 +283,7 @@ private extension Views {
             
             if let currentSettings = settingsViewModel.currentSettings {
                 Views.SettingsSectionDetails {
-                    let tileDescription: String = "Let device manage flashlight for itself"
+                    let tileDescription: String = SettingsTabText.letDeviceManageFlashlightForItself.rawValue.localized()
                     VStack(spacing: Views.Constants.sectionInnerVStackSpacing) {
                         SettingsSectionDetailsTile(value: FlashlightTriggerMode.automatic.rawValue,
                                                    description: tileDescription,
@@ -691,8 +691,7 @@ private extension Views {
                 if feedbackManager.speechFeedbackIsBeingGenerated {
                     feedbackManager.stopSpeechFeedback()
                 } else {
-                    let speechText: String = "Double tap to display onboarding"
-                    feedbackManager.generateSpeechFeedback(with: speechText)
+                    feedbackManager.generateSpeechFeedback(with: .settings(.doubleTapToDisplayOnboarding))
                 }
             }, onDoubleTap: {
                 settingsViewModel.displayOnboarding()
@@ -723,8 +722,7 @@ private extension Views {
                 if feedbackManager.speechFeedbackIsBeingGenerated {
                     feedbackManager.stopSpeechFeedback()
                 } else {
-                    let speechText: String = "Double tap to delete conversations"
-                    feedbackManager.generateSpeechFeedback(with: speechText)
+                    feedbackManager.generateSpeechFeedback(with: .settings(.doubleTapToDeleteConversations))
                 }
             }, onDoubleTap: {
                 settingsViewModel.deleteAllConversations()
@@ -760,8 +758,7 @@ private extension Views {
                 if feedbackManager.speechFeedbackIsBeingGenerated {
                     feedbackManager.stopSpeechFeedback()
                 } else {
-                    let speechText: String = "Double tap to restore default settings"
-                    feedbackManager.generateSpeechFeedback(with: speechText)
+                    feedbackManager.generateSpeechFeedback(with: .settings(.doubleTapToRestoreDefaultSettings))
                 }
             }, onDoubleTap: {
                 settingsViewModel.restoreDefaultSettings()

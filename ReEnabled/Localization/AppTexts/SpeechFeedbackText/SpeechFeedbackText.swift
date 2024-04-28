@@ -43,6 +43,9 @@ enum SpeechFeedbackText: String {
     case settingsSpeechFeedbackSubscriptionPlanHasBeenChangedTo
     case settingsSpeechFeedbackAllConversationsDeleted
     case settingsSpeechFeedbackRestoredDefaultSettings
+    case settingsSpeechFeedbackDoubleTapToDisplayOnboarding
+    case settingsSpeechFeedbackDoubleTapToDeleteConversations
+    case settingsSpeechFeedbackDoubleTapToRestoreDefaultSettings
     case onboardingSpeechFeedbackOnboardingHasBeenCompleted
     case onboardingSpeechFeedbackSwipeRightToProceed
     case otherSpeechFeedbackCurrentTab

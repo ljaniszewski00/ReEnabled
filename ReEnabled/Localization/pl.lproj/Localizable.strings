@@ -22,7 +22,11 @@
 
 // MARK: - Settings Tab
 
-
+"navigationTitle" = "Ustawienia"
+"displayOnboarding" = "Wyświetl wprowadzenie"
+"deleteAllConversations" = "Usuń wszystkie rozmowy"
+"restoreDefaultSettings" = "Przywróć domyślne ustawienia"
+"letDeviceManageFlashlightForItself" = "Pozwól urządzeniu automatycznie decydować o trybie latarki"
 
 // MARK: - Onboarding
 
@@ -239,6 +243,9 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "settingsSpeechFeedbackSubscriptionPlanHasBeenChangedTo" = "Plan subskrypcji został zmieniony na";
 "settingsSpeechFeedbackAllConversationsDeleted" = "Wszystkie rozmowy zostały usunięte";
 "settingsSpeechFeedbackRestoredDefaultSettings" = "Ustawienia zostały przywrócone do domyślnych";
+"settingsSpeechFeedbackDoubleTapToDisplayOnboarding" = "Naciśnij dwa razy aby wyświetlić samouczek";
+"settingsSpeechFeedbackDoubleTapToDeleteConversations" = "Naciśnij dwa razy aby usunąć wszystkie rozmowy"
+"settingsSpeechFeedbackDoubleTapToRestoreDefaultSettings" = "Naciśnij dwa razy aby przywrócić ustawienia fabryczne"
 
 "onboardingSpeechFeedbackOnboardingHasBeenCompleted" = "Onboarding został ukończony";
 "onboardingSpeechFeedbackSwipeRightToProceed" = "Przesuń w prawo, aby kontynuować";
@@ -305,3 +312,12 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 
 // MARK: - Other
 
+"cameraModeMainRecognizer" = "Główny";
+"cameraModeDocumentScanner" = "Skaner Dokumentów";
+"cameraModeColorDetector" = "Wykrywacz koloru";
+"cameraModeLightDetector" = "Wykrywacz światła";
+
+"supportedLanguageEnglish" = "Angielski";
+"supportedLanguagePolish" = "Polski";
+"supportedLanguageHiMyNameIs" = "Cześć! Mam na imię";
+"supportedLanguageWhatCanIDoForYou" = "Co mogę dla ciebie zrobić?";

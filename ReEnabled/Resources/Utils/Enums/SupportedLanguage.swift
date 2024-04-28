@@ -1,17 +1,36 @@
 import RealmSwift
 
-enum SupportedLanguage: String, PersistableEnum {
-    case english = "English"
-    case polish = "Polish"
+enum SupportedLanguage: PersistableEnum {
+    case english
+    case polish
+    
+    typealias RawValue = String
+    
+    init?(rawValue: String) {
+        switch rawValue {
+        case OtherText.supportedLanguageEnglish.rawValue.localized() : self = .english
+        case OtherText.supportedLanguagePolish.rawValue.localized() : self = .polish
+        default: return nil
+        }
+    }
 }
 
 extension SupportedLanguage {
+    var rawValue: String {
+        switch self {
+        case .english:
+            OtherText.supportedLanguageEnglish.rawValue.localized()
+        case .polish:
+            OtherText.supportedLanguagePolish.rawValue.localized()
+        }
+    }
+    
     var fullName: String {
         switch self {
         case .english:
-            "English"
+            OtherText.supportedLanguageEnglish.rawValue.localized()
         case .polish:
-            "Polish"
+            OtherText.supportedLanguagePolish.rawValue.localized()
         }
     }
     
@@ -45,20 +64,11 @@ extension SupportedLanguage {
     func getSpeechVoiceSampleText(voiceName: String?) -> String {
         var sampleText: String = ""
         
-        switch self {
-        case .english:
-            if let voiceName = voiceName {
-                sampleText = "Hi! My name is \(voiceName)."
-            }
-            
-            sampleText += " What can I do for you?"
-        case .polish:
-            if let voiceName = voiceName {
-                sampleText = "Cześć! Mam na imię \(voiceName)."
-            }
-            
-            sampleText += " Co mogę dla Ciebie zrobić?"
+        if let voiceName = voiceName {
+            sampleText = "\(OtherText.supportedLanguageHiMyNameIs.rawValue.localized()) \(voiceName)."
         }
+        
+        sampleText += " \(OtherText.supportedLanguageWhatCanIDoForYou.rawValue.localized())"
         
         return sampleText
     }
