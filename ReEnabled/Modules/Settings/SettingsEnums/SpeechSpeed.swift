@@ -1,22 +1,27 @@
-enum SpeechSpeed: String {
-    case fastest = "Fastest"
-    case faster = "Faster"
-    case normal = "Normal"
-    case slower = "Slower"
-    case slowest = "Slowest"
-}
-
-extension SpeechSpeed: CaseIterable {
-    static let allCases: [Self] = [
-        .fastest,
-        .faster,
-        .normal,
-        .slower,
-        .slowest
-    ]
+enum SpeechSpeed {
+    case fastest
+    case faster
+    case normal
+    case slower
+    case slowest
 }
 
 extension SpeechSpeed {
+    var rawValue: String {
+        switch self {
+        case .fastest:
+            OtherText.speechSpeedFastest.rawValue.localized()
+        case .faster:
+            OtherText.speechSpeedFaster.rawValue.localized()
+        case .normal:
+            OtherText.speechSpeedNormal.rawValue.localized()
+        case .slower:
+            OtherText.speechSpeedSlower.rawValue.localized()
+        case .slowest:
+            OtherText.speechSpeedSlowest.rawValue.localized()
+        }
+    }
+    
     var speed: Float {
         switch self {
         case .fastest:
@@ -31,4 +36,14 @@ extension SpeechSpeed {
             0.3
         }
     }
+}
+
+extension SpeechSpeed: CaseIterable {
+    static let allCases: [Self] = [
+        .fastest,
+        .faster,
+        .normal,
+        .slower,
+        .slowest
+    ]
 }

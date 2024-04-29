@@ -18,7 +18,17 @@
 
 // MARK: - Chat Tab
 
+"chatYou" = "Ty";
+"chatDevice" = "Urządzenie";
 
+"chatConversationIsEmpty" = "Wygląda na to, że ta rozmowa jest pusta";
+"chatDoubleTapQuickAction" = "Stuknij podwójnie w ekran by nagrać nową wiadomość";
+"chatLongPressAndSwipeUpQuickAction" = "Przytrzymaj palec na jednym punkcie ekranu, przesuń w górę i puść, aby przesłać zdjęcie i uzyskać jego opis";
+"chatLongPress" = "Przytrzymaj palec na jednym punkcie ekranu i puść, następnie wydaj polecenie głosowe";
+"chatToBeSend" = "Do wysłania";
+"chatNavigationTitle" = "Chat";
+
+"defaultMessageContentForImageChat" = "Opisz zdjęcie.";
 
 // MARK: - Settings Tab
 
@@ -308,6 +318,41 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "otherVoiceRequestRemindGestures" = "Przypomnij gesty";
 "otherVoiceRequestDisplayOnboarding" = "Wyświetl wprowadzenie";
 
+// MARK: - Gesture Action
+
+"mainRecognizerGestureActionReadRecognizedObjectsDescription" = "Przeczytaj wykryte obiekty";
+"mainRecognizerGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
+"mainRecognizerGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamery na następny";
+"mainRecognizerGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamery na poprzedni";
+"documentScannerGestureActionReadDetectedTextsDescription" = "Przeczytaj wykryte teksty";
+"documentScannerGestureActionReadDetectedBarCodesValuesDescription" = "Przeczytaj wartości wykrytych kodów kreskowych";
+"documentScannerGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
+"documentScannerGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamera na następny";
+"documentScannerGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamera na poprzedni";
+"colorDetectorGestureActionReadDetectedColorDescription" = "Przeczytaj wykryty kolor";
+"colorDetectorGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
+"colorDetectorGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamery na następny";
+"colorDetectorGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamery na poprzedni";
+"lightDetectorGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
+"lightDetectorGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamery na następny";
+"lightDetectorGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamery na poprzedni";
+
+"chatGestureActionTriggerConversationReadingDescription" = "Aktywuj czytanie rozmowy";
+"chatGestureActionTriggerVoiceMessageRegisteringForChatDescription" = "Aktywuj nagrywanie wiadomości głosowych w czacie";
+"chatGestureActionChangeConversationToNextDescription" = "Przejdź do następnej rozmowy";
+"chatGestureActionChangeConversationToPreviousDescription" = "Przejdź do poprzedniej rozmowy";
+"chatGestureActionDeleteCurrentConversationDescription" = "Usuń aktualną rozmowę";
+"chatGestureActionSelectPhotoDescription" = "Wybierz zdjęcie";
+"settingsGestureActionReadSettingNameDescription" = "Przeczytaj nazwę ustawienia";
+"settingsGestureActionChangeSpecificSettingDescription" = "Zmień konkretne ustawienie";
+"settingsGestureActionReadSettingDescriptionDescription" = "Przeczytaj opis ustawienia";
+"onboardingGestureActionReadOnboardingSectionDescription" = "Przeczytaj sekcję wprowadzenia";
+"onboardingGestureActionChangeToPreviousOnboardingSectionDescription" = "Przejdź do poprzedniej sekcji wprowadzenia";
+"onboardingGestureActionChangeToNextOnboardingSectionDescription" = "Przejdź do następnej sekcji wprowadzenia";
+"otherGestureActionTriggerVoiceRequestRegisteringDescription" = "Aktywuj rejestrację żądania głosowego";
+"otherGestureActionChangeToPreviousTabDescription" = "Przejdź do poprzedniej karty";
+"otherGestureActionChangeToNextTabDescription" = "Przejdź do następnej karty";
+
 // MARK: - ML Model Label
 
 "objectMLModelPerson" = "osoba";
@@ -447,3 +492,44 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 
 "distanceMeasureUnitCentimeters" = "Centymetry";
 "distanceMeasureUnitMeters" = "Metry";
+
+"manualFlashlightTriggerValueHighestTolerance" = "Największa Tolerancja";
+"manualFlashlightTriggerValueMediumTolerance" = "Średnia Tolerancja";
+"manualFlashlightTriggerValueLowestTolerance" = "Najniższa Tolerancja";
+"manualFlashlightTriggerValueHighestToleranceDescription" = "Największa tolerancja wobec ciemności";
+"manualFlashlightTriggerValueLowestToleranceDescription" = "Najmniejsza tolerancja wobec ciemności";
+
+"speechSpeedFastest" = "Najszybsza";
+"speechSpeedFaster" = "Szybka";
+"speechSpeedNormal" = "Normalna";
+"speechSpeedSlower" = "Wolna";
+"speechSpeedSlowest" = "Najwolniejsza";
+
+"gestureTypeSingleTapName" = "Pojedyncze stuknięcie";
+"gestureTypeDoubleTapName" = "Podwójne stuknięcie";
+"gestureTypeTrippleTapName" = "Potrójne stuknięcie";
+"gestureTypeLongPressName" = "Przytrzymanie";
+"gestureTypeSwipeRightName" = "Przesunięcie w prawo";
+"gestureTypeSwipeLeftName" = "Przesunięcie w lewo";
+"gestureTypeSwipeDownName" = "Przesunięcie w dół";
+"gestureTypeSwipeUpName" = "Przesunięcie w górę";
+"gestureTypeLongPressAndSwipeRightName" = "Przytrzymanie i przesunięcie w prawo";
+"gestureTypeLongPressAndSwipeLeftName" = "Przytrzymanie i przesunięcie w lewo";
+"gestureTypeLongPressAndSwipeDownName" = "Przytrzymanie i przesunięcie w dół";
+"gestureTypeLongPressAndSwipeUpName" = "Przytrzymanie i przesunięcie w górę";
+"gestureTypeSingleTapInstruction" = "Stuknij raz w ekran";
+"gestureTypeDoubleTapInstruction" = "Stuknij dwa razy w ekran";
+"gestureTypeTrippleTapInstruction" = "Stuknij trzy razy w ekran";
+"gestureTypeLongPressInstruction" = "Przytrzymaj palec na ekranie, a następnie puść po chwili";
+"gestureTypeSwipeRightInstruction" = "Przesuń od lewej do prawej, a następnie puść";
+"gestureTypeSwipeLeftInstruction" = "Przesuń od prawej do lewej, a następnie puść";
+"gestureTypeSwipeDownInstruction" = "Przesuń od góry do dołu, a następnie puść";
+"gestureTypeSwipeUpInstruction" = "Przesuń od dołu do góry, a następnie puść";
+"gestureTypeLongPressAndSwipeRightInstruction" = "Przytrzymaj palec na ekranie, nie puszczaj, a następnie przesuń od lewej do prawej, dopiero potem puść";
+"gestureTypeLongPressAndSwipeLeftInstruction" = "Przytrzymaj palec na ekranie, nie puszczaj, a następnie przesuń od prawej do lewej, dopiero potem puść";
+"gestureTypeLongPressAndSwipeDownInstruction" = "Przytrzymaj palec na ekranie, nie puszczaj, a następnie przesuń od góry do dołu, dopiero potem puść";
+"gestureTypeLongPressAndSwipeUpInstruction" = "Przytrzymaj palec na ekranie, nie puszczaj, a następnie przesuń od dołu do góry, dopiero potem puść";
+
+"tabBarItemCamera" = "Kamera";
+"tabBarItemChat" = "Czat";
+"tabBarItemSettings" = "Ustawienia";

@@ -2,7 +2,7 @@ import SwiftUI
 
 final class PedestrianCrossingRecognizerViewModel: ObservableObject {
     @Published var pedestrianCrossingPrediction: PedestrianCrossingPrediction?
-    
+
     private let feedbackManager: FeedbackManager = .shared
     
     var recognizedLightColor: String? {

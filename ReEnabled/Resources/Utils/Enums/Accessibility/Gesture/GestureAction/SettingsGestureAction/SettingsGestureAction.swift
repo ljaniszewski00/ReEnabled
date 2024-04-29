@@ -7,12 +7,9 @@ enum SettingsGestureAction {
 extension SettingsGestureAction {
     var description: String {
         switch self {
-        case .readSettingName:
-            "Read setting name"
-        case .changeSpecificSetting:
-            "Change specific setting"
-        case .readSettingDescription:
-            "Read setting description"
+        case .readSettingName: GestureActionText.settingsGestureActionReadSettingNameDescription.rawValue.localized()
+        case .changeSpecificSetting: GestureActionText.settingsGestureActionChangeSpecificSettingDescription.rawValue.localized()
+        case .readSettingDescription: GestureActionText.settingsGestureActionReadSettingDescriptionDescription.rawValue.localized()
         }
     }
 }

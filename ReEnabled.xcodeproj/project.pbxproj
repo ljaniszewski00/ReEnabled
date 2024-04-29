@@ -236,6 +236,7 @@
 		16F9ED302BDD5F8500C5F997 /* Locale+PreferredLanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ED2F2BDD5F8500C5F997 /* Locale+PreferredLanguageCode.swift */; };
 		16F9ED322BDD603A00C5F997 /* GetAppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ED312BDD603A00C5F997 /* GetAppLanguage.swift */; };
 		16F9ED342BDEEE4700C5F997 /* ObjectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ED332BDEEE4700C5F997 /* ObjectLabel.swift */; };
+		16F9ED392BE003EE00C5F997 /* GestureActionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9ED382BE003EE00C5F997 /* GestureActionText.swift */; };
 		16FC1A7A2BA1043D00BB9B48 /* VoiceRecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */; };
 		16FC1A7D2BA10D6000BB9B48 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */; };
 		16FC1A962BA24CDC00BB9B48 /* MLMultiArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC1A952BA24CDC00BB9B48 /* MLMultiArray+Extension.swift */; };
@@ -483,6 +484,7 @@
 		16F9ED2F2BDD5F8500C5F997 /* Locale+PreferredLanguageCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+PreferredLanguageCode.swift"; sourceTree = "<group>"; };
 		16F9ED312BDD603A00C5F997 /* GetAppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppLanguage.swift; sourceTree = "<group>"; };
 		16F9ED332BDEEE4700C5F997 /* ObjectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectLabel.swift; sourceTree = "<group>"; };
+		16F9ED382BE003EE00C5F997 /* GestureActionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureActionText.swift; sourceTree = "<group>"; };
 		16FC1A782BA1007200BB9B48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16FC1A792BA1043D00BB9B48 /* VoiceRecordingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingManager.swift; sourceTree = "<group>"; };
 		16FC1A7C2BA10D6000BB9B48 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
@@ -1893,6 +1895,7 @@
 				16F9ED0C2BDD1CA600C5F997 /* OnboardingText */,
 				16F9ED092BDD1C7600C5F997 /* SpeechFeedbackText */,
 				16F9ED042BDD1C2F00C5F997 /* VoiceRequestText */,
+				16F9ED372BE003D200C5F997 /* GestureActionText */,
 				16F9ED032BDD1C2700C5F997 /* MLModelLabelText */,
 				16F9ED182BDD1D4500C5F997 /* OtherText */,
 				16F9ED012BDD1B8A00C5F997 /* AppText.swift */,
@@ -1998,6 +2001,14 @@
 				16F9ED242BDD1EF100C5F997 /* LightDetectorText.swift */,
 			);
 			path = LightDetectorText;
+			sourceTree = "<group>";
+		};
+		16F9ED372BE003D200C5F997 /* GestureActionText */ = {
+			isa = PBXGroup;
+			children = (
+				16F9ED382BE003EE00C5F997 /* GestureActionText.swift */,
+			);
+			path = GestureActionText;
 			sourceTree = "<group>";
 		};
 		16FC1A7B2BA1044B00BB9B48 /* VoiceRecordingManager */ = {
@@ -2297,6 +2308,7 @@
 				16D949EC2BAF569C00CCBA16 /* Collection+After+Before.swift in Sources */,
 				16F564872B96634000A831F2 /* DeviceOrientationActionType.swift in Sources */,
 				163EB0462BB320240012FC89 /* ContinuousHapticFeedbackSequence.swift in Sources */,
+				16F9ED392BE003EE00C5F997 /* GestureActionText.swift in Sources */,
 				16F9ECD22BD7150F00C5F997 /* OnboardingGesturesSection.swift in Sources */,
 				16E514102BB602160035B586 /* SettingsModel.swift in Sources */,
 				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,

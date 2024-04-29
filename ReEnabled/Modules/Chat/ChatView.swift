@@ -163,19 +163,19 @@ private extension Views {
     struct Constants {
         static let mainVStackSpacing: CGFloat = 0
         static let messageCellVStackSpacing: CGFloat = 8
-        static let messageCellSentByUserLabel: String = "You"
-        static let messageCellNotSentByUserLabel: String = "Device"
+        static let messageCellSentByUserLabel: String = ChatTabText.chatYou.rawValue.localized()
+        static let messageCellNotSentByUserLabel: String = ChatTabText.chatDevice.rawValue.localized()
         static let messageCellBottomPadding: CGFloat = 15
         
         static let emptyConversationPlaceholderVStackSpacing: CGFloat = 40
         static let emptyConversationPlaceholderImageName: String = "plus.message"
         static let emptyConversationPlaceholderImageSize: CGFloat = 200
         static let emptyConversationPlaceholderTextsVStackSpacing: CGFloat = 30
-        static let emptyConversationPlaceholderTextTitle: String = "Looks like this conversation is empty"
+        static let emptyConversationPlaceholderTextTitle: String = ChatTabText.chatConversationIsEmpty.rawValue.localized()
         static let emptyConversationPlaceholderSubbuttonsVStackSpacing: CGFloat = 12
-        static let emptyConversationPlaceholderTextDoubleTapAction: String = "Double tap the screen to record new message"
-        static let emptyConversationPlaceholderTextLongPressSwipeUpAction: String = "Long press on one point of the screen, swipe up and release to upload a photo"
-        static let emptyConversationPlaceholderTextLongPressAndSayAction: String = "Long press on one point of the screen and release, then say what you want to do"
+        static let emptyConversationPlaceholderTextDoubleTapAction: String = ChatTabText.chatDoubleTapQuickAction.rawValue.localized()
+        static let emptyConversationPlaceholderTextLongPressSwipeUpAction: String = ChatTabText.chatLongPressAndSwipeUpQuickAction.rawValue.localized()
+        static let emptyConversationPlaceholderTextLongPressAndSayAction: String = ChatTabText.chatLongPress.rawValue.localized()
         static let emptyConversationPlaceholderSubbuttonCornerRadius: CGFloat = 8
         static let emptyConversationPlaceholderTopPadding: CGFloat = 50
         
@@ -184,7 +184,7 @@ private extension Views {
         static let messageCellImageBottomPadding: CGFloat = 10
         
         static let toBeSendVStackSpacing: CGFloat = 10
-        static let toBeSendLabel: String = "To be send"
+        static let toBeSendLabel: String = ChatTabText.chatToBeSend.rawValue.localized()
         static let toBeSendImageWidth: CGFloat = 80
         static let toBeSendImageHeight: CGFloat = 60
         static let toBeSendRemoveButtonImageName: String = "x.circle"
@@ -195,7 +195,7 @@ private extension Views {
         static let messageListBottomPaddingMultiplier: CGFloat = 2.3
         static let scrollViewBottomPadding: CGFloat = 35
         
-        static let navigationTitle: String = "Chat"
+        static let navigationTitle: String = ChatTabText.chatNavigationTitle.rawValue.localized()
         static let toolbarButtonMessageDeleteImageName: String = "trash"
         static let toolbarButtonPhotoImageName: String = "photo"
     }

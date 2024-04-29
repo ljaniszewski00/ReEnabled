@@ -152,7 +152,7 @@ final class ChatViewModel: ObservableObject {
         generateImageResponse(for: transcript)
     }
     
-    func addNewMessageWithImageOnVoiceCommand(messageContent: String = "Describe the photo") {
+    func addNewMessageWithImageOnVoiceCommand(messageContent: String = ChatTabText.defaultMessageContentForImageChat.rawValue.localized()) {
         selectPhoto()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in

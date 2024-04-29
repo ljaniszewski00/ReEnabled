@@ -7,12 +7,9 @@ enum LightDetectorGestureAction {
 extension LightDetectorGestureAction {
     var description: String {
         switch self {
-        case .speakCameraModeName:
-            "Speak camera mode name"
-        case .changeToNextCameraMode:
-            "Change to next camera mode"
-        case .changeToPreviousCameraMode:
-            "Change to previous camera mode"
+        case .speakCameraModeName: GestureActionText.lightDetectorGestureActionSpeakCameraModeNameDescription.rawValue.localized()
+        case .changeToNextCameraMode: GestureActionText.lightDetectorGestureActionChangeToNextCameraModeDescription.rawValue.localized()
+        case .changeToPreviousCameraMode: GestureActionText.lightDetectorGestureActionChangeToPreviousCameraModeDescription.rawValue.localized()
         }
     }
 }

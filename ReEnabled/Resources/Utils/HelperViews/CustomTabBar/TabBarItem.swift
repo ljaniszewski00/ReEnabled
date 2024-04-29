@@ -19,11 +19,11 @@ extension TabBarItem {
     var title: String {
         switch self {
         case .camera:
-            return "Camera"
+            return OtherText.tabBarItemCamera.rawValue.localized()
         case .chat:
-            return "Chat"
+            return OtherText.tabBarItemChat.rawValue.localized()
         case .settings:
-            return "Settings"
+            return OtherText.tabBarItemSettings.rawValue.localized()
         }
     }
 }

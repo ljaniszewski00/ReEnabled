@@ -39,4 +39,45 @@ enum OtherText: String {
     
     case distanceMeasureUnitCentimeters
     case distanceMeasureUnitMeters
+    
+    case manualFlashlightTriggerValueHighestTolerance
+    case manualFlashlightTriggerValueMediumTolerance
+    case manualFlashlightTriggerValueLowestTolerance
+    case manualFlashlightTriggerValueHighestToleranceDescription
+    case manualFlashlightTriggerValueLowestToleranceDescription
+    
+    case speechSpeedFastest
+    case speechSpeedFaster
+    case speechSpeedNormal
+    case speechSpeedSlower
+    case speechSpeedSlowest
+    
+    case gestureTypeSingleTapName
+    case gestureTypeDoubleTapName
+    case gestureTypeTrippleTapName
+    case gestureTypeLongPressName
+    case gestureTypeSwipeRightName
+    case gestureTypeSwipeLeftName
+    case gestureTypeSwipeDownName
+    case gestureTypeSwipeUpName
+    case gestureTypeLongPressAndSwipeRightName
+    case gestureTypeLongPressAndSwipeLeftName
+    case gestureTypeLongPressAndSwipeDownName
+    case gestureTypeLongPressAndSwipeUpName
+    case gestureTypeSingleTapInstruction
+    case gestureTypeDoubleTapInstruction
+    case gestureTypeTrippleTapInstruction
+    case gestureTypeLongPressInstruction
+    case gestureTypeSwipeRightInstruction
+    case gestureTypeSwipeLeftInstruction
+    case gestureTypeSwipeDownInstruction
+    case gestureTypeSwipeUpInstruction
+    case gestureTypeLongPressAndSwipeRightInstruction
+    case gestureTypeLongPressAndSwipeLeftInstruction
+    case gestureTypeLongPressAndSwipeDownInstruction
+    case gestureTypeLongPressAndSwipeUpInstruction
+    
+    case tabBarItemCamera
+    case tabBarItemChat
+    case tabBarItemSettings
 }

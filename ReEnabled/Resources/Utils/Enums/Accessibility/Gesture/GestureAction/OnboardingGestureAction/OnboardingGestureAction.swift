@@ -7,12 +7,9 @@ enum OnboardingGestureAction {
 extension OnboardingGestureAction {
     var description: String {
         switch self {
-        case .readOnboardingSection:
-            "Read onboarding section"
-        case .changeToPreviousOnboardingSection:
-            "Change to previous onboarding section"
-        case .changeToNextOnboardingSection:
-            "Change to next onboarding section"
+        case .readOnboardingSection: GestureActionText.onboardingGestureActionReadOnboardingSectionDescription.rawValue.localized()
+        case .changeToPreviousOnboardingSection: GestureActionText.onboardingGestureActionChangeToPreviousOnboardingSectionDescription.rawValue.localized()
+        case .changeToNextOnboardingSection: GestureActionText.onboardingGestureActionChangeToNextOnboardingSectionDescription.rawValue.localized()
         }
     }
 }

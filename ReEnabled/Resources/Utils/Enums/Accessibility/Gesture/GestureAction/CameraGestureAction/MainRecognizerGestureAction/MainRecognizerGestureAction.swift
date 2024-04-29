@@ -9,14 +9,10 @@ enum MainRecognizerGestureAction {
 extension MainRecognizerGestureAction {
     var description: String {
         switch self {
-        case .readRecognizedObjects:
-            "Read recognized objects"
-        case .speakCameraModeName:
-            "Speak camera mode name"
-        case .changeToNextCameraMode:
-            "Change to next camera mode"
-        case .changeToPreviousCameraMode:
-            "Change to previous camera mode"
+        case .readRecognizedObjects: GestureActionText.mainRecognizerGestureActionReadRecognizedObjectsDescription.rawValue.localized()
+        case .speakCameraModeName: GestureActionText.mainRecognizerGestureActionSpeakCameraModeNameDescription.rawValue.localized()
+        case .changeToNextCameraMode: GestureActionText.mainRecognizerGestureActionChangeToNextCameraModeDescription.rawValue.localized()
+        case .changeToPreviousCameraMode: GestureActionText.mainRecognizerGestureActionChangeToPreviousCameraModeDescription.rawValue.localized()
         }
     }
 }

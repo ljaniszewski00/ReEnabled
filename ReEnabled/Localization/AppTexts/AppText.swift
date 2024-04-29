@@ -6,6 +6,7 @@ enum AppText {
     
     case speechFeedbackText(SpeechFeedbackText)
     case voiceRequestText(VoiceRequestText)
+    case gestureActionText(GestureActionText)
     case mlModelLabelText(MLModelLabelText)
     
     case otherText(OtherText)

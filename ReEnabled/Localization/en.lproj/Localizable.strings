@@ -18,7 +18,17 @@
 
 // MARK: - Chat Tab
 
+"chatYou" = "You";
+"chatDevice" = "Device";
 
+"chatConversationIsEmpty" = "Looks like this conversation is empty";
+"chatDoubleTapQuickAction" = "Double tap the screen to record new message";
+"chatLongPressAndSwipeUpQuickAction" = "Long press on one point of the screen, swipe up and release to upload a photo and get it's description";
+"chatLongPress" = "Long press on one point of the screen and release, then say what you want to do";
+"chatToBeSend" = "To be send";
+"chatNavigationTitle" = "Chat";
+
+"defaultMessageContentForImageChat" = "Describe the photo.";
 
 // MARK: - Settings Tab
 
@@ -308,6 +318,41 @@ Swipe left to go to previous sections of the guide.
 "otherVoiceRequestRemindGestures" = "Remind gestures";
 "otherVoiceRequestDisplayOnboarding" = "Display onboarding";
 
+// MARK: - Gesture Action
+
+"mainRecognizerGestureActionReadRecognizedObjectsDescription" = "Read recognized objects";
+"mainRecognizerGestureActionSpeakCameraModeNameDescription" = "Speak camera mode name";
+"mainRecognizerGestureActionChangeToNextCameraModeDescription" = "Change to next camera mode";
+"mainRecognizerGestureActionChangeToPreviousCameraModeDescription" = "Change to previous camera mode";
+"documentScannerGestureActionReadDetectedTextsDescription" = "Read detected texts";
+"documentScannerGestureActionReadDetectedBarCodesValuesDescription" = "Read detected bar codes values";
+"documentScannerGestureActionSpeakCameraModeNameDescription" = "Speak camera mode name";
+"documentScannerGestureActionChangeToNextCameraModeDescription" = "Change to next camera mode";
+"documentScannerGestureActionChangeToPreviousCameraModeDescription" = "Change to previous camera mode";
+"colorDetectorGestureActionReadDetectedColorDescription" = "Read detected color";
+"colorDetectorGestureActionSpeakCameraModeNameDescription" = "Speak camera mode name";
+"colorDetectorGestureActionChangeToNextCameraModeDescription" = "Change to next camera mode";
+"colorDetectorGestureActionChangeToPreviousCameraModeDescription" = "Change to previous camera mode";
+"lightDetectorGestureActionSpeakCameraModeNameDescription" = "Speak camera mode name";
+"lightDetectorGestureActionChangeToNextCameraModeDescription" = "Change to next camera mode";
+"lightDetectorGestureActionChangeToPreviousCameraModeDescription" = "Change to previous camera mode";
+
+"chatGestureActionTriggerConversationReadingDescription" = "Trigger conversation reading";
+"chatGestureActionTriggerVoiceMessageRegisteringForChatDescription" = "Trigger voice message registering for chat";
+"chatGestureActionChangeConversationToNextDescription" = "Change conversation to next";
+"chatGestureActionChangeConversationToPreviousDescription" = "Change conversation to previous";
+"chatGestureActionDeleteCurrentConversationDescription" = "Delete current conversation";
+"chatGestureActionSelectPhotoDescription" = "Select photo";
+"settingsGestureActionReadSettingNameDescription" = "Read setting name";
+"settingsGestureActionChangeSpecificSettingDescription" = "Change specific setting";
+"settingsGestureActionReadSettingDescriptionDescription" = "Read setting description";
+"onboardingGestureActionReadOnboardingSectionDescription" = "Read onboarding section";
+"onboardingGestureActionChangeToPreviousOnboardingSectionDescription" = "Change to previous onboarding section";
+"onboardingGestureActionChangeToNextOnboardingSectionDescription" = "Change to next onboarding section";
+"otherGestureActionTriggerVoiceRequestRegisteringDescription" = "Trigger voice request registering";
+"otherGestureActionChangeToPreviousTabDescription" = "Change to previous tab";
+"otherGestureActionChangeToNextTabDescription" = "Change to next tab";
+
 // MARK: - ML Model Label
 
 "objectMLModelPerson" = "person";
@@ -447,3 +492,44 @@ Swipe left to go to previous sections of the guide.
 
 "distanceMeasureUnitCentimeters" = "Centimeters";
 "distanceMeasureUnitMeters" = "Meters";
+
+"manualFlashlightTriggerValueHighestTolerance" = "Highest Tolerance";
+"manualFlashlightTriggerValueMediumTolerance" = "Medium Tolerance";
+"manualFlashlightTriggerValueLowestTolerance" = "Lowest Tolerance";
+"manualFlashlightTriggerValueHighestToleranceDescription" = "Highest tolerance towards darkness";
+"manualFlashlightTriggerValueLowestToleranceDescription" = "Lowest tolerance towards darkness";
+
+"speechSpeedFastest" = "Fastest";
+"speechSpeedFaster" = "Faster";
+"speechSpeedNormal" = "Normal";
+"speechSpeedSlower" = "Slower";
+"speechSpeedSlowest" = "Slowest";
+
+"gestureTypeSingleTapName" = "Single tap";
+"gestureTypeDoubleTapName" = "Double tap";
+"gestureTypeTrippleTapName" = "Tripple tap";
+"gestureTypeLongPressName" = "Long press";
+"gestureTypeSwipeRightName" = "Swipe right";
+"gestureTypeSwipeLeftName" = "Swipe left";
+"gestureTypeSwipeDownName" = "Swipe down";
+"gestureTypeSwipeUpName" = "Swipe up";
+"gestureTypeLongPressAndSwipeRightName" = "Long press and swipe right";
+"gestureTypeLongPressAndSwipeLeftName" = "Long press and swipe left";
+"gestureTypeLongPressAndSwipeDownName" = "Long press and swipe down";
+"gestureTypeLongPressAndSwipeUpName" = "Long press and swipe up";
+"gestureTypeSingleTapInstruction" = "Tap one time on the screen";
+"gestureTypeDoubleTapInstruction" = "Tap two times on the screen";
+"gestureTypeTrippleTapInstruction" = "Tap three times on the screen";
+"gestureTypeLongPressInstruction" = "Long press on the screen and release after a while";
+"gestureTypeSwipeRightInstruction" = "Swipe from left to right, then release";
+"gestureTypeSwipeLeftInstruction" = "Swipe from right to left, then release";
+"gestureTypeSwipeDownInstruction" = "Swipe from top to bottom, then release";
+"gestureTypeSwipeUpInstruction" = "Swipe from bottom to top, then release";
+"gestureTypeLongPressAndSwipeRightInstruction" = "Long press on the screen, don't release but swipe from left to right, then release";
+"gestureTypeLongPressAndSwipeLeftInstruction" = "Long press on the screen, don't release but swipe from right to left, then release";
+"gestureTypeLongPressAndSwipeDownInstruction" = "Long press on the screen, don't release but swipe from top to bottom, then release";
+"gestureTypeLongPressAndSwipeUpInstruction" = "Long press on the screen, don't release but swipe from bottom to top, then release";
+
+"tabBarItemCamera" = "Camera";
+"tabBarItemChat" = "Chat";
+"tabBarItemSettings" = "Settings";

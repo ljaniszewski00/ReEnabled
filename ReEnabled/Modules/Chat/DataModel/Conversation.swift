@@ -33,7 +33,7 @@ extension Conversation {
         
         for message in self.messages {
             text += "\n"
-            text += message.sentByUser ? "User" : "Device"
+            text += message.sentByUser ? ChatTabText.chatYou.rawValue.localized() : ChatTabText.chatDevice.rawValue.localized()
             text += " "
             text += message.hourSent.description
             text += " "

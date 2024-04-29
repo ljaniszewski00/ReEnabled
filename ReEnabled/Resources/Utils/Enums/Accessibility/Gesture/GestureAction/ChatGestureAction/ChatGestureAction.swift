@@ -10,18 +10,12 @@ enum ChatGestureAction {
 extension ChatGestureAction {
     var description: String {
         switch self {
-        case .triggerConversationReading:
-            "Trigger conversation reading"
-        case .triggerVoiceMessageRegisteringForChat:
-            "Trigger voice message registering for chat"
-        case .changeConversationToNext:
-            "Change conversation to next"
-        case .changeConversationToPrevious:
-            "Change conversation to previous"
-        case .deleteCurrentConversation:
-            "Delete current conversation"
-        case .selectPhoto:
-            "Select photo"
+        case .triggerConversationReading: GestureActionText.chatGestureActionTriggerConversationReadingDescription.rawValue.localized()
+        case .triggerVoiceMessageRegisteringForChat: GestureActionText.chatGestureActionTriggerVoiceMessageRegisteringForChatDescription.rawValue.localized()
+        case .changeConversationToNext: GestureActionText.chatGestureActionChangeConversationToNextDescription.rawValue.localized()
+        case .changeConversationToPrevious: GestureActionText.chatGestureActionChangeConversationToPreviousDescription.rawValue.localized()
+        case .deleteCurrentConversation: GestureActionText.chatGestureActionDeleteCurrentConversationDescription.rawValue.localized()
+        case .selectPhoto: GestureActionText.chatGestureActionSelectPhotoDescription.rawValue.localized()
         }
     }
 }
