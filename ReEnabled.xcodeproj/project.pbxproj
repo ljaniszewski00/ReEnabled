@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		162784822B9FC2C000C5225F /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162784812B9FC2C000C5225F /* CustomNavigationBar.swift */; };
-		162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856C92B8AD0A500691759 /* FacialRecognizerViewModel.swift */; };
-		162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CB2B8AD0B000691759 /* FacialRecognizerViewController.swift */; };
-		162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */; };
-		162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */; };
 		162856D72B8D242500691759 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162856D62B8D242500691759 /* Inject.swift */; };
 		1629F99C2BA49BD400B89629 /* UIImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F99B2BA49BD400B89629 /* UIImage+String.swift */; };
 		1629F9AC2BA7579500B89629 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1629F9AB2BA7579500B89629 /* APIClient.swift */; };
@@ -102,10 +98,6 @@
 		1670C61A2B6FB8F0005CF24B /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */; };
 		1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */; };
 		167853332BC49F3100B10396 /* alpha_waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167853322BC49F3100B10396 /* alpha_waves.mp3 */; };
-		1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */; };
-		1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */; };
-		1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */; };
-		1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */; };
 		1682D31F2B8548F10028CE73 /* CameraMLModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */; };
 		1694F1842B98EF7800928103 /* MainRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1832B98EF7800928103 /* MainRecognizerViewController.swift */; };
 		1694F1862B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694F1852B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift */; };
@@ -257,10 +249,6 @@
 
 /* Begin PBXFileReference section */
 		162784812B9FC2C000C5225F /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
-		162856C92B8AD0A500691759 /* FacialRecognizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewModel.swift; sourceTree = "<group>"; };
-		162856CB2B8AD0B000691759 /* FacialRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewController.swift; sourceTree = "<group>"; };
-		162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
-		162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialRecognizerView.swift; sourceTree = "<group>"; };
 		162856D62B8D242500691759 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		1629F99B2BA49BD400B89629 /* UIImage+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+String.swift"; sourceTree = "<group>"; };
 		1629F9AB2BA7579500B89629 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -350,10 +338,6 @@
 		1670C6192B6FB8F0005CF24B /* CaptureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetectorViewModel.swift; sourceTree = "<group>"; };
 		167853322BC49F3100B10396 /* alpha_waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alpha_waves.mp3; sourceTree = "<group>"; };
-		1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewModel.swift; sourceTree = "<group>"; };
-		1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewController.swift; sourceTree = "<group>"; };
-		1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorViewControllerRepresentable.swift; sourceTree = "<group>"; };
-		1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetectorView.swift; sourceTree = "<group>"; };
 		1682D31E2B8548F10028CE73 /* CameraMLModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMLModelFile.swift; sourceTree = "<group>"; };
 		1694F1832B98EF7800928103 /* MainRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerViewController.swift; sourceTree = "<group>"; };
 		1694F1852B98EF8B00928103 /* MainRecognizerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecognizerViewControllerRepresentable.swift; sourceTree = "<group>"; };
@@ -511,41 +495,6 @@
 				162784812B9FC2C000C5225F /* CustomNavigationBar.swift */,
 			);
 			path = CustomNavigatioBar;
-			sourceTree = "<group>";
-		};
-		162856C52B8AD05A00691759 /* FacialRecognizer */ = {
-			isa = PBXGroup;
-			children = (
-				162856C62B8AD08000691759 /* ViewModel */,
-				162856C72B8AD08600691759 /* ViewController */,
-				162856C82B8AD08D00691759 /* View */,
-			);
-			path = FacialRecognizer;
-			sourceTree = "<group>";
-		};
-		162856C62B8AD08000691759 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				162856C92B8AD0A500691759 /* FacialRecognizerViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		162856C72B8AD08600691759 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				162856CB2B8AD0B000691759 /* FacialRecognizerViewController.swift */,
-				162856CD2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		162856C82B8AD08D00691759 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				162856CF2B8AD0BF00691759 /* FacialRecognizerView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		162856D82B8D245E00691759 /* Assemblies */ = {
@@ -1202,8 +1151,6 @@
 				164669012B6855FA0049AB03 /* DocumentScanner */,
 				164669022B6856040049AB03 /* ColorDetector */,
 				164669032B6856320049AB03 /* LightDetector */,
-				1682D3122B8543B70028CE73 /* CurrencyDetector */,
-				162856C52B8AD05A00691759 /* FacialRecognizer */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -1224,41 +1171,6 @@
 				1670C6202B6FC5DD005CF24B /* ColorDetectorViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		1682D3122B8543B70028CE73 /* CurrencyDetector */ = {
-			isa = PBXGroup;
-			children = (
-				1682D3132B8543C80028CE73 /* ViewModel */,
-				1682D3142B8543D20028CE73 /* ViewController */,
-				1682D3152B8543D90028CE73 /* View */,
-			);
-			path = CurrencyDetector;
-			sourceTree = "<group>";
-		};
-		1682D3132B8543C80028CE73 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				1682D3162B8544570028CE73 /* CurrencyDetectorViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		1682D3142B8543D20028CE73 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1682D3182B8544660028CE73 /* CurrencyDetectorViewController.swift */,
-				1682D31A2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		1682D3152B8543D90028CE73 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1682D31C2B85448E0028CE73 /* CurrencyDetectorView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1694F1802B98EF4C00928103 /* Submodules */ = {
@@ -2164,7 +2076,6 @@
 				1694F19F2B9A1E8700928103 /* RoadLightType.swift in Sources */,
 				1670C60C2B6ED795005CF24B /* ColorDetectorView.swift in Sources */,
 				16F9ECE02BD725CF00C5F997 /* OnboardingSection+GestureToPass.swift in Sources */,
-				162856D02B8AD0BF00691759 /* FacialRecognizerView.swift in Sources */,
 				16F9ECDE2BD71AB100C5F997 /* OnboardingSection+TextContent.swift in Sources */,
 				16F9ECBA2BD4569E00C5F997 /* OtherGestureAction.swift in Sources */,
 				16C107592BBC7BCC00797394 /* ChatVoiceRequest.swift in Sources */,
@@ -2225,16 +2136,13 @@
 				1629F9B12BA759A400B89629 /* APIEndpoint.swift in Sources */,
 				1629F9C82BA76CCB00B89629 /* OpenAIChatCompletionsInteractor.swift in Sources */,
 				16C107732BBDB4E700797394 /* SpeechFeedback.swift in Sources */,
-				162856CA2B8AD0A500691759 /* FacialRecognizerViewModel.swift in Sources */,
 				16F9ED232BDD1EDD00C5F997 /* ColorDetectorText.swift in Sources */,
 				16C107652BBC832700797394 /* DocumentScannerVoiceRequest.swift in Sources */,
 				16F564B92B98ED0900A831F2 /* RoadLightsTypeManager.swift in Sources */,
 				1629F9DE2BA8B7D700B89629 /* SingleTakeCameraViewControllerRepresentable.swift in Sources */,
 				16F9ECD42BD7151800C5F997 /* OnboardingFunctionsSection.swift in Sources */,
-				1682D3172B8544570028CE73 /* CurrencyDetectorViewModel.swift in Sources */,
 				16F9ECB82BD4569700C5F997 /* OnboardingGestureAction.swift in Sources */,
 				1629FA032BAF4CE700B89629 /* Message.swift in Sources */,
-				162856CC2B8AD0B000691759 /* FacialRecognizerViewController.swift in Sources */,
 				163EB0432BB31FEC0012FC89 /* ContinuousHapticFeedbackGenerator.swift in Sources */,
 				16C1073C2BB9D5F900797394 /* DocumentScannerView.swift in Sources */,
 				163311812B8D258F00896058 /* CaptureSessionManager+GetLuminosityValueFromCamera.swift in Sources */,
@@ -2257,14 +2165,12 @@
 				164E11252B4615DF008EF153 /* SplashScreenView.swift in Sources */,
 				1629F9DA2BA8B07100B89629 /* LabelledDivider.swift in Sources */,
 				164E11172B45E167008EF153 /* ReEnabledApp.swift in Sources */,
-				1682D31B2B8544700028CE73 /* CurrencyDetectorViewControllerRepresentable.swift in Sources */,
 				1651172B2B94A1D000779E89 /* PedestrianCrossingRecognizerViewModel.swift in Sources */,
 				16CF87792B74132E00AD5ABC /* LightDetectorView.swift in Sources */,
 				16F9ED172BDD1CE900C5F997 /* CameraTabText.swift in Sources */,
 				16F9ED302BDD5F8500C5F997 /* Locale+PreferredLanguageCode.swift in Sources */,
 				1629F9B82BA7622C00B89629 /* OpenAIChatCompletionsRequestInput.swift in Sources */,
 				1670C6212B6FC5DD005CF24B /* ColorDetectorViewModel.swift in Sources */,
-				1682D31D2B85448E0028CE73 /* CurrencyDetectorView.swift in Sources */,
 				16F9ED292BDD209F00C5F997 /* String+Localized.swift in Sources */,
 				16F9ED062BDD1C4900C5F997 /* MLModelLabelText.swift in Sources */,
 				163311C42B939C9100896058 /* ObjectBoundingBox.swift in Sources */,
@@ -2290,7 +2196,6 @@
 				1629F9DC2BA8B66500B89629 /* SingleTakeCameraViewController.swift in Sources */,
 				16F9ECB62BD4569100C5F997 /* SettingsGestureAction.swift in Sources */,
 				165117332B94A4E700779E89 /* ExifOrientation.swift in Sources */,
-				1682D3192B8544660028CE73 /* CurrencyDetectorViewController.swift in Sources */,
 				164E114B2B47211D008EF153 /* ChatView.swift in Sources */,
 				1629F9F52BACED1100B89629 /* ConversationObject.swift in Sources */,
 				16F9ECDA2BD717EA00C5F997 /* OnboardingSection+Previous.swift in Sources */,
@@ -2312,7 +2217,6 @@
 				16F9ECD22BD7150F00C5F997 /* OnboardingGesturesSection.swift in Sources */,
 				16E514102BB602160035B586 /* SettingsModel.swift in Sources */,
 				163311CD2B939EB800896058 /* Sigmoid.swift in Sources */,
-				162856CE2B8AD0B600691759 /* FacialRecognizerViewControllerRepresentable.swift in Sources */,
 				163311B82B935F2400896058 /* UtilsAssembly.swift in Sources */,
 				16C1076C2BBC894500797394 /* VoiceRecordingChatManager.swift in Sources */,
 				162DCA4E2BA0DD8D005CB24A /* SpeechRecognizer.swift in Sources */,

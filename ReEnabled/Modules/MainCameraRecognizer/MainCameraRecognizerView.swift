@@ -25,10 +25,6 @@ struct MainCameraRecognizerView: View {
                 ColorDetectorView()
             case .lightDetector:
                 LightDetectorView()
-//            case .currencyDetector:
-//                CurrencyDetectorView()
-//            case .facialRecognizer:
-//                FacialRecognizerView()
             }
             
             if mainCameraRecognizerViewModel.cameraModeNameVisible {

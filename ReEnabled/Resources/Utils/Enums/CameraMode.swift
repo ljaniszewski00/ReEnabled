@@ -5,8 +5,6 @@ enum CameraMode: PersistableEnum {
     case documentScanner
     case colorDetector
     case lightDetector
-//    case currencyDetector = "Currency Detector"
-//    case facialRecognizer = "Facial Recognizer"
     
     typealias RawValue = String
     
@@ -36,24 +34,21 @@ extension CameraMode {
     }
 }
 
+extension CameraMode {
+    static var modesWithPortraitVideoConnection: [CameraMode] {
+        [
+            .mainRecognizer
+        ]
+    }
+}
+
 extension CameraMode: CaseIterable {
     static var allCases: [CameraMode] {
         [
             .mainRecognizer,
             .documentScanner,
             .colorDetector,
-            .lightDetector,
-//            .currencyDetector,
-//            .facialRecognizer
-        ]
-    }
-}
-
-extension CameraMode {
-    static var modesWithPortraitVideoConnection: [CameraMode] {
-        [
-            .mainRecognizer,
-//            .facialRecognizer,
+            .lightDetector
         ]
     }
 }

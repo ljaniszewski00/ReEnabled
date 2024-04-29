@@ -1,8 +1,4 @@
 enum CameraMLModelFile {
-    case ageRecognizer
-    case currencyDetector
-    case emotionsRecognizer
-    case genderRecognizer
     case pedestrianCrossingRecognizer
     case roadLightsRecognizer
     case objectsRecognizer
@@ -12,14 +8,6 @@ extension CameraMLModelFile {
     
     var fileName: String {
         switch self {
-        case .ageRecognizer:
-            "AgeNet"
-        case .currencyDetector:
-            "CurrencyDetector"
-        case .emotionsRecognizer:
-            "CNNEmotions"
-        case .genderRecognizer:
-            "GenderNet"
         case .pedestrianCrossingRecognizer:
             "LytNetV1"
         case .roadLightsRecognizer:
