@@ -320,38 +320,38 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 
 // MARK: - Gesture Action
 
-"mainRecognizerGestureActionReadRecognizedObjectsDescription" = "Przeczytaj wykryte obiekty";
-"mainRecognizerGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
-"mainRecognizerGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamery na następny";
-"mainRecognizerGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamery na poprzedni";
-"documentScannerGestureActionReadDetectedTextsDescription" = "Przeczytaj wykryte teksty";
-"documentScannerGestureActionReadDetectedBarCodesValuesDescription" = "Przeczytaj wartości wykrytych kodów kreskowych";
-"documentScannerGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
-"documentScannerGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamera na następny";
-"documentScannerGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamera na poprzedni";
-"colorDetectorGestureActionReadDetectedColorDescription" = "Przeczytaj wykryty kolor";
-"colorDetectorGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
-"colorDetectorGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamery na następny";
-"colorDetectorGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamery na poprzedni";
-"lightDetectorGestureActionSpeakCameraModeNameDescription" = "Powiedz aktualny tryb kamery";
-"lightDetectorGestureActionChangeToNextCameraModeDescription" = "Zmień tryb kamery na następny";
-"lightDetectorGestureActionChangeToPreviousCameraModeDescription" = "Zmień tryb kamery na poprzedni";
+"mainRecognizerGestureActionReadRecognizedObjectsDescription" = "Przeczytać wykryte obiekty";
+"mainRecognizerGestureActionSpeakCameraModeNameDescription" = "Przeczytać aktualny tryb kamery";
+"mainRecognizerGestureActionChangeToNextCameraModeDescription" = "Zmienić tryb kamery na następny";
+"mainRecognizerGestureActionChangeToPreviousCameraModeDescription" = "Zmienić tryb kamery na poprzedni";
+"documentScannerGestureActionReadDetectedTextsDescription" = "Przeczytać wykryte teksty";
+"documentScannerGestureActionReadDetectedBarCodesValuesDescription" = "Przeczytać wartości wykrytych kodów kreskowych";
+"documentScannerGestureActionSpeakCameraModeNameDescription" = "Przeczytać aktualny tryb kamery";
+"documentScannerGestureActionChangeToNextCameraModeDescription" = "Zmienić tryb kamera na następny";
+"documentScannerGestureActionChangeToPreviousCameraModeDescription" = "Zmienić tryb kamera na poprzedni";
+"colorDetectorGestureActionReadDetectedColorDescription" = "Przeczytać wykryty kolor";
+"colorDetectorGestureActionSpeakCameraModeNameDescription" = "Przeczytać aktualny tryb kamery";
+"colorDetectorGestureActionChangeToNextCameraModeDescription" = "Zmienić tryb kamery na następny";
+"colorDetectorGestureActionChangeToPreviousCameraModeDescription" = "Zmienić tryb kamery na poprzedni";
+"lightDetectorGestureActionSpeakCameraModeNameDescription" = "Przeczytać aktualny tryb kamery";
+"lightDetectorGestureActionChangeToNextCameraModeDescription" = "Zmienić tryb kamery na następny";
+"lightDetectorGestureActionChangeToPreviousCameraModeDescription" = "Zmienić tryb kamery na poprzedni";
 
-"chatGestureActionTriggerConversationReadingDescription" = "Aktywuj czytanie rozmowy";
-"chatGestureActionTriggerVoiceMessageRegisteringForChatDescription" = "Aktywuj nagrywanie wiadomości głosowych w czacie";
-"chatGestureActionChangeConversationToNextDescription" = "Przejdź do następnej rozmowy";
-"chatGestureActionChangeConversationToPreviousDescription" = "Przejdź do poprzedniej rozmowy";
-"chatGestureActionDeleteCurrentConversationDescription" = "Usuń aktualną rozmowę";
-"chatGestureActionSelectPhotoDescription" = "Wybierz zdjęcie";
-"settingsGestureActionReadSettingNameDescription" = "Przeczytaj nazwę ustawienia";
-"settingsGestureActionChangeSpecificSettingDescription" = "Zmień konkretne ustawienie";
-"settingsGestureActionReadSettingDescriptionDescription" = "Przeczytaj opis ustawienia";
-"onboardingGestureActionReadOnboardingSectionDescription" = "Przeczytaj sekcję wprowadzenia";
-"onboardingGestureActionChangeToPreviousOnboardingSectionDescription" = "Przejdź do poprzedniej sekcji wprowadzenia";
-"onboardingGestureActionChangeToNextOnboardingSectionDescription" = "Przejdź do następnej sekcji wprowadzenia";
-"otherGestureActionTriggerVoiceRequestRegisteringDescription" = "Aktywuj rejestrację żądania głosowego";
-"otherGestureActionChangeToPreviousTabDescription" = "Przejdź do poprzedniej karty";
-"otherGestureActionChangeToNextTabDescription" = "Przejdź do następnej karty";
+"chatGestureActionTriggerConversationReadingDescription" = "Przeczytać rozmowę";
+"chatGestureActionTriggerVoiceMessageRegisteringForChatDescription" = "Aktywować nagrywanie wiadomości głosowych w czacie";
+"chatGestureActionChangeConversationToNextDescription" = "Przejść do następnej rozmowy";
+"chatGestureActionChangeConversationToPreviousDescription" = "Przejść do poprzedniej rozmowy";
+"chatGestureActionDeleteCurrentConversationDescription" = "Usunąć aktualną rozmowę";
+"chatGestureActionSelectPhotoDescription" = "Wybrać zdjęcie";
+"settingsGestureActionReadSettingNameDescription" = "Przeczytać nazwę ustawienia";
+"settingsGestureActionChangeSpecificSettingDescription" = "Zmienić konkretne ustawienie";
+"settingsGestureActionReadSettingDescriptionDescription" = "Przeczytać opis ustawienia";
+"onboardingGestureActionReadOnboardingSectionDescription" = "Przeczytać sekcję wprowadzenia";
+"onboardingGestureActionChangeToPreviousOnboardingSectionDescription" = "Przejść do poprzedniej sekcji wprowadzenia";
+"onboardingGestureActionChangeToNextOnboardingSectionDescription" = "Przejść do następnej sekcji wprowadzenia";
+"otherGestureActionTriggerVoiceRequestRegisteringDescription" = "Aktywować rejestrację żądania głosowego";
+"otherGestureActionChangeToPreviousTabDescription" = "Przejść do poprzedniej karty";
+"otherGestureActionChangeToNextTabDescription" = "Przejść do następnej karty";
 
 // MARK: - ML Model Label
 
