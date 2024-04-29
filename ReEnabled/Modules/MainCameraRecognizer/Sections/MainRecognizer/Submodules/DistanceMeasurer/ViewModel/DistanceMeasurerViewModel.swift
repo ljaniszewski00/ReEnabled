@@ -7,18 +7,20 @@ final class DistanceMeasurerViewModel: ObservableObject {
     
     @Published var distance: Float?
     
+    private var timer: Timer!
+    private var canWarn: Bool = true
+    
+    init() {
+        manageWarningPemission()
+    }
+    
     var obstacleIsNear: Bool {
         guard let distance = distance else {
             return false
         }
         
-        if distance.isNaN || distance < 70 {
-            return true
-        } else if !distance.isNaN && distance >= 70 && distance < 100 {
-            return true
-        } else {
-            return false
-        }
+        let isNear: Bool = !distance.isNaN && distance >= 70 && distance < 100
+        return isNear
     }
     
     var distanceString: String? {
@@ -39,7 +41,23 @@ final class DistanceMeasurerViewModel: ObservableObject {
     }
     
     func warnAboutObstacle() {
-        feedbackManager.generateHapticFeedback(.impact(.heavy))
-        feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.distanceWarning)))
+        if canWarn {
+            feedbackManager.generateHapticFeedback(.impact(.heavy))
+            feedbackManager.generateSpeechFeedback(with: .camera(.mainRecognizer(.distanceWarning)))
+            canWarn = false
+        }
+    }
+    
+    private func manageWarningPemission() {
+        timer = Timer.scheduledTimer(timeInterval: 10.0,
+                                     target: self, 
+                                     selector: #selector(allowWarning),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    @objc
+    private func allowWarning() {
+        canWarn = true
     }
 }
