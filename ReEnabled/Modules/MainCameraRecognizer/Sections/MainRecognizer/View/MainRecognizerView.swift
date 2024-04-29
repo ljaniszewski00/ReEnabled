@@ -11,14 +11,12 @@ struct MainRecognizerView: View {
     @StateObject private var objectsRecognizerViewModel: ObjectsRecognizerViewModel = ObjectsRecognizerViewModel()
     @StateObject private var distanceMeasurerViewModel: DistanceMeasurerViewModel = DistanceMeasurerViewModel()
     @StateObject private var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel = RoadLightsRecognizerViewModel()
-    @StateObject private var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel = PedestrianCrossingRecognizerViewModel()
     
     var body: some View {
         ZStack {
             MainRecognizerViewControllerRepresentable(objectsRecognizerViewModel: objectsRecognizerViewModel,
                                                       distanceMeasurerViewModel: distanceMeasurerViewModel,
-                                                      roadLightsRecognizerViewModel: roadLightsRecognizerViewModel,
-                                                      pedestrianCrossingRecognizerViewModel: pedestrianCrossingRecognizerViewModel)
+                                                      roadLightsRecognizerViewModel: roadLightsRecognizerViewModel)
             
             VStack {
                 Spacer()
@@ -38,16 +36,6 @@ struct MainRecognizerView: View {
                             )
                             .padding(.bottom)
                     }
-                    
-//                    if let recognizedLightColor = roadLightsRecognizerViewModel.roadLightType,
-//                       let personMovementInstruction = pedestrianCrossingRecognizerViewModel.personMovementInstruction,
-//                       let deviceMovementInstruction = pedestrianCrossingRecognizerViewModel.deviceMovementInstruction {
-//                        Text(recognizedLightColor)
-//                            .padding(.bottom)
-//                        Text(personMovementInstruction)
-//                        Text(deviceMovementInstruction)
-//                            .padding(.bottom)
-//                    }
                     
                     if let distanceString = distanceMeasurerViewModel.distanceString {
                         Text(distanceString)
@@ -76,12 +64,6 @@ struct MainRecognizerView: View {
         .onChange(of: roadLightsRecognizerViewModel.roadLightTypeRecognized) { _, _ in
             roadLightsRecognizerViewModel.readRoadLightType()
         }
-//        .onChange(of: pedestrianCrossingRecognizerViewModel.personMovementInstruction) { _, personMovementInstruction in
-//            pedestrianCrossingRecognizerViewModel.readPersonMovementInstruction()
-//        }
-//        .onChange(of: pedestrianCrossingRecognizerViewModel.deviceMovementInstruction) { _, deviceMovementInstruction in
-//            pedestrianCrossingRecognizerViewModel.readDeviceMovementInstruction()
-//        }
         .onChange(of: distanceMeasurerViewModel.obstacleIsNear) { _, isNear in
             if tabBarStateManager.tabSelection == .camera &&
                 mainCameraRecognizerViewModel.cameraMode == .mainRecognizer &&

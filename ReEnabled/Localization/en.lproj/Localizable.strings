@@ -438,7 +438,6 @@ Swipe left to go to previous sections of the guide.
 
 "roadLightMLModelRed" = "red";
 "roadLightMLModelGreen" = "green";
-"roadLightMLModelYellow" = "yellow";
 
 // MARK: - Other
 

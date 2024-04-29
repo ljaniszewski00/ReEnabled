@@ -82,5 +82,4 @@ enum MLModelLabelText: String {
     
     case roadLightMLModelRed
     case roadLightMLModelGreen
-    case roadLightMLModelYellow
 }

@@ -1,1 +1,2 @@
 *.mlmodel filter=lfs diff=lfs merge=lfs -text
+ReEnabled/Resources/MLModels/AmpelPilot_2812rg.mlmodel filter=lfs diff=lfs merge=lfs -text

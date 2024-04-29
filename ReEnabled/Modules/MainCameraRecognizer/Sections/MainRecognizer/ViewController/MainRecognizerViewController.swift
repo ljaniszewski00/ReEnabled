@@ -9,7 +9,6 @@ class MainRecognizerViewController: UIViewController {
     var objectsRecognizerViewModel: ObjectsRecognizerViewModel?
     var distanceMeasurerViewModel: DistanceMeasurerViewModel?
     var roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel?
-    var pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel?
     
     var previewLayer = AVCaptureVideoPreviewLayer()
     var depthPreviewLayer = AVCaptureVideoPreviewLayer()
@@ -51,23 +50,13 @@ class MainRecognizerViewController: UIViewController {
     
     var roadLightsRecognizerRequests = [VNRequest]()
     
-    // MARK: - PedestrianCrossingRecognizer Properties
-    
-    let pedestrianCrossingModel: PedestrianCrossingModel = PedestrianCrossingModel()
-    
-    var pedestrianCrossingRecognitionLayer: CALayer! = nil
-    
-    var pedestrianCrossingRecognizerRequests = [VNRequest]()
-    
     init(objectsRecognizerViewModel: ObjectsRecognizerViewModel,
          distanceMeasurerViewModel: DistanceMeasurerViewModel,
-         roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel,
-         pedestrianCrossingRecognizerViewModel: PedestrianCrossingRecognizerViewModel) {
+         roadLightsRecognizerViewModel: RoadLightsRecognizerViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.objectsRecognizerViewModel = objectsRecognizerViewModel
         self.distanceMeasurerViewModel = distanceMeasurerViewModel
         self.roadLightsRecognizerViewModel = roadLightsRecognizerViewModel
-        self.pedestrianCrossingRecognizerViewModel = pedestrianCrossingRecognizerViewModel
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -75,7 +64,6 @@ class MainRecognizerViewController: UIViewController {
         self.objectsRecognizerViewModel = nil
         self.distanceMeasurerViewModel = nil
         self.roadLightsRecognizerViewModel = nil
-        self.pedestrianCrossingRecognizerViewModel = nil
     }
     
     override func viewDidLoad() {
@@ -83,7 +71,6 @@ class MainRecognizerViewController: UIViewController {
         
         setupObjectsRecognizer()
         setupRoadLightsRecognizer()
-        setupPedestrianCrossingRecognizer()
         
         captureSessionManager.setUpWithDepthData(with: self,
                                                  and: self,
@@ -94,8 +81,6 @@ class MainRecognizerViewController: UIViewController {
             
 //            self.setupObjectsBoundingBoxes()
             self.setupRoadLightsBoundingBoxes()
-            self.setupPedestrianCrossingRecognitionLayer()
-            self.updatePedestrianCrossingRecognitionLayerGeometry()
         }
     }
     
@@ -163,7 +148,6 @@ extension MainRecognizerViewController: AVCaptureVideoDataOutputSampleBufferDele
         DispatchQueue.global().async {
             try? handler.perform([objectsRecognitionRequest])
             try? handler.perform(self.roadLightsRecognizerRequests)
-            try? handler.perform(self.pedestrianCrossingRecognizerRequests)
         }
     }
 }
