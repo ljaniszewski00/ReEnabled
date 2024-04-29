@@ -33,7 +33,7 @@
 // MARK: - Settings Tab
 
 "navigationTitle" = "Ustawienia";
-"displayOnboarding" = "Wyświetl wprowadzenie";
+"displayOnboarding" = "Wyświetl przewodnik";
 "deleteAllConversations" = "Usuń wszystkie rozmowy";
 "restoreDefaultSettings" = "Przywróć domyślne ustawienia";
 "letDeviceManageFlashlightForItself" = "Pozwól urządzeniu automatycznie decydować o trybie latarki";
@@ -42,9 +42,9 @@
 
 "titleWelcomeSectionWelcomeText" = "WITAJ W APLIKACJI ReEnabled";
 "titleGesturesSectionWelcomeText" = "GESTY";
-"titleTapGestureTutorial" = "JEDNOKROTNE DOTKNIECIE";
-"titleDoubleTapGestureTutorial" = "DWUKROTNE DOTKNIECIE";
-"titleTrippleTapGestureTutorial" = "TRZYKROTNE DOTKNIECIE";
+"titleTapGestureTutorial" = "JEDNOKROTNE STUKNIĘCIE";
+"titleDoubleTapGestureTutorial" = "DWUKROTNE STUKNIĘCIE";
+"titleTrippleTapGestureTutorial" = "TRZYKROTNE STUKNIĘCIE";
 "titleLongPressGestureTutorial" = "PRZYTRZYMANIE";
 "titleSwipeLeftGestureTutorial" = "PRZESUNIĘCIE W LEWO";
 "titleSwipeRightGestureTutorial" = "PRZESUNIĘCIE W PRAWO";
@@ -257,7 +257,7 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "settingsSpeechFeedbackDoubleTapToDeleteConversations" = "Naciśnij dwa razy aby usunąć wszystkie rozmowy";
 "settingsSpeechFeedbackDoubleTapToRestoreDefaultSettings" = "Naciśnij dwa razy aby przywrócić ustawienia fabryczne";
 
-"onboardingSpeechFeedbackOnboardingHasBeenCompleted" = "Onboarding został ukończony";
+"onboardingSpeechFeedbackOnboardingHasBeenCompleted" = "Przewodnik został ukończony";
 "onboardingSpeechFeedbackSwipeRightToProceed" = "Przesuń w prawo, aby kontynuować";
 
 "otherSpeechFeedbackCurrentTab" = "Aktualna karta";
@@ -302,7 +302,7 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "settingsVoiceRequestChangeSpeechVoiceTypeToMale" = "Zmień typ głosu mowy na męski";
 "settingsVoiceRequestDeleteAllConversations" = "Usuń wszystkie rozmowy";
 "settingsVoiceRequestRestoreDefaultSettings" = "Przywróć domyślne ustawienia";
-"onboardingVoiceRequestSkipOnboarding" = "Pomiń wprowadzenie";
+"onboardingVoiceRequestSkipOnboarding" = "Pomiń przewodnik";
 "onboardingVoiceRequestReadSection" = "Przeczytaj sekcję";
 "onboardingVoiceRequestPreviousSection" = "Poprzednia sekcja";
 "onboardingVoiceRequestNextSection" = "Następna sekcja";
@@ -316,7 +316,7 @@ Przesuń w lewo, aby wrócić do poprzednich sekcji przewodnika.
 "otherVoiceRequestChangeTabToSettings" = "Zmień kartę na ustawienia";
 "otherVoiceRequestRemindVoiceCommands" = "Przypomnij polecenia głosowe";
 "otherVoiceRequestRemindGestures" = "Przypomnij gesty";
-"otherVoiceRequestDisplayOnboarding" = "Wyświetl wprowadzenie";
+"otherVoiceRequestDisplayOnboarding" = "Wyświetl przewodnik";
 
 // MARK: - Gesture Action
 
