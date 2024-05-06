@@ -53,9 +53,9 @@ extension OnboardingSection {
             case .settingsFirstTutorial:
                 return OnboardingText.titleSettingsFirstTutorial.rawValue.localized()
             case .settingsSecondTutorial:
-                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
+                return OnboardingText.titleSettingsFirstTutorial.rawValue.localized()
             case .settingsThirdTutorial:
-                return OnboardingText.titleChatMessageTutorial.rawValue.localized()
+                return OnboardingText.titleSettingsFirstTutorial.rawValue.localized()
             }
         case .voiceCommands(let onboardingVoiceCommandsSection):
             switch onboardingVoiceCommandsSection {

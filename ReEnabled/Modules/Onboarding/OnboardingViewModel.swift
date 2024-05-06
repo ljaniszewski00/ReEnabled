@@ -67,7 +67,6 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func voiceRequestPromptCompleted() {
-        canDisplayActionCompletedAnimation = true
         changeToNextSectionAfterDelay(time: .now() + 5)
     }
     

@@ -493,8 +493,8 @@
 		162856D92B8D246300691759 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				16FC1A842BA24B3700BB9B48 /* Onboarding */,
 				164E112B2B46182B008EF153 /* SplashScreen */,
+				16FC1A842BA24B3700BB9B48 /* Onboarding */,
 				164E11452B4720F6008EF153 /* MainCameraRecognizer */,
 				164E11462B4720FB008EF153 /* Chat */,
 				164E11472B47210A008EF153 /* Settings */,
