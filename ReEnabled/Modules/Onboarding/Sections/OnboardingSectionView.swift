@@ -37,36 +37,39 @@ struct OnboardingSectionView: View {
                 HStack {
                     Spacer()
                     
-                    if let imageResource = section.imageResource {
-                        Image(imageResource.imageResource)
-                            .resizable()
-                            .scaledToFill()
-                            .if(imageResource.applyBottomMask) {
-                                $0
-                                    .mask(LinearGradient(gradient: Gradient(stops: [
-                                        .init(color: .black, location: 0),
-                                        .init(color: .clear, location: 1),
-                                        .init(color: .black, location: 1),
-                                        .init(color: .clear, location: 1)
-                                    ]), startPoint: .top, endPoint: .bottom))
-                            }
-                            .frame(width: imageResource.width,
-                                   height: imageResource.height)
+                    if canDisplayActionCompletedAnimation {
+                        LottieView(name: LottieAssetName.actionCompletedWhite,
+                                   loopMode: .playOnce,
+                                   contentMode: .scaleAspectFit)
+                            .frame(width: 250, height: 250)
+                            .padding(.bottom, Views.Constants.imageBottomPaddingWithoutMask)
                     } else {
-                        if canDisplayActionCompletedAnimation {
-                            LottieView(name: LottieAssetName.actionCompletedWhite,
-                                       loopMode: .playOnce)
-                        } else {
-                            if let lottieView = section.lottieView {
-                                lottieView
-                            }
+                        if let imageResource = section.imageResource {
+                            Image(imageResource.imageResource)
+                                .resizable()
+                                .scaledToFill()
+                                .foregroundColor(.white)
+                                .if(imageResource.applyBottomMask) {
+                                    $0
+                                        .mask(LinearGradient(gradient: Gradient(stops: [
+                                            .init(color: .black, location: 0),
+                                            .init(color: .clear, location: 1),
+                                            .init(color: .black, location: 1),
+                                            .init(color: .clear, location: 1)
+                                        ]), startPoint: .top, endPoint: .bottom))
+                                }
+                                .if(!imageResource.applyBottomMask) {
+                                    $0
+                                        .padding(.bottom, Views.Constants.imageBottomPaddingWithoutMask)
+                                }
+                                .frame(width: imageResource.width,
+                                       height: imageResource.height)
                         }
-                        
                     }
                     
                     Spacer()
                 }
-                .padding(.bottom, Views.Constants.imageBottomPadding)
+                .padding(.bottom, Views.Constants.imageBottomPaddingWithMask)
                 
                 if !swipeToProceedHidden {
                     Views.swipeToProceed(offset: swipeToProceedOffset)
@@ -146,7 +149,8 @@ private extension Views {
         static let mainVStackSpacing: CGFloat = 20
         static let titleTopPadding: CGFloat = 30
         static let sectionDescriptionOpacity: CGFloat = 0.5
-        static let imageBottomPadding: CGFloat = 30
+        static let imageBottomPaddingWithMask: CGFloat = 30
+        static let imageBottomPaddingWithoutMask: CGFloat = 100
         static let swipeToProceedHStackSpacing: CGFloat = 20
         static let swipeToProceedImageName: String = "arrowshape.right.circle"
         static let swipeToProceedImageSize: CGFloat = 40

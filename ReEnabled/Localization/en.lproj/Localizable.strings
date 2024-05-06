@@ -40,7 +40,7 @@
 
 // MARK: - Onboarding
 
-"titleWelcomeSectionWelcomeText" = "WELCOME TO THE ReEnabled FAMILY";
+"titleWelcomeSectionWelcomeText" = "HI!";
 "titleGesturesSectionWelcomeText" = "GESTURES";
 "titleTapGestureTutorial" = "SINGLE TAP";
 "titleDoubleTapGestureTutorial" = "DOUBLE TAP";
@@ -63,12 +63,12 @@
 "titleEnding" = "PERFECT!";
 
 "descriptionWelcomeSectionWelcomeText" = "
-We will be more than happy to assist you in everyday tasks.
-First, let’s take a quick tour around app’s essential features.
+Welcome to ReEnabled application. My name is Siri. I will be your voice guide through all the time you use the app.
+Let me present you it's essential features by completing this quick tour.
 ";
 
 "descriptionGesturesSectionWelcomeText" = "
-One of the most important features facilitating the use of the application are gestures.
+They are one of the most important features facilitating the use of the application.
 A gesture is a movement made by a finger on the screen surface.
 Most screens of the application have functions that are triggered by specific gestures.
 Let's try to learn them together.
@@ -151,7 +151,7 @@ You can change speed of speech, set the flashlight mode or change the unit of di
 ";
 
 "descriptionSettingsThirdTutorial" = "
-It's also possible to change the default tab activated when the app is launched, delete conversations, and restore all settings to factory defaults.
+It's also possible to change the default camera mode activated when the app is launched, delete conversations, and restore all settings to factory defaults.
 ";
 
 "descriptionVoiceCommandsExplanation" = "

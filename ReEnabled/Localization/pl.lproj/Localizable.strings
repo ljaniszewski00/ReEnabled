@@ -40,7 +40,7 @@
 
 // MARK: - Onboarding
 
-"titleWelcomeSectionWelcomeText" = "WITAJ W APLIKACJI ReEnabled";
+"titleWelcomeSectionWelcomeText" = "CZEŚĆ!";
 "titleGesturesSectionWelcomeText" = "GESTY";
 "titleTapGestureTutorial" = "JEDNOKROTNE STUKNIĘCIE";
 "titleDoubleTapGestureTutorial" = "DWUKROTNE STUKNIĘCIE";
@@ -63,12 +63,12 @@
 "titleEnding" = "DOSKONALE!";
 
 "descriptionWelcomeSectionWelcomeText" = "
-Z wielką chęcią pomożemy ci w codziennych czynnościach.
-Pozwól, że najpierw zaprezentujemy ci podstawowe funkcje aplikacji.
+Witaj w aplikacji ReEnabled. Mam na imię Zosia. Będę twoim głosowym przewodnikiem przez cały czas używania aplikacji.
+Pozwól, że najpierw zaprezentuję ci jej podstawowe funkcje.
 ";
 
 "descriptionGesturesSectionWelcomeText" = "
-Jedną z najważniejszych funkcji ułatwiających korzystanie z aplikacji są gesty.
+Są one jedną z najważniejszych funkcji ułatwiających korzystanie z aplikacji.
 Gest to ruch wykonany przez palec na powierzchni ekranu.
 Większość ekranów aplikacji ma funkcje, które są aktywowane przez konkretne gesty.
 Spróbujmy je nauczyć się razem.
@@ -130,7 +130,7 @@ Zakładka kamery umożliwi Ci zbadanie dominującego koloru przedmiotu...
 
 "descriptionChatMessageTutorial" = "
 Druga to zakładka czatu.
-Tutaj możesz otrzymać odpowiedź na każde pytanie, używając wiadomości dźwiękowych.
+Tutaj możesz otrzymać odpowiedź na każde pytanie, używając wiadomości głosowych.
 ";
 
 "descriptionChatImageTutorial" = "
@@ -151,7 +151,7 @@ Możesz zmienić szybkość mowy, ustawić tryb latarki, lub zmienić jednostkę
 ";
 
 "descriptionSettingsThirdTutorial" = "
-Jest także możliwość zmiany domyślnej zakładki aktywowanej podczas uruchamiania aplikacji, usuwania rozmów oraz przywrócenia wszystkich ustawień do wartości fabrycznych.
+Jest także możliwość zmiany domyślnego trybu kamery aktywowanego podczas uruchamiania aplikacji, usuwania rozmów oraz przywrócenia wszystkich ustawień do wartości fabrycznych.
 ";
 
 "descriptionVoiceCommandsExplanation" = "

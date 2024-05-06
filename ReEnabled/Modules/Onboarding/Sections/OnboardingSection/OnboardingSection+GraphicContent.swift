@@ -11,108 +11,29 @@ extension OnboardingSection {
             case .gesturesSectionWelcome:
                 return nil
             case .tapGestureTutorial:
-                return nil
+                return (.singleTapGesture, 250, 250, false)
             case .doubleTapGestureTutorial:
-                return nil
+                return (.doubleTapGesture, 250, 250, false)
             case .trippleTapGestureTutorial:
-                return nil
+                return (.trippleTapGesture, 250, 250, false)
             case .longPressGestureTutorial:
-                return nil
+                return (.longPressGesture, 250, 250, false)
             case .swipeLeftGestureTutorial:
-                return nil
+                return (.swipeLeftGesture, 250, 250, false)
             case .swipeRightGestureTutorial:
-                return nil
+                return (.swipeRightGesture, 250, 250, false)
             case .swipeUpGestureTutorial:
-                return nil
+                return (.swipeUpGesture, 250, 250, false)
             case .swipeDownGestureTutorial:
-                return nil
+                return (.swipeDownGesture, 250, 250, false)
             case .longPressAndSwipeLeftGestureTutorial:
-                return nil
+                return (.longPressAndSwipeLeftGesture, 250, 250, false)
             case .longPressAndSwipeRightGestureTutorial:
-                return nil
+                return (.longPressAndSwipeRightGesture, 250, 250, false)
             case .longPressAndSwipeUpGestureTutorial:
-                return nil
+                return (.longPressAndSwipeUpGesture, 250, 250, false)
             case .longPressAndSwipeDownGestureTutorial:
-                return nil
-            case .gesturesSectionEnding:
-                return nil
-            }
-        case .functions(let onboardingFunctionsSection):
-            switch onboardingFunctionsSection {
-            case .mainRecognizerTutorial:
-                return nil
-            case .documentScannerTutorial:
-                return nil
-            case .colorDetectorTutorial:
-                return nil
-            case .lightDetectorTutorial:
-                return nil
-            case .chatMessageTutorial:
-                return nil
-            case .chatImageTutorial:
-                return nil
-            case .chatDatabaseTutorial:
-                return (.enChatViewEmptyChats, 250, 350, true)
-            case .settingsFirstTutorial:
-                return nil
-            case .settingsSecondTutorial:
-                return nil
-            case .settingsThirdTutorial:
-                return nil
-            }
-        case .voiceCommands(let onboardingVoiceCommandsSection):
-            switch onboardingVoiceCommandsSection {
-            case .voiceCommandsExplanation:
-                return nil
-            case .voiceCommandsRemindGestures:
-                return nil
-            case .voiceCommandsRemindVoiceCommands:
-                return nil
-            }
-        case .feedback(let onboardingFeedbackSection):
-            switch onboardingFeedbackSection {
-            case .feedbackFirstTutorial:
-                return nil
-            case .feedbackSecondTutorial:
-                return nil
-            }
-        case .ending:
-            return nil
-        }
-    }
-    
-    var lottieView: LottieView? {
-        switch self {
-        case .welcome:
-            return nil
-        case .gestures(let onboardingGesturesSection):
-            switch onboardingGesturesSection {
-            case .gesturesSectionWelcome:
-                return nil
-            case .tapGestureTutorial:
-                return LottieView(name: LottieAssetName.tapGesture)
-            case .doubleTapGestureTutorial:
-                return nil
-            case .trippleTapGestureTutorial:
-                return nil
-            case .longPressGestureTutorial:
-                return LottieView(name: LottieAssetName.longPressGesture)
-            case .swipeLeftGestureTutorial:
-                return LottieView(name: LottieAssetName.swipeLeftGesture)
-            case .swipeRightGestureTutorial:
-                return LottieView(name: LottieAssetName.swipeRightGesture)
-            case .swipeUpGestureTutorial:
-                return LottieView(name: LottieAssetName.swipeLeftGesture, rotationAngleDegrees: 90)
-            case .swipeDownGestureTutorial:
-                return LottieView(name: LottieAssetName.swipeLeftGesture, rotationAngleDegrees: 270)
-            case .longPressAndSwipeLeftGestureTutorial:
-                return nil
-            case .longPressAndSwipeRightGestureTutorial:
-                return nil
-            case .longPressAndSwipeUpGestureTutorial:
-                return nil
-            case .longPressAndSwipeDownGestureTutorial:
-                return nil
+                return (.longPressAndSwipeDownGesture, 250, 250, false)
             case .gesturesSectionEnding:
                 return nil
             }
@@ -139,22 +60,10 @@ extension OnboardingSection {
             case .settingsThirdTutorial:
                 return nil
             }
-        case .voiceCommands(let onboardingVoiceCommandsSection):
-            switch onboardingVoiceCommandsSection {
-            case .voiceCommandsExplanation:
-                return nil
-            case .voiceCommandsRemindGestures:
-                return nil
-            case .voiceCommandsRemindVoiceCommands:
-                return nil
-            }
-        case .feedback(let onboardingFeedbackSection):
-            switch onboardingFeedbackSection {
-            case .feedbackFirstTutorial:
-                return nil
-            case .feedbackSecondTutorial:
-                return nil
-            }
+        case .voiceCommands(_):
+            return nil
+        case .feedback(_):
+            return nil
         case .ending:
             return nil
         }
