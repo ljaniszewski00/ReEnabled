@@ -8,11 +8,12 @@ struct OnboardingSectionView: View {
     
     var body: some View {
         VStack {
-            ProgressIndicator(stepsNumber: OnboardingSection.allCases.count, activeStep: sectionNumber)
+            ProgressIndicator(stepsNumber: OnboardingSection.allCases.count, 
+                              activeStep: sectionNumber)
                 .padding(.vertical)
                 .padding(.bottom)
             
-            VStack {
+            VStack(spacing: Views.Constants.sectionVStackSpacing) {
                 if let title = section.title {
                     Text(title)
                         .font(.largeTitle)
@@ -26,7 +27,6 @@ struct OnboardingSectionView: View {
                     .foregroundStyle(.white)
                     .opacity(Views.Constants.sectionDescriptionOpacity)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.vertical)
             }
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)
@@ -41,27 +41,14 @@ struct OnboardingSectionView: View {
                         LottieView(name: LottieAssetName.actionCompletedWhite,
                                    loopMode: .playOnce,
                                    contentMode: .scaleAspectFit)
-                            .frame(width: 250, height: 250)
-                            .padding(.bottom, Views.Constants.imageBottomPaddingWithoutMask)
+                            .frame(width: Views.Constants.actionCompletedAnimationSize,
+                                   height: Views.Constants.actionCompletedAnimationSize)
                     } else {
                         if let imageResource = section.imageResource {
                             Image(imageResource.imageResource)
                                 .resizable()
                                 .scaledToFill()
                                 .foregroundColor(.white)
-                                .if(imageResource.applyBottomMask) {
-                                    $0
-                                        .mask(LinearGradient(gradient: Gradient(stops: [
-                                            .init(color: .black, location: 0),
-                                            .init(color: .clear, location: 1),
-                                            .init(color: .black, location: 1),
-                                            .init(color: .clear, location: 1)
-                                        ]), startPoint: .top, endPoint: .bottom))
-                                }
-                                .if(!imageResource.applyBottomMask) {
-                                    $0
-                                        .padding(.bottom, Views.Constants.imageBottomPaddingWithoutMask)
-                                }
                                 .frame(width: imageResource.width,
                                        height: imageResource.height)
                         }
@@ -69,7 +56,7 @@ struct OnboardingSectionView: View {
                     
                     Spacer()
                 }
-                .padding(.bottom, Views.Constants.imageBottomPaddingWithMask)
+                .offset(y: Views.Constants.imageOffset)
                 
                 if !swipeToProceedHidden {
                     Views.swipeToProceed(offset: swipeToProceedOffset)
@@ -138,7 +125,7 @@ struct OnboardingSectionView: View {
 }
 
 #Preview {
-    OnboardingSectionView(section: .welcome,
+    OnboardingSectionView(section: .gestures(.longPressAndSwipeUpGestureTutorial),
                           canDisplaySwipeToProceed: true,
                           swipeToProceedOffset: .zero,
                           canDisplayActionCompletedAnimation: false)
@@ -146,11 +133,11 @@ struct OnboardingSectionView: View {
 
 private extension Views {
     struct Constants {
-        static let mainVStackSpacing: CGFloat = 20
+        static let sectionVStackSpacing: CGFloat = 15
         static let titleTopPadding: CGFloat = 30
         static let sectionDescriptionOpacity: CGFloat = 0.5
-        static let imageBottomPaddingWithMask: CGFloat = 30
-        static let imageBottomPaddingWithoutMask: CGFloat = 100
+        static let actionCompletedAnimationSize: CGFloat = 250
+        static let imageOffset: CGFloat = -130
         static let swipeToProceedHStackSpacing: CGFloat = 20
         static let swipeToProceedImageName: String = "arrowshape.right.circle"
         static let swipeToProceedImageSize: CGFloat = 40

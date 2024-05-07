@@ -59,7 +59,7 @@
 "titleChatMessageTutorial" = "CHAT";
 "titleSettingsFirstTutorial" = "USTAWIENIA";
 "titleVoiceCommandsExplanation" = "POLECENIA GŁOSOWE";
-"titleFeedbackFirstTutorial" = "OPINIE";
+"titleFeedbackFirstTutorial" = "INFORMACJA ZWROTNA";
 "titleEnding" = "DOSKONALE!";
 
 "descriptionWelcomeSectionWelcomeText" = "
@@ -175,6 +175,8 @@ Dzięki temu poznasz wszystkie dostępne gesty na każdym ekranie aplikacji.
 Ponadto, możesz poznać pozostałe dostępne polecenia głosowe na ekranie wykonując tę samą akcję, ale wydając polecenie głosowe:
 
 „Przypomnij polecenia głosowe.”
+
+Przesuń w prawo, aby kontynuować.
 ";
 
 "descriptionFeedbackFirstTutorial" = "

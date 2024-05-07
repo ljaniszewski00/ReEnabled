@@ -169,7 +169,7 @@ private extension Views {
         
         static let emptyConversationPlaceholderVStackSpacing: CGFloat = 40
         static let emptyConversationPlaceholderImageName: String = "plus.message"
-        static let emptyConversationPlaceholderImageSize: CGFloat = 200
+        static let emptyConversationPlaceholderImageSize: CGFloat = 180
         static let emptyConversationPlaceholderTextsVStackSpacing: CGFloat = 30
         static let emptyConversationPlaceholderTextTitle: String = ChatTabText.chatConversationIsEmpty.rawValue.localized()
         static let emptyConversationPlaceholderSubbuttonsVStackSpacing: CGFloat = 12
@@ -177,6 +177,9 @@ private extension Views {
         static let emptyConversationPlaceholderTextLongPressSwipeUpAction: String = ChatTabText.chatLongPressAndSwipeUpQuickAction.rawValue.localized()
         static let emptyConversationPlaceholderTextLongPressAndSayAction: String = ChatTabText.chatLongPress.rawValue.localized()
         static let emptyConversationPlaceholderSubbuttonCornerRadius: CGFloat = 8
+        static let emptyConversationPlaceholderContentSpacing: CGFloat = 15
+        static let emptyConversationPlaceholderGestureImageSize: CGFloat = 70
+        static let emptyConversationPlaceholderActionLabelOpacity: CGFloat = 0.7
         static let emptyConversationPlaceholderTopPadding: CGFloat = 50
         
         static let messageCellImageClipShapeCornerRadius: CGFloat = 5
@@ -237,37 +240,44 @@ private extension Views {
                     .frame(width: Views.Constants.emptyConversationPlaceholderImageSize,
                            height: Views.Constants.emptyConversationPlaceholderImageSize)
                     .padding(.bottom)
+                    .foregroundStyle(.placeholder)
                 
                 VStack(spacing: Views.Constants.emptyConversationPlaceholderTextsVStackSpacing) {
                     Text(Views.Constants.emptyConversationPlaceholderTextTitle)
                         .font(.title2)
-                        
+                        .foregroundStyle(.placeholder)
                     
                     VStack(alignment: .leading, spacing: Views.Constants.emptyConversationPlaceholderSubbuttonsVStackSpacing) {
-                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextDoubleTapAction) {
+                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextDoubleTapAction,
+                                                                       imageResource: .doubleTapGesture) {
                             if !chatViewModel.speechRecordingBlocked {
                                 voiceRecordingManager.manageTalking()
                             }
                         }
+                        .foregroundStyle(.quinary)
                         
-                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextLongPressSwipeUpAction) {
+                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextLongPressSwipeUpAction,
+                                                                       imageResource: .longPressAndSwipeUpGesture) {
                             chatViewModel.selectPhoto()
                         }
+                        .foregroundStyle(.quinary)
                         
-                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextLongPressAndSayAction) {
+                        Views.EmptyConversationPlaceholderActionButton(label: Views.Constants.emptyConversationPlaceholderTextLongPressAndSayAction,
+                                                                       imageResource: .longPressGesture) {
                             
                         }
+                        .foregroundStyle(.quinary)
                     }
                     .multilineTextAlignment(.leading)
                 }
             }
-            .foregroundStyle(.placeholder)
             .padding(.top, Views.Constants.emptyConversationPlaceholderTopPadding)
         }
     }
     
     struct EmptyConversationPlaceholderActionButton: View {
         let label: String
+        let imageResource: ImageResource
         let action: () -> ()
         
         var body: some View {
@@ -279,10 +289,17 @@ private extension Views {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: Views.Constants.emptyConversationPlaceholderSubbuttonCornerRadius)
                     
-                    Text(label)
-                        .foregroundStyle(.white)
-                        .font(.title3)
-                        .padding()
+                    HStack(spacing: Views.Constants.emptyConversationPlaceholderContentSpacing) {
+                        Image(imageResource)
+                            .resizable()
+                            .frame(width: Views.Constants.emptyConversationPlaceholderGestureImageSize,
+                                   height: Views.Constants.emptyConversationPlaceholderGestureImageSize)
+                        
+                        Text(label)
+                            .foregroundStyle(.white.opacity(Views.Constants.emptyConversationPlaceholderActionLabelOpacity))
+                            .font(.title3)
+                    }
+                    .padding()
                 }
             }
         }
