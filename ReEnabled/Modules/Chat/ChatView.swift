@@ -101,6 +101,7 @@ struct ChatView: View {
                     .store(in: &chatViewModel.cancelBag)
             case .other(.remindVoiceCommands):
                 guard tabBarStateManager.tabSelection == .chat else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 
@@ -108,13 +109,17 @@ struct ChatView: View {
                 feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
             case .other(.remindGestures):
                 guard tabBarStateManager.tabSelection == .chat else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 let actionScreen = ActionScreen(screenType: .chat)
                 feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
+                voiceRequestor.selectedVoiceRequest = .empty
                 return
             }
+            
+            voiceRequestor.selectedVoiceRequest = .empty
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

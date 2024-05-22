@@ -99,6 +99,7 @@ struct SettingsView: View {
                     .store(in: &settingsViewModel.cancelBag)
             case .other(.remindVoiceCommands):
                 guard tabBarStateManager.tabSelection == .settings else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 
@@ -106,13 +107,17 @@ struct SettingsView: View {
                 feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
             case .other(.remindGestures):
                 guard tabBarStateManager.tabSelection == .settings else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 let actionScreen = ActionScreen(screenType: .settings)
                 feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
+                voiceRequestor.selectedVoiceRequest = .empty
                 return
             }
+            
+            voiceRequestor.selectedVoiceRequest = .empty
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

@@ -81,20 +81,24 @@ struct MainRecognizerView: View {
                 objectsRecognizerViewModel.readRecognizedObjects()
             case .other(.remindVoiceCommands):
                 guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .mainRecognizer else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
-                
                 let actionScreen = ActionScreen(screenType: .mainRecognizer)
                 feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
             case .other(.remindGestures):
                 guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .mainRecognizer else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 let actionScreen = ActionScreen(screenType: .mainRecognizer)
                 feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
+                voiceRequestor.selectedVoiceRequest = .empty
                 return
             }
+            
+            voiceRequestor.selectedVoiceRequest = .empty
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {

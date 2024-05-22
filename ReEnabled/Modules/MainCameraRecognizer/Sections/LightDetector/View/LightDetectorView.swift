@@ -67,6 +67,7 @@ struct LightDetectorView: View {
                 lightDetectorViewModel.stopSound()
             case .other(.remindVoiceCommands):
                 guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .lightDetector else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 
@@ -74,13 +75,17 @@ struct LightDetectorView: View {
                 feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
             case .other(.remindGestures):
                 guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .lightDetector else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 let actionScreen = ActionScreen(screenType: .lightDetector)
                 feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
+                voiceRequestor.selectedVoiceRequest = .empty
                 return
             }
+            
+            voiceRequestor.selectedVoiceRequest = .empty
         }
         .addGesturesActions(toExecuteBeforeEveryAction: {
         }, toExecuteAfterEveryAction: {

@@ -45,30 +45,35 @@ struct OnboardingView: View {
                 switch voiceRequest {
                 case .onboarding(.readSection):
                     guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                        voiceRequestor.selectedVoiceRequest = .empty
                         return
                     }
                     
                     onboardingViewModel.readCurrentSection()
                 case .onboarding(.skipOnboarding):
                     guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                        voiceRequestor.selectedVoiceRequest = .empty
                         return
                     }
                     
                     onboardingViewModel.exitOnboarding()
                 case .onboarding(.nextSection):
                     guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                        voiceRequestor.selectedVoiceRequest = .empty
                         return
                     }
                     
                     onboardingViewModel.changeToNextSection()
                 case .onboarding(.previousSection):
                     guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                        voiceRequestor.selectedVoiceRequest = .empty
                         return
                     }
                     
                     onboardingViewModel.changeToPreviousSection()
                 case .other(.remindVoiceCommands):
                     guard onboardingViewModel.currentVoiceRequestToPass == nil else {
+                        voiceRequestor.selectedVoiceRequest = .empty
                         return
                     }
                     
@@ -82,8 +87,11 @@ struct OnboardingView: View {
                     let actionScreen = ActionScreen(screenType: .onboarding)
                     feedbackManager.generateGesturesReminder(for: actionScreen)
                 default:
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
+                
+                voiceRequestor.selectedVoiceRequest = .empty
             }
             .addGesturesActions(swipeTranslationValue: $swipeToProceedOffset,
                                 toExecuteBeforeEveryAction: {

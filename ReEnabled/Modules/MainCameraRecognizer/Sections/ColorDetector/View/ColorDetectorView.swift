@@ -48,6 +48,7 @@ struct ColorDetectorView: View {
                 colorDetectorViewModel.readDetectedColor()
             case .other(.remindVoiceCommands):
                 guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .colorDetector else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 
@@ -55,13 +56,17 @@ struct ColorDetectorView: View {
                 feedbackManager.generateVoiceRequestsReminder(for: actionScreen)
             case .other(.remindGestures):
                 guard tabBarStateManager.tabSelection == .camera && mainCameraRecognizerViewModel.cameraMode == .colorDetector else {
+                    voiceRequestor.selectedVoiceRequest = .empty
                     return
                 }
                 let actionScreen = ActionScreen(screenType: .colorDetector)
                 feedbackManager.generateGesturesReminder(for: actionScreen)
             default:
+                voiceRequestor.selectedVoiceRequest = .empty
                 return
             }
+            
+            voiceRequestor.selectedVoiceRequest = .empty
         }
         .addGesturesActions(toExecuteAfterEveryAction: {
             feedbackManager.generateHapticFeedbackForSwipeAction()

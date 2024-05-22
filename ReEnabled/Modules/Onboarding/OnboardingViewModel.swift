@@ -67,7 +67,7 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func voiceRequestPromptCompleted() {
-        changeToNextSectionAfterDelay(time: .now() + 5)
+        changeToNextSectionAfterDelay(time: .now() + 17)
     }
     
     func exitOnboarding() {
