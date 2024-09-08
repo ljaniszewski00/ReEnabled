@@ -40,15 +40,15 @@ Apple iPhone with iOS 15+ installed
 
 
 ## Functionalities
-* Pedestrian crossing light color indicator: Identify the color of pedestrian crossing's light to provide user with real-time navigation suggestions. Powered by [Ampel-Pilot-iOS](https://github.com/strator1/Ampel-Pilot-iOS)
-* Real-time Object Recognition: By using the device’s camera, the application identifies objects and obstacles in real-time, ensuring users can avoid hazards during movement. It also alerts the user through vibrations and sound signals. Powered by [YOLOv3](https://github.com/MPieter/YOLO-CoreML/tree/master)
-* Text Scanning and Voice Feedback: The app allows scanning of textual documents or product labels and reads the content aloud using text-to-speech (TTS) technology.
-* Color identification: Use the camera to identify color of dominant object in the area or measure
-* Light intensity measures: Use the camera to measure light intensity and notify the user by playing the sound which volume increases as light intensity level increases
-* AI-Powered OpenAI Interaction: The integration of AI models (such as GPT) enables the app to handle complex queries and provide dynamic responses, offering assistance to users by answering their question or analyzing photos.
-* Gesture and Voice Commands: To ensure ease of use, the app supports various custom touch gestures (e.g., tap, swipe) and voice commands (speech-to-text STT technology), enabling users to perform tasks hands-free, reducing the need for tactile input.
-* Customizable Interface: Users can adjust the app’s speech speed, voice, and even the interface language to suit their individual preferences.
-* App Guide: Get to know about all the app's functionalities by completing the onboarding which teaches the user how to use the app
+* **Pedestrian crossing light color indicator**: Identify the color of pedestrian crossing's light to provide user with real-time navigation suggestions. Powered by [Ampel-Pilot-iOS](https://github.com/strator1/Ampel-Pilot-iOS)
+* **Real-time Object Recognition**: By using the device’s camera, the application identifies objects and obstacles in real-time, ensuring users can avoid hazards during movement. It also alerts the user through vibrations and sound signals. Powered by [YOLOv3](https://github.com/MPieter/YOLO-CoreML/tree/master)
+* **Text Scanning and Voice Feedback**: The app allows scanning of textual documents or product labels and reads the content aloud using text-to-speech (TTS) technology.
+* **Color identification**: Use the camera to identify color of dominant object in the area or measure
+* **Light intensity measurer**: Use the camera to measure light intensity and notify the user by playing the sound which volume increases as light intensity level increases
+* **OpenAI API Interaction**: The integration of AI models (such as GPT) enables the app to handle complex queries and provide dynamic responses, offering assistance to users by answering their question or analyzing photos.
+* **Gesture and Voice Commands**: To ensure ease of use, the app supports various custom touch gestures (e.g., tap, swipe) and voice commands (speech-to-text STT technology), enabling users to perform tasks hands-free, reducing the need for tactile input.
+* **Customizable Interface**: Users can adjust the app’s speech speed, voice, and even the interface language to suit their individual preferences.
+* **App Guide**: Get to know about all the app's functionalities by completing the onboarding which teaches the user how to use the app
 
 
 ## Screenshots
