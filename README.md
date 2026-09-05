@@ -9,7 +9,6 @@
 * [Requirements](#requirements)
 * [Functionalities](#functionalities)
 * [Screenshots](#screenshots)
-* [Preview Video](#preview)
 
 
 ## General info
